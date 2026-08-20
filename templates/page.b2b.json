@@ -1,0 +1,469 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "image_with_text_RPTTp7": {
+      "type": "image-with-text",
+      "blocks": {
+        "caption_nkPLUw": {
+          "type": "caption",
+          "settings": {
+            "caption": "Do you have a Retail store?",
+            "text_style": "subtitle",
+            "text_size": "medium"
+          }
+        },
+        "heading_WWdDTK": {
+          "type": "heading",
+          "settings": {
+            "heading": "Partner with <strong>muun</strong>",
+            "heading_size": "h0"
+          }
+        },
+        "text_w4TDer": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Introduce your customers to muun home's exclusive products for a premium experience. Consult our Team to find the perfect match!</p>",
+            "text_style": "body"
+          }
+        },
+        "button_rRMLBp": {
+          "type": "button",
+          "settings": {
+            "button_label": "contact us",
+            "button_link": "shopify://pages/contact",
+            "button_style_secondary": true
+          }
+        }
+      },
+      "block_order": [
+        "caption_nkPLUw",
+        "heading_WWdDTK",
+        "text_w4TDer",
+        "button_rRMLBp"
+      ],
+      "custom_css": [
+        ".image-with-text__text-item .content-container {padding-left: 0; padding-right: 0;}"
+      ],
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/Aditi_-_Pinterest.webp",
+        "height": "large",
+        "desktop_image_width": "medium",
+        "layout": "text_first",
+        "image_behavior": "none",
+        "content_layout": "no-overlap",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "left",
+        "section_color_scheme": "scheme-1",
+        "color_scheme": "scheme-1",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "rich_text_KjQhxU": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_3aaiq3": {
+          "type": "heading",
+          "settings": {
+            "heading": "Price. Quality. Design. ",
+            "heading_size": "h1"
+          }
+        },
+        "text_FpYaCr": {
+          "type": "text",
+          "settings": {
+            "text": "<p>hese three pillars define our commitment to delivering unparalleled decor solutions,</p><p>we understand that creating an inviting and aesthetically pleasing environment is crucial for your business's success, and that's why we are here to help you achieve your vision.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_3aaiq3",
+        "text_FpYaCr"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 0
+      }
+    },
+    "multicolumn_gjpkwk": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_LbjJiB": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/dollar-svgrepo-com.svg",
+            "title": "Competitive Pricing",
+            "text": "<p>We strive to provide fair pricing without compromising on quality. Our direct relationships with manufacturers and artisans enable us to offer you the best value for your investment.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_Ew9ckp": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/dollar-svgrepo-com.svg",
+            "title": "Competitive Pricing",
+            "text": "<p>We strive to provide fair pricing without compromising on quality. Our direct relationships with manufacturers and artisans enable us to offer you the best value for your investment.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_fJ9BNK": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/dollar-svgrepo-com.svg",
+            "title": "Competitive Pricing",
+            "text": "<p>We strive to provide fair pricing without compromising on quality. Our direct relationships with manufacturers and artisans enable us to offer you the best value for your investment.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_9CUxm8": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/dollar-svgrepo-com.svg",
+            "title": "Competitive Pricing",
+            "text": "<p>We strive to provide fair pricing without compromising on quality. Our direct relationships with manufacturers and artisans enable us to offer you the best value for your investment.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_QfWUhD": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/dollar-svgrepo-com.svg",
+            "title": "Competitive Pricing",
+            "text": "<p>We strive to provide fair pricing without compromising on quality. Our direct relationships with manufacturers and artisans enable us to offer you the best value for your investment.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_J8xa9x": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/dollar-svgrepo-com.svg",
+            "title": "Competitive Pricing",
+            "text": "<p>We strive to provide fair pricing without compromising on quality. Our direct relationships with manufacturers and artisans enable us to offer you the best value for your investment.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_LbjJiB",
+        "column_Ew9ckp",
+        "column_fJ9BNK",
+        "column_9CUxm8",
+        "column_QfWUhD",
+        "column_J8xa9x"
+      ],
+      "custom_css": [
+        "img {width: 50px; max-height: 50px;}",
+        ".multicolumn {max-width: 1460px; margin: auto;}",
+        ".multicolumn-card__image-wrapper--third-width {max-width: 50px;}",
+        ".media--square {padding-bottom: 25px;}",
+        ".multicolumn-list.grid {--grid-desktop-horizontal-spacing: 40px; --grid-desktop-vertical-spacing: 40px;}",
+        ".multicolumn-card__info {padding-left: 0px; padding-right: 0px;}"
+      ],
+      "name": "t:sections.multicolumn.presets.name",
+      "settings": {
+        "title": "",
+        "heading_size": "h1",
+        "image_width": "third",
+        "image_ratio": "square",
+        "button_label": "",
+        "button_link": "",
+        "columns_desktop": 2,
+        "column_alignment": "center",
+        "background_style": "none",
+        "color_scheme": "scheme-1",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 0,
+        "padding_bottom": 36
+      }
+    },
+    "image_with_text_XEaVQg": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_mmXr8T": {
+          "type": "heading",
+          "settings": {
+            "heading": "Experience the <strong>Difference</strong>",
+            "heading_size": "h0"
+          }
+        },
+        "text_cTAt8U": {
+          "type": "text",
+          "settings": {
+            "text": "<p>When you choose muun home, you're not just buying home decor; you're investing in an elevated experience.</p><p></p><p>We are passionate about helping you create spaces that leave a lasting impression on your customers and clients.</p><p>With our unmatched expertise, attention to detail, and commitment to customer satisfaction, we are confident that you'll find everything you need to turn your vision into reality.</p>",
+            "text_style": "body"
+          }
+        },
+        "button_xLTr3a": {
+          "type": "button",
+          "settings": {
+            "button_label": "Send us a mail here",
+            "button_link": "shopify://pages/contact",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_mmXr8T",
+        "text_cTAt8U",
+        "button_xLTr3a"
+      ],
+      "custom_css": [
+        ".image-with-text__text-item .content-container {padding-left: 0; padding-right: 0;}"
+      ],
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/Aditi_-_Pinterest.webp",
+        "height": "large",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "image_behavior": "none",
+        "content_layout": "no-overlap",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "left",
+        "section_color_scheme": "scheme-1",
+        "color_scheme": "scheme-1",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "basmil_duol_bXJ9QK": {
+      "type": "basmil-duol",
+      "blocks": {
+        "slide_LAgEdp": {
+          "type": "slide",
+          "settings": {
+            "main_heading": "Josmo Studio, Goa and Mumbai",
+            "nav_image": "shopify://shop_images/JOSMO-POS-Logo_1600x_8d4da26f-0389-4a41-a9bd-80dfc3c7f8e2.png"
+          }
+        },
+        "slide_4NDCDT": {
+          "type": "slide",
+          "settings": {
+            "main_heading": "Go Native, Bangalore",
+            "nav_image": "shopify://shop_images/feed_plan-25_png.webp"
+          }
+        },
+        "slide_hBRYhi": {
+          "type": "slide",
+          "settings": {
+            "main_heading": "Magnolia Home, Mumbai",
+            "nav_image": "shopify://shop_images/Magnolia-logo.png"
+          }
+        },
+        "slide_ciA33W": {
+          "type": "slide",
+          "settings": {
+            "main_heading": "Kamala Furnishing, Siliguru",
+            "nav_image": "shopify://shop_images/PR_1.webp"
+          }
+        },
+        "slide_yQRCGV": {
+          "type": "slide",
+          "settings": {
+            "main_heading": "Josmo Studio, Goa and Mumbai",
+            "nav_image": "shopify://shop_images/JOSMO-POS-Logo_1600x_8d4da26f-0389-4a41-a9bd-80dfc3c7f8e2.png"
+          }
+        },
+        "slide_btzVYP": {
+          "type": "slide",
+          "settings": {
+            "main_heading": "Go Native, Bangalore",
+            "nav_image": "shopify://shop_images/feed_plan-25_png.webp"
+          }
+        },
+        "slide_iTeAHN": {
+          "type": "slide",
+          "settings": {
+            "main_heading": "Magnolia Home, Mumbai",
+            "nav_image": "shopify://shop_images/Magnolia-logo.png"
+          }
+        },
+        "slide_Ea9AKb": {
+          "type": "slide",
+          "settings": {
+            "main_heading": "Kamala Furnishing, Siliguru",
+            "nav_image": "shopify://shop_images/PR_1.webp"
+          }
+        },
+        "slide_PKdLnm": {
+          "type": "slide",
+          "settings": {
+            "main_heading": "Josmo Studio, Goa and Mumbai",
+            "nav_image": "shopify://shop_images/JOSMO-POS-Logo_1600x_8d4da26f-0389-4a41-a9bd-80dfc3c7f8e2.png"
+          }
+        },
+        "slide_F8egVX": {
+          "type": "slide",
+          "settings": {
+            "main_heading": "Go Native, Bangalore",
+            "nav_image": "shopify://shop_images/feed_plan-25_png.webp"
+          }
+        },
+        "slide_eHhtq3": {
+          "type": "slide",
+          "settings": {
+            "main_heading": "Magnolia Home, Mumbai",
+            "nav_image": "shopify://shop_images/Magnolia-logo.png"
+          }
+        },
+        "slide_96Y7Ad": {
+          "type": "slide",
+          "settings": {
+            "main_heading": "Kamala Furnishing, Siliguru",
+            "nav_image": "shopify://shop_images/PR_1.webp"
+          }
+        }
+      },
+      "block_order": [
+        "slide_LAgEdp",
+        "slide_4NDCDT",
+        "slide_hBRYhi",
+        "slide_ciA33W",
+        "slide_yQRCGV",
+        "slide_btzVYP",
+        "slide_iTeAHN",
+        "slide_Ea9AKb",
+        "slide_PKdLnm",
+        "slide_F8egVX",
+        "slide_eHhtq3",
+        "slide_96Y7Ad"
+      ],
+      "custom_css": [
+        ".minimal-main-slide-heading {font-size: 30.4px;}",
+        "@media (max-width: 768px) {.minimal-main-slide-heading {font-size: 22.8px; font-weight: 700; }}"
+      ],
+      "name": "Find Our Product - Basmil",
+      "settings": {
+        "section_title": "",
+        "section_subtitle": "Here is a list of stores we have partnered withStrrot, Delhi",
+        "section_description": "",
+        "footer_description": "Are you Interested in having muun home at your store?",
+        "footer_button_label": "Contact Us",
+        "footer_button_link": "#"
+      }
+    },
+    "basmil_collage_KenjnE": {
+      "type": "basmil-collage",
+      "blocks": {
+        "item_3qpfJY": {
+          "type": "item",
+          "settings": {
+            "type": "product",
+            "product": "bell-gift-set-short-diya-and-ringing-bell-copy-1",
+            "collection": "",
+            "video_url": ""
+          }
+        },
+        "item_yqnrLY": {
+          "type": "item",
+          "settings": {
+            "type": "product",
+            "product": "theia-tealight-holder",
+            "collection": "",
+            "video_url": ""
+          }
+        },
+        "item_aM3eTH": {
+          "type": "item",
+          "settings": {
+            "type": "product",
+            "product": "norge-marble-table-pista-green",
+            "collection": "",
+            "video_url": ""
+          }
+        },
+        "item_6tt4TX": {
+          "type": "item",
+          "settings": {
+            "type": "product",
+            "product": "lava-glass-set",
+            "collection": "",
+            "video_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "item_3qpfJY",
+        "item_yqnrLY",
+        "item_aM3eTH",
+        "item_6tt4TX"
+      ],
+      "name": "Basmil Collage",
+      "settings": {
+        "featured_type": "image",
+        "featured_product": "",
+        "featured_collection": "",
+        "featured_image": "shopify://shop_images/25_cfd775eb-53e7-4881-ba46-a2cb3123e01e.png",
+        "featured_video": "shopify://collections",
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "background_color": "#ffffff",
+        "custom_class": "",
+        "section_id": ""
+      }
+    },
+    "contact_form_AxTmV8": {
+      "type": "contact-form",
+      "name": "t:sections.contact-form.presets.name",
+      "settings": {
+        "heading": "Contact us",
+        "heading_size": "h1",
+        "color_scheme": "scheme-1",
+        "padding_top": 36,
+        "padding_bottom": 0
+      }
+    },
+    "custom_liquid_4TQNt7": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "<style>\n\n .section-header:not(.shopify-section-header-sticky):not(:hover):not(.skip-sticky) {\nmargin-bottom:0!important;\n           .svg-wrapper, a {\n              color:#000;\n            }\n            .cart-count-bubble{\n              background-color: #000;\n              color: #000;\n            }\n            .white_logo {\n              display: none;\n            }\n            .black_logo {\n              display: block;\n            }\n\n         }\n</style>",
+        "color_scheme": "",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "main",
+    "image_with_text_RPTTp7",
+    "rich_text_KjQhxU",
+    "multicolumn_gjpkwk",
+    "image_with_text_XEaVQg",
+    "basmil_duol_bXJ9QK",
+    "basmil_collage_KenjnE",
+    "contact_form_AxTmV8",
+    "custom_liquid_4TQNt7"
+  ]
+}

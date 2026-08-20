@@ -1,0 +1,97 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "basmil_image_text_slider_bPPLzc": {
+      "type": "basmil-image-text-slider",
+      "blocks": {
+        "slide_T4fhDa": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/3_79883280-de4f-457d-a09f-b351f80ef3a1.webp",
+            "heading": "{{ blog.title }}",
+            "text": "Read Our Blogs"
+          }
+        }
+      },
+      "block_order": [
+        "slide_T4fhDa"
+      ],
+      "custom_css": [
+        "[data-slick-slider]:not(.slick-initialized) .slider-slide.overlay {min-width: 100%; height: 354px;}",
+        ".overlay-text {display: flex; flex-direction: column-reverse; gap: 0px; height: 100%; width: 100%; justify-content: center; align-items: center;}",
+        ".overlay-text p {margin: 0;}",
+        "img,.slide-content {max-height: 354px !important; max-width: 100%;}"
+      ],
+      "name": "Image Text Slider-Basmil",
+      "settings": {
+        "text_position": "overlay",
+        "autoplay": true,
+        "autoplay_speed": 1000,
+        "slider_height": 354
+      }
+    },
+    "blocks_898w7c": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_16c736e_kjRCC9": {
+          "type": "ai_gen_block_16c736e",
+          "settings": {
+            "home_text": "Home",
+            "collections_text": "Collections",
+            "products_text": "Products",
+            "cart_text": "Cart",
+            "search_text": "Search",
+            "not_found_text": "Page not found",
+            "background_color": "#ffffff",
+            "link_color": "#6b7280",
+            "link_hover_color": "#374151",
+            "current_color": "#111827",
+            "separator_color": "#9ca3af",
+            "font_size": 14,
+            "item_spacing": 8,
+            "padding_vertical": 16,
+            "padding_horizontal": 20
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_16c736e_kjRCC9"
+      ],
+      "custom_css": [],
+      "settings": {}
+    },
+    "main": {
+      "type": "main-blog",
+      "custom_css": [
+        ".title--primary {display: none;}",
+        ".full-unstyled-link {text-align: start;}",
+        ".blog-articles .card-wrapper {border-radius: 8px;}",
+        "@media screen and (min-width: 768px) {.blog-articles {grid-template-columns: 1fr 1fr 1fr; gap: 30px; }}",
+        "@media screen and (min-width: 1024px) {.blog-articles {grid-template-columns: 1fr 1fr 1fr 1fr; gap: 30px; }}"
+      ],
+      "settings": {
+        "layout": "grid",
+        "show_image": true,
+        "image_height": "medium",
+        "show_date": true,
+        "show_author": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "basmil_image_text_slider_bPPLzc",
+    "blocks_898w7c",
+    "main"
+  ]
+}

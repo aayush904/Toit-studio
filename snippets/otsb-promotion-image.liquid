@@ -1,0 +1,319 @@
+{% comment %}
+    Renders an article card for a given blog with settings to either show the image or not.
+
+    Accepts:
+    - blog: {Object} Blog object
+    - article: {Object} Article object
+    - add_divider: {Boolean} The setting either add the divider blog post or not.
+    - loading: {Boolean} Image should be lazy loaded. Default: lazy (optional)
+    - columns_desktop: {Number} Number blog of columns on desktop,
+    - blog_page: {Boolean} Is it a blog page or not?
+    Usage:
+    {% render 'article-card', blog: blog, article: article %}
+{% endcomment %}
+
+{%- liquid
+  assign loading = 'loading="lazy"'   
+  if section.index != 1 or section.location != 'template'
+    assign loading = 'loading="eager" fetchpriority="high" decoding="sync"'
+  endif
+
+  if settings.heading_base_size != blank 
+    assign heading_size = settings.heading_base_size | times: heading_size | times: 0.000225 
+  else
+    assign heading_size = heading_size | times: 100 | times: 0.0004
+  endif
+  if settings.heading_scale
+    assign heading_size = heading_size | times: settings.heading_scale | times: 0.01
+  endif
+
+  if settings.text_base_size != blank 
+    assign text_size =  text_size | times: settings.text_base_size | times: 0.0001125
+  else
+    assign text_size =  text_size | times: 160 | times: 0.0001
+  endif
+  if settings.body_scale
+    assign text_size = text_size | times: settings.body_scale | times: 0.01
+  endif
+-%}
+{%- capture styles -%}
+{%- style -%}
+  {%- unless color_text.alpha == 0.0 -%}
+    .text-color-{{ blockID }} {
+      color: {{ color_text }};
+      --colors-text: {{ color_text.red }}, {{ color_text.green }}, {{ color_text.blue }};
+    }
+  {%- endunless -%}
+  {% if color_text.alpha != 0.0 %} 
+    --colors-heading: {{ color_text.red }}, {{ color_text.green }}, {{ color_text.blue }};
+  {% else %}
+  .promotion-content-{{ blockID }} {
+    {% if title_color.alpha != 0.0 %}
+      --colors-heading: {{ title_color.red }}, {{ title_color.green }}, {{ title_color.blue }};
+    {% else %}
+      --colors-heading: var(--color-foreground);
+    {% endif %}
+  }
+  {% endif %}
+  {%- unless title_color.alpha == 0.0 -%}
+    .title-color-{{ blockID }} {
+      color: {{ title_color }};
+    }
+  {%- endunless -%}
+
+  .text-{{ blockID }},
+  .sub-heading-{{ blockID }} {
+    font-size: {{ text_size | times: 0.9 }}rem;
+  }
+  #shopify-section-{{ section.id }}  .heading-{{ blockID }} {
+    font-size: {{ heading_size | times: 0.7 }}rem;
+  }
+  #shopify-section-{{ section.id }} .otsb-button-outline.otsb-btn__sliced .otsb-button-text,
+  #shopify-section-{{ section.id }} .otsb-btn__text-link.otsb-btn__sliced .otsb-button-text {
+    transform: none;
+  }
+  #shopify-section-{{ section.id }} .otsb-btn__text-link.otsb-btn__sliced:hover .otsb-button-text.btn-text-link-effect-1 {
+    transform: translateY(-100%);
+  }
+  {%- unless background_color.alpha == 0.0 -%}
+    .background-color-{{ blockID }} {
+      background: {{ background_color }};
+    }
+  {%- endunless -%}
+  {%- if show_button_style == 'primary' -%}
+    .button--{{ blockID }}.otsb-button-solid,
+    .button--{{ blockID }}.otsb-button-solid:before { 
+      {%- unless color_button.alpha == 0.0 -%}
+        --colors-line-and-border: {{ color_button.red }}, {{ color_button.green }}, {{ color_button.blue }};
+        --colors-button: {{ color_button.red }}, {{ color_button.green }}, {{ color_button.blue }};
+      {%- else -%}
+        --colors-line-and-border: var(--colors-button);
+      {%- endunless -%}
+      {% if color_button_hover.alpha != 0.0 %}
+        --colors-button-hover:  {{ color_button_hover.red }}, {{ color_button_hover.green }}, {{ color_button_hover.blue }};
+      {% elsif color_button.alpha != 0.0 %}
+        --colors-button-hover: {{ color_button.red }}, {{ color_button.green }}, {{ color_button.blue }};
+      {% else %}
+        --colors-button-hover: var(--color-button);
+      {% endif %}
+      {%- unless color_text_button.alpha == 0.0 -%}
+        --colors-button-text: {{ color_text_button.red }}, {{ color_text_button.green }}, {{ color_text_button.blue }};
+      {%- endunless -%}
+      {% if color_text_button_hover.alpha != 0.0 %}
+        --colors-button-text-hover: {{ color_text_button_hover.red }}, {{ color_text_button_hover.green }}, {{ color_text_button_hover.blue }};
+      {% else %}
+        --colors-button-text-hover: {{ color_text_button.red }}, {{ color_text_button.green }}, {{ color_text_button.blue }};
+      {% endif %}
+      {% if button_color_mobile == 'color' %}
+        {%- if color_button.alpha != 0.0 -%}
+            --color-button-mobile: {{ color_button.red }}, {{ color_button.green }}, {{ color_button.blue }};
+        {% else %}
+            --color-button-mobile: var(--color-button);
+        {%- endif-%}
+        {% if color_text_button.alpha != 0 %}
+          --color-button-text-mobile: rgb({{ color_text_button.red }}, {{ color_text_button.green }}, {{ color_text_button.blue }});
+        {% else %}
+          --color-button-text-mobile:  rgb(var(--color-button-text));
+        {% endif %}
+    {% else %}
+        {%- if color_button_hover.alpha != 0.0 -%}
+            --color-button-mobile: {{ color_button_hover.red }}, {{ color_button_hover.green }}, {{ color_button_hover.blue }};
+        {% else %}
+            --color-button-mobile: var(--color-button);
+        {%- endif-%}
+        {% if color_text_button_hover.alpha != 0 %}
+          --color-button-text-mobile: rgb({{ color_text_button_hover.red }}, {{ color_text_button_hover.green }}, {{ color_text_button_hover.blue }});
+        {% else %}
+          --color-button-text-mobile:  rgb(var(--color-button-text));
+        {% endif %}
+    {% endif %}
+      
+    }
+  {%- endif -%}
+  #shopify-section-{{ section.id }} .button--{{ blockID }}.otsb-button-solid {
+    background-color: rgb(var(--color-button-mobile));
+    color: var(--color-button-text-mobile);
+  }
+  .button--{{ blockID }}.otsb-button-outline {
+    {%- if secondary_button_text.alpha != 0.0 -%} 
+      --colors-secondary-button: {{ secondary_button_text.red }}, {{ secondary_button_text.green }}, {{ secondary_button_text.blue }}; 
+      --colors-line-secondary-button: {{ secondary_button_text.red }}, {{ secondary_button_text.green }}, {{ secondary_button_text.blue }};
+      --background-secondary-button: transparent;
+    {%- endif -%}
+    {%- if color_button_secondary.alpha != 0.0 -%} 
+      --background-secondary-button: {{ color_button_secondary.red }}, {{ color_button_secondary.green }}, {{ color_button_secondary.blue }}; 
+      --colors-line-secondary-button: {{ color_button_secondary.red }}, {{ color_button_secondary.green }}, {{ color_button_secondary.blue }}; 
+    {%- endif -%}
+  }
+  .otsb__root .otsb-button.otsb-button-text-link:before, .otsb__root button.otsb-button-text-link:before,
+  .otsb__root .otsb-button.otsb-button-text-link:after, .otsb__root button.otsb-button-text-link:after {
+    {% if colors_text_link != blank and colors_text_link.alpha != 0.0 %}
+      --colors-text-link: {{ colors_text_link.red }}, {{ colors_text_link.green }}, {{ colors_text_link.blue }};
+      {% else %}
+      background-color: rgba(var(--color-link), var(--alpha-link));
+      {% endif %}
+  }
+  .otsb__root .otsb-button.button--{{ blockID }}.otsb-button-text-link, .otsb__root .otsb-button.button--{{ blockID }}.otsb-button-text-link::after, .otsb__root .otsb-button.button--{{ blockID }}.otsb-button-text-link::before {
+      {% if colors_text_link != blank and colors_text_link.alpha != 0.0 %}
+      --colors-text-link: {{ colors_text_link.red }}, {{ colors_text_link.green }}, {{ colors_text_link.blue }};
+      {% else %}
+      color: rgba(var(--color-link), var(--alpha-link));
+      {% endif %}
+    }
+  {% if colors_text_link != blank %}
+  .bg-block_overlay-{{ block.id }} {
+    background: {{ overlay_color }};
+  }
+  @media (min-width: 768px) {
+    #shopify-section-{{ section.id }}  .heading-{{ blockID }} {
+      font-size: {{ heading_size }}rem; 
+    }
+    .text-{{ blockID }},
+    .sub-heading-{{ blockID }} {
+      font-size: {{ text_size }}rem;
+    }
+    #shopify-section-{{ section.id }} .button--{{ blockID }}.otsb-button-solid {
+    {% if color_text_button.alpha != 0.0 %}
+    color: rgb(var(--colors-button-text));
+    {% else %}
+    color: rgb(var(--color-button-text));
+    {% endif %}
+    {% if color_button.alpha != 0.0 %}
+    background: rgba(var(--colors-button));
+    {% else %}
+    background: rgba(var(--color-button),var(--alpha-button-background));
+    {% endif %}
+  }
+    #shopify-section-{{ section.id }} .button--{{ blockID }}.otsb-button-solid:hover {
+    {% if color_text_button_hover.alpha != 0 %}
+    color: rgb(var(--colors-button-text-hover ));
+    {% else %}
+    color: rgb(var(--color-button-text));
+    {% endif %}
+    {% if color_button_hover.alpha != 0.0 %}
+    background: rgba(var(--colors-button-hover));
+    {% else %}
+    background: rgba(var(--color-button),var(--alpha-button-background));
+    {% endif %}
+  }
+  }
+  {% endif %}
+{%- endstyle -%}
+{%- endcapture -%}
+{% comment %} {%- assign before =  styles.size -%} {% endcomment %}
+{%- assign styles =  styles | strip_newlines | split: " " | join: " " | split: "*/" -%}
+{%- assign minified_style = "" -%}
+{%- for word in styles -%}
+	{%- assign new_word = word | split: "/*" | first | strip | replace: "; ", ";" | replace: "} ", "}" | replace: "{ ", "{" | replace: " {", "{" -%}
+    {%- assign minified_style = minified_style | append: new_word -%}
+{%- endfor -%}
+{% comment %} /* CSS minifed: {{ before }} --> {{ minified_style.size }} */ {% endcomment %}
+{{- minified_style  }}
+{%- unless enable_text_overlay -%}
+  <div 
+    {% if animation_loading %}
+      x-intersect.once.margin.-20px.0px.-20px.0px="$el.querySelector('.animate_transition_card__image')?.classList.add('active')"
+    {% endif %}
+    class="w-full relative z-0 before:h-0 before:block{% unless image_ratio %} image-{{ blockID }}{% endunless %}{% unless image_ratio == "auto" %} pb-[{{ image_ratio }}%]{% endunless %}{% if section.settings.edges_type == 'rounded_corners' %} overflow-hidden rounded-[10px]{% endif %}"
+    {% if image and image_ratio == "auto" %} style="height:0; padding-bottom: {{ 100 | divided_by: image.aspect_ratio }}%;"{% endif %}
+  >
+{%- else -%}
+  <div 
+    {% if animation_loading %}
+      x-intersect.once.margin.-20px.0px.-20px.0px="$el.querySelector('.animate_transition_card__image')?.classList.add('active')"
+    {% endif %}
+    class="group w-full relative text-{{ content_alignment }}{% unless image_ratio %} image-{{ blockID }} overflow-hidden{% endunless %} h-full {% if image != blank %} md:static{% endif %}{% if section.settings.edges_type == 'rounded_corners' %} overflow-hidden rounded-[10px]{% endif %}">
+{%- endunless -%}
+  {% if image != blank %}
+    {% if sizes == blank %}
+      {%- capture sizes -%}
+        (min-width: {{ settings.page_width }}px){% if full_width %} calc(100vw / {{ columns_desktop }}){% else %} {{ settings.page_width | divided_by: columns_desktop }}px{% endif %}, (min-width: 768px) calc((100vw - 5rem) / 2), 100vw
+      {%- endcapture -%}
+    {% endif %}
+  
+      {% if section.index != 1 or section.location != 'template' %}
+        <div class="otsb-hidden">
+          {{ image | image_url: width: 3840 | image_tag: widths: '225, 375, 450, 750, 900, 1100, 1500, 1780, 2000', preload: true, loading: 'lazy' }}
+        </div>
+      {% endif %}
+    
+    {% if image_link %}
+      <a 
+        aria-label="{{ 'accessibility.image_link' | t }}"
+        href="{{ image_link }}" 
+        {% if open_new_window %} target="_blank"{% endif %}
+        class="{% if animation_loading %}animate_transition_card__image {% endif %}w-full h-full top-0 left-0 overflow-hidden{% unless enable_text_overlay %} absolute{% endunless %}{% unless collage %} md:absolute{% endunless %}{% if section.settings.edges_type == 'rounded_corners' %} rounded-[10px]{% endif %}"
+      >
+    {% else %}
+      <div 
+        class="{% if animation_loading %}animate_transition_card__image{% endif %} w-full h-full top-0 left-0 overflow-hidden{% unless enable_text_overlay %} absolute{% endunless %}{% unless collage %} md:absolute{% endunless %}{% if section.settings.edges_type == 'rounded_corners' %} rounded-[10px]{% endif %}"
+      >
+    {% endif %}
+      <img
+        srcset="{{ image | image_url: width: 225 }} 225w,
+        {{ image | image_url: width: 375 }} 375w,
+        {{ image | image_url: width: 450 }} 450w,
+        {{ image | image_url: width: 750 }} 750w,
+        {{ image | image_url: width: 900 }} 900w,
+        {{ image | image_url: width: 1100 }} 1100w,
+        {{ image | image_url: width: 1500 }} 1500w,
+        {{ image | image_url: width: 1780 }} 1780w"
+        src="{{ image | image_url: width: 1780 }}"
+        sizes="{{ sizes }}"
+        alt="{{ image.alt | escape }}"
+        style="object-position: {{ image.presentation.focal_point }};"
+        class="w-full h-full {% if original_image_ratio %} object-contain {% else %} object-cover {% endif %} z-10 image-hover {% if section.settings.edges_type == 'rounded_corners' %} rounded-[10px]{% endif %}"
+      />
+    </{% if image_link %}a{% else %}div{% endif %}>
+  {% else %}
+    {% liquid
+      assign class = "bg-[#C9C9C9] text-[#acacac] h-full w-full"
+      unless image_ratio == "auto" or enable_text_overlay
+        assign class= "bg-[#C9C9C9] text-[#acacac] absolute top-0 left-0 w-full h-full"
+      endunless
+    %}
+    {{ 'image' | placeholder_svg_tag: class }}
+  {% endif %}
+  <span class="absolute top-0 left-0 bottom-0 right-0 pointer-events-none image-treatment-overlay bg-block_overlay-{{ block.id }} opacity-{{ overlay_opacity }}{% if section.settings.edges_type == 'rounded_corners' %} rounded-[10px]{% endif %}"></span>
+{%- unless enable_text_overlay -%}
+  </div>
+{%- endunless -%}
+{%- if heading != blank or content != blank or button_label != blank or subheading != blank -%}
+  <div {% if card_link %}onclick="{% if open_new_window %} {% if request.design_mode %} location.href='{{ card_link }}'{% else %} window.open('{{ card_link }}', '_blank'){% endif %} {% else %}location.href='{{ card_link }}' {% endif %}" {% endif %}
+  class="{% if card_link %}z-2 cursor-pointer {% endif %} promotion-content promotion-content-{{ blockID }} background-color-{{ blockID }} text-{{ content_alignment }} pt-5 pb-5 pr-7 pl-7 {% if collage %} lg:pt-7 lg:pb-7{% endif %}{% if section.settings.edges_type == 'rounded_corners' %} rounded-[10px]{% endif %}{% if enable_text_overlay %} mt-2 absolute{% if columns_desktop < 2 and content_alignment == 'center' %} left-1/2 -translate-x-1/2{% else %} left-0{% endif %} right-0 promotion-content-{{ content_alignment }} mb-2 pointer-events-none text-overlay ml-2 mr-2{% if content_position == 'top' %} top-0{% elsif content_position == 'center' %} top-1/2 -translate-y-1/2{% else %} bottom-0{% endif %}{% else %} left-0 right-0 grow{% endif %}{% if background_color.alpha != 0.0 %} text-overlay{% endif %}">
+    {%- if subheading != blank -%}
+      <div class="sub-heading-{{ blockID }} text-color-{{ blockID }} promotion-header:mb-0 mb-2 rte p-break-words pointer-events-auto">{{ subheading }}</div>
+    {%- endif -%}
+    {%- if heading != blank -%}
+      <h3 class="heading-{{ blockID }} h3{% if title_color == blank or title_color.alpha == 0.0 %} text-color-{{ blockID }}{% else %} title-color-{{ blockID }}{% endif %} promotion-header:mb-0 mb-2 leading-tight h2 p-break-words pointer-events-auto">
+        {% if heading_highlight %}
+          {% render 'otsb-heading-highlight',
+            headingId: blockID,
+            heading: heading,
+            highlight_type: highlight_type,
+            color_heading_highlight_light: color_heading_highlight_light 
+          %}
+        {% else %}
+          <span>{{ heading }}</span>
+        {% endif %}
+      </h3>
+    {%- endif -%}
+    {%- if content != blank -%}
+      <div class="mb-1 leading-tight rte text-color-{{ blockID }} text-{{ blockID }} p-break-words pointer-events-auto">{{ content }}</div>
+    {%- endif -%}
+    {%- if button_label != blank -%}
+      <a {% if button_link %}onclick="event.stopPropagation();{% if open_new_window_button %} {% if request.design_mode %} location.href='{{  button_link }}'{% else %} window.open('{{  button_link }}', '_blank'){% endif %} {% else %}location.href='{{  button_link }}' {% endif %}; return false;" {% endif %}
+      {% if button_link != blank %} href="{{ button_link }}"{% if open_new_window_button %} target="_blank"{% endif %}{% else %} role="link" aria-disabled="true"{% endif %} class="button--{{ blockID }} rounded-md otsb-button{% if show_button_style == 'secondary' %} otsb-button-outline mt-4 lg:mt-6{% elsif show_button_style == 'text-link' %} otsb-btn__text-link otsb-button-text-link mt-2 lg:mt-3{% else %} otsb-btn__solid otsb-button-solid mt-4 lg:mt-6{% endif %} button--{{ block.id }} p-break-words border inline-flex text-center justify-center items-center empty:otsb-hidden pl-4 pr-4 lg:pl-6 lg:pr-6 pt-2.5 pb-3.5 cursor-pointer pointer-events-auto{% if button_link == blank %} hover:cursor-not-allowed opacity-70{%- endif -%} {{ main_button_classes }} ">
+        {% render 'otsb-button-label',
+        button_label: button_label,
+        show_button_style: show_button_style,
+        button_animation: button_animation,
+        custom_icon_button: custom_icon_button
+        %}
+      </a>
+    {% endif %}
+  </div>
+{% endif %}
+{%- if enable_text_overlay -%}
+  </div>
+{%- endif -%}

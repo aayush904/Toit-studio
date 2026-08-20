@@ -1,0 +1,469 @@
+{%- liquid 
+  assign max_columns = section.settings.max_columns
+  assign min_columns_mobile = section.settings.min_columns_mobile | times: 1
+  if settings.heading_base_size != blank
+    assign heading_size = settings.heading_base_size | times: section.settings.heading_size | times: 0.000225
+  else
+    assign heading_size = section.settings.heading_size | times: 100 | times: 0.0004
+  endif
+  if settings.heading_scale
+    assign heading_size = heading_size | times: settings.heading_scale | times: 0.01
+  endif
+
+  assign heading_card = section.settings.title_product_cart | times: 0.01
+  if settings.body_scale
+    assign heading_card = heading_card | times: settings.body_scale | times: 0.01
+  endif
+-%}
+{%- capture styles -%}
+{%- style -%}
+ #shopify-section-{{ section.id }} .card__heading {
+
+ }
+ #shopify-section-{{ section.id }} {
+    {% if section.settings.disable_zoom %}
+      --image-zoom: 1;
+    {% else %}
+      --image-zoom: 1.05;
+    {% endif %}
+  }
+  #shopify-section-{{ section.id }} .otsb-image-hover {
+    {% if section.settings.disable_zoom == true %}
+      --otsb-image-zoom: 1;
+    {% endif %}
+  }
+.group:hover .group-hover\:opacity-0 { opacity:0 }
+.group:hover .group-hover\:opacity-100 { opacity:1 }
+#shopify-section-{{ section.id }}  .input-radio:checked + label {
+    background-color: rgb(var(--colors-text), 1);
+    color: rgb(var(--background-color), 1);
+    transition-duration: 100ms;
+    border-color: rgb(var(--colors-text), 1);
+}
+#shopify-section-{{ section.id }}  .input-radio + label {
+  {% if section.settings.line_border.alpha != 0.0 %}
+    border: 1px solid {{ section.settings.line_border }};
+  {% else %}
+    border: 1px solid rgb(var(--colors-text), 0.5);
+  {% endif %}
+}
+#shopify-section-{{ section.id }}  .input-radio.disabled + label {
+    position: relative;
+    {% if section.settings.text_color.alpha != 0.0 %}
+      color: {{ section.settings.text_color }};
+    {% else %}
+    color: rgba(var(--colors-text), 0.5);
+    {% endif %}
+    overflow: hidden;
+}
+#shopify-section-{{ section.id }}  .input-radio.disabled:checked + label {
+   color: rgb(var(--background-color), 1);
+}
+#shopify-section-{{ section.id }}  .input-radio + .color-watches {
+  border: 4px solid rgba(var(--background-color));
+  {% if section.settings.line_border.alpha != 0.0 %}
+    box-shadow: 0 0 0 1px white, 0 0 0 2px rgba({{section.settings.line_border.red}}, {{ section.settings.line_border.green }},{{ section.settings.line_border.blue }}, 1);
+  {% else %}
+    box-shadow: 0 0 0 1px white, 0 0 0 2px rgba(var(--colors-text))
+  {% endif %}
+}
+#shopify-section-{{ section.id }} .input-radio:checked + .color-watches {
+    position: relative;
+    background-color: transparent;
+    --tw-shadow-colored: 0 0 0 1px var(--tw-shadow-color);
+    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+    transition-duration: 100ms;
+    border-color: rgb(var(--background-color), 1);
+  {% if section.settings.heading_color.alpha != 0.0 %}
+    --tw-shadow: 0 0 0 2px rgba({{ section.settings.heading_color.red }},{{ section.settings.heading_color.green }},{{ section.settings.heading_color.blue }});
+  {% else %}
+    --tw-shadow: 0 0 0 2px rgba(var(--colors-text));
+  {% endif %}
+}
+  #shopify-section-{{ section.id }} .divider {
+    {% if section.settings.line_border.alpha != 0.0 %}
+    border-color: {{ section.settings.line_border }};
+    {% else %}
+    border-color: var(--p-color-text);
+    {% endif %}
+  }
+  
+  #shopify-section-{{ section.id }} {
+    {%- if section.settings.heading_color.alpha != 0.0 -%}
+    --colors-heading: {{ section.settings.heading_color.red }}, {{ section.settings.heading_color.green }}, {{ section.settings.heading_color.blue }};
+    {% else %}
+    --colors-heading:  var(--color-foreground);
+    {% endif %}
+    {%- if section.settings.text_color.alpha != 0.0 -%}
+    --colors-price: {{ section.settings.text_color.red }}, {{ section.settings.text_color.green }}, {{ section.settings.text_color.blue }};
+    --colors-text: {{ section.settings.text_color.red }}, {{ section.settings.text_color.green }}, {{ section.settings.text_color.blue }};
+    {% else %}
+    --colors-price: var(--color-foreground);
+    --colors-text: var(--color-foreground);
+    {% endif %}
+  }
+  #shopify-section-{{ section.id }} .price--on-sale .price-item--regular,
+  #shopify-section-{{ section.id }} .x-variants-data,
+  #shopify-section-{{ section.id }}  .tracking-widest {
+    color: rgba(var(--colors-text));
+  }
+  .otsb__root.otsb-v2 .text-\[rgba\(var\(--colors-heading\)\)\] {
+    color: rgba(var(--colors-heading));
+  }
+  #shopify-section-{{ section.id }} .otsb__root ol,
+  #shopify-section-{{ section.id }} .otsb__root ol li {
+    list-style-type: decimal; 
+  }
+  #shopify-section-{{ section.id }} .otsb__root ul,
+  #shopify-section-{{ section.id }} .otsb__root ol {
+    list-style-position: inside;
+  }
+  #shopify-section-{{ section.id }} .otsb__root ul,
+  #shopify-section-{{ section.id }} .otsb__root ul li {
+    list-style-type: disc;
+  }
+  #shopify-section-{{ section.id }} .swatch-small {
+    width: 28px;
+    height: 28px;
+  }
+  #shopify-section-{{ section.id }} .scrollbar-body::-webkit-scrollbar {
+      height: 3px;
+      width: 3px;
+      background: #ECECEC;
+  }
+  #shopify-section-{{ section.id }} .scrollbar-body::-webkit-scrollbar-thumb {
+      background: #747474;
+  }
+  #shopify-section-{{ section.id }} .scrollbar-body::-webkit-scrollbar-corner {
+      background: #747474;
+  }
+  #shopify-section-{{ section.id }}  [data-available="true"] .add-to-cart,
+  #shopify-section-{{ section.id }}  [data-available="false"] .sold-out {
+    display: block;
+  }
+  #shopify-section-{{ section.id }}  [data-available="false"] .add-to-cart,
+  #shopify-section-{{ section.id }}  [data-available="true"] .sold-out {
+    display: none;
+  }
+  #shopify-section-{{ section.id }} .color-watches[data-swatch]:before {
+    content: "";
+    pointer-events: none;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    display: block;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  .otsb__root .input-radio.disabled+label:after {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    height: 0px;
+    width: 100%;
+    --tw-rotate: -30deg;
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skew(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+    border-bottom-width: 1px;
+    content: var(--tw-content);
+    border-style: solid;
+  }
+  #shopify-section-{{ section.id }} .swatch-medium {
+    width: 32px;
+    height: 32px;
+  }
+    #shopify-section-{{ section.id }} .swatch-large {
+    width: 38px;
+    height: 38px;
+  }
+  .otsb__root .otsb-h2.heading--{{ section.id }} {
+    font-size: {{ size_heading | times: 0.6 }}rem;
+  }
+  #shopify-section-{{ section.id }} {
+    {% if section.settings.background_color != blank %}
+      background: {{ section.settings.background_color }};
+    {% endif %}
+  }
+  #shopify-section-{{ section.id }} .btn-icon-cart {
+    min-width: 40px;
+    min-height: 40px;
+  }
+  #shopify-section-{{ section.id }} .btn-icon-cart:after {
+    box-shadow: none;
+  }
+  #shopify-section-{{ section.id }} {
+    {%- if section.settings. background_color.alpha != 0.0 -%}
+      background: {{ section.settings.background_color }};
+      --background-color: {{ section.settings. background_color.red }}, {{ section.settings. background_color.green }}, {{ section.settings. background_color.blue }};
+    {% else %}
+    --background-color: var(--color-background);
+    {%- endif -%} 
+  }
+  #shopify-section-{{ section.id }} .button-sound-control svg path {
+    color: rgba(var(--image-treatment-text));
+  }
+  .gap-grid--{{ section.id }} {
+    gap: {{ section.settings.spacing_mobile }}px
+  }
+  .spacing--{{ section.id }} {
+    gap: {{ section.settings.spacing_mobile }}px;
+  }
+  #shopify-section-{{ section.id }} .btn-close:after {
+    display: none;
+  }
+  .otsb__root .heading-{{ section.id }} {
+    {% if section.settings.heading_color.alpha != 0.0 %}
+      color: {{ section.settings.heading_color }};
+    {% endif %}
+  }
+  .subheading-{{ section.id }},
+  .block-text-{{ section.id }} {
+    {% if section.settings.text_color.alpha != 0.0 %}
+      color: {{ section.settings.text_color }};
+    {% else %}
+      color: currentColor;
+    {% endif %}
+  }
+  .otsb__root.otsb-v2 .block-text-{{ section.id }} a {
+    {% if section.settings.text_link.alpha != 0.0 %}
+      color: {{ section.settings.text_link }};
+    {% else %}
+      color: rgba(var(--color-link), var(--alpha-link));
+    {% endif %}
+  }
+  #shopify-section-{{ section.id }} .splide__arrow {
+{% if section.settings.transition_arrows.alpha != 0 %}
+  color: {{ section.settings.transition_arrows }};
+{% else %}
+color: #202020;
+{% endif %}
+}
+#shopify-section-{{ section.id }} .pagination-card .btn-pagination:before,
+#shopify-section-{{ section.id }} .pagination-card .btn-pagination:after {
+  display: none;
+}
+#shopify-section-{{ section.id }} .pagination-card .btn-pagination {
+  min-width: auto;
+  min-height: auto;
+  {% if section.settings.transition_arrows.alpha != 0.0 %}
+  background: rgba({{ section.settings.transition_arrows.red }}, {{ section.settings.transition_arrows.green }}, {{ section.settings.transition_arrows.blue }}, 0.1);
+  {% endif %}
+}
+{% if section.settings.transition_arrows.alpha != 0.0 %}
+#shopify-section-{{ section.id }} .pagination-card .btn-pagination.is-active {
+  background: {{ section.settings.transition_arrows }};
+}
+{% endif %}
+#shopify-section-{{ section.id }} .none_border {
+  border-width: 0;
+}
+#shopify-section-{{ section.id }} .card-product:not(.recommendations) {
+  {%- if section.settings.card_product_background_color_light.alpha != 0.0 -%}
+  background: {{ section.settings.card_product_background_color_light }};
+  {%- endif -%}
+}
+#shopify-section-{{ section.id }} .card-product:not(.recommendations) .card-info,
+#shopify-section-{{ section.id }} .card-product:not(.recommendations) .x-variants-data {
+  padding-left: {{ section.settings.card_product_padding_mobile }}px;
+  padding-right: {{ section.settings.card_product_padding_mobile }}px;
+}
+#shopify-section-{{ section.id }} .card-product:not(.recommendations) .card-info .x-variants-data
+{
+  padding-left: 0;
+  padding-right: 0;
+}
+#shopify-section-{{ section.id }} .card__heading {
+  font-size: calc({{ heading_card }}*1.5rem);
+  }
+  @media screen and (min-width: 768px) {
+    .spacing--{{ section.id }} {
+      gap: {{ section.settings.spacing }}px;
+    }
+  #shopify-section-{{ section.id }} .card-product:not(.recommendations) .card-info,
+  #shopify-section-{{ section.id }} .card-product:not(.recommendations) .x-variants-data {
+    padding-left: {{ section.settings.card_product_padding }}px;
+    padding-right: {{ section.settings.card_product_padding }}px;
+  }
+  #shopify-section-{{ section.id }} .card__heading {
+    font-size: calc({{ heading_card }}*1.6rem);
+  }
+  
+  }
+{%- endstyle -%}
+{%- endcapture -%}
+{% comment %} {%- assign before =  styles.size -%} {% endcomment %}
+{%- assign styles =  styles | strip_newlines | split: " " | join: " " | split: "*/" -%}
+{%- assign minified_style = "" -%}
+{%- for word in styles -%}
+	{%- assign new_word = word | split: "/*" | first | strip | replace: "; ", ";" | replace: "} ", "}" | replace: "{ ", "{" | replace: " {", "{" -%}
+    {%- assign minified_style = minified_style | append: new_word -%}
+{%- endfor -%}
+{% comment %} /* CSS minifed: {{ before }} --> {{ minified_style.size }} */ {% endcomment %}
+{{- minified_style  }}
+{% if request.design_mode %}
+  <style>
+    .otsb_nope {
+      display: none !important;
+      height: 0 !important;
+      overflow: hidden !important;
+      visibility: hidden !important;
+      width: 0 !important;
+      opacity: 0 !important;
+    }
+    ._otsb_warning {
+      position: relative;
+      box-shadow: 0rem 0.1875rem 0.0625rem -0.0625rem rgba(26, 26, 26, 0.07);
+      border-radius: 1rem;
+    }
+    ._otsb_warning::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 0;
+      box-shadow: 0.0625rem 0rem 0rem 0rem rgba(0, 0, 0, 0.13) inset, -0.0625rem 0rem 0rem 0rem rgba(0, 0, 0, 0.13) inset, 0rem -0.0625rem 0rem 0rem rgba(0, 0, 0, 0.17) inset, 0rem 0.0625rem 0rem 0rem rgba(204, 204, 204, 0.5) inset;
+      border-radius: 1rem;
+      pointer-events: none;
+      mix-blend-mode: luminosity;
+    }
+    .otsb_warning_root {
+      margin-top:36px;
+      margin-bottom:36px;
+    }
+    .otsb_warning_root ._otsb_warning_1 {border-top-left-radius:1rem;border-top-right-radius:1rem;border:1px solid #fcaf0a;background:#fcb827;padding:1rem}
+    .otsb_warning_root ._otsb_warning_2 {align-items:center;gap:8px;display:flex;flex-direction:row;flex-wrap:nowrap;justify-content:space-between}
+    .otsb_warning_root ._otsb_warning_3 {display:flex;gap:4px;flex-direction:row;flex-wrap:nowrap;justify-content:space-between}
+    .otsb_warning_root ._otsb_warning ._otsb_warning__icon {display:block;height:20px;width:20px;max-height:100%;max-width:100%;margin:auto}
+    .otsb_warning_root h2 {overflow-wrap:anywhere;word-break:normal;font-size:100%;font-weight:650;line-height:1.25;color:rgb(37,26,0)}
+    .otsb_warning_root * {
+      margin: 0;
+      padding: 0;
+      font-family: var(--font-body-family);
+      line-height: 1.375;
+    }
+    .otsb_warning_root ul {
+      list-style-type: disc;
+    }
+    .otsb_warning_root a {
+      color: rgb(0, 0, 238);
+      text-decoration: underline;
+    }
+    .otsb_warning_root .otsb_warning_message_container {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      padding:1rem;
+      color:rgb(37,26,0);
+    }
+    .otsb_warning_root .otsb_warning_message_container ul {
+      padding-inline-start:3rem;
+    }
+  </style>
+  <div x-data="otsb_script_require" class="page-width otsb_warning_root">
+    <div class="_otsb_warning">
+      <div class="_otsb_warning_1">
+        <div class="_otsb_warning_2">
+          <div class="_otsb_warning_3">
+            <span class="_otsb_warning__icon">
+              <svg viewBox="0 0 20 20" class="Polaris-Icon__Svg" focusable="false" aria-hidden="true"><path d="M10 6.75a.75.75 0 0 1 .75.75v3.5a.75.75 0 1 1-1.5 0v-3.5a.75.75 0 0 1 .75-.75Z"></path><path d="M11 13.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path><path fill-rule="evenodd" d="M10 3.5c-1.045 0-1.784.702-2.152 1.447a449.26 449.26 0 0 1-2.005 3.847l-.028.052a403.426 403.426 0 0 0-2.008 3.856c-.372.752-.478 1.75.093 2.614.57.863 1.542 1.184 2.464 1.184h7.272c.922 0 1.895-.32 2.464-1.184.57-.864.465-1.862.093-2.614-.21-.424-1.113-2.147-2.004-3.847l-.032-.061a429.497 429.497 0 0 1-2.005-3.847c-.368-.745-1.107-1.447-2.152-1.447Zm-.808 2.112c.404-.816 1.212-.816 1.616 0 .202.409 1.112 2.145 2.022 3.88a418.904 418.904 0 0 1 2.018 3.875c.404.817 0 1.633-1.212 1.633h-7.272c-1.212 0-1.617-.816-1.212-1.633.202-.408 1.113-2.147 2.023-3.883a421.932 421.932 0 0 0 2.017-3.872Z"></path></svg>
+            </span>
+            <h2>App Embeds Are Disabled</h2>
+          </div>
+        </div>
+      </div>
+      <div class="otsb_warning_message_container">
+        <p>To use this section, the app embeds of OT: Theme Sections must be enabled in the theme editor. Please follow these steps to activate them:</p>
+        <ul>
+          <li>In the left panel, click the last icon that says <b>“App embeds”</b>.</li>
+          <li>Enter <b>“OT”</b> on the search bar to quickly find and embed the apps from OT: Theme Sections.</li>
+          <li>Turn on the Toggle buttons of "Section Builder Script" and "Section Builder Style", then click <b>Save</b>.</li>
+        </ul>
+        <p>Please refer to the User Guide <a href="https://support.omnithemes.com/blogs/ot-theme-sections-get-started/1-embed-app-to-shopify-theme" target="_blank">here</a></p>
+        <p>For further support: feel free to contact us at <a href="mailto:support@omnithemes.com">support@omnithemes.com</a>!</p>
+      </div>
+    </div>
+  </div>
+{% endif %}
+<style>#shopify-section-{{section.id}} .otsb_trademark_root {user-select:none;color:#999;font-size:.75em;text-align:right;margin-top:2.5rem;}#shopify-section-{{section.id}} .otsb_trademark_root a {color:#999;background:none;text-decoration: none;}</style>
+<div class="otsb__root otsb_nope otsb-v2" x-data="otsb_script_1">
+{% render 'otsb-section-divider' %}
+
+<div class="pt-[{{ section.settings.padding_top_mobile }}px] md:pt-[{{ section.settings.padding_top }}px] pb-[{{ section.settings.padding_bottom_mobile }}px] md:pb-[{{ section.settings.padding_bottom }}px]">
+  {%- if section.settings.heading != blank or section.settings.text != blank or section.settings.subheading != blank -%}
+    <div class="mb-6 xl:mb-8 text-{{ section.settings.heading_alignment }} {% if section.settings.full_width_mobile %} full-width-mobile px-5 {% else %} pl-5 pr-5 {% endif %}{% if section.settings.full_width %} full-width md:px-5 {% else %} page-width md:px-[50px]{% endif %}" >
+      {%- style -%} 
+        .otsb__root.otsb-v2 .heading-{{ section.id }} {
+          font-size: {{ heading_size | times: 0.6 }}rem;  
+        }
+        @media screen and (min-width: 768px) {
+          .otsb__root.otsb-v2 .heading-{{ section.id }}{
+            font-size: {{ heading_size }}rem; 
+          }
+        }
+      {%- endstyle -%}
+      {%- if section.settings.subheading != blank -%}
+        <p class="subheading-{{ section.id }} subheading rte mb-1.5">{{ section.settings.subheading }}</p> 
+      {% endif %}
+      {%- if section.settings.heading != blank -%}
+        <{{ section.settings.heading_tag }} class="py-2 h2 block heading-{{ section.id }} leading-tight ">
+        {{- section.settings.heading | escape -}}
+        </{{ section.settings.heading_tag }}>
+      {%- endif -%}
+      {%- if section.settings.text != blank -%}
+        <div class="rte mt-2 mb-6 lg:mb-12 block-text-{{ section.id }}">{{ section.settings.text }}</div>
+      {% endif %}
+    </div>
+  {% endif %}
+  <div class="{% if section.settings.full_width_mobile %} full-width-mobile px-0 {% else %} pl-5 pr-5 {% endif %}{% if section.settings.full_width %} full-width md:px-5 {% else %} page-width md:px-[50px]{% endif %}">
+    <div class="otsb_collage_media otsb-content-wrapper ">
+    {% if request.design_mode %} 
+      {% render 'otsb-collage',
+        max_columns: max_columns,
+        min_columns_mobile: min_columns_mobile,
+        show_vendor: section.settings.show_vendor,
+        show_rating: section.settings.show_rating
+      %}
+    {% else %}
+      {%- paginate pages by 1 -%}
+        <div 
+          x-data='xCollage("{{ section.id }}", "{{ paginate.page_param }}", $el)'
+          x-intersect.once.margin.200px.once='load(2)'
+        >
+          <div x-show="loading">
+            {% render 'otsb-skeleton-collage',
+              max_columns: max_columns,
+              min_columns_mobile: min_columns_mobile
+            %}
+          </div>
+        {% if current_page > 1 %}
+          {% render 'otsb-collage',
+            max_columns: max_columns,
+            min_columns_mobile: min_columns_mobile,
+            show_vendor: section.settings.show_vendor,
+            show_rating: section.settings.show_rating
+          %}
+        {% endif %}
+      </div>
+      {%- endpaginate %}
+    {% endif %}
+  </div>
+  </div>
+</div>
+</div>
+<script>
+window.xQuickView = {
+  sectionId: '{{ section.id }}',
+  enabled: true,
+  show_atc_button: true,
+  atc_btn_bottom: false,
+  atc_btn_image_desktop: true
+}
+</script>
+<script src="{{ 'otsb-collage.min.js' | asset_url }}" defer></script>
+<script src="{{ 'otsb-preview-color-swatches.min.js' | asset_url }}" defer></script>
+<script src="{{ 'otsb-product-cart.min.js' | asset_url }}" defer></script>
+<script src="{{ 'otsb-variant-select.min.js' | asset_url }}" defer></script>

@@ -1,0 +1,431 @@
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+{{ 'component-price.css' | asset_url | stylesheet_tag }}
+
+{{ 'quick-add.css' | asset_url | stylesheet_tag }}
+<div
+  class="collage-showcase{% if section.settings.custom_class != blank %} {{ section.settings.custom_class }}{% endif %}"
+  {% if section.settings.section_id != blank %}
+    id="{{ section.settings.section_id }}"
+  {% endif %}
+  style="background-color: {{ section.settings.background_color }}; padding-top: {{ section.settings.padding_top }}px; padding-bottom: {{ section.settings.padding_bottom }}px;"
+>
+  <div class="collage-showcase__container page-width">
+    <!-- Left Column - Featured Item -->
+    <div class="collage-showcase__featured">
+      {% case section.settings.featured_type %}
+        {% when 'product' %}
+          {% if section.settings.featured_product != blank %}
+            {% render 'card-product',
+              card_product: section.settings.featured_product,
+              media_aspect_ratio: 'portrait',
+              image_shape: 'default',
+              show_secondary_image: true,
+              show_rating: true,
+              section_id: section.id,
+              quick_add: 'standard'
+            %}
+          {% endif %}
+
+        {% when 'collection' %}
+          {% if section.settings.featured_collection != blank %}
+            {% render 'card-collection',
+              card_collection: section.settings.featured_collection,
+              media_aspect_ratio: 'square',
+              columns: 2,
+              extend_height: true,
+              wrapper_class: 'collage-showcase__featured-collection'
+            %}
+          {% endif %}
+
+        {% when 'image' %}
+          {% if section.settings.featured_image != blank %}
+            <img
+              src="{{ section.settings.featured_image | image_url: width: 800 }}"
+              alt="{{ section.settings.featured_image.alt | escape }}"
+              class="collage-showcase__featured-image"
+              width="800"
+              height="800"
+            >
+          {% endif %}
+
+        {% when 'video' %}
+          {% if section.settings.featured_video != blank %}
+            <video controls class="collage-showcase__featured-video">
+              <source src="{{ section.settings.featured_video }}" type="video/mp4">
+            </video>
+          {% endif %}
+      {% endcase %}
+    </div>
+
+    <!-- Right Column - Scrollable Grid -->
+    <div class="collage-showcase__grid mobile-scroll-container">
+      {% assign skip_styles = false %}
+
+      {% for block in section.blocks %}
+        <div class="collage-showcase__grid-item mobile-scroll-container-item" {{ block.shopify_attributes }}>
+          {% case block.settings.type %}
+            {% when 'product' %}
+              {% if block.settings.product != blank %}
+                {% render 'card-product',
+                  card_product: block.settings.product,
+                  media_aspect_ratio: 'portrait',
+                  image_shape: 'default',
+                  show_secondary_image: true,
+                  skip_styles: skip_styles,
+                  show_rating: true,
+                  section_id: section.id,
+                  quick_add: 'standard'
+                %}
+              {% endif %}
+
+            {% when 'collection' %}
+              {% if block.settings.collection != blank %}
+                {% render 'card-collection',
+                  card_collection: block.settings.collection,
+                  media_aspect_ratio: 'square',
+                  columns: 2,
+                  extend_height: true,
+                  wrapper_class: 'collage-showcase__grid-collection'
+                %}
+              {% endif %}
+
+            {% when 'image' %}
+              {% if block.settings.image != blank %}
+                <img
+                  src="{{ block.settings.image | image_url: width: 400 }}"
+                  alt="{{ block.settings.image.alt | escape }}"
+                  class="collage-showcase__grid-image"
+                  width="400"
+                  height="400"
+                >
+              {% endif %}
+
+            {% when 'video' %}
+              {% if block.settings.video_url != blank %}
+                <video controls class="collage-showcase__grid-video">
+                  <source src="{{ block.settings.video_url }}" type="video/mp4">
+                </video>
+              {% endif %}
+          {% endcase %}
+        </div>
+        {% assign skip_styles = true %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<style>
+  #shopify-section-{{ section.id }} {
+    overflow: unset;
+  }
+  .collage-showcase {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .collage-showcase__container {
+    display: flex;
+    gap: 2rem;
+    margin: 0 auto;
+  }
+
+  .collage-showcase__featured {
+    flex: 0 0 50%;
+    position: sticky;
+    top: 2rem;
+    align-self: flex-start;
+    overflow: hidden;
+    border-radius: 8px;
+  }
+
+  .has-scrolled .collage-showcase__featured {
+    top: calc(var(--header-height) + 20px);
+    max-height: calc(100vh - var(--header-height) - 20px * 2);
+  }
+  .collage-showcase__featured-image {
+    width: 100%;
+    min-height: 100%;
+    border-radius: 8px;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .collage-showcase__grid {
+    flex: 0 0 50%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    overflow-y: auto;
+    padding-right: 0.5rem;
+  }
+
+  .collage-showcase__grid::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .collage-showcase__grid::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+  }
+
+  .collage-showcase__grid::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 3px;
+  }
+
+  .collage-showcase__grid::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+  }
+
+  .collage-showcase__grid-item {
+    width: 100%;
+  }
+
+  .collage-showcase__featured-image,
+  .collage-showcase__grid-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 4px;
+  }
+
+  .collage-showcase__featured-video,
+  .collage-showcase__grid-video {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+  }
+
+  @media screen and (max-width: 768px) {
+    .collage-showcase__container {
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .has-scrolled .collage-showcase__featured.collage-showcase__featured {
+      position: static;
+      flex: none;
+      max-height: 165px;
+    }
+
+    .collage-showcase__grid {
+      flex: none;
+      max-height: none;
+      overflow-y: visible;
+      padding-right: 0;
+    }
+
+  }
+
+  @media screen and (max-width: 480px) {
+    .collage-showcase__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<script>
+  const container = document.querySelector('.mobile-scroll-container');
+
+  let isDragging = false;
+  let startX;
+  let scrollLeft;
+
+  container.addEventListener('mousedown', (e) => {
+    isDragging = true;
+    container.classList.add('dragging');
+    startX = e.pageX - container.offsetLeft;
+    scrollLeft = container.scrollLeft;
+  });
+
+  container.addEventListener('mouseleave', () => {
+    isDragging = false;
+    container.classList.remove('dragging');
+  });
+
+  container.addEventListener('mouseup', () => {
+    isDragging = false;
+    container.classList.remove('dragging');
+  });
+
+  container.addEventListener('mousemove', (e) => {
+    if (!isDragging) return;
+    e.preventDefault();
+    const x = e.pageX - container.offsetLeft;
+    const walk = (x - startX) * 1.5; // Scroll speed
+    container.scrollLeft = scrollLeft - walk;
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Basmil Collage",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "Featured Item"
+    },
+    {
+      "type": "select",
+      "id": "featured_type",
+      "label": "Featured content type",
+      "options": [
+        {
+          "value": "product",
+          "label": "Product"
+        },
+        {
+          "value": "collection",
+          "label": "Collection"
+        },
+        {
+          "value": "image",
+          "label": "Image"
+        },
+        {
+          "value": "video",
+          "label": "Video"
+        }
+      ],
+      "default": "product"
+    },
+    {
+      "type": "product",
+      "id": "featured_product",
+      "label": "Featured product"
+    },
+    {
+      "type": "collection",
+      "id": "featured_collection",
+      "label": "Featured collection"
+    },
+    {
+      "type": "image_picker",
+      "id": "featured_image",
+      "label": "Featured image"
+    },
+    {
+      "type": "url",
+      "id": "featured_video",
+      "label": "Featured video URL"
+    },
+    {
+      "type": "header",
+      "content": "Section Settings"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 36
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "text",
+      "id": "custom_class",
+      "label": "Custom CSS class"
+    },
+    {
+      "type": "text",
+      "id": "section_id",
+      "label": "Section ID"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Grid Item",
+      "settings": [
+        {
+          "type": "select",
+          "id": "type",
+          "label": "Content type",
+          "options": [
+            {
+              "value": "product",
+              "label": "Product"
+            },
+            {
+              "value": "collection",
+              "label": "Collection"
+            },
+            {
+              "value": "image",
+              "label": "Image"
+            },
+            {
+              "value": "video",
+              "label": "Video"
+            }
+          ],
+          "default": "product"
+        },
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product"
+        },
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "url",
+          "id": "video_url",
+          "label": "Video URL"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Basmil Collage",
+
+      "blocks": [
+        {
+          "type": "item"
+        },
+        {
+          "type": "item"
+        },
+        {
+          "type": "item"
+        },
+        {
+          "type": "item"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,646 @@
+{% liquid
+  assign num_loop = 8
+  assign number = 1
+  if section.blocks.size > 2
+    assign num_loop = 4
+    assign number = 2
+  endif
+  if section.blocks.size > 5
+    assign num_loop = 2
+  endif
+  if section.blocks.size > 7
+    assign num_loop = 1
+    assign number = 1
+  endif
+  assign duration = section.settings.speed | times: number
+  assign min-height = 20
+%}
+{% if request.design_mode %}
+  <style>
+    .otsb_nope {
+      display: none !important;
+      height: 0 !important;
+      overflow: hidden !important;
+      visibility: hidden !important;
+      width: 0 !important;
+      opacity: 0 !important;
+    }
+    ._otsb_warning {
+      position: relative;
+      box-shadow: 0rem 0.1875rem 0.0625rem -0.0625rem rgba(26, 26, 26, 0.07);
+      border-radius: 1rem;
+    }
+    ._otsb_warning::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 0;
+      box-shadow: 0.0625rem 0rem 0rem 0rem rgba(0, 0, 0, 0.13) inset, -0.0625rem 0rem 0rem 0rem rgba(0, 0, 0, 0.13) inset, 0rem -0.0625rem 0rem 0rem rgba(0, 0, 0, 0.17) inset, 0rem 0.0625rem 0rem 0rem rgba(204, 204, 204, 0.5) inset;
+      border-radius: 1rem;
+      pointer-events: none;
+      mix-blend-mode: luminosity;
+    }
+  </style>
+  <div x-data="otsb_script_require" class="page-width" style="margin-top:36px;margin-bottom:36px">
+    <div class="_otsb_warning">
+      <div style="border-top-left-radius:1rem;border-top-right-radius:1rem;border:1px solid #fcaf0a;background:#fcb827;padding:1rem">
+        <div style="align-items:center;gap:8px;display:flex;flex-direction:row;flex-wrap:nowrap;justify-content:space-between">
+          <div style="display:flex;gap:4px;flex-direction:row;flex-wrap:nowrap;justify-content:space-between">
+            <span style="display:block;height:20px;width:20px;max-height:100%;max-width:100%;margin:auto">
+              <svg viewBox="0 0 20 20" class="Polaris-Icon__Svg" focusable="false" aria-hidden="true"><path d="M10 6.75a.75.75 0 0 1 .75.75v3.5a.75.75 0 1 1-1.5 0v-3.5a.75.75 0 0 1 .75-.75Z"></path><path d="M11 13.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path><path fill-rule="evenodd" d="M10 3.5c-1.045 0-1.784.702-2.152 1.447a449.26 449.26 0 0 1-2.005 3.847l-.028.052a403.426 403.426 0 0 0-2.008 3.856c-.372.752-.478 1.75.093 2.614.57.863 1.542 1.184 2.464 1.184h7.272c.922 0 1.895-.32 2.464-1.184.57-.864.465-1.862.093-2.614-.21-.424-1.113-2.147-2.004-3.847l-.032-.061a429.497 429.497 0 0 1-2.005-3.847c-.368-.745-1.107-1.447-2.152-1.447Zm-.808 2.112c.404-.816 1.212-.816 1.616 0 .202.409 1.112 2.145 2.022 3.88a418.904 418.904 0 0 1 2.018 3.875c.404.817 0 1.633-1.212 1.633h-7.272c-1.212 0-1.617-.816-1.212-1.633.202-.408 1.113-2.147 2.023-3.883a421.932 421.932 0 0 0 2.017-3.872Z"></path></svg>
+            </span>
+            <h2 style="overflow-wrap:anywhere;word-break:normal;font-size:100%;font-weight:650;line-height:1.25;color:rgb(37,26,0)">App Embeds Are Disabled</h2>
+          </div>
+        </div>
+      </div>
+      <div style="padding:1rem;color:rgb(37,26,0)">
+        <p>To use this section, the app embeds of OT: Theme Sections must be enabled in the theme editor. Please follow these steps to activate them:</p>
+        <ul>
+          <li>In the left panel, click the last icon that says <b>“App embeds”</b>.</li>
+          <li>Enter <b>“OT”</b> on the search bar to quickly find and embed the apps from OT: Theme Sections.</li>
+          <li>Turn on the Toggle buttons of "Section Builder Script" and "Section Builder Style", then click <b>Save</b>.</li>
+        </ul>
+        <p>Please refer to the User Guide <a href="https://support.omnithemes.com/blogs/ot-theme-sections-get-started/1-embed-app-to-shopify-theme" target="_blank">here</a></p>
+        <p>For further support: feel free to contact us at <a href="mailto:support@omnithemes.com">support@omnithemes.com</a>!</p>
+      </div>
+    </div>
+  </div>
+{% endif %}
+<style>#shopify-section-{{section.id}} .otsb_trademark_root {user-select:none;color:#fff;font-size:7px;text-align:right;padding-right:1.5rem;}#shopify-section-{{section.id}} .otsb_trademark_root a {color:#fff;background:none;text-decoration: none;}</style>
+<div class="otsb_nope" x-data="otsb_script_1">
+  {% style %}
+  {% unless section.settings.full_width %}
+    #shopify-section-{{section.id}} .otsb_scrolling_announcement { 
+      max-width: {{ section.settings.content_max_width }}px;
+      margin: 0 auto;
+    }
+{% endunless %}
+    .section-{{ section.id }} {
+    --duration : {{ duration }}s;
+    --direction: {% if section.settings.direction == 'left' %}reverse{% else %}normal{% endif %};
+    {%- unless section.settings.color_text_light.alpha == 0.0 -%}
+        --colors-text: {{ section.settings.color_text_light.red }},{{ section.settings.color_text_light.green }},{{ section.settings.color_text_light.blue }};
+    {% endunless %}
+    {%- if section.settings.color_line.alpha != 0.0 -%}
+        --colors-line-and-border: {{ section.settings.color_line.red }}, {{ section.settings.color_line.green }}, {{ section.settings.color_line.blue }};
+    {%  else %}
+      --colors-line-and-border: var(--color-foreground);
+    {% endif %}
+    }
+    .section-{{ section.id }} .text-color-secondary {
+    {%- unless section.settings.color_text_light_2.alpha == 0.0 -%}
+        color: {{ section.settings.color_text_light_2 }};
+    {% else %}
+        color: #898989;
+    {% endunless %}
+    }
+    {% if section.settings.pause_hover %}
+        .section-{{ section.id }}:hover .el_animate {
+        animation-play-state: paused;
+        }
+    {% endif %}
+    .space-blocks-{{ section.id }} {
+    padding-inline-end: {{ section.settings.space_block_mobile }}px;
+    }
+    .bg-{{ section.id }} {
+    background: {{ section.settings.bg_light }};
+    }
+    @media (min-width: 767px){
+    .space-blocks-{{ section.id }} {
+    padding-inline-end: {{ section.settings.space_block }}px;
+    }
+    }
+  {% endstyle %}
+  {% for block in section.blocks %}
+    {%- case block.type -%}
+      {%- when 'icon' -%}
+        {% style %}
+          .icon-{{ block.id }} {
+          width: {{ block.settings.height_icon | times: 0.7 }}px;
+          height: {{ block.settings.height_icon | times: 0.7 }}px;
+          }
+          .space-block-{{ block.id }} {
+          margin-left: {{ block.settings.spacing_left_mobile }}px;
+          margin-right: {{ block.settings.spacing_right_mobile }}px;
+          }
+          @media (min-width: 767px) {
+          .icon-{{ block.id }} {
+          width: {{ block.settings.height_icon }}px;
+          height: {{ block.settings.height_icon }}px;
+          }
+          .space-block-{{ block.id }} {
+          margin-left: {{ block.settings.spacing_left }}px;
+          margin-right: {{ block.settings.spacing_right }}px;
+          }
+          }
+        {% endstyle %}
+      {%- when 'image' -%}
+        {% if min-height < block.settings.height_image %}
+          {% assign min-height = block.settings.height_image %}
+        {% endif %}
+        {% if block.settings.image != blank %}
+          {% liquid
+          assign image_ratio = block.settings.image_ratio
+           if image_ratio == "natural"
+            assign w_img = block.settings.image.aspect_ratio | times: block.settings.height_image
+           else
+           assign w_img = block.settings.height_image
+           endif
+          %}
+          {% style %}
+            .img-{{ block.id }} {
+            width: {{ w_img }}px;
+            {% if image_ratio == "natural" %}
+            height: {{ block.settings.height_image }}px;
+            {% endif %}
+            }
+            .space-block-{{ block.id }} {
+            margin-left: {{ block.settings.spacing_left_mobile }}px;
+            margin-right: {{ block.settings.spacing_right_mobile }}px;
+            }
+            @media (min-width: 767px) {
+            .space-block-{{ block.id }} {
+            margin-left: {{ block.settings.spacing_left }}px;
+            margin-right: {{ block.settings.spacing_right }}px;
+            }
+            }
+          {% endstyle %}
+        {% endif %}
+      {%- when 'text' -%}
+        {% if block.settings.text != blank %}
+          {%- liquid
+            assign base_size = block.settings.text_size | times: 0.01
+            if settings.body_scale
+              assign base_size = base_size | times: settings.body_scale | times: 0.01
+            endif
+          -%}
+          {%- style -%}
+            .text--{{ block.id }} {
+            font-size:{{ base_size | times: 1.5 }}rem;
+            }
+            .space-block-{{ block.id }} {
+            margin-left: {{ block.settings.spacing_left_mobile }}px;
+            margin-right: {{ block.settings.spacing_right_mobile }}px;
+            }
+            .space-block-{{ block.id }} a {
+            {% if block.settings.color_link.alpha != 0.0 %}
+            color: {{ block.settings.color_link }};
+            {% else %}
+            color: rgba(var(--color-link),var(--alpha-link)); 
+            {% endif %}
+          }
+          {%-if block.settings.use_custom_font-%}
+            .space-block-{{ block.id }} {
+              font-family: {{ block.settings.text_custom_font.family }}, {{ block.settings.text_custom_font.fallback_families }};
+              font-style: {{ block.settings.text_custom_font.style }};
+              font-weight: {{ block.settings.text_custom_font.weight }};
+            }
+          {% endif %}
+            @media (min-width: 767px){
+            .text--{{ block.id }} {
+              font-size:{{ base_size | times: 1.6 }}rem;
+            }
+            .space-block-{{ block.id }} {
+            margin-left: {{ block.settings.spacing_left }}px;
+            margin-right: {{ block.settings.spacing_right }}px;
+            }
+            }
+          {%- endstyle -%}
+        {% endif %}
+      {%- when 'button' -%}
+        {% style %}
+          .button--{{ block.id }}.otsb-button-solid,
+          .button--{{ block.id }}.otsb-button-solid:before {
+          {%- unless block.settings.color_button.alpha == 0.0 -%}
+              --colors-line-and-border: {{ block.settings.color_button.red }}, {{ block.settings.color_button.green }}, {{ block.settings.color_button.blue }};
+              --colors-button: {{ block.settings.color_button.red }}, {{ block.settings.color_button.green }}, {{ block.settings.color_button.blue }};
+          {%- else -%}
+              --colors-button: var(--color-button);
+              --colors-line-and-border: var(--colors-button);
+          {%- endunless -%}
+          {%- unless block.settings.color_button_hover.alpha == 0.0 -%}
+              --colors-button-hover: rgb({{ block.settings.color_button_hover.red }}, {{ block.settings.color_button_hover.green }}, {{ block.settings.color_button_hover.blue }});
+          {%  else %}
+              --colors-button-hover: rgb(var(--colors-button));
+          {%- endunless -%}
+          {%- unless block.settings.color_text_button.alpha == 0.0 -%}
+              --colors-button-text: {{ block.settings.color_text_button.red }}, {{ block.settings.color_text_button.green }}, {{ block.settings.color_text_button.blue }};
+          {%  else %}
+              --colors-button-text: var(--color-button-text);
+          {%- endunless -%}
+          {%- unless block.settings.color_text_button_hover.alpha == 0.0 -%}
+              --colors-button-text-hover: {{ block.settings.color_text_button_hover.red }}, {{ block.settings.color_text_button_hover.green }}, {{ block.settings.color_text_button_hover.blue }};
+          {%  else %}
+              --colors-button-text-hover:  var(--color-button-text);
+          {%- endunless -%}
+          }
+          .button--{{ block.id }}.otsb-button-outline {
+          {%- if block.settings.secondary_button_text.alpha != 0.0 -%}
+              --colors-secondary-button: {{ block.settings.secondary_button_text.red }}, {{ block.settings.secondary_button_text.green }}, {{ block.settings.secondary_button_text.blue }};
+              --colors-line-secondary-button: {{ block.settings.secondary_button_text.red }}, {{ block.settings.secondary_button_text.green }}, {{ block.settings.secondary_button_text.blue }};
+              --background-secondary-button: transparent;
+              {%  else %}
+              --colors-secondary-button: var(--color-secondary-button-text);
+              --colors-line-secondary-button: var(--color-secondary-button-text);
+          {% endif %}
+          {%- if block.settings.color_button_secondary.alpha != 0.0 -%}
+              --background-secondary-button: {{ block.settings.color_button_secondary.red }}, {{ block.settings.color_button_secondary.green }}, {{ block.settings.color_button_secondary.blue }};
+              --colors-line-secondary-button: {{ block.settings.color_button_secondary.red }}, {{ block.settings.color_button_secondary.green }}, {{ block.settings.color_button_secondary.blue }};
+          {% endif %}
+          }
+          .space-block-{{ block.id }} {
+          margin-left: {{ block.settings.spacing_left_mobile }}px;
+          margin-right: {{ block.settings.spacing_right_mobile }}px;
+          }
+          @media (min-width: 767px) {
+          .space-block-{{ block.id }} {
+          margin-left: {{ block.settings.spacing_left }}px;
+          margin-right: {{ block.settings.spacing_right }}px;
+          }
+          }
+        {% endstyle %}
+    {% endcase %}
+  {% endfor %}
+  {% capture content %}
+    {%- for block in section.blocks -%}
+        {%- case block.type -%}
+            {%- when 'icon' -%}
+                <div class="space-blocks-{{ section.id }} space-block-{{ block.id }} flex whitespace-nowrap">
+          <span class="inline-block icon-{{ block.id }} text-color-{{ block.settings.icon_color }}">
+            {% if block.settings.custom_icon == blank %}
+              {% if block.settings.another_icon != blank and block.settings.icon == 'another_icon' %}
+                {% render 'otsb-icon-new-alls', icon: block.settings.another_icon %}
+              {% else %}
+                {% render 'otsb-icon-labels-bags-new', icon: block.settings.icon %}
+              {% endif %}
+            {% else %}
+              {{ block.settings.custom_icon }}
+            {% endif %}
+          </span>
+                </div>
+            {%- when 'image' -%}
+                {% liquid
+                    if image_ratio == "natural"
+                      assign w_img = block.settings.image.aspect_ratio | times: block.settings.height_image
+                    else
+                      assign w_img = block.settings.height_image
+                    endif
+                    assign image_ratio = block.settings.image_ratio
+                    if block.settings.image == blank and block.settings.image.aspect_ratio == "natural"
+                      assign image_ratio = 100
+                    endif
+                %}
+                {% style %}
+                    {% if image_ratio != "natural" and block.settings.image != blank %}
+                        {% if columns_mobile != 0 %}
+                          .img-{{ block.id }} {
+                            padding-bottom: {{ 100 | divided_by: block.settings.image.aspect_ratio }}%;
+                          }
+                        {% endif %}
+                        @media screen and (min-width: 1024px) {
+                          .img-{{ block.id }} {
+                          {% if section.settings.columns_desktop != 0 %}
+                          padding-bottom: {{ 100 | divided_by: block.settings.image.aspect_ratio }}%;
+                          padding-bottom: {{ 100 | divided_by: block.settings.image.aspect_ratio }}%;
+                          {% else %}
+                          padding-bottom: 0%;
+                          {% endif %}
+                          }
+                        }
+                      {% endif %}
+                      {% if image_ratio != "natural" and section.settings.columns_mobile == "auto" %}
+                        @media (max-width: 1023px) {
+                        .img-{{ block.id }} {
+                          padding-bottom: {{ 100 | divided_by: block.settings.image.aspect_ratio }}%;
+                        }
+                        }
+                      {% endif %}
+                {% endstyle %}
+                <div class="h-full w-max flex items-center space-blocks-{{ section.id }} space-block-{{ block.id }} whitespace-nowrap">
+                    <div class="image_natural {% if image_ratio != "natural" and block.settings.image == blank %} bg-[#C9C9C9] h-0 overflow-hidden img-{{ block.id }}{% endif %} {% if  block.settings.image != blank %}overflow-hidden img-{{ block.id }} {% endif %} relative{% if block.settings.edges_type == 'rounded_corners' %} rounded-[10px]{% endif %} 
+                    {%- if image_ratio != "natural"  and block.settings.image != blank  -%}
+                      {%- if section.settings.columns_mobile != "auto" %} pb-[{{ image_ratio }}%]{% else %} pb-[100%]{% endif -%}
+                      {%- if section.settings.columns_desktop != 0 %} lg:pb-[{{ image_ratio }}%]{% else %} lg:pb-0{% endif -%}
+                    {%- elsif image_ratio != "natural" and block.settings.image == blank -%}
+                      {%- if section.settings.columns_mobile != "auto" %} pb-[{{ image_ratio }}%]{% else %} pb-[100%]{% endif -%}
+                      {%- if section.settings.columns_desktop != 0 %} lg:pb-[{{ image_ratio }}%]{% else %} lg:pb-[100%]{% endif -%}
+                    {%- endif %}">
+                        {% if block.settings.image != blank %}
+                            <img
+                                class="w-full h-full absolute top-0 left-0 object-cover"
+                                srcset="{{ block.settings.image | image_url: width: 250 }} 250w,
+                            {{ block.settings.image | image_url: width: 450 }} 450w,
+                            {{ block.settings.image | image_url: width: 750 }} 750w,
+                            {{ block.settings.image | image_url: width: 900 }} 900w,
+                            {{ block.settings.image | image_url: width: 1100 }} 1100w,
+                            {{ block.settings.image | image_url: width: 1500 }} 1500w"
+                                src="{{ block.settings.image | image_url: width: block.settings.height_image }}"
+                                alt="{{ block.settings.image.alt | escape }}"
+                                loading="lazy"
+                                width="{{ w_img }}"
+                                height="{{ block.settings.height_image }}"
+                            >
+                        {% else %}
+                        {% style %}
+                        {%- if image_ratio != "natural" %}
+                          .image-block-{{ block.id }} {
+                            height: calc(120px / 100 * {{ image_ratio }});
+                          }
+                        {% endif %}
+                        {% endstyle %}
+                        {% if block.settings.edges_type == 'rounded_corners' %}
+                          {% assign class = 'rounded-[10px] relative w-[120px] bg-[#C9C9C9] text-[#acacac] image-block-' | append: block.id %}
+                          {{ 'image' | placeholder_svg_tag: class }}
+                        {% else %}
+                        {% assign class = 'relative w-[120px] bg-[#C9C9C9] text-[#acacac] image-block-' | append: block.id %}
+                        {{ 'image' | placeholder_svg_tag: class }}
+                        {% endif %} 
+                      
+                        {% endif %}
+                    </div>
+                </div>
+            {%- when 'text' -%}
+                {% if block.settings.text != blank %}
+                    <div class="min-w-max space-blocks-{{ section.id }} space-block-{{ block.id }} whitespace-nowrap text-color-{{ block.settings.text_color }}">
+                        <div class="empty:otsb-hidden text--{{ block.id }}">{{ block.settings.text }}</div>
+                    </div>
+                {% endif %}
+            {%- when 'button' -%}
+                {% if block.settings.button_label != blank %}
+                    <div class="x-button-{{ block.id }} min-w-max space-blocks-{{ section.id }} space-block-{{ block.id }} whitespace-nowrap">
+                    {%- if block.settings.button_link != blank -%}
+                        <a
+                            href="{{ block.settings.button_link }}"
+                            class="disable-effect"
+                            tabindex="-1"
+                            {% if block.settings.open_new_window %}target="_blank"{% endif %}
+                        >
+                            {%- endif -%}
+                            {% comment %} Button design {% endcomment %}
+                            {%- liquid
+                                case block.settings.button_type
+                                    when 'rounded'
+                                        assign borderRadius = '100px'
+                                    when 'rounded_corners'
+                                        assign borderRadius = '6px'
+                                    when 'mixed'
+                                        assign borderRadius = '6px 0 6px 0'
+                                    else
+                                        assign borderRadius = '0'
+                                endcase
+                            %}
+                            {% style %}
+                                .x-button-{{ block.id }} .button--{{ block.id }} {
+                                --border-radius: {{ borderRadius }};
+                                {% if block.settings.button_animation == 'slide' %}
+                                    --button-width: 102%;
+                                    --button-height: 500%;
+                                    --button-transform: rotate3d(0,0,1,-10deg) translate3d(-130%,-10em,0);
+                                    --button-transform-origin: 100% 0%;
+                                {% elsif block.settings.button_animation == 'fill_up' %}
+                                    --button-width: 120%;
+                                    --button-height: 100%;
+                                    --button-transform: rotate3d(0,0,1,10deg) translate3d(-1.2em,110%,0);
+                                    --button-transform-origin: 0% 100%;
+                                {% endif %}
+                                }
+
+                                {% if block.settings.button_color_mobile == "hover" %}
+                                    .x-button-{{ block.id }} [role="button"], .x-button-{{ block.id }} [type="button"], .x-button-{{ block.id }} .otsb-button {
+                                    color: rgb(var(--colors-button-text-hover));
+                                    }
+                                    .x-button-{{ block.id }} button.otsb-button-solid, .x-button-{{ block.id }} .otsb-button.otsb-button-solid {
+                                    border: none;
+                                    background-color: var(--colors-button-hover);
+                                    }
+                                    .x-button-{{ block.id }} button.otsb-button-disable-effect, .x-button-{{ block.id }} .otsb-button.otsb-button-disable-effect {
+                                    color: rgba(var(--colors-button-text-hover));
+                                    background-color: var(--colors-button-hover);
+                                    }
+                                    .x-button-{{ block.id }} .otsb-button-action {
+                                    border: none;
+                                    color: rgba(var(--colors-button-text-hover));
+                                    background-color: var(--colors-button-hover);
+                                    }
+                                {% else %}
+                                    .x-button-{{ block.id }} [role="button"], .x-button-{{ block.id }} [type="button"], .x-button-{{ block.id }} .otsb-button {
+                                    color: rgb(var(--colors-button-text));
+                                    }
+                                    .x-button-{{ block.id }} button.otsb-button-solid, .x-button-{{ block.id }} .otsb-button.otsb-button-solid {
+                                    border: none;
+                                    background-color: rgba(var(--colors-button));
+                                    }
+                                    .x-button-{{ block.id }} button.otsb-button-disable-effect, .x-button-{{ block.id }} .otsb-button.otsb-button-disable-effect {
+                                    color: rgb(var(--colors-button-text));
+                                    background-color: rgba(var(--colors-button));
+                                    }
+                                    .x-button-{{ block.id }} .otsb-button-action {
+                                    border: none;
+                                    color: rgb(var(--colors-button-text));
+                                    background-color: rgba(var(--colors-button));
+                                    }
+                                {% endif %}
+                                .x-button-{{ block.id }} [role="button"], .x-button-{{ block.id }} [type="button"], .x-button-{{ block.id }} .otsb-button {
+                                direction: ltr;
+                                }
+
+                                {% if block.settings.button_animation == 'sliced' %}
+                                  .x-button-{{ block.id }} .otsb-button.otsb-button-outline:not(.not-icon), .x-button-{{ block.id }} .otsb-button.otsb-button-solid:not(.not-icon) {
+                                  display: inline-flex;
+                                  align-items: center;
+                                  justify-content: center;
+                                  padding-left: 1.5rem;
+                                  padding-right: 1.5rem;
+                                  }
+                                  .x-button-{{ block.id }} .otsb-button-solid .otsb-button-icon, .x-button-{{ block.id }} .otsb-button-solid .otsb-button-text {
+                                  transition-timing-function: cubic-bezier(0,.71,.4,1);
+                                  }
+                                  .x-button-{{ block.id }} .otsb-button-solid .otsb-button-icon {
+                                  transition: opacity .25s,transform .5s;
+                                  }
+                                  .x-button-{{ block.id }} .otsb-button-solid .otsb-button-text {
+                                  transition: transform .5s;
+                                  transform: translateX(0.625rem);
+                                  }
+                                  .x-button-{{ block.id }} .otsb-button-solid:hover .otsb-button-text {
+                                  opacity: 1;
+                                  transform: translateX(0px);
+                                  }
+                                  .x-button-{{ block.id }} .otsb-button-solid:hover .otsb-button-icon {
+                                  opacity: 1;
+                                  transform: translateX(0.3125rem);
+                                  }
+                                  @media (max-width: 1023px) {
+                                    .x-button-{{ block.id }} .otsb-button-solid .otsb-button-text {
+                                      transform: translateX(0rem);
+                                    }
+                                  }
+                                {% endif %}
+                                {% if block.settings.button_animation == 'underline' %}
+                                    .x-button-{{ block.id }} .otsb-button-solid .otsb-button-text {
+                                    position: relative;
+                                    display: block;
+                                    }
+                                    .x-button-{{ block.id }} .otsb-button-solid .otsb-button-text::after {
+                                    content: "";
+                                    pointer-events: none;
+                                    bottom: 1px;
+                                    left: 50%;
+                                    position: absolute;
+                                    width: 0%;
+                                    height: 1px;
+                                    background-color: rgba(var(--colors-button-text));
+                                    transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+                                    transition-duration: 400ms;
+                                    transition-property: width, left;
+                                    }
+                                    .x-button-{{ block.id }} .otsb-button-solid:hover .otsb-button-text::after {
+                                    {% if block.settings.button_color_mobile == "hover" %}
+                                        background-color: rgba(var(--colors-button-text-hover));
+                                    {% else %}
+                                        background-color: rgba(var(--colors-button-text));
+                                    {% endif %}
+                                    width: 100%;
+                                    left: 0%;
+                                    }
+                                {% endif %}
+
+                                @media (min-width: 1024px){
+                                .x-button-{{ block.id }} [role="button"], .x-button-{{ block.id }} [type="button"], .x-button-{{ block.id }} .otsb-button {
+                                color: rgba(var(--colors-button-text));
+                                }
+                                .x-button-{{ block.id }} button.otsb-button-solid, .x-button-{{ block.id }} .otsb-button.otsb-button-solid {
+                                border: none;
+                                box-shadow: none;
+                                color: rgb(var(--colors-button-text));
+                                background-color: rgba(var(--colors-button));
+                                overflow: hidden;
+                                background-origin: border-box;
+                                }
+                                .x-button-{{ block.id }} button.otsb-button-solid:hover, .x-button-{{ block.id }} .otsb-button.otsb-button-solid:hover {
+                                {% if block.settings.button_animation == 'sliced' or block.settings.button_animation == 'underline' %}
+                                    transition-duration: 0.2s;
+                                {% else %}
+                                    transition-delay: 0.5s;
+                                {% endif %}
+                                transition-property: background-color;
+                                background-color: var(--colors-button-hover);
+                                color: rgba(var(--colors-button-text-hover));
+                                background-origin: border-box;
+                                }
+                                .x-button-{{ block.id }} .otsb-button-action {
+                                border: none;
+                                color: rgba(var(--colors-button-text-hover));
+                                background-color: var(--colors-button-hover);
+                                }
+                                .x-button-{{ block.id }} button.otsb-button-disable-effect, .x-button-{{ block.id }} .otsb-button.otsb-button-disable-effect {
+                                color: rgb(var(--colors-button-text));
+                                background-color: rgba(var(--colors-button));
+                                }
+                                .x-button-{{ block.id }} button.otsb-button-disable-effect:hover, .x-button-{{ block.id }} .otsb-button.otsb-button-disable-effect:hover {
+                                color: rgba(var(--colors-button-text-hover));
+                                background-color: var(--colors-button-hover);
+                                }
+                                {% if block.settings.button_animation == 'slide' or block.settings.button_animation == 'fill_up' %}
+                                    .x-button-{{ block.id }} button.otsb-button-solid:before, .x-button-{{ block.id }} .otsb-button.otsb-button-solid:before {
+                                    content: "";
+                                    z-index: -1;
+                                    position: absolute;
+                                    top: 0;
+                                    right: 0;
+                                    bottom: 0;
+                                    left: 0;
+                                    width: var(--button-width);
+                                    height: var(--button-height);
+                                    background-color: var(--colors-button-hover);
+                                    backface-visibility: hidden;
+                                    will-change: transform;
+                                    transform: var(--button-transform);
+                                    transform-origin: var(--button-transform-origin);
+                                    transition: transform 0.5s ease;
+                                    }
+                                    .x-button-{{ block.id }} button.otsb-button-solid:hover:before, .x-button-{{ block.id }} .otsb-button.otsb-button-solid:hover:before {
+                                    transform: rotate3d(0,0,1,0) translateZ(0);
+                                    }
+                                {% endif %}
+                                {% if block.settings.button_animation == 'underline' %}
+                                    .x-button-{{ block.id }} .otsb-button-solid:hover .otsb-button-text::after {
+                                    background-color: rgba(var(--colors-button-text-hover));
+                                    }
+                                {% endif %}
+                                }
+                            {% endstyle %}
+                            {% liquid
+                            assign main_button_classes = ''
+                            if block.settings.primary_button
+                              assign main_button_classes = main_button_classes | append: ' otsb-btn__solid'
+                            else
+                              assign main_button_classes = main_button_classes | append: ' otsb-button-outline'
+                            endif
+
+                            case block.settings.button_type
+                              when 'square'
+                                assign main_button_classes = main_button_classes | append: ' otsb-btn-square'
+                              when 'rounded'
+                                assign main_button_classes = main_button_classes | append: ' otsb-btn-rounded'
+                              when 'rounded_corners'
+                                assign main_button_classes = main_button_classes | append: ' otsb-btn-rounded-corners'
+                              when 'mixed'
+                                assign main_button_classes = main_button_classes | append: ' otsb-btn-mixed'
+                            endcase
+                            case block.settings.button_animation
+                              when 'slide'
+                                assign main_button_classes = main_button_classes | append: ' otsb-btn__slide'
+                              when 'fill_up'
+                                assign main_button_classes = main_button_classes | append: ' otsb-btn__fill_up'
+                              when 'underline'
+                                assign main_button_classes = main_button_classes | append: ' otsb-btn__underline'
+                              when 'sliced'
+                                assign main_button_classes = main_button_classes | append: ' otsb-btn__sliced'
+                            endcase
+                            if section.settings.content_position == 'top-left'
+                              assign main_button_classes = main_button_classes | append: ' md:w-full'
+                            endif
+                          %}
+                            {% comment %} End button design {% endcomment %}
+                            <div class="{{ main_button_classes }} otsb-button button--{{ block.id }}{% if block.settings.primary_button %} otsb-button-solid{% else %} otsb-button-outline{% endif %} empty:otsb-hidden leading-normal text-center mt-1 mb-1 lg:mt-0 lg:mb-0 lg:ml-0 lg:mr-0 h-full pl-7 pr-7 lg:pl-9 lg:pr-9 pt-2.5 pb-2.5 md:pt-3 md:pb-3{% unless block.settings.button_link != blank %} opacity-70 hover:cursor-not-allowed{% endunless %}">
+                                {% render 'otsb-button-label', button_animation: block.settings.button_animation, custom_icon_button: block.settings.custom_icon_button, button_label: block.settings.button_label, show_button_primary: block.settings.primary_button %}
+                            </div>
+                            {%- if block.settings.button_link != blank -%}
+                        </a>
+                        {%- endif -%}
+                    </div>
+                {% endif %}
+        {% endcase %}
+    {% endfor %}
+{% endcapture %}
+  
+  <div
+    x-data
+    x-intersect.once.margin.200px="$store.xScrollPromotion.load($el)"
+    class="bg-{{ section.id }} text-[rgb(var(--colors-text))] section-{{ section.id }}{% if section.settings.show_border %} border-y border-solid{% endif %} pb-[{{ section.settings.padding_bottom_mobile }}px] pt-[{{ section.settings.padding_top_mobile }}px] md:pb-[{{ section.settings.padding_bottom }}px] md:pt-[{{ section.settings.padding_top }}px] ltr"
+  >
+    <div class="otsb_scrolling_announcement {% if section.settings.full_width %} w-full {% else %} content_max-w page-width {% endif %} overflow-hidden">
+      <div class="flex flex-nowrap whitespace-nowrap min-w-full">
+        <div class="flex shrink-0 whitespace-nowrap items-center el_animate element-{{ section.id }}">
+          {% for i in (1..num_loop) %}
+            {{ content }}
+          {% endfor %}
+        </div>
+        <div class="flex shrink-0 whitespace-nowrap items-center el_animate">
+            {% for i in (1..num_loop) %}
+              {{ content }}
+            {% endfor %}
+          </div>
+          <div class="flex shrink-0 whitespace-nowrap items-center el_animate">
+            {% for i in (1..num_loop) %}
+              {{ content }}
+            {% endfor %}
+          </div>
+      </div>
+    </div>
+  </div>
+</div>

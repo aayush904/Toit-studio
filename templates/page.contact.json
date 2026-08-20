@@ -1,0 +1,76 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "custom_css": [
+        "* {text-align: center;}"
+      ],
+      "settings": {
+        "padding_top": 60,
+        "padding_bottom": 0
+      }
+    },
+    "rich_text_H9JfjQ": {
+      "type": "rich-text",
+      "blocks": {
+        "text_U4YPXk": {
+          "type": "text",
+          "settings": {
+            "text": "<p><strong>Need assistance?</strong> <strong>Whether you have questions about an order or a product, we're here to help and eager to hear from you. </strong></p><p>1. You can reach us via email at <a>support@muunhome.com. </a></p><p>2. For immediate assistance : Call or Message us on +91 <strong>9811220869</strong>  or  <strong>9818296080</strong> </p><p>3. If you prefer to see our products in person, our studio is open and ready to welcome you!</p><p>Find us at: <strong>D-12, Hosiery Complex, Phase 2, Noida-201305 <br/><br/>Monday to Friday , 10 AM - 7:30 PM<br/><br/>By appointment for the weekend </strong></p><p>Click <a href=\"https://maps.app.goo.gl/cY2wwVVRH165AxAs6\" target=\"_blank\" title=\"location\">here</a> for Location</p><p>4. Click the whatsapp button to <a href=\"https://wa.me/8448320198\" target=\"_blank\" title=\"whatsapp\">chat</a> with our customer care 💬</p><p>5. Just simply use the form below and we will get in touch with you as soon as possible.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "text_U4YPXk"
+      ],
+      "custom_css": [
+        ".rich-text__blocks,.rich-text__text {max-width: 1200px !important;}",
+        "a{text-decoration:underline;}"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "left",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 0,
+        "padding_bottom": 52
+      }
+    },
+    "form": {
+      "type": "contact-form",
+      "settings": {
+        "heading": "Reach out to us here!",
+        "heading_size": "h1",
+        "color_scheme": "scheme-1",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "custom_liquid_p7DCtx": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "<style>\n\n .section-header:not(.shopify-section-header-sticky):not(:hover):not(.skip-sticky) {\nmargin-bottom:0!important;\n           .svg-wrapper, a {\n              color:#000;\n            }\n            .cart-count-bubble{\n              background-color: #000;\n              color: #000;\n            }\n            .white_logo {\n              display: none;\n            }\n            .black_logo {\n              display: block;\n            }\n\n         }\n</style>",
+        "color_scheme": "",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "main",
+    "rich_text_H9JfjQ",
+    "form",
+    "custom_liquid_p7DCtx"
+  ]
+}

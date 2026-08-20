@@ -1,0 +1,754 @@
+{% doc %}
+  @prompt
+    Write a Shopify Liquid section named collage-showcase.liquid for Online Store 2.0.
+    
+    Requirements:
+    Layout:
+    
+    Two equal columns (50/50).
+    
+    Left column: single featured item (selectable: product, collection, image, or video).
+    
+    Right column: scrollable grid with 2 items per row, populated via dynamic blocks (type: product, collection, image, or video).
+    
+    Left column must be position: sticky within the section.
+    
+    Rendering:
+    
+    Product: Use card-product snippet with accepted parameters:
+    
+    liquid
+    Copy
+    Edit
+    {% render 'card-product',
+      card_product: product_object,
+      media_aspect_ratio: 'square' or 'portrait',
+      show_secondary_image: true or false,
+      show_vendor: true or false,
+      show_rating: true or false,
+      extend_height: true or false,
+      lazy_load: true or false,
+      show_quick_add: true or false,
+      section_id: section.id,
+      horizontal_class: true or false,
+      horizontal_quick_add: true or false
+    %}
+    Collection: Use card-collection snippet with:
+    
+    liquid
+    Copy
+    Edit
+    {% render 'card-collection',
+      card_collection: collection_object,
+      media_aspect_ratio: 'square' or 'portrait',
+      columns: 2,
+      extend_height: true or false,
+      wrapper_class: 'your-class'
+    %}
+    Image: <img src="{{ image | image_url: width: 800 }}" alt="{{ image.alt | escape }}">
+    
+    Video: <video controls><source src="{{ video_url }}" type="video/mp4"></video>
+    
+    Schema:
+    
+    featured_type dropdown (product, collection, image, video) with matching resource picker.
+    
+    Dynamic blocks for right column: each with type (product, collection, image, video) and related resource.
+    
+    Optional section settings: padding, background color, custom class, section ID.
+    
+    Output:
+    
+    Output full section code with schema and scoped internal CSS.
+    No explanations, only code.
+
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .collage-showcase-{{ ai_gen_id }} {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    padding: {{ block.settings.padding }}px;
+    background-color: {{ block.settings.background_color }};
+  }
+
+  @media screen and (min-width: 750px) {
+    .collage-showcase-{{ ai_gen_id }} {
+      flex-direction: row;
+    }
+  }
+
+  .collage-showcase__left-column-{{ ai_gen_id }} {
+    width: 100%;
+  }
+
+  @media screen and (min-width: 750px) {
+    .collage-showcase__left-column-{{ ai_gen_id }} {
+      width: 50%;
+      position: sticky;
+      top: 80px;
+      height: fit-content;
+      align-self: flex-start;
+    }
+  }
+
+  .collage-showcase__right-column-{{ ai_gen_id }} {
+    width: 100%;
+  }
+
+  @media screen and (min-width: 750px) {
+    .collage-showcase__right-column-{{ ai_gen_id }} {
+      width: 50%;
+    }
+  }
+
+  .collage-showcase__grid-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 16px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .collage-showcase__grid-{{ ai_gen_id }} {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .collage-showcase__item-{{ ai_gen_id }} {
+    position: relative;
+    overflow: hidden;
+    border-radius: {{ block.settings.border_radius }}px;
+    height: 100%;
+  }
+
+  .collage-showcase__product-card-{{ ai_gen_id }},
+  .collage-showcase__collection-card-{{ ai_gen_id }} {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .collage-showcase__product-image-{{ ai_gen_id }},
+  .collage-showcase__collection-image-{{ ai_gen_id }} {
+    position: relative;
+    overflow: hidden;
+    padding-bottom: {{ block.settings.media_aspect_ratio | default: 'square' | replace: 'square', '100%' | replace: 'portrait', '125%' }};
+    height: 0;
+  }
+
+  .collage-showcase__product-image-{{ ai_gen_id }} img,
+  .collage-showcase__collection-image-{{ ai_gen_id }} img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    top: 0;
+    left: 0;
+  }
+
+  .collage-showcase__product-info-{{ ai_gen_id }},
+  .collage-showcase__collection-info-{{ ai_gen_id }} {
+    padding: 15px;
+    background-color: {{ block.settings.card_background_color }};
+    color: {{ block.settings.card_text_color }};
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .collage-showcase__product-title-{{ ai_gen_id }},
+  .collage-showcase__collection-title-{{ ai_gen_id }} {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: 0 0 8px 0;
+  }
+
+  .collage-showcase__product-price-{{ ai_gen_id }} {
+    font-size: 1rem;
+    margin: 0 0 10px 0;
+  }
+
+  .collage-showcase__product-vendor-{{ ai_gen_id }} {
+    font-size: 0.9rem;
+    margin: 0 0 8px 0;
+    color: {{ block.settings.card_text_color | color_modify: 'alpha', 0.7 }};
+  }
+
+  .collage-showcase__image-wrapper-{{ ai_gen_id }} {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: {{ block.settings.media_aspect_ratio | default: 'square' | replace: 'square', '100%' | replace: 'portrait', '125%' }};
+    overflow: hidden;
+  }
+
+  .collage-showcase__image-wrapper-{{ ai_gen_id }} img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .collage-showcase__image-placeholder-{{ ai_gen_id }} {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #f4f4f4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .collage-showcase__image-placeholder-{{ ai_gen_id }} svg {
+    width: 50%;
+    height: 50%;
+    color: #888;
+  }
+
+  .collage-showcase__video-wrapper-{{ ai_gen_id }} {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: {{ block.settings.media_aspect_ratio | default: 'square' | replace: 'square', '100%' | replace: 'portrait', '125%' }};
+    overflow: hidden;
+  }
+
+  .collage-showcase__video-wrapper-{{ ai_gen_id }} video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .collage-showcase__button-{{ ai_gen_id }} {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: {{ block.settings.button_background_color }};
+    color: {{ block.settings.button_text_color }};
+    text-decoration: none;
+    border-radius: 4px;
+    margin-top: auto;
+    text-align: center;
+    transition: background-color 0.3s;
+  }
+
+  .collage-showcase__button-{{ ai_gen_id }}:hover {
+    background-color: {{ block.settings.button_background_color | color_darken: 10 }};
+  }
+{% endstyle %}
+
+<div class="collage-showcase-{{ ai_gen_id }} {{ block.settings.custom_class }}" {{ block.shopify_attributes }}>
+  <div class="collage-showcase__left-column-{{ ai_gen_id }}">
+    {% if block.settings.featured_type == 'product' and block.settings.featured_product != blank %}
+      <div class="collage-showcase__item-{{ ai_gen_id }}">
+        <div class="collage-showcase__product-card-{{ ai_gen_id }}">
+          <div class="collage-showcase__product-image-{{ ai_gen_id }}">
+            {% if block.settings.featured_product.featured_image %}
+              <img 
+                src="{{ block.settings.featured_product.featured_image | image_url: width: 800 }}" 
+                alt="{{ block.settings.featured_product.featured_image.alt | escape }}"
+                loading="lazy"
+                width="{{ block.settings.featured_product.featured_image.width }}"
+                height="{{ block.settings.featured_product.featured_image.height }}"
+              >
+            {% else %}
+              <div class="collage-showcase__image-placeholder-{{ ai_gen_id }}">
+                {{ 'product-1' | placeholder_svg_tag }}
+              </div>
+            {% endif %}
+          </div>
+          <div class="collage-showcase__product-info-{{ ai_gen_id }}">
+            {% if block.settings.show_vendor and block.settings.featured_product.vendor %}
+              <div class="collage-showcase__product-vendor-{{ ai_gen_id }}">{{ block.settings.featured_product.vendor }}</div>
+            {% endif %}
+            <h3 class="collage-showcase__product-title-{{ ai_gen_id }}">{{ block.settings.featured_product.title }}</h3>
+            <div class="collage-showcase__product-price-{{ ai_gen_id }}">{{ block.settings.featured_product.price | money }}</div>
+            <a href="{{ block.settings.featured_product.url }}" class="collage-showcase__button-{{ ai_gen_id }}">View Product</a>
+          </div>
+        </div>
+      </div>
+    {% elsif block.settings.featured_type == 'collection' and block.settings.featured_collection != blank %}
+      <div class="collage-showcase__item-{{ ai_gen_id }}">
+        <div class="collage-showcase__collection-card-{{ ai_gen_id }}">
+          <div class="collage-showcase__collection-image-{{ ai_gen_id }}">
+            {% if block.settings.featured_collection.image %}
+              <img 
+                src="{{ block.settings.featured_collection.image | image_url: width: 800 }}" 
+                alt="{{ block.settings.featured_collection.title | escape }}"
+                loading="lazy"
+                width="{{ block.settings.featured_collection.image.width }}"
+                height="{{ block.settings.featured_collection.image.height }}"
+              >
+            {% else %}
+              <div class="collage-showcase__image-placeholder-{{ ai_gen_id }}">
+                {{ 'collection-1' | placeholder_svg_tag }}
+              </div>
+            {% endif %}
+          </div>
+          <div class="collage-showcase__collection-info-{{ ai_gen_id }}">
+            <h3 class="collage-showcase__collection-title-{{ ai_gen_id }}">{{ block.settings.featured_collection.title }}</h3>
+            <a href="{{ block.settings.featured_collection.url }}" class="collage-showcase__button-{{ ai_gen_id }}">View Collection</a>
+          </div>
+        </div>
+      </div>
+    {% elsif block.settings.featured_type == 'image' and block.settings.featured_image != blank %}
+      <div class="collage-showcase__item-{{ ai_gen_id }}">
+        <div class="collage-showcase__image-wrapper-{{ ai_gen_id }}">
+          <img 
+            src="{{ block.settings.featured_image | image_url: width: 800 }}" 
+            alt="{{ block.settings.featured_image.alt | escape }}"
+            loading="lazy"
+            width="{{ block.settings.featured_image.width }}"
+            height="{{ block.settings.featured_image.height }}"
+          >
+        </div>
+      </div>
+    {% elsif block.settings.featured_type == 'video' and block.settings.featured_video_url != blank %}
+      <div class="collage-showcase__item-{{ ai_gen_id }}">
+        <div class="collage-showcase__video-wrapper-{{ ai_gen_id }}">
+          <video controls>
+            <source src="{{ block.settings.featured_video_url }}" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+    {% else %}
+      <div class="collage-showcase__item-{{ ai_gen_id }}">
+        <div class="collage-showcase__image-wrapper-{{ ai_gen_id }}">
+          <div class="collage-showcase__image-placeholder-{{ ai_gen_id }}">
+            {{ 'image' | placeholder_svg_tag }}
+          </div>
+        </div>
+      </div>
+    {% endif %}
+  </div>
+
+  <div class="collage-showcase__right-column-{{ ai_gen_id }}">
+    <div class="collage-showcase__grid-{{ ai_gen_id }}">
+      {% for i in (1..4) %}
+        {% assign item_type_key = 'item_' | append: i | append: '_type' %}
+        {% assign item_type = block.settings[item_type_key] %}
+        
+        {% assign product_key = 'item_' | append: i | append: '_product' %}
+        {% assign collection_key = 'item_' | append: i | append: '_collection' %}
+        {% assign image_key = 'item_' | append: i | append: '_image' %}
+        {% assign video_key = 'item_' | append: i | append: '_video_url' %}
+        
+        {% if item_type == 'product' and block.settings[product_key] != blank %}
+          <div class="collage-showcase__item-{{ ai_gen_id }}">
+            <div class="collage-showcase__product-card-{{ ai_gen_id }}">
+              <div class="collage-showcase__product-image-{{ ai_gen_id }}">
+                {% if block.settings[product_key].featured_image %}
+                  <img 
+                    src="{{ block.settings[product_key].featured_image | image_url: width: 500 }}" 
+                    alt="{{ block.settings[product_key].featured_image.alt | escape }}"
+                    loading="lazy"
+                    width="{{ block.settings[product_key].featured_image.width }}"
+                    height="{{ block.settings[product_key].featured_image.height }}"
+                  >
+                {% else %}
+                  <div class="collage-showcase__image-placeholder-{{ ai_gen_id }}">
+                    {{ 'product-1' | placeholder_svg_tag }}
+                  </div>
+                {% endif %}
+              </div>
+              <div class="collage-showcase__product-info-{{ ai_gen_id }}">
+                {% if block.settings.show_vendor and block.settings[product_key].vendor %}
+                  <div class="collage-showcase__product-vendor-{{ ai_gen_id }}">{{ block.settings[product_key].vendor }}</div>
+                {% endif %}
+                <h3 class="collage-showcase__product-title-{{ ai_gen_id }}">{{ block.settings[product_key].title }}</h3>
+                <div class="collage-showcase__product-price-{{ ai_gen_id }}">{{ block.settings[product_key].price | money }}</div>
+                <a href="{{ block.settings[product_key].url }}" class="collage-showcase__button-{{ ai_gen_id }}">View Product</a>
+              </div>
+            </div>
+          </div>
+        {% elsif item_type == 'collection' and block.settings[collection_key] != blank %}
+          <div class="collage-showcase__item-{{ ai_gen_id }}">
+            <div class="collage-showcase__collection-card-{{ ai_gen_id }}">
+              <div class="collage-showcase__collection-image-{{ ai_gen_id }}">
+                {% if block.settings[collection_key].image %}
+                  <img 
+                    src="{{ block.settings[collection_key].image | image_url: width: 500 }}" 
+                    alt="{{ block.settings[collection_key].title | escape }}"
+                    loading="lazy"
+                    width="{{ block.settings[collection_key].image.width }}"
+                    height="{{ block.settings[collection_key].image.height }}"
+                  >
+                {% else %}
+                  <div class="collage-showcase__image-placeholder-{{ ai_gen_id }}">
+                    {{ 'collection-1' | placeholder_svg_tag }}
+                  </div>
+                {% endif %}
+              </div>
+              <div class="collage-showcase__collection-info-{{ ai_gen_id }}">
+                <h3 class="collage-showcase__collection-title-{{ ai_gen_id }}">{{ block.settings[collection_key].title }}</h3>
+                <a href="{{ block.settings[collection_key].url }}" class="collage-showcase__button-{{ ai_gen_id }}">View Collection</a>
+              </div>
+            </div>
+          </div>
+        {% elsif item_type == 'image' and block.settings[image_key] != blank %}
+          <div class="collage-showcase__item-{{ ai_gen_id }}">
+            <div class="collage-showcase__image-wrapper-{{ ai_gen_id }}">
+              <img 
+                src="{{ block.settings[image_key] | image_url: width: 500 }}" 
+                alt="{{ block.settings[image_key].alt | escape }}"
+                loading="lazy"
+                width="{{ block.settings[image_key].width }}"
+                height="{{ block.settings[image_key].height }}"
+              >
+            </div>
+          </div>
+        {% elsif item_type == 'video' and block.settings[video_key] != blank %}
+          <div class="collage-showcase__item-{{ ai_gen_id }}">
+            <div class="collage-showcase__video-wrapper-{{ ai_gen_id }}">
+              <video controls>
+                <source src="{{ block.settings[video_key] }}" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          </div>
+        {% else %}
+          <div class="collage-showcase__item-{{ ai_gen_id }}">
+            <div class="collage-showcase__image-wrapper-{{ ai_gen_id }}">
+              <div class="collage-showcase__image-placeholder-{{ ai_gen_id }}">
+                {{ 'image' | placeholder_svg_tag }}
+              </div>
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Collage Showcase",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Featured Item (Left Column)"
+    },
+    {
+      "type": "select",
+      "id": "featured_type",
+      "label": "Content type",
+      "options": [
+        {
+          "value": "product",
+          "label": "Product"
+        },
+        {
+          "value": "collection",
+          "label": "Collection"
+        },
+        {
+          "value": "image",
+          "label": "Image"
+        },
+        {
+          "value": "video",
+          "label": "Video"
+        }
+      ],
+      "default": "product"
+    },
+    {
+      "type": "product",
+      "id": "featured_product",
+      "label": "Featured product"
+    },
+    {
+      "type": "collection",
+      "id": "featured_collection",
+      "label": "Featured collection"
+    },
+    {
+      "type": "image_picker",
+      "id": "featured_image",
+      "label": "Featured image"
+    },
+    {
+      "type": "url",
+      "id": "featured_video_url",
+      "label": "Featured video URL (MP4)"
+    },
+    {
+      "type": "header",
+      "content": "Grid Items (Right Column)"
+    },
+    {
+      "type": "select",
+      "id": "item_1_type",
+      "label": "Item 1 type",
+      "options": [
+        {
+          "value": "product",
+          "label": "Product"
+        },
+        {
+          "value": "collection",
+          "label": "Collection"
+        },
+        {
+          "value": "image",
+          "label": "Image"
+        },
+        {
+          "value": "video",
+          "label": "Video"
+        }
+      ],
+      "default": "product"
+    },
+    {
+      "type": "product",
+      "id": "item_1_product",
+      "label": "Item 1 product"
+    },
+    {
+      "type": "collection",
+      "id": "item_1_collection",
+      "label": "Item 1 collection"
+    },
+    {
+      "type": "image_picker",
+      "id": "item_1_image",
+      "label": "Item 1 image"
+    },
+    {
+      "type": "url",
+      "id": "item_1_video_url",
+      "label": "Item 1 video URL (MP4)"
+    },
+    {
+      "type": "select",
+      "id": "item_2_type",
+      "label": "Item 2 type",
+      "options": [
+        {
+          "value": "product",
+          "label": "Product"
+        },
+        {
+          "value": "collection",
+          "label": "Collection"
+        },
+        {
+          "value": "image",
+          "label": "Image"
+        },
+        {
+          "value": "video",
+          "label": "Video"
+        }
+      ],
+      "default": "collection"
+    },
+    {
+      "type": "product",
+      "id": "item_2_product",
+      "label": "Item 2 product"
+    },
+    {
+      "type": "collection",
+      "id": "item_2_collection",
+      "label": "Item 2 collection"
+    },
+    {
+      "type": "image_picker",
+      "id": "item_2_image",
+      "label": "Item 2 image"
+    },
+    {
+      "type": "url",
+      "id": "item_2_video_url",
+      "label": "Item 2 video URL (MP4)"
+    },
+    {
+      "type": "select",
+      "id": "item_3_type",
+      "label": "Item 3 type",
+      "options": [
+        {
+          "value": "product",
+          "label": "Product"
+        },
+        {
+          "value": "collection",
+          "label": "Collection"
+        },
+        {
+          "value": "image",
+          "label": "Image"
+        },
+        {
+          "value": "video",
+          "label": "Video"
+        }
+      ],
+      "default": "image"
+    },
+    {
+      "type": "product",
+      "id": "item_3_product",
+      "label": "Item 3 product"
+    },
+    {
+      "type": "collection",
+      "id": "item_3_collection",
+      "label": "Item 3 collection"
+    },
+    {
+      "type": "image_picker",
+      "id": "item_3_image",
+      "label": "Item 3 image"
+    },
+    {
+      "type": "url",
+      "id": "item_3_video_url",
+      "label": "Item 3 video URL (MP4)"
+    },
+    {
+      "type": "select",
+      "id": "item_4_type",
+      "label": "Item 4 type",
+      "options": [
+        {
+          "value": "product",
+          "label": "Product"
+        },
+        {
+          "value": "collection",
+          "label": "Collection"
+        },
+        {
+          "value": "image",
+          "label": "Image"
+        },
+        {
+          "value": "video",
+          "label": "Video"
+        }
+      ],
+      "default": "product"
+    },
+    {
+      "type": "product",
+      "id": "item_4_product",
+      "label": "Item 4 product"
+    },
+    {
+      "type": "collection",
+      "id": "item_4_collection",
+      "label": "Item 4 collection"
+    },
+    {
+      "type": "image_picker",
+      "id": "item_4_image",
+      "label": "Item 4 image"
+    },
+    {
+      "type": "url",
+      "id": "item_4_video_url",
+      "label": "Item 4 video URL (MP4)"
+    },
+    {
+      "type": "header",
+      "content": "Style Settings"
+    },
+    {
+      "type": "select",
+      "id": "media_aspect_ratio",
+      "label": "Media aspect ratio",
+      "options": [
+        {
+          "value": "square",
+          "label": "Square (1:1)"
+        },
+        {
+          "value": "portrait",
+          "label": "Portrait (4:5)"
+        }
+      ],
+      "default": "square"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_vendor",
+      "label": "Show product vendor",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "min": 0,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Border radius",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "padding",
+      "min": 0,
+      "max": 60,
+      "step": 4,
+      "unit": "px",
+      "label": "Section padding",
+      "default": 20
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "card_background_color",
+      "label": "Card background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "card_text_color",
+      "label": "Card text color",
+      "default": "#121212"
+    },
+    {
+      "type": "color",
+      "id": "button_background_color",
+      "label": "Button background color",
+      "default": "#121212"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "text",
+      "id": "custom_class",
+      "label": "Custom class"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Collage Showcase"
+    }
+  ]
+}
+{% endschema %}

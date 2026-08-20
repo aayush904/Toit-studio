@@ -1,0 +1,156 @@
+{% schema %}
+{
+  "name": "Collections List - Basmil",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Shop by Collection"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "View all collections"
+    },
+    {
+      "type": "number",
+      "id": "slides_per_view",
+      "label": "Slides per view",
+      "default": 4
+    },
+    {
+      "type": "checkbox",
+      "id": "arrows",
+      "label": "Show arrows",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "dots",
+      "label": "Show dots",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "loop",
+      "label": "Loop",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "Autoplay",
+      "default": false
+    },
+    {
+      "type": "number",
+      "id": "autoplay_speed",
+      "label": "Autoplay speed (ms)",
+      "default": 3000
+    }
+  ],
+  "blocks": [
+    {
+      "type": "collection",
+      "name": "Collection",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Collections List - Basmil"
+    }
+  ]
+}
+{% endschema %}
+<style>
+  #shopify-section-{{ section.id }}{
+      .slick-track {
+          margin: 0 -10px;
+      }
+      .slick-slide {
+          margin: 0 10px;
+      }
+  }
+
+  section-header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  h3.card__heading{
+    font-size: 16.64px;
+  }
+</style>
+<div>
+  <section-header>
+    {% if section.settings.heading != blank %}
+      <h2 class="section-title">{{ section.settings.heading }}</h2>
+    {% endif %}
+    {% if section.settings.description != blank %}
+      <p class="section-description basmil-collection-slider__description" style="margin-bottom: 1rem;">
+        {{ section.settings.description }}
+      </p>
+    {% endif %}
+
+    {% if section.settings.button_link != blank and section.settings.button_label != blank %}
+      <div class="collection-slider__button-wrapper" style="margin-bottom: 1.5rem;">
+        <a href="{{ section.settings.button_link }}" class="button basmil-collection-slider__button">
+          {{- section.settings.button_label -}}
+        </a>
+      </div>
+    {% endif %}
+  </section-header>
+
+  <div>
+    <div
+      class="basmil-collection-slider page-width animate--slide-in"
+      data-slick-slider
+      data-slidesperview="{{ section.settings.slides_per_view }}"
+      data-arrows="{{ section.settings.arrows }}"
+      data-dots="{{ section.settings.dots }}"
+      data-loop="{{ section.settings.loop }}"
+      data-autoplay="{{ section.settings.autoplay }}"
+      data-autoplayspeed="{{ section.settings.autoplay_speed }}"
+      style="overflow: hidden;"
+    >
+      {% for block in section.blocks %}
+        {% assign collection = collections[block.settings.collection] %}
+        {% if collection %}
+          <div>
+            {%- assign placeholder_image_index = forloop.index0 | modulo: 4 | plus: 1 -%}
+            {%- assign placeholder_image = 'collection-apparel-' | append: placeholder_image_index -%}
+            {% render 'card-collection',
+              card_collection: block.settings.collection,
+              media_aspect_ratio: 'adapt',
+              columns: 1,
+              placeholder_image: placeholder_image
+            %}
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</div>

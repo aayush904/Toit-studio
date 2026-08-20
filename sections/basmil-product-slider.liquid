@@ -1,0 +1,284 @@
+{% schema %}
+{
+  "name": "Product Slider - Basmil",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    },
+    {
+      "type": "html",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Featured Products"
+    },
+    {
+      "type": "liquid",
+      "id": "subheading",
+      "label": "Subheading (HTML)"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Header Description"
+    },
+    {
+      "type": "url",
+      "id": "heading_link",
+      "label": "Heading Link (Collection URL)"
+    },
+    {
+      "type": "number",
+      "id": "slides_per_view",
+      "label": "Slides per view",
+      "default": 4
+    },
+    {
+      "type": "checkbox",
+      "id": "arrows",
+      "label": "Show arrows",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "dots",
+      "label": "Show dots",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "loop",
+      "label": "Loop",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "Autoplay",
+      "default": false
+    },
+    {
+      "type": "number",
+      "id": "autoplay_speed",
+      "label": "Autoplay speed (ms)",
+      "default": 3000
+    },
+    {
+      "type": "checkbox",
+      "id": "show_collection_slide",
+      "label": "Show collection slide as first slide",
+      "default": false
+    },
+    {
+      "type": "image_picker",
+      "id": "collection_slide_image",
+      "label": "Collection slide background image"
+    },
+    {
+      "type": "text",
+      "id": "collection_slide_heading",
+      "label": "Collection slide heading",
+      "default": "Shop our collections"
+    },
+    {
+      "type": "url",
+      "id": "collection_slide_button_link",
+      "label": "Collection slide button link"
+    },
+    {
+      "type": "text",
+      "id": "collection_slide_button_label",
+      "label": "Collection slide button label",
+      "default": "View Collection"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Slider - Basmil"
+    }
+  ]
+}
+{% endschema %}
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+{{ 'component-price.css' | asset_url | stylesheet_tag }}
+
+{{ 'quick-add.css' | asset_url | stylesheet_tag }}
+
+<div class="basmil-product-slider-section">
+  {% if section.settings.heading != blank
+    or section.settings.subheading != blank
+    or section.settings.description != blank
+  %}
+    <div class="section-product-slider-heading">
+      {% if section.settings.heading %}
+        <h2 class="section-title">
+          {% if section.settings.heading_link != blank %}
+            <a href="{{ section.settings.heading_link }}">{{ section.settings.heading }}</a>
+          {% else %}
+            {{ section.settings.heading }}
+          {% endif %}
+        </h2>
+      {% endif %}
+      {% if section.settings.subheading != blank %}
+        <h3 class="basmil-product-slider__subheading">{{ section.settings.subheading }}</h3>
+      {% endif %}
+      {% if section.settings.description != blank %}
+        <p class="basmil-product-slider__description">{{ section.settings.description }}</p>
+      {% endif %}
+    </div>
+  {% endif %}
+
+  <div
+    class="basmil-product-slider page-width animate--slide-in"
+    data-slick-slider
+    data-slidesperview="{{ section.settings.slides_per_view }}"
+    data-arrows="{{ section.settings.arrows }}"
+    data-dots="{{ section.settings.dots }}"
+    data-loop="{{ section.settings.loop }}"
+    data-autoplay="{{ section.settings.autoplay }}"
+    data-autoplayspeed="{{ section.settings.autoplay_speed }}"
+    style="overflow: hidden; "
+  >
+    {% if section.settings.show_collection_slide and section.settings.collection_slide_image != blank %}
+      <div
+        class="collection-slide collection-slide--main slick-double-width slick-first-slide"
+      >
+        {% assign media_item = section.settings.collection_slide_image %}
+        <img
+          class="slide"
+          srcset="
+            {%- if media_item.width >= 165 -%}{{ media_item | image_url: width: 165 }} 165w,{%- endif -%}
+            {%- if media_item.width >= 360 -%}{{ media_item | image_url: width: 360 }} 360w,{%- endif -%}
+            {%- if media_item.width >= 533 -%}{{ media_item | image_url: width: 533 }} 533w,{%- endif -%}
+            {%- if media_item.width >= 720 -%}{{ media_item | image_url: width: 720 }} 720w,{%- endif -%}
+            {%- if media_item.width >= 940 -%}{{ media_item | image_url: width: 940 }} 940w,{%- endif -%}
+            {%- if media_item.width >= 1066 -%}{{ media_item | image_url: width: 1066 }} 1066w,{%- endif -%}
+            {{ media_item | image_url }} {{ media_item.width }}w
+          "
+          src="{{ media_item | image_url: width: 533 }}"
+          sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 130 | divided_by: 4 }}px, (min-width: 990px) calc((100vw - 130px) / 4), (min-width: 768px) calc((100vw - 120px) / 3), calc((100vw - 35px) / 2)"
+          alt="{{ media_item.alt | escape }}"
+          loading="lazy"
+          width="{{ media_item.width }}"
+          height="{{ media_item.height }}"
+        >
+        <div
+          class="collection-slide__content"
+          style="text-align:center; padding:2rem; border-radius:1rem;"
+        >
+          {% if section.settings.collection_slide_heading %}
+            <h3 class="collection-slide__heading" style="color:#fff;">
+              {{ section.settings.collection_slide_heading }}
+            </h3>
+          {% endif %}
+          {% if section.settings.collection_slide_button_link and section.settings.collection_slide_button_label %}
+            <a
+              href="{{ section.settings.collection_slide_button_link }}"
+              class="button collection-slide__button"
+              style="margin-top:1rem; "
+            >
+              {{- section.settings.collection_slide_button_label -}}
+            </a>
+          {% endif %}
+        </div>
+      </div>
+    {% endif %}
+    {% assign products = section.settings.collection.products %}
+    {% assign skip_styles = false %}
+    {% for product in products %}
+      <div
+        class="scroll-trigger animate--slide-in"
+        style="--animation-order: {{ forloop.index }};"
+      >
+        {% render 'card-product',
+          card_product: product,
+          media_aspect_ratio: 'portrait',
+          image_shape: 'default',
+          show_secondary_image: true,
+          show_rating: true,
+          skip_styles: skip_styles,
+          section_id: section.id,
+          quick_add: 'standard'
+        %}
+      </div>
+      {% assign skip_styles = true %}
+    {% endfor %}
+  </div>
+</div>
+
+<style>
+  .slick-double-width {
+    min-width: calc(100% / 5) !important;
+    max-width: calc(100% / 5) !important;
+    min-height: 100%;
+
+    position: relative;
+  }
+  .slick-first-slide img {
+    max-width: 100% !important;
+    height: auto;
+    min-height: 100%;
+    object-fit: cover;
+    object-position: center;
+    aspect-ratio: 16 / 9;
+    border-radius: 8px;
+  }
+
+  .slick-first-slide .collection-slide__content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 1;
+    transform: translate(-50%, -50%);
+  }
+
+  .slick-track {
+    display: flex !important;
+  }
+
+  .section-product-slider-heading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  .basmil-product-slider__subheading {
+    margin-bottom: 0.5rem;
+  }
+
+  .basmil-product-slider__description {
+    order: 3;
+    margin: 0;
+  }
+
+  .section-product-slider-heading h2 {
+    margin: 0;
+    order: 2;
+    margin-bottom: 20px;
+  }
+  .section-product-slider-heading h3 {
+    margin: 0;
+    order: 1;
+    margin-bottom: 26px;
+  }
+
+  @media screen and (max-width: 1024px) {
+    .slick-double-width {
+      min-width: auto !important;
+      max-width: auto !important;
+      height: auto;
+    }
+
+    .slick-first-slide img {
+      aspect-ratio: auto;
+      width: 100%;
+      height: 100%;
+      min-height: 100%;
+    }
+  }
+</style>
+
+<script src="{{ 'quick-add.js' | asset_url }}" defer="defer"></script>

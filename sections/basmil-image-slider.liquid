@@ -1,0 +1,296 @@
+<!-- sections/marquee-logos.liquid -->
+<style>
+  .marquee-container {
+    width: 100%;
+    overflow: hidden;
+    background: #ffffff;
+    padding: 40px 0;
+  }
+
+  .marquee-track {
+    display: flex;
+    width: fit-content;
+    animation: scroll {{ section.settings.animation_speed | default: 30 }}s linear infinite;
+  }
+
+  .marquee-item {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 60px;
+    height: 80px;
+    font-size: 24px;
+    font-weight: 300;
+    color: #333333;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .marquee-item.featured {
+    font-size: 14px;
+    color: #666666;
+    padding: 0 20px;
+  }
+
+  .marquee-item.logo {
+    font-size: 28px;
+    font-weight: 500;
+    color: #000000;
+  }
+
+  .marquee-item.design-patrol {
+    font-size: 16px;
+    color: #888888;
+    font-weight: 400;
+  }
+
+  .marquee-item img {
+    max-height: 40px;
+    width: auto;
+    object-fit: contain;
+  }
+
+  @keyframes scroll {
+    0% {
+      transform: translateX(-50%);
+    }
+    100% {
+      transform: translateX(0%);
+    }
+  }
+
+  .marquee-track:hover {
+    animation-play-state: {% if section.settings.pause_on_hover %}paused{% else %}running{% endif %};
+  }
+
+  /* Responsive design */
+  @media (max-width: 768px) {
+    .marquee-item {
+      padding: 0 30px;
+      font-size: 20px;
+    }
+
+    .marquee-item.featured {
+      font-size: 12px;
+      padding: 0 15px;
+    }
+
+    .marquee-item.logo {
+      font-size: 24px;
+    }
+
+    .marquee-item.design-patrol {
+      font-size: 14px;
+    }
+
+    .marquee-item img {
+      max-height: 30px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .marquee-container {
+      padding: 20px 0;
+    }
+
+    .marquee-item {
+      padding: 0 20px;
+      font-size: 18px;
+      height: 60px;
+    }
+
+    .marquee-item.featured {
+      font-size: 10px;
+      padding: 0 10px;
+    }
+
+    .marquee-item.logo {
+      font-size: 20px;
+    }
+
+    .marquee-item.design-patrol {
+      font-size: 12px;
+    }
+
+    .marquee-item img {
+      max-height: 25px;
+    }
+  }
+</style>
+
+<section class="marquee-section" id="marquee-{{ section.id }}">
+  <div class="marquee-container">
+    <div class="marquee-track">
+      {% comment %} Calculate repetitions needed for smooth scrolling {% endcomment %}
+      {% assign min_items = 20 %}
+      {% assign blocks_count = section.blocks.size %}
+      {% assign repetitions = 1 %}
+      {% if blocks_count > 0 %}
+        {% assign repetitions = min_items | divided_by: blocks_count | plus: 1 %}
+      {% endif %}
+
+      {% comment %} Render items multiple times for seamless loop {% endcomment %}
+      {% for i in (1..2) %}
+        {% for rep in (1..repetitions) %}
+          {% for block in section.blocks %}
+            {% if block.type == 'logo_item' %}
+              {% if block.settings.logo_image != blank %}
+                <div class="marquee-item logo">
+                  <img
+                    src="{{ block.settings.logo_image | image_url: width: 200 }}"
+                    alt="{{ block.settings.logo_image.alt | default: block.settings.logo_text }}"
+                    loading="lazy"
+                    width="{{ block.settings.logo_image.width | default: 200 }}"
+                    height="{{ block.settings.logo_image.height | default: 200 }}"
+                  >
+                </div>
+              {% elsif block.settings.logo_text != blank %}
+                <div class="marquee-item {{ block.settings.text_style }}">
+                  {{ block.settings.logo_text }}
+                </div>
+              {% endif %}
+            {% elsif block.type == 'featured_text' %}
+              <div class="marquee-item featured">
+                {{ block.settings.featured_text }}
+              </div>
+            {% endif %}
+          {% endfor %}
+        {% endfor %}
+      {% endfor %}
+
+      {% comment %} Fallback content if no blocks are added {% endcomment %}
+      {% if section.blocks.size == 0 %}
+        {% for i in (1..2) %}
+          <div class="marquee-item logo">DECOR</div>
+          <div class="marquee-item featured">Featured In</div>
+          <div class="marquee-item design-patrol">DESIGN PATROL</div>
+          <div class="marquee-item featured">Featured In</div>
+          <div class="marquee-item logo">ELLE DECOR</div>
+          <div class="marquee-item featured">Featured In</div>
+          <div class="marquee-item design-patrol">DESIGN PATROL</div>
+          <div class="marquee-item featured">Featured In</div>
+          <div class="marquee-item logo">ELLE DECOR</div>
+          <div class="marquee-item featured">Featured In</div>
+          <div class="marquee-item design-patrol">DESIGN PATROL</div>
+        {% endfor %}
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Image Slider - Basmil",
+  "tag": "section",
+  "class": "section-marquee",
+  "settings": [
+    {
+      "type": "range",
+      "id": "animation_speed",
+      "min": 10,
+      "max": 60,
+      "step": 5,
+      "default": 30,
+      "label": "Animation Speed (seconds)",
+      "info": "Higher number = slower animation"
+    },
+    {
+      "type": "checkbox",
+      "id": "pause_on_hover",
+      "default": true,
+      "label": "Pause animation on hover"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "logo_item",
+      "name": "Logo Item",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "logo_image",
+          "label": "Logo Image"
+        },
+        {
+          "type": "text",
+          "id": "logo_text",
+          "label": "Logo Text",
+          "info": "Use this if you don't have an image"
+        },
+        {
+          "type": "select",
+          "id": "text_style",
+          "label": "Text Style",
+          "options": [
+            {
+              "value": "logo",
+              "label": "Logo Style"
+            },
+            {
+              "value": "design-patrol",
+              "label": "Design Patrol Style"
+            }
+          ],
+          "default": "logo"
+        }
+      ]
+    },
+    {
+      "type": "featured_text",
+      "name": "Featured Text",
+      "settings": [
+        {
+          "type": "text",
+          "id": "featured_text",
+          "label": "Featured Text",
+          "default": "Featured In"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Image Slider - Basmil",
+      "blocks": [
+        {
+          "type": "logo_item",
+          "settings": {
+            "logo_text": "DECOR"
+          }
+        },
+        {
+          "type": "featured_text"
+        },
+        {
+          "type": "logo_item",
+          "settings": {
+            "logo_text": "DESIGN PATROL",
+            "text_style": "design-patrol"
+          }
+        },
+        {
+          "type": "featured_text"
+        },
+        {
+          "type": "logo_item",
+          "settings": {
+            "logo_text": "ELLE DECOR"
+          }
+        },
+        {
+          "type": "featured_text"
+        },
+        {
+          "type": "logo_item",
+          "settings": {
+            "logo_text": "DESIGN PATROL",
+            "text_style": "design-patrol"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

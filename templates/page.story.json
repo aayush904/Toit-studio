@@ -1,0 +1,201 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "basmil_video_7JBjGU": {
+      "type": "basmil-video",
+      "custom_css": [],
+      "name": "Background Video - Basmil",
+      "settings": {
+        "title": "Our Story",
+        "subtitle": "",
+        "description": "",
+        "background_video_type": "local",
+        "background_youtube_url": "https://www.youtube.com/watch?v=pWg1vgJ5Fa8",
+        "background_local_video": "shopify://files/videos/dc3df06d2f1c48af98902d5198338d8a.mp4",
+        "modal_video_type": "youtube",
+        "modal_youtube_url": "https://www.youtube.com/watch?v=pWg1vgJ5Fa8"
+      }
+    },
+    "rich_text_edJKHX": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_9kfPxr": {
+          "type": "heading",
+          "settings": {
+            "heading": "A Message from Our Founders",
+            "heading_size": "h1"
+          }
+        },
+        "text_YrENir": {
+          "type": "text",
+          "settings": {
+            "text": "<p>At Muun Home, my brother and I set out to create something deeply personal—a brand that merges our love for Scandinavian minimalism with the vibrant colors and rich heritage of Indian craftsmanship. Growing up, we were surrounded by the beauty of Indian art and traditions, but we always felt there was a way to present it through a modern lens.</p><p>Muun Home is about more than just decor; it’s about celebrating the artistry of skilled Indian craftspeople. We work closely with artisans from Agra, Moradabad, and Delhi, combining traditional techniques with contemporary design to create pieces that feel timeless yet fresh. From hand-finishing every detail to sourcing sustainably, we pour intention into every step of the process.</p><p>Our goal is simple: to craft objects that not only elevate spaces but also tell a story—one of culture, craftsmanship, and a deep respect for the past while embracing the possibilities of the future.</p><p>Through Muun Home, we hope to bring a touch of art into everyday life, one piece at a time.</p><p><strong>Dhruv and Jayant Talwar</strong></p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_9kfPxr",
+        "text_YrENir"
+      ],
+      "custom_css": [
+        "p:nth-child(2) {margin-right: 20px;}",
+        "p:nth-child(3) {vertical-align: top;}",
+        "p:nth-child(3),p:nth-child(2) {max-width: 48%; display: inline-block;}",
+        ".rich-text__blocks {max-width: 980px;}",
+        "@media (max-width: 768px) {p:nth-child(3), p:nth-child(2) {max-width: 100%; padding: 0; }}"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 0
+      }
+    },
+    "image_with_text_htK9Fi": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_ggM7er": {
+          "type": "heading",
+          "settings": {
+            "heading": "Behind the Scenes",
+            "heading_size": "h1"
+          }
+        },
+        "text_pLm6JK": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Handcrafted by skilled artisans from different parts of India, every muun product undergoes a meticulous process of design, production, quality control, and art direction before being delivered to you.</p>",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": [
+        "heading_ggM7er",
+        "text_pLm6JK"
+      ],
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/Screenshot_2024-03-12_at_4.48.14_PM.webp",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "image_behavior": "none",
+        "content_layout": "no-overlap",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "center",
+        "mobile_content_alignment": "center",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "basmil_product_slider_ciMay7": {
+      "type": "basmil-product-slider",
+      "custom_css": [
+        ".basmil-product-slider-section {padding-top: 60px;}",
+        ".slick-first-slide img {aspect-ratio: 4/5.5;}",
+        ".slick-double-width {max-width: calc(100% / 6) !important; min-width: calc(100% / 6) !important;}",
+        ".section-product-slider-heading * {text-align: start; width: 100%; max-width: 1600px;}",
+        "h2 {font-size: 36px; text-align: start;}",
+        "@media (max-width: 1440px) {h2 {font-size: 26.88px; }}",
+        "@media (max-width: 768px) {h2 {font-size: 22.4px; padding: 0 20px; }}"
+      ],
+      "name": "Product Slider - Basmil",
+      "settings": {
+        "collection": "frontpage",
+        "heading": "Shop Jayant's Favourites",
+        "subheading": "<script>\n  $(function () {\n    const $section = $('#shopify-section-{{ section.id }}');\n    const $first   = $section.find('.slick-first-slide');\n    const $normalSlide= $section.find('.slick-active:not(.slick-first-slide)');\n    const styleId  = 'slick-first-slide-style-{{ section.id }}';\n\n    function applyWidth () {\n      if (!$first.length) return;\n      const w = $normalSlide.outerWidth();\n      const css = `#shopify-section-{{ section.id }} { .slick-first-slide{width:${w}px;min-width:${w}px!important;max-width:${w}px!important;}}`;\n      let $style = $('#' + styleId);\n      if ($style.length) {\n        $style.text(css);\n      } else {\n        $('<style>', { id: styleId }).text(css).appendTo('footer');\n      }\n    }\n\n    applyWidth();\n\n    let t;\n    $(window).on('resize orientationchange load', () => {\n      clearTimeout(t);\n      t = setTimeout(applyWidth, 100);\n    });\n  });\n</script>",
+        "description": "",
+        "heading_link": "",
+        "slides_per_view": 4,
+        "arrows": true,
+        "dots": false,
+        "loop": false,
+        "autoplay": false,
+        "autoplay_speed": 3000,
+        "show_collection_slide": true,
+        "collection_slide_image": "shopify://shop_images/13_ed48ffd7-8fbd-4725-bc5b-1e11c51d4c9e.webp",
+        "collection_slide_heading": "",
+        "collection_slide_button_link": "",
+        "collection_slide_button_label": "View Collection"
+      }
+    },
+    "basmil_product_slider_hktzaU": {
+      "type": "basmil-product-slider",
+      "custom_css": [
+        ".basmil-product-slider-section {padding-top: 60px; padding-bottom: 60px;}",
+        ".slick-first-slide img {aspect-ratio: 4/5.5;}",
+        ".slick-double-width {max-width: calc(100% / 6) !important; min-width: calc(100% / 6) !important;}",
+        ".section-product-slider-heading * {text-align: start; width: 100%; max-width: 1600px;}",
+        "h2 {font-size: 36px; text-align: start;}",
+        "@media (max-width: 1440px) {h2 {font-size: 26.88px; }}",
+        "@media (max-width: 768px) {h2 {font-size: 22.4px; padding: 0 20px; }}"
+      ],
+      "name": "Product Slider - Basmil",
+      "settings": {
+        "collection": "frontpage",
+        "heading": "Shop Jayant's Favourites",
+        "subheading": "<script>\n  $(function () {\n    const $section = $('#shopify-section-{{ section.id }}');\n    const $first   = $section.find('.slick-first-slide');\n    const $normalSlide= $section.find('.slick-active:not(.slick-first-slide)');\n    const styleId  = 'slick-first-slide-style-{{ section.id }}';\n\n    function applyWidth () {\n      if (!$first.length) return;\n      const w = $normalSlide.outerWidth();\n      const css = `#shopify-section-{{ section.id }} { .slick-first-slide{width:${w}px;min-width:${w}px!important;max-width:${w}px!important;}}`;\n      let $style = $('#' + styleId);\n      if ($style.length) {\n        $style.text(css);\n      } else {\n        $('<style>', { id: styleId }).text(css).appendTo('footer');\n      }\n    }\n\n    applyWidth();\n\n    let t;\n    $(window).on('resize orientationchange load', () => {\n      clearTimeout(t);\n      t = setTimeout(applyWidth, 100);\n    });\n  });\n</script>",
+        "description": "",
+        "heading_link": "",
+        "slides_per_view": 4,
+        "arrows": true,
+        "dots": false,
+        "loop": false,
+        "autoplay": false,
+        "autoplay_speed": 3000,
+        "show_collection_slide": true,
+        "collection_slide_image": "shopify://shop_images/13_ed48ffd7-8fbd-4725-bc5b-1e11c51d4c9e.webp",
+        "collection_slide_heading": "",
+        "collection_slide_button_link": "",
+        "collection_slide_button_label": "View Collection"
+      }
+    },
+    "basmil_video_TLGC4w": {
+      "type": "basmil-video",
+      "custom_css": [
+        "button {display: none;}"
+      ],
+      "name": "Background Video - Basmil",
+      "settings": {
+        "title": "",
+        "subtitle": "",
+        "description": "",
+        "background_video_type": "local",
+        "background_youtube_url": "https://www.youtube.com/watch?v=pWg1vgJ5Fa8",
+        "background_local_video": "shopify://files/videos/dc3df06d2f1c48af98902d5198338d8a.mp4",
+        "modal_video_type": "youtube",
+        "modal_youtube_url": "https://www.youtube.com/watch?v=pWg1vgJ5Fa8"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "basmil_video_7JBjGU",
+    "rich_text_edJKHX",
+    "image_with_text_htK9Fi",
+    "basmil_product_slider_ciMay7",
+    "basmil_product_slider_hktzaU",
+    "basmil_video_TLGC4w"
+  ]
+}

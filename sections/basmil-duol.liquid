@@ -1,0 +1,297 @@
+{% comment %}
+  Minimal Synced Sliders Section
+  - Section settings: title, subtitle, description (header), footer description, footer button
+  - Main slider: heading only
+  - Nav slider: image only, active slide marked by a line at the bottom
+  - Minimal design, no box-shadow or border-radius except for nav card (with shadow)
+{% endcomment %}
+
+<div class="minimal-synced-sliders-section">
+  <div class="minimal-synced-sliders-header">
+    {% if section.settings.section_title != blank %}
+      <h2 class="minimal-synced-sliders-title">{{ section.settings.section_title }}</h2>
+    {% endif %}
+    {% if section.settings.section_subtitle != blank %}
+      <div class="minimal-synced-sliders-subtitle">{{ section.settings.section_subtitle }}</div>
+    {% endif %}
+    {% if section.settings.section_description != blank %}
+      <div class="minimal-synced-sliders-description">{{ section.settings.section_description }}</div>
+    {% endif %}
+  </div>
+  <div class="minimal-synced-sliders-wrapper">
+    <div class="minimal-main-slider-container">
+      <div
+        class="minimal-main-slider"
+        data-slick-slider
+        data-slidesperview="1"
+        data-slidestoscroll="1"
+        data-asnavfor=".minimal-nav-slider-{{ section.id }}"
+        {% comment %} data-fade="false" {% endcomment %}
+        data-vertical="true"
+        {% comment %} data-loop="true" {% endcomment %}
+        {% comment %} data-infinite="true" {% endcomment %}
+        data-verticalswiping="true"
+      >
+        {% for block in section.blocks %}
+          <div class="minimal-main-slide" {{ block.shopify_attributes }}>
+            {% if block.settings.main_heading != blank %}
+              <div class="minimal-main-slide-heading">{{ block.settings.main_heading }}</div>
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="minimal-nav-slider-container">
+      <div
+        class="minimal-nav-slider minimal-nav-slider-{{ section.id }}"
+        data-asnavfor=".minimal-main-slider"
+        data-centerpadding="10px"
+        data-focusonselect="true"
+        data-slidestoscroll="1"
+        data-draggable="true"
+        data-centermode="true"
+        data-slidesperview="7"
+        
+        data-autoplay="true"
+        data-autoplayspeed="2000"
+        data-slick-slider
+        data-dots="false"
+        data-infinite="true"
+        data-loop="true"
+      >
+        {% for block in section.blocks %}
+          <div class="minimal-nav-slide" {{ block.shopify_attributes }}>
+            {% if block.settings.nav_image %}
+              <div class="minimal-nav-slide-card">
+                <img
+                  src="{{ block.settings.nav_image | image_url:  height: 60 }}"
+                  alt="{{ block.settings.nav_image.alt }}"
+                  loading="lazy"
+                  width="80"
+                  height="80"
+                >
+              </div>
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  <div class="minimal-synced-sliders-footer">
+    {% if section.settings.footer_description != blank %}
+      <div class="minimal-synced-sliders-footer-description">{{ section.settings.footer_description }}</div>
+    {% endif %}
+    {% if section.settings.footer_button_label != blank and section.settings.footer_button_link != blank %}
+      <a href="{{ section.settings.footer_button_link }}" class="minimal-synced-sliders-footer-btn">
+        {{- section.settings.footer_button_label -}}
+      </a>
+    {% endif %}
+  </div>
+</div>
+
+<style>
+     #shopify-section-{{ section.id }} {
+
+       [data-slick-slider].minimal-main-slider .slick-track, .slick-list{
+           display: block!important;
+           overflow: hidden!important;
+       }
+
+       [data-slick-slider].minimal-main-slider .slick-track, .slick-list{
+           display: block!important;
+           overflow: hidden!important;
+       }
+
+       .minimal-synced-sliders-section {
+         padding: 2rem 0 2.5rem 0;
+         text-align: center;
+         background: #fff;
+       }
+       .minimal-synced-sliders-header {
+         margin-bottom: 0rem;
+       }
+       .minimal-synced-sliders-title {
+         font-size: 2.66rem;
+         font-weight: 700;
+         margin-bottom: 0.5rem;
+       }
+       .minimal-synced-sliders-subtitle {
+         font-size: 1.52rem;
+         color: #0d0d0d;
+       }
+       .minimal-synced-sliders-description {
+         font-size: 1rem;
+         color: #0d0d0d;
+         margin-bottom: 1.2rem;
+       }
+
+       .minimal-main-slider-container {
+         margin-bottom: 1.5rem;
+       }
+
+       .minimal-main-slide {
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         opacity:0;
+         transition: opacity 1s ease;
+         float:none;
+         min-height:80px;
+         height:max-content;
+         user-select: none;
+       }
+       .minimal-main-slide * , .minimal-nav-slider *{
+         user-drag: none;
+         -webkit-user-drag: none;
+         -webkit-touch-callout: none;
+         -webkit-user-select: none;
+       }
+
+       .minimal-main-slide.slick-active {
+         opacity: 1;
+       }
+
+       .minimal-main-slide-heading {
+         font-size: 3rem;
+         font-weight: 500;
+         color: #222;
+       }
+       .minimal-nav-slider-container {
+         margin-top: 0.5rem;
+       }
+       .minimal-nav-slider {
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         max-width: 88.5%;
+         margin: 0 auto;
+
+         .slick-list {
+           max-width:100%;
+         }
+       }
+
+       .minimal-nav-slider .slick-list {
+           overflow: visible!important;
+       }
+
+       .minimal-nav-slide {
+         padding: 0 0.5rem;
+         cursor: pointer;
+       }
+       .minimal-nav-slide-card {
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         margin: 0 auto;
+         padding:1.5rem;
+       position: relative;
+       }
+       .minimal-nav-slide-card:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+  }
+       .minimal-nav-slide-card img {
+         height: 25px;
+         max-width:100%;
+         width: auto;
+         object-fit: contain;
+       }
+       .minimal-nav-slide.slick-active .minimal-nav-slide-card {
+         position: relative;
+       }
+
+
+       .minimal-nav-slide.slick-active .minimal-nav-slide-card:after {
+         content: '';
+         display: block;
+         position: absolute;
+         left: 50%;
+         transform: translateX(-50%);
+         right: 0;
+         bottom: 0;
+         height: 2px;
+         background: #222;
+         width:0;
+       }
+       .minimal-nav-slide.slick-active.slick-center .minimal-nav-slide-card:after {
+           transition: width 0.5s ease;
+       }
+
+       .minimal-nav-slide.slick-active.slick-center .minimal-nav-slide-card:after {
+         width: 35%;
+       }
+
+       .minimal-synced-sliders-footer {
+         margin-top: 3rem;
+       }
+       .minimal-synced-sliders-footer-description {
+         font-size: 1.52rem;
+         color: #0d0d0d;
+         margin-bottom: 1rem;
+       }
+       .minimal-synced-sliders-footer-btn {
+         display: inline-block;
+         padding: 0.5rem 1.5rem;
+         border: none;
+         border-radius: 2rem;
+         font-size: 1.52rem;
+         font-weight: 500;
+         color: #0d0d0d;
+         text-decoration: none;
+         background: transparent;
+         border: 1px solid #0d0d0d;
+         transition: background 0.2s, color 0.2s;
+         text-transform: uppercase;
+       }
+
+       .minimal-synced-sliders-footer-btn:hover {
+         background: #0d0d0d;
+         color: #fff;
+       }
+     }
+</style>
+
+{% schema %}
+{
+  "name": "Find Our Product - Basmil",
+
+  "settings": [
+    { "type": "text", "id": "section_title", "label": "Section Title", "default": "Find Our Product" },
+    { "type": "text", "id": "section_subtitle", "label": "Section Subtitle", "default": "Also Find Our Products at" },
+    { "type": "textarea", "id": "section_description", "label": "Section Description" },
+    { "type": "textarea", "id": "footer_description", "label": "Footer Description" },
+    { "type": "text", "id": "footer_button_label", "label": "Footer Button Label", "default": "Contact Us" },
+    { "type": "url", "id": "footer_button_link", "label": "Footer Button Link" }
+  ],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Slide",
+      "settings": [
+        { "type": "text", "id": "main_heading", "label": "Main Slide Heading", "default": "Main Slide Heading" },
+        { "type": "image_picker", "id": "nav_image", "label": "Nav Image" }
+      ]
+    }
+  ],
+  "max_blocks": 12,
+  "presets": [
+    {
+      "name": "Find Our Product - Basmil",
+
+      "blocks": [
+        { "type": "slide", "settings": { "main_heading": "Welcome to Our Store" } },
+        { "type": "slide", "settings": { "main_heading": "New Arrivals" } },
+        { "type": "slide", "settings": { "main_heading": "Special Offers" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

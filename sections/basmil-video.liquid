@@ -1,0 +1,456 @@
+{% comment %}
+  Video Background Section with Modal
+  - Supports both YouTube and local videos
+  - Background video with play button overlay
+  - Modal opens with video controls and sound
+  - Fully responsive design
+{% endcomment %}
+
+<style>
+  .video-background-section {
+    position: relative;
+    width: 100%;
+    height: 550px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #000;
+  }
+
+  .video-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+  }
+
+  .video-background iframe {
+    width: 100vw;
+    height: calc(100vw * 0.5625);
+    min-height: 100%;
+    min-width: 177.77vh;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+
+  .video-overlay {
+    position: absolute;
+    top: 0;
+    display: block !important;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.25);
+    z-index: 2;
+  }
+
+  .video-content {
+    position: relative;
+    z-index: 3;
+    text-align: center;
+    color: white;
+    max-width: 750px;
+    padding: 0 20px;
+  }
+
+  .play-button {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: transparent;
+    border: 3px solid rgba(255, 255, 255, 0.8);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 16px auto;
+    transition: all 0.3s ease;
+    position: relative;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  }
+
+  .play-button:hover {
+    border: 3px solid rgba(255, 255, 255, 1);
+    transform: scale(1.05);
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4);
+  }
+
+  .play-button::after {
+    content: '';
+    transition: all 0.3s ease;
+    width: 0;
+    height: 0;
+    border-left: 16px solid rgba(255, 255, 255, 0.8);
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    margin-left: 3px;
+  }
+
+  .play-button:hover:after {
+    border-left: 16px solid rgba(255, 255, 255, 1);
+  }
+  .video-title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 0;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+    letter-spacing: -0.02em;
+    color: #fff;
+    line-height: 1.2;
+  }
+
+  .video-subtitle {
+    color: #fff;
+    font-weight: 400;
+    font-size: 1.95rem;
+    margin-bottom: 30px;
+    margin-top: 0;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+  }
+
+  .video-description {
+    font-size: 1.1rem;
+    line-height: 1.5;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+    font-weight: 400;
+    max-width: 700px;
+    margin: 0 auto;
+    opacity: 0.95;
+  }
+
+  /* Modal Styles */
+  .video-modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    animation: fadeIn 0.3s ease;
+  }
+
+  .video-modal.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .modal-content {
+    position: relative;
+    width: 90%;
+    max-width: 1000px;
+    background: #000;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .modal-video {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .modal-video iframe {
+    width: 100%;
+    height: 56.25vw;
+    max-height: 562px;
+    border: none;
+  }
+
+  .close-modal {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 10000;
+    background: rgba(0, 0, 0, 0.5);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+  }
+
+  .close-modal:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .video-background-section {
+      height: 400px;
+    }
+
+    .video-title {
+      font-size: 2.5rem;
+    }
+
+    .video-description {
+      font-size: 0.95rem;
+    }
+
+    .play-button {
+      width: 60px;
+      height: 60px;
+      margin-bottom: 30px;
+    }
+
+    .play-button::after {
+      border-top: 8px solid transparent;
+      border-bottom: 8px solid transparent;
+    }
+
+    .modal-content {
+      width: 95%;
+    }
+  }
+</style>
+
+<section class="video-background-section" id="video-section-{{ section.id }}">
+  <!-- Background Video -->
+  <div class="video-background">
+    {% if section.settings.background_video_type == 'youtube' and section.settings.background_youtube_url != blank %}
+      {% assign youtube_id = section.settings.background_youtube_url | split: 'v=' | last | split: '&' | first %}
+      <iframe
+        src="https://www.youtube.com/embed/{{ youtube_id }}?autoplay=1&mute=1&loop=1&playlist={{ youtube_id }}&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&disablekb=1"
+        frameborder="0"
+        allow="autoplay; encrypted-media"
+      >
+      </iframe>
+    {% elsif section.settings.background_video_type == 'local' and section.settings.background_local_video != blank %}
+      <video autoplay muted loop playsinline class="video-background">
+        <source src="{{ section.settings.background_local_video.sources[1].url }}" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    {% endif %}
+  </div>
+
+  <!-- Overlay -->
+  <div class="video-overlay"></div>
+
+  <!-- Content -->
+  <div class="video-content">
+    <!-- Play Button -->
+    <button class="play-button" onclick="openVideoModal('{{ section.id }}')"></button>
+
+    {% if section.settings.title != blank %}
+      <h2 class="video-title">{{ section.settings.title }}</h2>
+    {% endif %}
+
+    {% if section.settings.subtitle != blank %}
+      <h3 class="video-subtitle h3">{{ section.settings.subtitle }}</h3>
+    {% endif %}
+
+    {% if section.settings.description != blank %}
+      <p class="video-description">{{ section.settings.description }}</p>
+    {% endif %}
+  </div>
+</section>
+
+<!-- Video Modal -->
+<div id="video-modal-{{ section.id }}" class="video-modal">
+  <div class="modal-content">
+    <span class="close-modal" onclick="closeVideoModal('{{ section.id }}')">&times;</span>
+    <div class="modal-video" id="modal-video-content-{{ section.id }}">
+      {% if section.settings.modal_video_type == 'youtube' and section.settings.modal_youtube_url != blank %}
+        {% assign modal_youtube_id = section.settings.modal_youtube_url | split: 'v=' | last | split: '&' | first %}
+        <iframe
+          id="modal-iframe-{{ section.id }}"
+          src="about:blank"
+          data-src="https://www.youtube.com/embed/{{ modal_youtube_id }}?autoplay=1&controls=1&rel=0"
+          frameborder="0"
+          allow="autoplay; encrypted-media; fullscreen"
+        >
+        </iframe>
+      {% elsif section.settings.modal_video_type == 'local' and section.settings.modal_local_video != blank %}
+        <video id="modal-video-{{ section.id }}" controls class="modal-video">
+          <source src="{{ section.settings.modal_local_video.sources[1].url }}" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+<script>
+  function openVideoModal(sectionId) {
+    const modal = document.getElementById('video-modal-' + sectionId);
+    const iframe = document.getElementById('modal-iframe-' + sectionId);
+    const video = document.getElementById('modal-video-' + sectionId);
+
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+
+    // Load iframe source when modal opens (for YouTube)
+    if (iframe && iframe.dataset.src) {
+      iframe.src = iframe.dataset.src;
+    }
+
+    // Play local video when modal opens
+    if (video) {
+      video.play();
+    }
+  }
+
+  function closeVideoModal(sectionId) {
+    const modal = document.getElementById('video-modal-' + sectionId);
+    const iframe = document.getElementById('modal-iframe-' + sectionId);
+    const video = document.getElementById('modal-video-' + sectionId);
+
+    modal.classList.remove('active');
+    document.body.style.overflow = 'auto';
+
+    // Stop iframe video (for YouTube)
+    if (iframe) {
+      iframe.src = 'about:blank';
+    }
+
+    // Pause local video
+    if (video) {
+      video.pause();
+      video.currentTime = 0;
+    }
+  }
+
+  // Close modal when clicking outside
+  document.addEventListener('click', function (e) {
+    if (e.target.classList.contains('video-modal')) {
+      const sectionId = e.target.id.replace('video-modal-', '');
+      closeVideoModal(sectionId);
+    }
+  });
+
+  // Close modal with Escape key
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') {
+      const activeModal = document.querySelector('.video-modal.active');
+      if (activeModal) {
+        const sectionId = activeModal.id.replace('video-modal-', '');
+        closeVideoModal(sectionId);
+      }
+    }
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Background Video - Basmil",
+  "tag": "section",
+  "class": "video-background-wrapper",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content Settings"
+    },
+    {
+      "type": "html",
+      "id": "title",
+      "label": "Title",
+      "default": "Our Story,"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Our Promise"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Our focus on quality stretches further than appearances. We want every customer to be a happy one!"
+    },
+    {
+      "type": "header",
+      "content": "Background Video Settings"
+    },
+    {
+      "type": "select",
+      "id": "background_video_type",
+      "label": "Background Video Type",
+      "options": [
+        {
+          "value": "youtube",
+          "label": "YouTube"
+        },
+        {
+          "value": "local",
+          "label": "Local Video"
+        }
+      ],
+      "default": "youtube"
+    },
+    {
+      "type": "url",
+      "id": "background_youtube_url",
+      "label": "Background YouTube URL",
+      "info": "Enter the full YouTube URL (e.g., https://www.youtube.com/watch?v=VIDEO_ID)"
+    },
+    {
+      "type": "video",
+      "id": "background_local_video",
+      "label": "Background Local Video",
+      "info": "Upload an MP4 video file for the background"
+    },
+    {
+      "type": "header",
+      "content": "Modal Video Settings"
+    },
+    {
+      "type": "select",
+      "id": "modal_video_type",
+      "label": "Modal Video Type",
+      "options": [
+        {
+          "value": "youtube",
+          "label": "YouTube"
+        },
+        {
+          "value": "local",
+          "label": "Local Video"
+        }
+      ],
+      "default": "youtube"
+    },
+    {
+      "type": "url",
+      "id": "modal_youtube_url",
+      "label": "Modal YouTube URL",
+      "info": "Enter the full YouTube URL for the modal video"
+    },
+    {
+      "type": "video",
+      "id": "modal_local_video",
+      "label": "Modal Local Video",
+      "info": "Upload an MP4 video file for the modal"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Background Video - Basmil"
+    }
+  ]
+}
+{% endschema %}

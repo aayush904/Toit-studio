@@ -1,0 +1,213 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "basmil_video_rc4CHt": {
+      "type": "basmil-video",
+      "custom_css": [
+        ".play-button {display: none;}"
+      ],
+      "name": "Background Video - Basmil",
+      "settings": {
+        "title": "",
+        "subtitle": "",
+        "description": "",
+        "background_video_type": "local",
+        "background_youtube_url": "",
+        "background_local_video": "shopify://files/videos/dc3df06d2f1c48af98902d5198338d8a.mp4",
+        "modal_video_type": "youtube",
+        "modal_youtube_url": ""
+      }
+    },
+    "rich_text_8Yr6c6": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_RKUrT3": {
+          "type": "heading",
+          "settings": {
+            "heading": "Be a part of the muun home team!",
+            "heading_size": "h1"
+          }
+        },
+        "text_WQVQzJ": {
+          "type": "text",
+          "settings": {
+            "text": "<p><strong>If you're interested in working with us, please fill out the form below!<br/>Follow us on </strong><a href=\"https://www.instagram.com/muunhomedecor/\" target=\"_blank\" title=\"https://www.instagram.com/muunhomedecor/\"><strong>instagram</strong></a><strong> and </strong><a href=\"https://www.linkedin.com/company/muun-home/\" target=\"_blank\"><strong>linkedin</strong></a><strong> to stay updated on current opportunities.</strong></p><p></p><p>If you face any issues filling out the form, mail us at support@muunhome.com</p>"
+          }
+        },
+        "button_Jp8tqa": {
+          "type": "button",
+          "settings": {
+            "button_label": "APPLY NOW",
+            "button_link": "",
+            "button_style_secondary": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_RKUrT3",
+        "text_WQVQzJ",
+        "button_Jp8tqa"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-1",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 0
+      }
+    },
+    "rich_text_wmU8nL": {
+      "type": "rich-text",
+      "blocks": {
+        "text_MktPXp": {
+          "type": "text",
+          "settings": {
+            "text": "<p>We are a passionate, innovative startup with a vision of making a meaningful impact.<br/>We are more than just a company; we are a community of inspired individuals who dare to dream big and challenge the status quo.<br/><br/>From founders to designers to marketers, every member of our team brings a unique perspective and energy that propels us forward.<br/></p>"
+          }
+        }
+      },
+      "block_order": [
+        "text_MktPXp"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 0,
+        "padding_bottom": 72
+      }
+    },
+    "collapsible_content_MFRRYk": {
+      "type": "collapsible-content",
+      "blocks": {
+        "collapsible_row_eXqnkq": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Visual Content Editor (video + static)",
+            "icon": "none",
+            "row_content": "<p><em><strong>Freelance Opportunity</strong></em></p><p><strong>Vacancies</strong> - 1</p><p><strong>Key Responsibilities -</strong></p><ul><li><strong>Polishes Videos:</strong> Edits video footage to be clear, engaging, and ready for different uses.</li><li><strong>Designs Graphics:</strong> Creates appealing images and visuals for websites, social media, and more.</li><li><strong>Keeps the Look Consistent:</strong> Makes sure all visual content matches the brand's style.</li><li><strong>Works with the Team:</strong> Collaborates with others to plan and create visual content.</li></ul>",
+            "page": ""
+          }
+        },
+        "collapsible_row_tR4JpU": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Visual Content Editor (video + static)",
+            "icon": "none",
+            "row_content": "<p><em><strong>Freelance Opportunity</strong></em></p><p><strong>Vacancies</strong> - 1</p><p><strong>Key Responsibilities -</strong></p><ul><li><strong>Polishes Videos:</strong> Edits video footage to be clear, engaging, and ready for different uses.</li><li><strong>Designs Graphics:</strong> Creates appealing images and visuals for websites, social media, and more.</li><li><strong>Keeps the Look Consistent:</strong> Makes sure all visual content matches the brand's style.</li><li><strong>Works with the Team:</strong> Collaborates with others to plan and create visual content.</li></ul>",
+            "page": ""
+          }
+        },
+        "collapsible_row_qBC88M": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Visual Content Editor (video + static)",
+            "icon": "none",
+            "row_content": "<p><em><strong>Freelance Opportunity</strong></em></p><p><strong>Vacancies</strong> - 1</p><p><strong>Key Responsibilities -</strong></p><ul><li><strong>Polishes Videos:</strong> Edits video footage to be clear, engaging, and ready for different uses.</li><li><strong>Designs Graphics:</strong> Creates appealing images and visuals for websites, social media, and more.</li><li><strong>Keeps the Look Consistent:</strong> Makes sure all visual content matches the brand's style.</li><li><strong>Works with the Team:</strong> Collaborates with others to plan and create visual content.</li></ul>",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "collapsible_row_eXqnkq",
+        "collapsible_row_tR4JpU",
+        "collapsible_row_qBC88M"
+      ],
+      "name": "t:sections.collapsible_content.presets.name",
+      "settings": {
+        "caption": "",
+        "heading": "Open Positions",
+        "heading_size": "h1",
+        "heading_alignment": "center",
+        "layout": "row",
+        "container_color_scheme": "scheme-1",
+        "color_scheme": "scheme-1",
+        "open_first_collapsible_row": false,
+        "image_ratio": "adapt",
+        "desktop_layout": "image_second",
+        "padding_top": 0,
+        "padding_bottom": 52
+      }
+    },
+    "basmil_video_UYkbrU": {
+      "type": "basmil-video",
+      "custom_css": [
+        ".play-button {display: none;}"
+      ],
+      "name": "Background Video - Basmil",
+      "settings": {
+        "title": "",
+        "subtitle": "",
+        "description": "",
+        "background_video_type": "local",
+        "background_youtube_url": "",
+        "background_local_video": "shopify://files/videos/dc3df06d2f1c48af98902d5198338d8a.mp4",
+        "modal_video_type": "youtube",
+        "modal_youtube_url": ""
+      }
+    },
+    "rich_text_tcPtda": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_BYDYWe": {
+          "type": "heading",
+          "settings": {
+            "heading": "Behind the Scenes",
+            "heading_size": "h1"
+          }
+        },
+        "text_FQFwUy": {
+          "type": "text",
+          "settings": {
+            "text": "<p>If you thrive in a collaborative, fast-paced environment and are eager to make a meaningful impact, then we would love to have you on our team!</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_BYDYWe",
+        "text_FQFwUy"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 60,
+        "padding_bottom": 20
+      }
+    }
+  },
+  "order": [
+    "main",
+    "basmil_video_rc4CHt",
+    "rich_text_8Yr6c6",
+    "rich_text_wmU8nL",
+    "collapsible_content_MFRRYk",
+    "basmil_video_UYkbrU",
+    "rich_text_tcPtda"
+  ]
+}
