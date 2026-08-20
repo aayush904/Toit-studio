@@ -261,10 +261,13 @@ select {
   background-color: rgba(var(--color-foreground), 0.2);
 }
 
+/* Type scale: 62 / 48 / 36 / 28 / 20 / 16 / 14 px.
+   html is 62.5% of 16px, so 1rem = 10px and 1.6rem = 16px. */
+
 .text-body {
-  font-size: 1.5rem;
-  letter-spacing: 0.06rem;
-  line-height: calc(1 + 0.8 / var(--font-body-scale));
+  font-size: 1.6rem;
+  letter-spacing: normal;
+  line-height: calc(1 + 0.5 / var(--font-body-scale));
   font-family: var(--font-body-family);
   font-style: var(--font-body-style);
   font-weight: var(--font-body-weight);
@@ -290,18 +293,20 @@ h5,
   word-break: break-word;
 }
 
+/* 48px -> 62px, fluid across the range */
 .hxxl {
   font-size: clamp(
-    calc(var(--font-heading-scale) * 5.6rem),
-    14vw,
-    calc(var(--font-heading-scale) * 7.2rem)
+    calc(var(--font-heading-scale) * 4.8rem),
+    12vw,
+    calc(var(--font-heading-scale) * 6.2rem)
   );
   line-height: 1.1;
 }
 
+/* 48px mobile / 62px desktop */
 .hxl {
-  font-size: calc(var(--font-heading-scale) * 5rem);
-  line-height: calc(1 + 0.3 / max(1, var(--font-heading-scale)));
+  font-size: calc(var(--font-heading-scale) * 4.8rem);
+  line-height: calc(1 + 0.2 / max(1, var(--font-heading-scale)));
 }
 
 @media only screen and (min-width: 768px) {
@@ -310,81 +315,68 @@ h5,
   }
 }
 
+/* 36px mobile / 48px desktop */
 .h0 {
-  font-size: calc(var(--font-heading-scale) * 4rem);
+  font-size: calc(var(--font-heading-scale) * 3.6rem);
 }
 
 @media only screen and (min-width: 768px) {
   .h0 {
-    font-size: calc(var(--font-heading-scale) * 5.2rem);
+    font-size: calc(var(--font-heading-scale) * 4.8rem);
   }
 }
 
+/* 28px mobile / 36px desktop */
 h1,
 .h1 {
-  font-size: calc(var(--font-heading-scale) * 3rem);
+  font-size: calc(var(--font-heading-scale) * 2.8rem);
 }
 
 @media only screen and (min-width: 768px) {
   h1,
   .h1 {
-    font-size: calc(var(--font-heading-scale) * 4rem);
+    font-size: calc(var(--font-heading-scale) * 3.6rem);
   }
 }
 
+/* 20px mobile / 28px desktop */
 h2,
 .h2 {
-  font-size: calc(var(--font-heading-scale) * 2.24rem);
+  font-size: calc(var(--font-heading-scale) * 2rem);
   text-align: center;
 }
 
 @media only screen and (min-width: 768px) {
   h2,
   .h2 {
-    font-size: calc(var(--font-heading-scale) * 2.56rem);
+    font-size: calc(var(--font-heading-scale) * 2.8rem);
   }
 }
 
+/* 20px */
 h3,
-.h3 {
-  font-size: calc(var(--font-heading-scale) * 1.92rem);
-}
-
+.h3,
 .multicolumn-list h3 {
-  font-size: calc(var(--font-heading-scale) * 1.617rem);
-}
-@media only screen and (min-width: 768px) {
-  h3,
-  .h3 {
-    font-size: calc(var(--font-heading-scale) * 2.688rem);
-  }
-
-  .multicolumn-list h3 {
-    font-size: calc(var(--font-heading-scale) * 2.026rem);
-  }
+  font-size: calc(var(--font-heading-scale) * 2rem);
 }
 
+/* 16px */
 h4,
 .h4 {
   font-family: var(--font-heading-family);
   font-style: var(--font-heading-style);
-  font-size: calc(var(--font-heading-scale) * 1.5rem);
+  font-size: calc(var(--font-heading-scale) * 1.6rem);
 }
 
+/* 14px */
 h5,
 .h5 {
-  font-size: calc(var(--font-heading-scale) * 1.2rem);
-}
-
-@media only screen and (min-width: 768px) {
-  h5,
-  .h5 {
-    font-size: calc(var(--font-heading-scale) * 1.3rem);
-  }
+  font-size: calc(var(--font-heading-scale) * 1.4rem);
 }
 
 h6,
 .h6 {
+  font-size: calc(var(--font-heading-scale) * 1.4rem);
   color: rgba(var(--color-foreground), 0.75);
   margin-block-start: 1.67em;
   margin-block-end: 1.67em;
@@ -438,7 +430,7 @@ blockquote {
 .field__input,
 .form__label,
 .select__select {
-    font-size: 14.96px;
+    font-size: 1.6rem;
     line-height: calc(1 + .5 / var(--font-body-scale));
     letter-spacing: .04rem;
     font-weight: 700;
@@ -1301,7 +1293,7 @@ button.shopify-payment-button__button--unbranded {
   padding: 0 3rem;
   cursor: pointer;
   font: inherit;
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   text-decoration: none;
   color: rgb(var(--color-button-text));
   transition: box-shadow var(--duration-short) ease;
@@ -1388,7 +1380,7 @@ button.shopify-payment-button__button--unbranded {
 .button-label,
 .shopify-challenge__button,
 .customer button {
-  font-size: 13.6px;
+  font-size: 1.4rem;
   letter-spacing: 0.025em;
   line-height: calc(1 + 0.2 / var(--font-body-scale));
 }
@@ -2321,7 +2313,7 @@ input[type="checkbox"] {
 
 .utility-bar .localization-wrapper .disclosure .localization-form__select,
 .utility-bar .localization-wrapper .disclosure__link {
-  font-size: calc(var(--font-heading-scale) * 1.3rem);
+  font-size: calc(var(--font-heading-scale) * 1.4rem);
 }
 
 @media screen and (min-width: 1280px) {
