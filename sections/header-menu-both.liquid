@@ -99,6 +99,21 @@
     grid-area: icons !important;
     justify-self: end;
   }
+
+  .header__inline-menu-left .header__menu-item {
+    font-weight: 350;
+    font-size: 1.8rem;
+  }
+
+  @media screen and (min-width: 1280px) {
+    .header--middle-left.header--has-menu {
+      grid-template-columns: auto 1fr auto !important;
+      column-gap: 0 !important;
+    }
+    .header__inline-menu-left {
+      justify-self: end;
+    }
+  }
 </style>
 
 {%- style -%}
