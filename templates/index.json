@@ -52,7 +52,7 @@
         "desktop_content_position": "middle-left",
         "desktop_content_alignment": "left",
         "show_text_box": false,
-        "color_scheme": "scheme-2",
+        "color_scheme": "scheme-4",
         "stack_images_on_mobile": true,
         "mobile_content_alignment": "left",
         "show_text_below": true
@@ -79,7 +79,10 @@
           "settings": {
             "button_label": "Learn More",
             "button_link": "",
-            "button_style_secondary": true
+            "button_style_secondary": true,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
           }
         }
       },
@@ -216,7 +219,7 @@
       "custom_css": [
         ".image-with-text {padding: 0 60px;}",
         ".button {text-transform: uppercase;}",
-        "@media (max-width: 998px) {.image-with-text {padding: 0;}}"
+        "@media (max-width: 998px) {.image-with-text {padding: 0; }}"
       ],
       "name": "t:sections.image-with-text.presets.name",
       "settings": {
@@ -319,7 +322,7 @@
       "custom_css": [
         ".image-with-text {padding: 0 60px;}",
         ".button {text-transform: uppercase;}",
-        "@media (max-width: 998px) {.image-with-text {padding: 0;}}"
+        "@media (max-width: 998px) {.image-with-text {padding: 0; }}"
       ],
       "name": "t:sections.image-with-text.presets.name",
       "settings": {
