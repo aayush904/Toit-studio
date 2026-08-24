@@ -46,14 +46,14 @@
     "header": {
       "type": "header-menu-both",
       "custom_css": [
-        ".header__icon--menu .icon{position: static;}"
+        ".header__icon--menu .icon {position: static;}"
       ],
       "settings": {
         "color_scheme": "scheme-1",
-        "logo_position": "middle-center",
+        "logo_position": "middle-left",
         "mobile_logo_position": "center",
-        "menu": "main-menu",
-        "menu_2": "main-menu-right",
+        "menu": "",
+        "menu_2": "main-menu",
         "menu_type_desktop": "dropdown",
         "show_line_separator": false,
         "transparent_header": true,

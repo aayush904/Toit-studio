@@ -9,49 +9,81 @@
  */
 {
   "sections": {
-    "basmil_image_text_slider_TaC7PE": {
-      "type": "basmil-image-text-slider",
+    "image_banner_hTHP44": {
+      "type": "image-banner",
       "blocks": {
-        "slide_ET8Ezj": {
-          "type": "slide",
+        "heading_3nUbTU": {
+          "type": "heading",
           "settings": {
-            "image": "shopify://shop_images/3_79883280-de4f-457d-a09f-b351f80ef3a1.webp",
-            "heading": "Forms",
-            "text": "Designed with intention"
+            "heading": "Discover curated pairings designed for your home.",
+            "heading_size": "hxl"
           }
         },
-        "slide_eqNiKd": {
-          "type": "slide",
+        "text_rDyewh": {
+          "type": "text",
           "settings": {
-            "image": "shopify://shop_images/2_1e30c0ff-2a48-4665-a157-43854ebe2313.webp",
-            "heading": "Nordic",
-            "text": "design-forward essentials"
+            "text": "Discover your new favorite section.",
+            "text_style": "body"
           }
         },
-        "slide_MnxPxD": {
-          "type": "slide",
+        "buttons_E4nqeF": {
+          "type": "buttons",
           "settings": {
-            "image": "shopify://shop_images/Heading_4.webp",
-            "heading": "Textures",
-            "text": "that intrigue the mind"
+            "button_label_1": "TRY IT NOW",
+            "button_link_1": "",
+            "button_style_secondary_1": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
           }
         }
       },
       "block_order": [
-        "slide_ET8Ezj",
-        "slide_eqNiKd",
-        "slide_MnxPxD"
+        "heading_3nUbTU",
+        "text_rDyewh",
+        "buttons_E4nqeF"
       ],
+      "name": "t:sections.image-banner.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/image_3.png",
+        "image_overlay_opacity": 0,
+        "image_height": "medium",
+        "image_behavior": "none",
+        "desktop_content_position": "middle-left",
+        "desktop_content_alignment": "left",
+        "show_text_box": false,
+        "color_scheme": "scheme-2",
+        "stack_images_on_mobile": true,
+        "mobile_content_alignment": "left",
+        "show_text_below": true
+      }
+    },
+    "basmil_image_text_slider_TaC7PE": {
+      "type": "basmil-image-text-slider",
+      "blocks": {
+        "slide_jANzd7": {
+          "type": "slide",
+          "settings": {
+            "heading": "",
+            "text": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_jANzd7"
+      ],
+      "disabled": true,
       "custom_css": [
-        ".image-text-slider {margin-bottom: 26px;}",
+        ".image-text-slider {/* margin-bottom: 26px; */}",
         "img {transform: scale(1.1); transition: transform 0.3s ease;}",
         ".slick-active img {transform: scale(1);}"
       ],
       "name": "Image Text Slider-Basmil",
       "settings": {
         "text_position": "overlay",
-        "autoplay": true,
-        "autoplay_speed": 3000
+        "autoplay": false,
+        "autoplay_speed": 3000,
+        "slider_height": 0
       }
     },
     "basmil_product_slider_864QKL": {
@@ -77,7 +109,7 @@
         "show_collection_slide": false,
         "collection_slide_image": "shopify://shop_images/4_a3070930-adea-4a4c-9387-a55525b912ee.png",
         "collection_slide_heading": "Shop our collections",
-        "collection_slide_button_link": "shopify://collections/frontpage",
+        "collection_slide_button_link": "shopify://collections/bowls",
         "collection_slide_button_label": "View Collection"
       }
     },
@@ -777,6 +809,7 @@
     }
   },
   "order": [
+    "image_banner_hTHP44",
     "basmil_image_text_slider_TaC7PE",
     "basmil_product_slider_864QKL",
     "basmil_collections_slider_tQeQQF",
