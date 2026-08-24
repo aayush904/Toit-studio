@@ -93,13 +93,11 @@
   }
   }
   .header__inline-menu-left {
-    grid-area: navigation-1 !important;
+    grid-area: navigation !important;
   }
-  @media screen and (min-width: 1280px) {
-    .header {
-      grid-template-areas: "left-icon navigation-1 heading navigation icons" !important;
-      grid-template-columns: auto 1fr auto 1fr auto !important;
-    }
+  .header__inline-menu-right {
+    grid-area: icons !important;
+    justify-self: end;
   }
 </style>
 
@@ -187,8 +185,8 @@
 {%- endif -%}
 
 <svg xmlns="http://www.w3.org/2000/svg" class="hidden">
-  <symbol id="icon-search" style="stroke-width:12px" viewbox="0 0 192 192" fill="none">
-    <path d="M87 150c34.794 0 63-28.206 63-63s-28.206-63-63-63-63 28.206-63 63 28.206 63 63 63ZM131.55 131.55 168 168" stroke="currentColor" stroke-linecap="round"  stroke-linejoin="round"/>
+  <symbol id="icon-search" viewbox="0 0 22 22" fill="none">
+    <path d="M19.7356 18.7636L15.4327 14.4616C16.6799 12.9643 17.3018 11.0438 17.169 9.09971C17.0363 7.15558 16.1592 5.33747 14.7201 4.02358C13.281 2.7097 11.3908 2.0012 9.44264 2.04547C7.49449 2.08975 5.63841 2.88339 4.2605 4.26129C2.8826 5.6392 2.08896 7.49528 2.04468 9.44343C2.00041 11.3916 2.7089 13.2818 4.02279 14.7209C5.33667 16.16 7.15479 17.0371 9.09891 17.1698C11.043 17.3026 12.9635 16.6807 14.4608 15.4335L18.7628 19.7364C18.8267 19.8003 18.9025 19.851 18.986 19.8855C19.0694 19.9201 19.1589 19.9379 19.2492 19.9379C19.3396 19.9379 19.429 19.9201 19.5125 19.8855C19.5959 19.851 19.6718 19.8003 19.7356 19.7364C19.7995 19.6725 19.8502 19.5967 19.8847 19.5133C19.9193 19.4298 19.9371 19.3403 19.9371 19.25C19.9371 19.1597 19.9193 19.0702 19.8847 18.9868C19.8502 18.9033 19.7995 18.8275 19.7356 18.7636ZM3.43672 9.62501C3.43672 8.40124 3.79961 7.20495 4.4795 6.18742C5.15939 5.16989 6.12575 4.37683 7.25637 3.90851C8.38698 3.44019 9.63108 3.31766 10.8313 3.5564C12.0316 3.79515 13.1341 4.38445 13.9994 5.24979C14.8648 6.11513 15.4541 7.21763 15.6928 8.41789C15.9316 9.61815 15.809 10.8622 15.3407 11.9929C14.8724 13.1235 14.0793 14.0898 13.0618 14.7697C12.0443 15.4496 10.848 15.8125 9.62422 15.8125C7.98375 15.8107 6.41099 15.1582 5.25101 13.9982C4.09102 12.8382 3.43854 11.2655 3.43672 9.62501Z" fill="currentColor"/>
   </symbol>
 
     <symbol id="icon-close" class="icon icon-close" fill="none" viewBox="0 0 18 17">
@@ -294,6 +292,23 @@
               </details>
             </details-modal>
 
+            <a href="{{ routes.cart_url }}" class="header__icon header__icon--cart link focus-inset" id="cart-icon-bubble">
+              {% if cart == empty %}
+                <span class="svg-wrapper">{{ 'icon-cart-empty.svg' | inline_asset_content }}</span>
+              {% else %}
+                <span class="svg-wrapper">{{ 'icon-cart.svg' | inline_asset_content }}</span>
+              {% endif %}
+              <span class="visually-hidden">{{ 'templates.cart.cart' | t }}</span>
+              {%- if cart != empty -%}
+                <div class="cart-count-bubble">
+                  {%- if cart.item_count < 100 -%}
+                    <span aria-hidden="true">{{ cart.item_count }}</span>
+                  {%- endif -%}
+                  <span class="visually-hidden">{{ 'sections.header.cart_count' | t: count: cart.item_count }}</span>
+                </div>
+              {%- endif -%}
+            </a>
+
             {%- if shop.customer_accounts_enabled -%}
               <a
                 href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}"
@@ -311,23 +326,6 @@
                 </span>
               </a>
             {%- endif -%}
-
-            <a href="{{ routes.cart_url }}" class="header__icon header__icon--cart link focus-inset" id="cart-icon-bubble">
-              {% if cart == empty %}
-                <span class="svg-wrapper">{{ 'icon-cart-empty.svg' | inline_asset_content }}</span>
-              {% else %}
-                <span class="svg-wrapper">{{ 'icon-cart.svg' | inline_asset_content }}</span>
-              {% endif %}
-              <span class="visually-hidden">{{ 'templates.cart.cart' | t }}</span>
-              {%- if cart != empty -%}
-                <div class="cart-count-bubble">
-                  {%- if cart.item_count < 100 -%}
-                    <span aria-hidden="true">{{ cart.item_count }}</span>
-                  {%- endif -%}
-                  <span class="visually-hidden">{{ 'sections.header.cart_count' | t: count: cart.item_count }}</span>
-                </div>
-              {%- endif -%}
-            </a>
           </div>
         {% endcapture %}
 
