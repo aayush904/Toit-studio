@@ -145,6 +145,7 @@
                   class="button{% if block.settings.button_style_secondary_1 %} button--secondary{% else %} button--primary{% endif %}"
                 >
                   {{- block.settings.button_label_1 | escape -}}
+                  {%- render 'icon-button-arrow' -%}
                 </a>
               {%- endif -%}
               {%- if block.settings.button_label_2 != blank -%}
@@ -157,6 +158,7 @@
                   class="button{% if block.settings.button_style_secondary_2 %} button--secondary{% else %} button--primary{% endif %}"
                 >
                   {{- block.settings.button_label_2 | escape -}}
+                  {%- render 'icon-button-arrow' -%}
                 </a>
               {%- endif -%}
             </div>

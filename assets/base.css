@@ -303,28 +303,28 @@ h5,
   line-height: 1.1;
 }
 
-/* 48px mobile / 62px desktop */
+/* 22.5px mobile / 45px (4.5rem) desktop */
 .hxl {
-  font-size: calc(var(--font-heading-scale) * 3.6rem);
+  font-size: calc(var(--font-heading-scale) * 2.25rem);
   font-weight: 400;
   line-height: calc(1 + 0.2 / max(1, var(--font-heading-scale)));
 }
 
 @media only screen and (min-width: 576px) {
   .hxl {
-    font-size: calc(var(--font-heading-scale) * 4.8rem);
+    font-size: calc(var(--font-heading-scale) * 3rem);
   }
 }
 
 @media only screen and (min-width: 768px) {
   .hxl {
-    font-size: calc(var(--font-heading-scale) * 6rem);
+    font-size: calc(var(--font-heading-scale) * 3.75rem);
   }
 }
 
 @media only screen and (min-width: 990px) {
   .hxl {
-    font-size: calc(var(--font-heading-scale) * 7.2rem);
+    font-size: calc(var(--font-heading-scale) * 4.5rem);
   }
 }
 
@@ -1403,6 +1403,31 @@ button.shopify-payment-button__button--unbranded {
   padding: 1rem 1.5rem;
   min-width: calc(9rem + var(--buttons-border-width) * 2);
   min-height: calc(3.5rem + var(--buttons-border-width) * 2);
+}
+
+.button--primary,
+.button--secondary {
+  gap: 1rem;
+}
+
+.button--primary {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+.button--secondary {
+  background-color: #647a73;
+  color: #ffffff;
+}
+
+.button__icon {
+  display: inline-flex;
+  align-items: center;
+  line-height: 0;
+}
+
+.button__icon svg {
+  display: block;
 }
 
 .button--small {

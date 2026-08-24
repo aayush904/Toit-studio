@@ -187,6 +187,7 @@
                   class="button {% if block.settings.button_style_secondary %}button--secondary{% else %}button--primary{% endif %}"
                 >
                   {{- block.settings.button_label | escape -}}
+                  {%- render 'icon-button-arrow' -%}
                 </a>
               </div>
             {%- endif -%}
