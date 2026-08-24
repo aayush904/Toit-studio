@@ -65,7 +65,7 @@
           "type": "heading",
           "settings": {
             "heading": "Your one–stop destination for beautiful home décor, curated for every corner of home",
-            "heading_size": "h2"
+            "heading_size": "h0"
           }
         },
         "text_intro": {
@@ -97,7 +97,7 @@
         "content_alignment": "center",
         "color_scheme": "scheme-1",
         "full_width": true,
-        "padding_top": 60,
+        "padding_top": 0,
         "padding_bottom": 40
       }
     },
