@@ -58,156 +58,92 @@
         "show_text_below": true
       }
     },
-    "basmil_image_text_slider_TaC7PE": {
-      "type": "basmil-image-text-slider",
+    "rich_text_intro": {
+      "type": "rich-text",
       "blocks": {
-        "slide_jANzd7": {
-          "type": "slide",
+        "heading_intro": {
+          "type": "heading",
           "settings": {
-            "heading": "",
-            "text": ""
+            "heading": "Your one–stop destination for beautiful home décor, curated for every corner of home",
+            "heading_size": "h2"
+          }
+        },
+        "text_intro": {
+          "type": "text",
+          "settings": {
+            "text": "<p>A refined collection of kitchenware and décor, selected to bring beauty and character into everyday spaces, with pieces that feel timeless, practical, and effortlessly at home.</p><p>From beautiful kitchenware to considered décor, discover pieces chosen to make everyday spaces feel more thoughtful, functional, and uniquely yours.</p>"
+          }
+        },
+        "button_intro": {
+          "type": "button",
+          "settings": {
+            "button_label": "Learn More",
+            "button_link": "",
+            "button_style_secondary": true
           }
         }
       },
       "block_order": [
-        "slide_jANzd7"
+        "heading_intro",
+        "text_intro",
+        "button_intro"
       ],
-      "disabled": true,
-      "custom_css": [
-        ".image-text-slider {/* margin-bottom: 26px; */}",
-        "img {transform: scale(1.1); transition: transform 0.3s ease;}",
-        ".slick-active img {transform: scale(1);}"
-      ],
-      "name": "Image Text Slider-Basmil",
+      "name": "t:sections.rich-text.name",
       "settings": {
-        "text_position": "overlay",
-        "autoplay": false,
-        "autoplay_speed": 3000,
-        "slider_height": 0
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-1",
+        "full_width": true,
+        "padding_top": 60,
+        "padding_bottom": 40
       }
     },
-    "basmil_product_slider_864QKL": {
-      "type": "basmil-product-slider",
-      "custom_css": [
-        "h2 {font-size: 32px;}",
-        "@media (max-width: 1440px) {h2 {font-size: 26.88px; }}",
-        "@media (max-width: 768px) {h2 {font-size: 22.4px; }}"
-      ],
-      "name": "Product Slider - Basmil",
-      "settings": {
-        "collection": "frontpage",
-        "heading": "What's New?",
-        "subheading": "make your home <marker>your own</marker>",
-        "description": "Shop muun's new arrivals!",
-        "heading_link": "",
-        "slides_per_view": 4,
-        "arrows": true,
-        "dots": false,
-        "loop": false,
-        "autoplay": false,
-        "autoplay_speed": 3000,
-        "show_collection_slide": false,
-        "collection_slide_image": "shopify://shop_images/4_a3070930-adea-4a4c-9387-a55525b912ee.png",
-        "collection_slide_heading": "Shop our collections",
-        "collection_slide_button_link": "shopify://collections/bowls",
-        "collection_slide_button_label": "View Collection"
-      }
-    },
-    "basmil_collections_slider_tQeQQF": {
-      "type": "basmil-collections-slider",
+    "collection_list_categories": {
+      "type": "collection-list",
       "blocks": {
-        "collection_MnTmNJ": {
-          "type": "collection",
-          "settings": {
-            "collection": "frontpage"
-          }
-        },
-        "collection_GnpCy8": {
-          "type": "collection",
-          "settings": {
-            "collection": "candle-holder"
-          }
-        },
-        "collection_wbEd4t": {
-          "type": "collection",
+        "collection_drinkware": {
+          "type": "featured_collection",
           "settings": {
             "collection": "bowls"
           }
         },
-        "collection_EcG7tp": {
-          "type": "collection",
+        "collection_tableware": {
+          "type": "featured_collection",
           "settings": {
             "collection": "tea-pots"
           }
         },
-        "collection_B8zKQi": {
-          "type": "collection",
+        "collection_kitchenware": {
+          "type": "featured_collection",
           "settings": {
             "collection": "dinner-sets"
           }
         },
-        "collection_yi8mXn": {
-          "type": "collection",
+        "collection_decor": {
+          "type": "featured_collection",
           "settings": {
-            "collection": "planters"
+            "collection": "candle-holder"
           }
         }
       },
       "block_order": [
-        "collection_MnTmNJ",
-        "collection_GnpCy8",
-        "collection_wbEd4t",
-        "collection_EcG7tp",
-        "collection_B8zKQi",
-        "collection_yi8mXn"
+        "collection_drinkware",
+        "collection_tableware",
+        "collection_kitchenware",
+        "collection_decor"
       ],
-      "custom_css": [
-        "h2 {margin-top: 32px; margin-bottom: 16px;}",
-        ".collection-slider__button-wrapper {margin: 0 !important;}",
-        ".button {background: transparent; color: #000; font-size: 13.6px; text-transform: uppercase;}",
-        "section-header {margin-bottom: 40px;}",
-        ".basmil-collection-slider {padding-bottom: 62px;}"
-      ],
-      "name": "Collections List - Basmil",
+      "name": "t:sections.collection-list.name",
       "settings": {
-        "heading": "Shop By Category",
-        "description": "",
-        "button_link": "shopify://collections",
-        "button_label": "Shop all Products",
-        "slides_per_view": 4,
-        "arrows": true,
-        "dots": false,
-        "loop": false,
-        "autoplay": false,
-        "autoplay_speed": 3000
-      }
-    },
-    "basmil_product_slider_B8Gnc3": {
-      "type": "basmil-product-slider",
-      "custom_css": [
-        ".section-product-slider-heading * {text-align: start; width: 100%; max-width: 1600px; padding: 0 60px;}",
-        "h2 {font-size: 36px; text-align: start;}",
-        "@media (max-width: 1440px) {h2 {font-size: 26.88px; }}",
-        "@media (max-width: 768px) {h2 {font-size: 22.4px; padding: 0 20px; }}"
-      ],
-      "name": "Product Slider - Basmil",
-      "settings": {
-        "collection": "all",
-        "heading": "divyendu anand x muun home",
-        "subheading": "",
-        "description": "sculpted by hand, specially for muun",
-        "heading_link": "",
-        "slides_per_view": 4,
-        "arrows": true,
-        "dots": false,
-        "loop": false,
-        "autoplay": false,
-        "autoplay_speed": 3000,
-        "show_collection_slide": true,
-        "collection_slide_image": "shopify://shop_images/28_4e20a0f4-a442-4275-b959-d9cbb39c3598.png",
-        "collection_slide_heading": "",
-        "collection_slide_button_link": "shopify://collections/frontpage",
-        "collection_slide_button_label": "View Collection"
+        "title": "Shop by Categories",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 4,
+        "color_scheme": "scheme-1",
+        "show_view_all": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 40,
+        "padding_bottom": 60
       }
     },
     "basmil_video_dfJ7ME": {
@@ -227,200 +163,66 @@
         "modal_youtube_url": "https://www.youtube.com/watch?v=pWg1vgJ5Fa8"
       }
     },
-    "17494654652311fd1c": {
-      "type": "apps",
+    "product_tabs_explore": {
+      "type": "product-tabs",
+      "name": "Product Tabs",
       "settings": {
-        "include_margins": true
-      }
-    },
-    "multicolumn_VGM3GF": {
-      "type": "multicolumn",
-      "blocks": {
-        "column_CpmHyq": {
-          "type": "column",
-          "settings": {
-            "image": "shopify://shop_images/svg-image-19.svg",
-            "title": "Free Shipping",
-            "text": "<p>on all your orders</p>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "column_cDh9QN": {
-          "type": "column",
-          "settings": {
-            "image": "shopify://shop_images/happiness.svg",
-            "title": "Happiness Guarantee",
-            "text": "<p>your satisfaction is our priority</p>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "column_x6rH8M": {
-          "type": "column",
-          "settings": {
-            "image": "shopify://shop_images/handshake.svg",
-            "title": "12000+ Customers",
-            "text": "<p>in our muun family</p>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "column_mqLN8z": {
-          "type": "column",
-          "settings": {
-            "image": "shopify://shop_images/heart.svg",
-            "title": "Handcrafted with love",
-            "text": "<p>by Indian artisans</p>",
-            "link_label": "",
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "column_CpmHyq",
-        "column_cDh9QN",
-        "column_x6rH8M",
-        "column_mqLN8z"
-      ],
-      "custom_css": [
-        ".multicolumn.background-primary .multicolumn-card {background: transparent;}",
-        ".multicolumn-card__image-wrapper--third-width {width: 15%; padding: 0;}",
-        ".icons-row__slider {gap: 20px;}"
-      ],
-      "name": "t:sections.multicolumn.presets.name",
-      "settings": {
-        "title": "",
+        "heading": "Explore our Products",
         "heading_size": "h1",
-        "image_width": "third",
-        "image_ratio": "adapt",
-        "button_label": "",
-        "button_link": "",
-        "columns_desktop": 4,
-        "column_alignment": "center",
-        "background_style": "primary",
+        "default_tab": "2",
+        "products_to_show": 4,
+        "tab_1_label": "Best Seller",
+        "tab_1_collection": "all",
+        "tab_2_label": "New Arrival",
+        "tab_2_collection": "frontpage",
+        "tab_3_label": "Featured",
+        "tab_3_collection": "all",
         "color_scheme": "scheme-1",
-        "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 0,
-        "padding_bottom": 36
+        "padding_top": 40,
+        "padding_bottom": 60
       }
     },
-    "basmil_collage_9RxAyx": {
-      "type": "basmil-collage",
-      "blocks": {
-        "item_7eXfGK": {
-          "type": "item",
-          "settings": {
-            "type": "product",
-            "product": "bell-gift-set-short-diya-and-ringing-bell-copy-1",
-            "collection": "",
-            "video_url": ""
-          }
-        },
-        "item_9pPU3T": {
-          "type": "item",
-          "settings": {
-            "type": "product",
-            "product": "theia-tealight-holder",
-            "collection": "",
-            "video_url": ""
-          }
-        },
-        "item_GPnCh9": {
-          "type": "item",
-          "settings": {
-            "type": "product",
-            "product": "norge-marble-table-pista-green",
-            "collection": "",
-            "video_url": ""
-          }
-        },
-        "item_QW6nEM": {
-          "type": "item",
-          "settings": {
-            "type": "product",
-            "product": "lava-glass-set",
-            "collection": "",
-            "video_url": ""
-          }
-        }
-      },
-      "block_order": [
-        "item_7eXfGK",
-        "item_9pPU3T",
-        "item_GPnCh9",
-        "item_QW6nEM"
-      ],
-      "custom_css": [],
-      "name": "Basmil Collage",
-      "settings": {
-        "featured_type": "image",
-        "featured_product": "",
-        "featured_collection": "",
-        "featured_image": "shopify://shop_images/25_cfd775eb-53e7-4881-ba46-a2cb3123e01e.png",
-        "featured_video": "shopify://collections",
-        "padding_top": 36,
-        "padding_bottom": 36,
-        "background_color": "#ffffff",
-        "custom_class": "",
-        "section_id": ""
-      }
-    },
-    "image_with_text_PxhCyn": {
+    "image_with_text_trending": {
       "type": "image-with-text",
       "blocks": {
-        "caption_xiyGpg": {
-          "type": "caption",
-          "settings": {
-            "caption": "Meet us at",
-            "text_style": "subtitle",
-            "text_size": "large"
-          }
-        },
-        "heading_Vjgczx": {
+        "heading_trending": {
           "type": "heading",
           "settings": {
-            "heading": "Our Pop-Ups",
+            "heading": "#Trending: The Modern Vase",
             "heading_size": "h1"
           }
         },
-        "text_XUBtVY": {
+        "text_trending": {
           "type": "text",
           "settings": {
-            "text": "<p>Previously held at The Dhan Mill; Radisson Blu, Noida; Select City Walk, Saket; Dirty Good; The Leela Hotel, Delhi; Olive Cafe, Chandigarh; Bohca, Delhi; Cyber Hub; 32nd Avenue; Sunday Design</p>",
-            "text_style": "subtitle"
+            "text": "<p>A refined collection of kitchenware and décor, selected to bring beauty and character into everyday spaces, with pieces that feel timeless, practical, and effortlessly at home. From beautiful kitchenware to considered décor, discover pieces chosen to make everyday spaces feel more thoughtful, functional, and uniquely yours.</p>",
+            "text_style": "body"
           }
         },
-        "button_WG7WfH": {
+        "button_trending": {
           "type": "button",
           "settings": {
-            "button_label": "Keep in touch",
-            "button_link": "#",
+            "button_label": "Shop Now",
+            "button_link": "",
             "button_style_secondary": false
           }
         }
       },
       "block_order": [
-        "caption_xiyGpg",
-        "heading_Vjgczx",
-        "text_XUBtVY",
-        "button_WG7WfH"
+        "heading_trending",
+        "text_trending",
+        "button_trending"
       ],
       "custom_css": [
         ".image-with-text {padding: 0 60px;}",
-        ".image-with-text__media-item {border-radius: 16px; overflow: hidden; max-width: 60%;}",
-        ".image-with-text__text-item {width: 100%; max-width: 40%;}",
         ".button {text-transform: uppercase;}",
-        "p {color: #000;}",
-        ".image-with-text__content {padding: 40px; padding-right: 0;}",
-        "@media (max-width: 998px) {.image-with-text__content {padding: 0; padding-top: 20px; } .image-with-text__grid {flex-direction: row; } .image-with-text__media-item, .image-with-text__text-item {max-width: 100%; } .image-with-text {padding: 0; }}"
+        "@media (max-width: 998px) {.image-with-text {padding: 0;}}"
       ],
       "name": "t:sections.image-with-text.presets.name",
       "settings": {
         "image": "shopify://shop_images/Screenshot_2024-03-12_at_4.48.14_PM.webp",
         "height": "adapt",
-        "desktop_image_width": "large",
+        "desktop_image_width": "medium",
         "layout": "image_first",
         "image_behavior": "none",
         "content_layout": "no-overlap",
@@ -429,8 +231,111 @@
         "mobile_content_alignment": "left",
         "section_color_scheme": "",
         "color_scheme": "",
-        "padding_top": 36,
-        "padding_bottom": 36
+        "padding_top": 40,
+        "padding_bottom": 40
+      }
+    },
+    "multicolumn_offer": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_gifting": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/4_a3070930-adea-4a4c-9387-a55525b912ee.png",
+            "title": "Gift Givings",
+            "text": "<p>Discover a considered selection of kitchenware and décor chosen for thoughtful gifting. From everyday gestures to special occasions, each piece is selected to feel personal, useful, and memorable.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_wholesale": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/25_cfd775eb-53e7-4881-ba46-a2cb3123e01e.png",
+            "title": "Wholesale/B2B",
+            "text": "<p>Explore a curated range of kitchenware and décor for cafes, restaurants, and hospitality spaces. Our wholesale collection brings together distinctive pieces with flexible options and dependable supply for different business needs.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_gifting",
+        "column_wholesale"
+      ],
+      "custom_css": [
+        ".multicolumn-list h3 {text-align: left;}",
+        ".multicolumn-card__info {text-align: left;}"
+      ],
+      "name": "t:sections.multicolumn.presets.name",
+      "settings": {
+        "title": "What We Offer",
+        "heading_size": "h1",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "button_label": "",
+        "button_link": "",
+        "columns_desktop": 2,
+        "column_alignment": "left",
+        "background_style": "none",
+        "color_scheme": "scheme-1",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 40,
+        "padding_bottom": 60
+      }
+    },
+    "image_with_text_everyday": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_everyday": {
+          "type": "heading",
+          "settings": {
+            "heading": "Everyday, Beautifully Considered",
+            "heading_size": "h1"
+          }
+        },
+        "text_everyday": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Bring character to the table with pieces chosen for the moments that happen beautifully. From sculptural accents to everyday essentials, discover a collection designed to make simple spaces feel more considered, inviting, and distinctly yours.</p>",
+            "text_style": "body"
+          }
+        },
+        "button_everyday": {
+          "type": "button",
+          "settings": {
+            "button_label": "Shop Now",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_everyday",
+        "text_everyday",
+        "button_everyday"
+      ],
+      "custom_css": [
+        ".image-with-text {padding: 0 60px;}",
+        ".button {text-transform: uppercase;}",
+        "@media (max-width: 998px) {.image-with-text {padding: 0;}}"
+      ],
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/website_images_new_2.webp",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "text_first",
+        "image_behavior": "none",
+        "content_layout": "no-overlap",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "left",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "padding_top": 40,
+        "padding_bottom": 60
       }
     },
     "basmil_images_collage_KYPywD": {
@@ -499,331 +404,28 @@
         "image_card_R78rPK",
         "image_card_hLnEbc"
       ],
-      "custom_css": [
-        "h2 {font-size: 32px;}",
-        "@media (max-width: 1440px) {h2 {font-size: 26.88px; }}",
-        "@media (max-width: 768px) {h2 {font-size: 22.4px; }}"
-      ],
+      "custom_css": [],
       "name": "Image Collage - Basmil",
       "settings": {
-        "heading": "How Your Favourites Styled Our Products",
+        "heading": "@toit.studio",
         "subheading": "",
         "description": "",
+        "show_captions": false,
+        "button_label": "Follow Us",
+        "button_link": "https://instagram.com/toit.studio",
         "section_id": "image-collage-basmil"
-      }
-    },
-    "basmil_image_slider_KgK4Px": {
-      "type": "basmil-image-slider",
-      "blocks": {
-        "featured_text_8mpLmQ": {
-          "type": "featured_text",
-          "settings": {
-            "featured_text": "Featured In"
-          }
-        },
-        "logo_item_a8XKbq": {
-          "type": "logo_item",
-          "settings": {
-            "logo_image": "shopify://shop_images/8_42a171cd-4a79-4a49-9f29-c07a2ef30326.png",
-            "logo_text": "",
-            "text_style": "logo"
-          }
-        },
-        "featured_text_Y3z8aX": {
-          "type": "featured_text",
-          "settings": {
-            "featured_text": "Featured In"
-          }
-        },
-        "logo_item_QMBTUP": {
-          "type": "logo_item",
-          "settings": {
-            "logo_image": "shopify://shop_images/8_42a171cd-4a79-4a49-9f29-c07a2ef30326.png",
-            "logo_text": "",
-            "text_style": "logo"
-          }
-        },
-        "featured_text_AqqkdB": {
-          "type": "featured_text",
-          "settings": {
-            "featured_text": "Featured In"
-          }
-        },
-        "logo_item_qjbQf4": {
-          "type": "logo_item",
-          "settings": {
-            "logo_image": "shopify://shop_images/8_42a171cd-4a79-4a49-9f29-c07a2ef30326.png",
-            "logo_text": "",
-            "text_style": "logo"
-          }
-        }
-      },
-      "block_order": [
-        "featured_text_8mpLmQ",
-        "logo_item_a8XKbq",
-        "featured_text_Y3z8aX",
-        "logo_item_QMBTUP",
-        "featured_text_AqqkdB",
-        "logo_item_qjbQf4"
-      ],
-      "name": "Image Slider - Basmil",
-      "settings": {
-        "animation_speed": 30,
-        "pause_on_hover": true
-      }
-    },
-    "basmil_product_slider_3kkxhc": {
-      "type": "basmil-product-slider",
-      "custom_css": [
-        "h2 {font-size: 32px; text-align: start !important; width: 100%; max-width: 1600px; padding: 0 60px;}",
-        "@media (max-width: 1440px) {h2 {font-size: 26.88px; }}",
-        "@media (max-width: 768px) {h2 {font-size: 22.4px; padding: 0 20px; }}"
-      ],
-      "name": "Product Slider - Basmil",
-      "settings": {
-        "collection": "frontpage",
-        "heading": "Featured Products",
-        "subheading": "",
-        "description": "",
-        "heading_link": "",
-        "slides_per_view": 4,
-        "arrows": true,
-        "dots": false,
-        "loop": false,
-        "autoplay": false,
-        "autoplay_speed": 3000,
-        "show_collection_slide": false,
-        "collection_slide_heading": "Shop our collections",
-        "collection_slide_button_link": "",
-        "collection_slide_button_label": "View Collection"
-      }
-    },
-    "image_with_text_iCxikY": {
-      "type": "image-with-text",
-      "blocks": {
-        "caption_iiGXhY": {
-          "type": "caption",
-          "settings": {
-            "caption": "Want to see our products in person?",
-            "text_style": "subtitle",
-            "text_size": "large"
-          }
-        },
-        "heading_LAUF87": {
-          "type": "heading",
-          "settings": {
-            "heading": "Visit our muun experience center",
-            "heading_size": "h2"
-          }
-        },
-        "text_BkmqNy": {
-          "type": "text",
-          "settings": {
-            "text": "<p><strong>D-12, Hosiery Complex, Noida - 201305</strong></p><p>Prior Appointments Only</p><p>Mon - Sat: 8am - 5pm</p><p>Sun: Closed</p><p>Google Location : <a href=\"https://maps.app.goo.gl/t4TfDEsMAa4a5KQZ8\" target=\"_blank\" title=\"https://maps.app.goo.gl/t4TfDEsMAa4a5KQZ8\">Click Here</a></p>",
-            "text_style": "body"
-          }
-        }
-      },
-      "block_order": [
-        "caption_iiGXhY",
-        "heading_LAUF87",
-        "text_BkmqNy"
-      ],
-      "custom_css": [
-        ".image-with-text.image-with-text {max-width: 1440px; margin: auto;}",
-        ".image-with-text {padding: 0 40px;}",
-        ".image-with-text__media-item {border-radius: 16px; overflow: hidden;}",
-        "p {color: #000;}",
-        "a {text-decoration: underline;}",
-        ".image-with-text__content {padding: 40px; padding-left: 0;}",
-        "h2 {font-size: 32px; marin-bottom: 40px;}",
-        "@media (max-width: 1440px) {h2 {font-size: 26.88px; }}",
-        "@media (max-width: 998px) {h2 {font-size: 22.4px; } .image-with-text__content {padding: 0; padding-top: 20px; } .image-with-text {padding: 0; }}"
-      ],
-      "name": "t:sections.image-with-text.presets.name",
-      "settings": {
-        "image": "shopify://shop_images/website_images_new_2.webp",
-        "height": "adapt",
-        "desktop_image_width": "medium",
-        "layout": "text_first",
-        "image_behavior": "none",
-        "content_layout": "no-overlap",
-        "desktop_content_position": "middle",
-        "desktop_content_alignment": "left",
-        "mobile_content_alignment": "left",
-        "section_color_scheme": "",
-        "color_scheme": "",
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
-    "basmil_duol_y7Hxkb": {
-      "type": "basmil-duol",
-      "blocks": {
-        "slide_pcAMTD": {
-          "type": "slide",
-          "settings": {
-            "main_heading": "Josmo Studio, Goa and Mumbai",
-            "nav_image": "shopify://shop_images/JOSMO-POS-Logo_1600x_8d4da26f-0389-4a41-a9bd-80dfc3c7f8e2.png"
-          }
-        },
-        "slide_Jd4rWA": {
-          "type": "slide",
-          "settings": {
-            "main_heading": "Go Native, Bangalore",
-            "nav_image": "shopify://shop_images/feed_plan-25_png.webp"
-          }
-        },
-        "slide_cQ66rF": {
-          "type": "slide",
-          "settings": {
-            "main_heading": "Magnolia Home, Mumbai",
-            "nav_image": "shopify://shop_images/Magnolia-logo.png"
-          }
-        },
-        "slide_VBDChP": {
-          "type": "slide",
-          "settings": {
-            "main_heading": "Kamala Furnishing, Siliguru",
-            "nav_image": "shopify://shop_images/PR_1.webp"
-          }
-        },
-        "slide_Kcq3Hh": {
-          "type": "slide",
-          "settings": {
-            "main_heading": "Josmo Studio, Goa and Mumbai",
-            "nav_image": "shopify://shop_images/JOSMO-POS-Logo_1600x_8d4da26f-0389-4a41-a9bd-80dfc3c7f8e2.png"
-          }
-        },
-        "slide_TeWF64": {
-          "type": "slide",
-          "settings": {
-            "main_heading": "Go Native, Bangalore",
-            "nav_image": "shopify://shop_images/feed_plan-25_png.webp"
-          }
-        },
-        "slide_YEAGjC": {
-          "type": "slide",
-          "settings": {
-            "main_heading": "Magnolia Home, Mumbai",
-            "nav_image": "shopify://shop_images/Magnolia-logo.png"
-          }
-        },
-        "slide_mwdGgV": {
-          "type": "slide",
-          "settings": {
-            "main_heading": "Kamala Furnishing, Siliguru",
-            "nav_image": "shopify://shop_images/PR_1.webp"
-          }
-        },
-        "slide_TjUHzk": {
-          "type": "slide",
-          "settings": {
-            "main_heading": "Josmo Studio, Goa and Mumbai",
-            "nav_image": "shopify://shop_images/JOSMO-POS-Logo_1600x_8d4da26f-0389-4a41-a9bd-80dfc3c7f8e2.png"
-          }
-        },
-        "slide_GJFQce": {
-          "type": "slide",
-          "settings": {
-            "main_heading": "Go Native, Bangalore",
-            "nav_image": "shopify://shop_images/feed_plan-25_png.webp"
-          }
-        },
-        "slide_HK8erK": {
-          "type": "slide",
-          "settings": {
-            "main_heading": "Magnolia Home, Mumbai",
-            "nav_image": "shopify://shop_images/Magnolia-logo.png"
-          }
-        },
-        "slide_8RFPfN": {
-          "type": "slide",
-          "settings": {
-            "main_heading": "Kamala Furnishing, Siliguru",
-            "nav_image": "shopify://shop_images/PR_1.webp"
-          }
-        }
-      },
-      "block_order": [
-        "slide_pcAMTD",
-        "slide_Jd4rWA",
-        "slide_cQ66rF",
-        "slide_VBDChP",
-        "slide_Kcq3Hh",
-        "slide_TeWF64",
-        "slide_YEAGjC",
-        "slide_mwdGgV",
-        "slide_TjUHzk",
-        "slide_GJFQce",
-        "slide_HK8erK",
-        "slide_8RFPfN"
-      ],
-      "custom_css": [
-        ".minimal-main-slide-heading {font-size: 30.4px;}",
-        "@media (max-width: 768px) {.minimal-main-slide-heading {font-size: 22.8px; }}"
-      ],
-      "name": "Find Our Product - Basmil",
-      "settings": {
-        "section_title": "",
-        "section_subtitle": "Also Find Our Products at",
-        "section_description": "",
-        "footer_description": "Are you Interested in having muun home at your store?",
-        "footer_button_label": "Contact Us",
-        "footer_button_link": "#"
-      }
-    },
-    "image_banner_mYNUTK": {
-      "type": "image-banner",
-      "blocks": {
-        "heading_pyPUwr": {
-          "type": "heading",
-          "settings": {
-            "heading": "we make your everyday experiences even more special",
-            "heading_size": "h1"
-          }
-        }
-      },
-      "block_order": [
-        "heading_pyPUwr"
-      ],
-      "custom_css": [
-        ".banner {margin-bottom: -10px; z-index: -1;}",
-        ".banner__box {max-width: 1200px;}",
-        ".banner__content {margin-top: -40px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) !important;}",
-        ".banner--mobile-bottom .banner__box {padding: 20px;}"
-      ],
-      "name": "t:sections.image-banner.presets.name",
-      "settings": {
-        "image_overlay_opacity": 0,
-        "image_height": "large",
-        "image_behavior": "none",
-        "desktop_content_position": "middle-center",
-        "desktop_content_alignment": "center",
-        "show_text_box": true,
-        "color_scheme": "scheme-5",
-        "stack_images_on_mobile": true,
-        "mobile_content_alignment": "center",
-        "show_text_below": true
       }
     }
   },
   "order": [
     "image_banner_hTHP44",
-    "basmil_image_text_slider_TaC7PE",
-    "basmil_product_slider_864QKL",
-    "basmil_collections_slider_tQeQQF",
-    "basmil_product_slider_B8Gnc3",
+    "rich_text_intro",
+    "collection_list_categories",
     "basmil_video_dfJ7ME",
-    "17494654652311fd1c",
-    "multicolumn_VGM3GF",
-    "basmil_collage_9RxAyx",
-    "image_with_text_PxhCyn",
-    "basmil_images_collage_KYPywD",
-    "basmil_image_slider_KgK4Px",
-    "basmil_product_slider_3kkxhc",
-    "image_with_text_iCxikY",
-    "basmil_duol_y7Hxkb",
-    "image_banner_mYNUTK"
+    "product_tabs_explore",
+    "image_with_text_trending",
+    "multicolumn_offer",
+    "image_with_text_everyday",
+    "basmil_images_collage_KYPywD"
   ]
 }

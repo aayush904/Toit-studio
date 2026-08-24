@@ -4,16 +4,26 @@
 {% endcomment %}
 
 <div class="page-width image-collage-basmil" id="image-collage-{{ section.id }}">
-  {% if section.settings.heading or section.settings.subheading or section.settings.description %}
+  {% if section.settings.heading or section.settings.subheading or section.settings.description or section.settings.button_label %}
     <div class="section-{{section.id}}-header">
-      {% if section.settings.heading %}
-        <h2 class="section-{{section.id}}-heading">{{ section.settings.heading }}</h2>
-      {% endif %}
-      {% if section.settings.subheading %}
-        <h3 class="section-{{section.id}}-subheading">{{ section.settings.subheading }}</h3>
-      {% endif %}
-      {% if section.settings.description %}
-        <div class="section-{{section.id}}-description">{{ section.settings.description }}</div>
+      <div class="section-{{section.id}}-header-text">
+        {% if section.settings.heading %}
+          <h2 class="section-{{section.id}}-heading">{{ section.settings.heading }}</h2>
+        {% endif %}
+        {% if section.settings.subheading %}
+          <h3 class="section-{{section.id}}-subheading">{{ section.settings.subheading }}</h3>
+        {% endif %}
+        {% if section.settings.description %}
+          <div class="section-{{section.id}}-description">{{ section.settings.description }}</div>
+        {% endif %}
+      </div>
+      {% if section.settings.button_label != blank %}
+        <a
+          href="{{ section.settings.button_link | default: '#' }}"
+          class="button button--secondary section-{{section.id}}-button"
+        >
+          {{- section.settings.button_label | escape -}}
+        </a>
       {% endif %}
     </div>
   {% endif %}
@@ -36,7 +46,16 @@
           </div>
         {% endif %}
 
-        {% if block.settings.title or block.settings.subtitle %}
+        {%- liquid
+          assign show_caption_block = false
+          if section.settings.show_captions and block.settings.title != blank
+            assign show_caption_block = true
+          endif
+          if section.settings.show_captions and block.settings.subtitle != blank
+            assign show_caption_block = true
+          endif
+        -%}
+        {% if show_caption_block %}
           <div class="profile-info">
             {% if block.settings.title %}
               <div class="profile-name">{{ block.settings.title }}</div>
@@ -60,6 +79,21 @@
 </div>
 
 <style>
+  .image-collage-basmil [class$='-header'] {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+
+  .image-collage-basmil [class$='-header'] h2,
+  .image-collage-basmil [class$='-header'] h3 {
+    text-align: left;
+    margin: 0;
+  }
+
   .image-collage-basmil .grid-container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -353,6 +387,23 @@
       "id": "description",
       "label": "Section Description",
       "info": "Optional description text for the section"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_captions",
+      "label": "Show name/handle captions on images",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "info": "Shown next to the heading, e.g. Follow Us"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
     },
     {
       "type": "text",
