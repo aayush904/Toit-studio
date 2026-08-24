@@ -1,0 +1,39 @@
+{% comment %}
+  Self-hosts Overused Grotesk (OFL-1.1) as the body + heading family for the
+  whole theme. Render after the layout's {% style %} block so these :root
+  overrides win. Source: github.com/RandomMaerks/Overused-Grotesk
+{% endcomment %}
+
+{% comment %}theme-check-disable AssetPreload{% endcomment %}
+<link rel="preload" as="font" href="{{ 'overused-grotesk-variable.woff2' | asset_url }}" type="font/woff2" crossorigin>
+{% comment %}theme-check-enable AssetPreload{% endcomment %}
+
+{% style %}
+  @font-face {
+    font-family: 'Overused Grotesk';
+    src: url({{ 'overused-grotesk-variable.woff2' | asset_url }}) format('woff2-variations'),
+         url({{ 'overused-grotesk-variable.woff2' | asset_url }}) format('woff2');
+    font-weight: 300 900;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Overused Grotesk';
+    src: url({{ 'overused-grotesk-italic.woff2' | asset_url }}) format('woff2');
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+  }
+
+  :root {
+    --font-body-family: 'Overused Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    --font-body-style: normal;
+    --font-body-weight: 400;
+    --font-body-weight-bold: 600;
+
+    --font-heading-family: 'Overused Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    --font-heading-style: normal;
+    --font-heading-weight: 500;
+  }
+{% endstyle %}
