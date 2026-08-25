@@ -147,6 +147,14 @@
         "collection_kitchenware",
         "collection_decor"
       ],
+      "custom_css": [
+        ".collection-list-title{font-weight:400;font-size:3.3rem;line-height:105%;text-align:center}",
+        ".card__inner.ratio{width:333px;height:375px}",
+        ".card__inner.ratio::before{padding-bottom:0}",
+        ".media{border-radius:12px;border:.5px solid rgba(0,0,0,.1)}",
+        ".card__heading{font-weight:400;font-size:1.6rem;line-height:100%;text-align:left}",
+        ".grid{column-gap:2rem;row-gap:2rem}"
+      ],
       "name": "t:sections.collection-list.name",
       "settings": {
         "title": "Shop by Categories",
