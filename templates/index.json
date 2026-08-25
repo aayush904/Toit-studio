@@ -45,8 +45,8 @@
       ],
       "custom_css": [
         ".banner__heading {max-width: 32rem; text-align: left; line-height:100%;}",
-        ".banner__box > * + .banner__text {margin-top: 1.6rem !important; color: #F7F6F3;}",
-        ".banner__box > * + .banner__buttons {margin-top: 3.2rem !important;}"
+        ".banner__box > * + .banner__text {margin-top: 1rem !important; color: #F7F6F3;}",
+        ".banner__box > * + .banner__buttons {margin-top: 2rem !important;}"
       ],
       "name": "t:sections.image-banner.presets.name",
       "settings": {

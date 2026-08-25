@@ -1399,7 +1399,6 @@ button.shopify-payment-button__button--unbranded {
 .customer button {
   font-size: 1.4rem;
   letter-spacing: 0.025em;
-  line-height: calc(1 + 0.2 / var(--font-body-scale));
 }
 
 .button--tertiary {
