@@ -43,13 +43,9 @@
         "text_rDyewh",
         "buttons_E4nqeF"
       ],
-      "custom_css": [
-        ".banner__heading {max-width: 32rem; text-align: left; line-height: 100%;}",
-        ".banner__box > * + .banner__text {margin-top: 1rem !important; color: #f7f6f3;}",
-        ".banner__box > * + .banner__buttons {margin-top: 2rem !important;}"
-      ],
       "name": "t:sections.image-banner.presets.name",
       "settings": {
+        "custom_css_class": "custom-hero",
         "image": "shopify://shop_images/image_3.png",
         "image_overlay_opacity": 0,
         "image_height": "medium",
@@ -96,15 +92,9 @@
         "text_intro",
         "button_intro"
       ],
-      "custom_css": [
-        ".rich-text {background: #f7f6f4; padding-top: 10rem; padding-bottom: 10rem;}",
-        ".rich-text__heading {font-weight: 400; font-size: 3.3rem; line-height: 105%; text-align: center; color: #000; max-width: 50rem; margin: 0 auto;}",
-        ".rich-text__text {font-weight: 400; font-size: 1.5rem; line-height: 150%; text-align: center; color: #5b5553; max-width: 60rem; margin: 0 auto;}",
-        ".rich-text__blocks > * + .rich-text__text {margin-top: 1.5rem;}",
-        ".rich-text__blocks > * + .rich-text__buttons {margin-top: 3rem;}"
-      ],
       "name": "t:sections.rich-text.name",
       "settings": {
+        "custom_css_class": "custom-intro",
         "desktop_content_position": "center",
         "content_alignment": "center",
         "color_scheme": "scheme-1",
@@ -147,16 +137,9 @@
         "collection_kitchenware",
         "collection_decor"
       ],
-      "custom_css": [
-        ".collection-list-title{font-weight:400;font-size:3.3rem;line-height:105%;text-align:center}",
-        ".card__inner.ratio{width:100%;max-width:333px;height:375px}",
-        ".card__inner.ratio::before{padding-bottom:0}",
-        ".media{border-radius:12px;border:.5px solid rgba(0,0,0,.1)}",
-        ".card__heading{font-weight:400;font-size:1.6rem;line-height:100%;text-align:left}",
-        ".grid{column-gap:2rem;row-gap:2rem}"
-      ],
       "name": "t:sections.collection-list.name",
       "settings": {
+        "custom_css_class": "custom-shop-categories",
         "title": "Shop by Categories",
         "heading_size": "h1",
         "image_ratio": "adapt",
@@ -171,11 +154,9 @@
     },
     "basmil_video_dfJ7ME": {
       "type": "basmil-video",
-      "custom_css": [
-        ".video-background-wrapper {padding-top: 56px; padding-bottom: 48px;}"
-      ],
       "name": "Background Video - Basmil",
       "settings": {
+        "custom_css_class": "custom-story-video",
         "title": "Our Story,<br>Our Promise",
         "subtitle": "Our focus on quality stretches further than appearances. We want every customer to be a happy one!",
         "description": "",
@@ -236,13 +217,9 @@
         "text_trending",
         "button_trending"
       ],
-      "custom_css": [
-        ".image-with-text {padding: 0 60px;}",
-        ".button {text-transform: uppercase;}",
-        "@media (max-width: 998px) {.image-with-text {padding: 0; }}"
-      ],
       "name": "t:sections.image-with-text.presets.name",
       "settings": {
+        "custom_css_class": "custom-trending",
         "image": "shopify://shop_images/Screenshot_2024-03-12_at_4.48.14_PM.webp",
         "height": "adapt",
         "desktop_image_width": "medium",
@@ -286,12 +263,9 @@
         "column_gifting",
         "column_wholesale"
       ],
-      "custom_css": [
-        ".multicolumn-list h3 {text-align: left;}",
-        ".multicolumn-card__info {text-align: left;}"
-      ],
       "name": "t:sections.multicolumn.presets.name",
       "settings": {
+        "custom_css_class": "custom-offer",
         "title": "What We Offer",
         "heading_size": "h1",
         "image_width": "full",
@@ -339,13 +313,9 @@
         "text_everyday",
         "button_everyday"
       ],
-      "custom_css": [
-        ".image-with-text {padding: 0 60px;}",
-        ".button {text-transform: uppercase;}",
-        "@media (max-width: 998px) {.image-with-text {padding: 0; }}"
-      ],
       "name": "t:sections.image-with-text.presets.name",
       "settings": {
+        "custom_css_class": "custom-everyday",
         "image": "shopify://shop_images/website_images_new_2.webp",
         "height": "adapt",
         "desktop_image_width": "medium",
@@ -427,7 +397,6 @@
         "image_card_R78rPK",
         "image_card_hLnEbc"
       ],
-      "custom_css": [],
       "name": "Image Collage - Basmil",
       "settings": {
         "heading": "@toit.studio",

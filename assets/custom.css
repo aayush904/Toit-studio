@@ -1,0 +1,121 @@
+/*
+ * Custom CSS, organized by section.
+ * Each block below is scoped to the class set in that section's
+ * "Custom CSS class" schema setting in the theme editor. Set a
+ * section's class to blank to opt it out of these rules.
+ */
+
+/* Hero banner ("Discover curated pairings...") */
+.custom-hero .banner__heading {
+  max-width: 32rem;
+  text-align: left;
+  line-height: 100%;
+}
+.custom-hero .banner__box > * + .banner__text {
+  margin-top: 1rem !important;
+  color: #f7f6f3;
+}
+.custom-hero .banner__box > * + .banner__buttons {
+  margin-top: 2rem !important;
+}
+
+/* Intro section ("Your one-stop destination...") */
+.custom-intro.rich-text {
+  background: #f7f6f4;
+  padding-top: 10rem;
+  padding-bottom: 10rem;
+}
+.custom-intro .rich-text__heading {
+  font-weight: 400;
+  font-size: 3.3rem;
+  line-height: 105%;
+  text-align: center;
+  color: #000;
+  max-width: 50rem;
+  margin: 0 auto;
+}
+.custom-intro .rich-text__text {
+  font-weight: 400;
+  font-size: 1.5rem;
+  line-height: 150%;
+  text-align: center;
+  color: #5b5553;
+  max-width: 60rem;
+  margin: 0 auto;
+}
+.custom-intro .rich-text__blocks > * + .rich-text__text {
+  margin-top: 1.5rem;
+}
+.custom-intro .rich-text__blocks > * + .rich-text__buttons {
+  margin-top: 3rem;
+}
+
+/* Shop by Categories grid */
+.custom-shop-categories .collection-list-title {
+  font-weight: 400;
+  font-size: 3.3rem;
+  line-height: 105%;
+  text-align: center;
+}
+.custom-shop-categories .card__inner.ratio {
+  width: 100%;
+  max-width: 333px;
+  height: 375px;
+}
+.custom-shop-categories .card__inner.ratio::before {
+  padding-bottom: 0;
+}
+.custom-shop-categories .media {
+  border-radius: 12px;
+  border: 0.5px solid rgba(0, 0, 0, 0.1);
+}
+.custom-shop-categories .card__heading {
+  font-weight: 400;
+  font-size: 1.6rem;
+  line-height: 100%;
+  text-align: left;
+}
+.custom-shop-categories .grid {
+  column-gap: 2rem;
+  row-gap: 2rem;
+}
+
+/* Our Story, Our Promise (background video) */
+.custom-story-video .video-background-wrapper {
+  padding-top: 56px;
+  padding-bottom: 48px;
+}
+
+/* #Trending: The Modern Vase */
+.custom-trending.image-with-text {
+  padding: 0 60px;
+}
+.custom-trending .button {
+  text-transform: uppercase;
+}
+@media (max-width: 998px) {
+  .custom-trending.image-with-text {
+    padding: 0;
+  }
+}
+
+/* What We Offer */
+.custom-offer .multicolumn-list h3 {
+  text-align: left;
+}
+.custom-offer .multicolumn-card__info {
+  text-align: left;
+}
+
+/* Everyday, Beautifully Considered */
+.custom-everyday.image-with-text {
+  padding: 0 60px;
+}
+.custom-everyday .button {
+  text-transform: uppercase;
+}
+@media (max-width: 998px) {
+  .custom-everyday.image-with-text {
+    padding: 0;
+  }
+}

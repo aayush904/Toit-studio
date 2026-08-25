@@ -228,7 +228,7 @@
   }
 </style>
 
-<section class="video-background-section" id="video-section-{{ section.id }}">
+<section class="video-background-section{% if section.settings.custom_css_class != blank %} {{ section.settings.custom_css_class }}{% endif %}" id="video-section-{{ section.id }}">
   <!-- Background Video -->
   <div class="video-background">
     {% if section.settings.background_video_type == 'youtube' and section.settings.background_youtube_url != blank %}
@@ -360,6 +360,12 @@
   "tag": "section",
   "class": "video-background-wrapper",
   "settings": [
+    {
+      "type": "text",
+      "id": "custom_css_class",
+      "label": "Custom CSS class",
+      "info": "Add a class here to target this section from assets/custom.css"
+    },
     {
       "type": "header",
       "content": "Content Settings"
