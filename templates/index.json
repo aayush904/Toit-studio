@@ -97,9 +97,11 @@
         "button_intro"
       ],
       "custom_css": [
-        ".rich-text {background-color: #F7F6F4; padding-top: 10rem; padding-bottom: 10rem;}",
-        ".rich-text__heading {font-weight: 400; font-size: 3.3rem; line-height: 105%; letter-spacing: 0; text-align: center; color: #000000; max-width: 50rem; margin-left: auto; margin-right: auto;}",
-        ".rich-text__text {font-weight: 400; font-size: 1.5rem; line-height: 150%; letter-spacing: 0; text-align: center; color: #5B5553; max-width: 60rem; margin-left: auto; margin-right: auto;}"
+        ".rich-text{background:#F7F6F4;padding-top:10rem;padding-bottom:10rem}",
+        ".rich-text__heading{font-weight:400;font-size:3.3rem;line-height:105%;text-align:center;color:#000;max-width:50rem;margin:0 auto}",
+        ".rich-text__text{font-weight:400;font-size:1.5rem;line-height:150%;text-align:center;color:#5B5553;max-width:60rem;margin:0 auto}",
+        ".rich-text__blocks>*+.rich-text__text{margin-top:1.5rem}",
+        ".rich-text__blocks>*+.rich-text__buttons{margin-top:3rem}"
       ],
       "name": "t:sections.rich-text.name",
       "settings": {
