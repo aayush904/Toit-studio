@@ -43,6 +43,9 @@
         "text_rDyewh",
         "buttons_E4nqeF"
       ],
+      "custom_css": [
+        ".banner__heading {max-width: 32rem; text-align: left;}"
+      ],
       "name": "t:sections.image-banner.presets.name",
       "settings": {
         "image": "shopify://shop_images/image_3.png",
