@@ -44,7 +44,7 @@
         "buttons_E4nqeF"
       ],
       "custom_css": [
-        ".banner__heading {max-width: 32rem; text-align: left;}",
+        ".banner__heading {max-width: 32rem; text-align: left; line-height:100%;}",
         ".banner__box > * + .banner__text {margin-top: 1.6rem !important; color: #F7F6F3;}",
         ".banner__box > * + .banner__buttons {margin-top: 3.2rem !important;}"
       ],

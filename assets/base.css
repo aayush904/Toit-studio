@@ -1412,7 +1412,7 @@ button.shopify-payment-button__button--unbranded {
 .button--primary,
 .button--secondary {
   gap: 1rem;
-  max-height: 54px;
+  max-height: 3.1rem;
   justify-content: center;
   align-items: center;
 }
