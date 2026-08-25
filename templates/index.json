@@ -91,6 +91,10 @@
         "text_intro",
         "button_intro"
       ],
+      "custom_css": [
+        ".rich-text__heading {font-weight: 400; font-size: 5rem; line-height: 105%; letter-spacing: 0; text-align: center;}",
+        ".rich-text__text {font-weight: 400; font-size: 1.8rem; line-height: 150%; letter-spacing: 0; text-align: center;}"
+      ],
       "name": "t:sections.rich-text.name",
       "settings": {
         "desktop_content_position": "center",
