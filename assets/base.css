@@ -179,6 +179,10 @@ select {
   }
 }
 
+.shopify-section:has(.banner) + .shopify-section:has(.rich-text) {
+  margin-top: 0 !important;
+}
+
 .element-margin-top {
   margin-top: 5rem;
 }
