@@ -50,36 +50,6 @@
   margin-top: 3rem;
 }
 
-/* Shop by Categories grid */
-.custom-shop-categories .collection-list-title {
-  font-weight: 400;
-  font-size: 3.3rem;
-  line-height: 105%;
-  text-align: center;
-}
-.custom-shop-categories .card__inner.ratio {
-  width: 100%;
-  max-width: 333px;
-  height: 375px;
-}
-.custom-shop-categories .card__inner.ratio::before {
-  padding-bottom: 0;
-}
-.custom-shop-categories .media {
-  border-radius: 12px;
-  border: 0.5px solid rgba(0, 0, 0, 0.1);
-}
-.custom-shop-categories .card__heading {
-  font-weight: 400;
-  font-size: 1.6rem;
-  line-height: 100%;
-  text-align: left;
-}
-.custom-shop-categories .grid {
-  column-gap: 2rem;
-  row-gap: 2rem;
-}
-
 /* Our Story, Our Promise (background video) */
 .custom-story-video .video-background-wrapper {
   padding-top: 56px;
