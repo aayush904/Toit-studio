@@ -44,8 +44,8 @@
         "buttons_E4nqeF"
       ],
       "custom_css": [
-        ".banner__heading {max-width: 32rem; text-align: left; line-height:100%;}",
-        ".banner__box > * + .banner__text {margin-top: 1rem !important; color: #F7F6F3;}",
+        ".banner__heading {max-width: 32rem; text-align: left; line-height: 100%;}",
+        ".banner__box > * + .banner__text {margin-top: 1rem !important; color: #f7f6f3;}",
         ".banner__box > * + .banner__buttons {margin-top: 2rem !important;}"
       ],
       "name": "t:sections.image-banner.presets.name",
@@ -97,11 +97,11 @@
         "button_intro"
       ],
       "custom_css": [
-        ".rich-text{background:#F7F6F4;padding-top:10rem;padding-bottom:10rem}",
-        ".rich-text__heading{font-weight:400;font-size:3.3rem;line-height:105%;text-align:center;color:#000;max-width:50rem;margin:0 auto}",
-        ".rich-text__text{font-weight:400;font-size:1.5rem;line-height:150%;text-align:center;color:#5B5553;max-width:60rem;margin:0 auto}",
-        ".rich-text__blocks>*+.rich-text__text{margin-top:1.5rem}",
-        ".rich-text__blocks>*+.rich-text__buttons{margin-top:3rem}"
+        ".rich-text {background: #f7f6f4; padding-top: 10rem; padding-bottom: 10rem;}",
+        ".rich-text__heading {font-weight: 400; font-size: 3.3rem; line-height: 105%; text-align: center; color: #000; max-width: 50rem; margin: 0 auto;}",
+        ".rich-text__text {font-weight: 400; font-size: 1.5rem; line-height: 150%; text-align: center; color: #5b5553; max-width: 60rem; margin: 0 auto;}",
+        ".rich-text__blocks > * + .rich-text__text {margin-top: 1.5rem;}",
+        ".rich-text__blocks > * + .rich-text__buttons {margin-top: 3rem;}"
       ],
       "name": "t:sections.rich-text.name",
       "settings": {
@@ -151,7 +151,7 @@
       "settings": {
         "title": "Shop by Categories",
         "heading_size": "h1",
-        "image_ratio": "square",
+        "image_ratio": "adapt",
         "columns_desktop": 4,
         "color_scheme": "scheme-1",
         "show_view_all": false,
