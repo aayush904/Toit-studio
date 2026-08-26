@@ -158,7 +158,7 @@
       "settings": {
         "custom_css_class": "custom-story-video",
         "title": "Our Story,Our Promise",
-        "subtitle": "Our focus on quality stretches further than appearances. We want every customer to be a happy one!",
+        "subtitle": "Our focus on quality stretches further than appearances. <br>We want every customer to be a happy one!",
         "description": "",
         "background_video_type": "local",
         "background_youtube_url": "https://www.youtube.com/watch?v=pWg1vgJ5Fa8",
