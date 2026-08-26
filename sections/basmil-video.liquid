@@ -52,12 +52,11 @@
   }
 
   .video-content {
-    position: relative;
+    position: absolute;
+    inset: 0;
     z-index: 3;
-    text-align: center;
     color: white;
-    max-width: 750px;
-    padding: 0 20px;
+    pointer-events: none;
   }
 
   .play-button {
@@ -70,10 +69,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto 16px auto;
     transition: all 0.3s ease;
-    position: relative;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    pointer-events: auto;
   }
 
   .play-button:hover {
@@ -97,22 +100,33 @@
     border-left: 16px solid rgba(255, 255, 255, 1);
   }
   .video-title {
-    font-size: 3.5rem;
-    font-weight: 700;
-    margin-bottom: 0;
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
-    letter-spacing: -0.02em;
+    position: absolute;
+    left: 40px;
+    bottom: 32px;
+    max-width: 45%;
+    font-size: 2.75rem;
+    font-weight: 400;
+    margin: 0;
+    text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.4);
+    letter-spacing: normal;
     color: #fff;
     line-height: 1.2;
+    pointer-events: auto;
   }
 
   .video-subtitle {
+    position: absolute;
+    right: 40px;
+    bottom: 32px;
+    max-width: 32%;
+    text-align: right;
     color: #fff;
     font-weight: 400;
-    font-size: 1.95rem;
-    margin-bottom: 30px;
-    margin-top: 0;
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+    font-size: 1.2rem;
+    line-height: 1.4;
+    margin: 0;
+    text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.4);
+    pointer-events: auto;
   }
 
   .video-description {
@@ -204,7 +218,21 @@
     }
 
     .video-title {
-      font-size: 2.5rem;
+      left: 20px;
+      right: 20px;
+      bottom: 90px;
+      max-width: none;
+      font-size: 2rem;
+      text-align: center;
+    }
+
+    .video-subtitle {
+      left: 20px;
+      right: 20px;
+      bottom: 24px;
+      max-width: none;
+      text-align: center;
+      font-size: 1rem;
     }
 
     .video-description {
@@ -214,7 +242,6 @@
     .play-button {
       width: 60px;
       height: 60px;
-      margin-bottom: 30px;
     }
 
     .play-button::after {
