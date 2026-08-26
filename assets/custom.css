@@ -7,7 +7,7 @@
 
 /* Hero banner ("Discover curated pairings...") */
 .custom-hero .banner__heading {
-  max-width: 32rem;
+  max-width: 52rem;
   text-align: left;
   line-height: 100%;
 }
@@ -98,3 +98,10 @@
     }
 }
 
+
+
+.custom-hero {
+  .hxl{
+    font-size: calc(var(--font-heading-scale) * 7.2rem);
+  }
+}
