@@ -343,16 +343,31 @@ h5,
   }
 }
 
-/* 28px mobile / 36px desktop */
+/* 25px mobile / 50px (5rem) desktop */
 h1,
 .h1 {
-  font-size: calc(var(--font-heading-scale) * 2.8rem);
+  font-size: calc(var(--font-heading-scale) * 2.5rem);
+  font-weight: 400;
+}
+
+@media only screen and (min-width: 576px) {
+  h1,
+  .h1 {
+    font-size: calc(var(--font-heading-scale) * 3.25rem);
+  }
 }
 
 @media only screen and (min-width: 768px) {
   h1,
   .h1 {
-    font-size: calc(var(--font-heading-scale) * 3.6rem);
+    font-size: calc(var(--font-heading-scale) * 4rem);
+  }
+}
+
+@media only screen and (min-width: 990px) {
+  h1,
+  .h1 {
+    font-size: calc(var(--font-heading-scale) * 5rem);
   }
 }
 
