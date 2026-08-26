@@ -157,7 +157,7 @@
       "name": "Background Video - Basmil",
       "settings": {
         "custom_css_class": "custom-story-video",
-        "title": "Our Story,<br>Our Promise",
+        "title": "Our Story,Our Promise",
         "subtitle": "Our focus on quality stretches further than appearances. We want every customer to be a happy one!",
         "description": "",
         "background_video_type": "local",

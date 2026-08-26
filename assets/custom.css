@@ -101,6 +101,13 @@
     .title-wrapper-with-link{
       justify-content:center;
     }
+    .card__content{
+      justify-content:flex-start !important;
+    }
+    .card__heading{
+      font-size:2.8rem;
+      font-weight:400;
+    }
 }
 
 
