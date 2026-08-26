@@ -100,8 +100,24 @@
 
 
 
-.custom-hero {
-  .hxl{
+.custom-hero .hxl {
+  font-size: calc(var(--font-heading-scale) * 3.6rem);
+}
+
+@media only screen and (min-width: 576px) {
+  .custom-hero .hxl {
+    font-size: calc(var(--font-heading-scale) * 4.8rem);
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .custom-hero .hxl {
+    font-size: calc(var(--font-heading-scale) * 6rem);
+  }
+}
+
+@media only screen and (min-width: 990px) {
+  .custom-hero .hxl {
     font-size: calc(var(--font-heading-scale) * 7.2rem);
   }
 }
