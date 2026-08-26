@@ -101,11 +101,9 @@
   }
   .video-title {
     position: absolute;
-    left: 40px;
-    bottom: 32px;
+    left: 240px;
+    bottom: 100px;
     max-width: 45%;
-    font-size: 2.75rem;
-    font-weight: 400;
     margin: 0;
     text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.4);
     letter-spacing: normal;
@@ -116,13 +114,13 @@
 
   .video-subtitle {
     position: absolute;
-    right: 40px;
-    bottom: 32px;
+    right: 240px;
+    bottom: 100px;
     max-width: 32%;
     text-align: right;
     color: #fff;
     font-weight: 400;
-    font-size: 1.2rem;
+    font-size: 1.8rem;
     line-height: 1.4;
     margin: 0;
     text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.4);
@@ -283,7 +281,7 @@
     <button class="play-button" onclick="openVideoModal('{{ section.id }}')"></button>
 
     {% if section.settings.title != blank %}
-      <h2 class="video-title">{{ section.settings.title }}</h2>
+      <h2 class="video-title h1">{{ section.settings.title }}</h2>
     {% endif %}
 
     {% if section.settings.subtitle != blank %}
