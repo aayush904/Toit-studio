@@ -1,9 +1,4 @@
-/*
- * Custom CSS, organized by section.
- * Each block below is scoped to the class set in that section's
- * "Custom CSS class" schema setting in the theme editor. Set a
- * section's class to blank to opt it out of these rules.
- */
+
 
 /* Hero banner ("Discover curated pairings...") */
 .custom-hero .banner__heading {
@@ -14,6 +9,7 @@
 .custom-hero .banner__box > * + .banner__text {
   margin-top: 1rem !important;
   color: #f7f6f3;
+  font-size:2rem;
 }
 .custom-hero .banner__box > * + .banner__buttons {
   margin-top: 2rem !important;
@@ -27,20 +23,20 @@
 }
 .custom-intro .rich-text__heading {
   font-weight: 400;
-  font-size: 3.3rem;
+  font-size: 5rem;
   line-height: 105%;
   text-align: center;
   color: #000;
-  max-width: 50rem;
+  max-width: 72rem;
   margin: 0 auto;
 }
 .custom-intro .rich-text__text {
   font-weight: 400;
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   line-height: 150%;
   text-align: center;
   color: #5b5553;
-  max-width: 60rem;
+  max-width: 71rem;
   margin: 0 auto;
 }
 .custom-intro .rich-text__blocks > * + .rich-text__text {
@@ -94,7 +90,16 @@
 .custom-shop-categories{
     .collection-list__item{
       max-width: 333px;
-    height: auto;
+    height: 410px;
+    }
+    .card__inner{
+      height:100%;
+    }
+    .grid{
+      gap:3.2rem;
+    }
+    .title-wrapper-with-link{
+      justify-content:center;
     }
 }
 

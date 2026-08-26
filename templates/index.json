@@ -72,7 +72,7 @@
         "text_intro": {
           "type": "text",
           "settings": {
-            "text": "<p>A refined collection of kitchenware and décor, selected to bring beauty and character into everyday spaces, with pieces that feel timeless, practical, and effortlessly at home.</p><p>From beautiful kitchenware to considered décor, discover pieces chosen to make everyday spaces feel more thoughtful, functional, and uniquely yours.</p>"
+            "text": "<p>A refined collection of kitchenware and décor, selected to bring beauty, character, and ease into everyday spaces, with pieces that feel timeless, practical, and effortlessly at home.<br/><br/>From beautiful kitchenware to considered décor, discover pieces chosen to make everyday spaces feel more thoughtful, functional, and uniquely yours.</p>"
           }
         },
         "button_intro": {
