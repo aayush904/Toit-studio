@@ -89,3 +89,12 @@
     padding: 0;
   }
 }
+
+
+.custom-shop-categories{
+    .collection-list__item{
+      max-width: 333px;
+    height: auto;
+    }
+}
+
