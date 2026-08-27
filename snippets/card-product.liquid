@@ -16,6 +16,7 @@
   - horizontal_class: {Boolean} Add a card--horizontal class if set to true. Default: false (optional)
   - horizontal_quick_add: {Boolean} Changes the quick add button styles when set to true. Default: false (optional)
   - placeholder_image: {String} The placeholder image to use when no product exists. Default: 'product-apparel-2' (optional)
+  - show_description: {Boolean} Show a short truncated product description below the price. Default: false (optional)
 
   Usage:
   {% render 'card-product', show_vendor: section.settings.show_vendor %}
@@ -527,6 +528,9 @@
               {% endcomment %}
             {%- endif -%}
           </div>
+          {%- if show_description and card_product.description != blank -%}
+            <div class="card__description">{{ card_product.description | strip_html | truncatewords: 20 }}</div>
+          {%- endif -%}
         </div>
 
         {% if quick_add == 'standard' %}
