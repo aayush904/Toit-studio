@@ -96,7 +96,7 @@
       height:100%;
     }
     .grid{
-      gap:3.2rem;
+      justify-content:space-between;
     }
     .title-wrapper-with-link{
       justify-content:center;

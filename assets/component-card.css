@@ -42,7 +42,7 @@
 
 .card--card,
 .card--standard .card__inner {
-  --border-radius: 8px;
+  --border-radius: 12px;
   position: relative;
   box-sizing: border-box;
   border-radius: var(--border-radius);
