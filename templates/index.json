@@ -148,8 +148,8 @@
         "show_view_all": false,
         "columns_mobile": "2",
         "swipe_on_mobile": false,
-        "padding_top": 40,
-        "padding_bottom": 60
+        "padding_top": 92,
+        "padding_bottom": 92
       }
     },
     "basmil_video_dfJ7ME": {
@@ -171,6 +171,7 @@
       "type": "product-tabs",
       "name": "Product Tabs",
       "settings": {
+        "custom_css_class": "",
         "heading": "Explore our Products",
         "heading_size": "h1",
         "default_tab": "2",
@@ -181,8 +182,8 @@
         "tab_2_collection": "frontpage",
         "tab_3_label": "Featured",
         "tab_3_collection": "all",
-        "color_scheme": "scheme-1",
-        "padding_top": 40,
+        "color_scheme": "scheme-0130ff2c-5d75-4e86-be8d-b4ab3796a5ff",
+        "padding_top": 92,
         "padding_bottom": 60
       }
     },
@@ -399,6 +400,7 @@
       ],
       "name": "Image Collage - Basmil",
       "settings": {
+        "custom_css_class": "",
         "heading": "@toit.studio",
         "subheading": "",
         "description": "",

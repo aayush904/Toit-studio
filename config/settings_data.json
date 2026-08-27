@@ -18,7 +18,7 @@
     "type_body_font": "geist_n4",
     "body_scale": 100,
     "page_width": 1550,
-    "spacing_sections": 60,
+    "spacing_sections": 0,
     "spacing_grid_horizontal": 8,
     "spacing_grid_vertical": 8,
     "animations_reveal_on_scroll": true,
@@ -203,7 +203,7 @@
       },
       "scheme-0130ff2c-5d75-4e86-be8d-b4ab3796a5ff": {
         "settings": {
-          "background": "#e8ddca",
+          "background": "#F7F6F4",
           "background_gradient": "",
           "text": "#0d0d0d",
           "button": "#0d0d0d",
