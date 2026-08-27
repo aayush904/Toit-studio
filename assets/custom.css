@@ -55,17 +55,11 @@
 /* #Trending: The Modern Vase */
 .custom-trending.image-with-text {
   padding: 0;
-  margin-left: -60px;
-  width: calc(100% + 60px);
+  margin-left: calc(50% - 50vw);
+  width: calc(50% + 50vw);
 }
 .custom-trending .button {
   text-transform: uppercase;
-}
-@media (max-width: 767px) {
-  .custom-trending.image-with-text {
-    margin-left: -16px;
-    width: calc(100% + 16px);
-  }
 }
 @media (min-width: 999px) {
   .custom-trending .image-with-text__content {
