@@ -233,7 +233,7 @@
         "section_color_scheme": "",
         "color_scheme": "",
         "padding_top": 0,
-        "padding_bottom": 40
+        "padding_bottom": 0
       }
     },
     "multicolumn_offer": {
@@ -328,8 +328,8 @@
         "mobile_content_alignment": "left",
         "section_color_scheme": "",
         "color_scheme": "",
-        "padding_top": 40,
-        "padding_bottom": 60
+        "padding_top": 0,
+        "padding_bottom": 0
       }
     },
     "basmil_images_collage_KYPywD": {
