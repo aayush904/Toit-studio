@@ -17,6 +17,8 @@
   - horizontal_quick_add: {Boolean} Changes the quick add button styles when set to true. Default: false (optional)
   - placeholder_image: {String} The placeholder image to use when no product exists. Default: 'product-apparel-2' (optional)
   - show_description: {Boolean} Show a short truncated product description below the price. Default: false (optional)
+  - show_compare_at_price: {Boolean} Renders the compare-at (sale) price. Default: true (optional)
+  - hide_from_price: {Boolean} Uses the selected/first variant's price instead of the product's, which suppresses the "From" prefix on price ranges. Default: false (optional)
 
   Usage:
   {% render 'card-product', show_vendor: section.settings.show_vendor %}
@@ -386,6 +388,7 @@
           {% endunless %}
         {% endfor -%}
         <div class="card__information">
+          <div class="card__title-row">
           <h3
             class="card__heading{% if card_product.featured_media or settings.card_style == 'standard' %} h5{% endif %}"
             {% if card_product.featured_media or settings.card_style == 'card' %}
@@ -408,7 +411,18 @@
             {%- endif -%}
 
             <span class="caption-large light">{{ block.settings.description | escape }}</span>
-            {% render 'price', product: card_product, price_class: '', show_compare_at_price: true %}
+            {%- liquid
+              assign card_show_compare_at_price = true
+              if show_compare_at_price == false
+                assign card_show_compare_at_price = false
+              endif
+            -%}
+            {% render 'price',
+              product: card_product,
+              price_class: '',
+              show_compare_at_price: card_show_compare_at_price,
+              use_variant: hide_from_price
+            %}
             {%- if card_product.quantity_price_breaks_configured? -%}
               {% if card_product.variants_count == 1 and quick_add == 'bulk' %}
                 {% liquid
@@ -527,6 +541,7 @@
                 </p>
               {% endcomment %}
             {%- endif -%}
+          </div>
           </div>
           {%- if show_description and card_product.description != blank -%}
             <div class="card__description">{{ card_product.description | strip_html | truncatewords: 20 }}</div>
