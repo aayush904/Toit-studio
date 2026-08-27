@@ -88,8 +88,14 @@
 }
 
 /* What We Offer */
+.custom-offer .multicolumn__title {
+  justify-content: center;
+}
 .custom-offer .title {
   text-align: center;
+}
+.custom-offer .multicolumn-list {
+  justify-content: space-between;
 }
 .custom-offer .multicolumn-card__image-wrapper .media {
   border-radius: 12px;
