@@ -155,7 +155,9 @@
   }
   .custom-everyday .image-with-text__content {
     height: 650px;
-    padding-left: 14rem;
+    /* Line the overlaid text up with the page-width container used by every
+       other section, even though the section itself is full-bleed. */
+    padding-left: max(60px, calc((100vw - var(--page-width)) / 2 + 60px));
   }
 }
 
