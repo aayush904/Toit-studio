@@ -114,14 +114,48 @@
 
 /* Everyday, Beautifully Considered */
 .custom-everyday.image-with-text {
-  padding: 0 60px;
+  padding: 0;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  width: 100vw;
+  max-width: 100vw;
 }
 .custom-everyday .button {
   text-transform: uppercase;
 }
-@media (max-width: 998px) {
-  .custom-everyday.image-with-text {
-    padding: 0;
+@media (min-width: 999px) {
+  /* Image becomes a full-bleed backdrop, text overlays it on the left */
+  .custom-everyday .image-with-text__grid,
+  .custom-everyday .image-with-text__grid--reverse {
+    position: relative;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    min-height: 650px;
+  }
+  .custom-everyday.image-with-text .image-with-text__media-item {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    max-width: none;
+    z-index: 0;
+  }
+  .custom-everyday .image-with-text__media-item:after {
+    border-radius: 0;
+  }
+  .custom-everyday .image-with-text__media {
+    padding-bottom: 0 !important;
+    height: 650px;
+  }
+  .custom-everyday .image-with-text__text-item {
+    position: relative;
+    z-index: 1;
+    flex: 0 0 50%;
+    width: 50%;
+    max-width: 50%;
+  }
+  .custom-everyday .image-with-text__content {
+    height: 650px;
+    padding-left: 14rem;
   }
 }
 
