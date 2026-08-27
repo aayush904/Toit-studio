@@ -75,6 +75,13 @@
     width: auto;
     max-width: none;
   }
+  .custom-trending .image-with-text__media-item {
+    align-self: flex-start;
+  }
+  .custom-trending .image-with-text__media {
+    padding-bottom: 0 !important;
+    height: 650px;
+  }
   .custom-trending .image-with-text__content {
     padding-left: 14rem;
   }
