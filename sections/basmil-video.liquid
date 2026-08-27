@@ -99,9 +99,14 @@
   .play-button:hover:after {
     border-left: 16px solid rgba(255, 255, 255, 1);
   }
+  .video-content__inner {
+    position: relative;
+    height: 100%;
+  }
+
   .video-title {
     position: absolute;
-    left: 240px;
+    left: 16px;
     bottom: 100px;
     max-width: 45%;
     margin: 0;
@@ -114,7 +119,7 @@
 
   .video-subtitle {
     position: absolute;
-    right: 240px;
+    right: 16px;
     bottom: 100px;
     max-width: 60rem;
     text-align: left;
@@ -216,8 +221,8 @@
     }
 
     .video-title {
-      left: 20px;
-      right: 20px;
+      left: 16px;
+      right: 16px;
       bottom: 90px;
       max-width: none;
       font-size: 2rem;
@@ -225,8 +230,8 @@
     }
 
     .video-subtitle {
-      left: 20px;
-      right: 20px;
+      left: 16px;
+      right: 16px;
       bottom: 24px;
       max-width: none;
       text-align: center;
@@ -280,17 +285,19 @@
     <!-- Play Button -->
     <button class="play-button" onclick="openVideoModal('{{ section.id }}')"></button>
 
-    {% if section.settings.title != blank %}
-      <h2 class="video-title h1">{{ section.settings.title }}</h2>
-    {% endif %}
+    <div class="video-content__inner page-width">
+      {% if section.settings.title != blank %}
+        <h2 class="video-title h1">{{ section.settings.title }}</h2>
+      {% endif %}
 
-    {% if section.settings.subtitle != blank %}
-      <h3 class="video-subtitle h3">{{ section.settings.subtitle }}</h3>
-    {% endif %}
+      {% if section.settings.subtitle != blank %}
+        <h3 class="video-subtitle h3">{{ section.settings.subtitle }}</h3>
+      {% endif %}
 
-    {% if section.settings.description != blank %}
-      <p class="video-description">{{ section.settings.description }}</p>
-    {% endif %}
+      {% if section.settings.description != blank %}
+        <p class="video-description">{{ section.settings.description }}</p>
+      {% endif %}
+    </div>
   </div>
 </section>
 
