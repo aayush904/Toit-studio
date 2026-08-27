@@ -334,6 +334,31 @@
               data-cascade
             {% endif %}
           >
+            {%- liquid
+              assign footer_logo = section.settings.footer_logo
+              if footer_logo == blank
+                assign footer_logo = settings.logo
+              endif
+            -%}
+            {%- if footer_logo != blank or section.settings.footer_tagline != blank -%}
+              <div class="footer__brand">
+                {%- if footer_logo != blank -%}
+                  <div class="footer__brand-logo" style="width: {{ section.settings.footer_logo_width }}px;">
+                    {{
+                      footer_logo
+                      | image_url: width: 600
+                      | image_tag:
+                        loading: 'lazy',
+                        widths: '150, 300, 450, 600',
+                        alt: shop.name
+                    }}
+                  </div>
+                {%- endif -%}
+                {%- if section.settings.footer_tagline != blank -%}
+                  <div class="footer__brand-tagline rte">{{ section.settings.footer_tagline }}</div>
+                {%- endif -%}
+              </div>
+            {%- endif -%}
             {%- if section.settings.newsletter_enable -%}
               <div class="footer-block__newsletter">
                 {%- if section.settings.newsletter_heading != blank -%}
@@ -373,6 +398,9 @@
                         id="Subscribe"
                         aria-label="{{ 'newsletter.button_label' | t }}"
                       >
+                        <span class="newsletter-form__button-label">
+                          {{- section.settings.newsletter_button_label | default: 'JOIN' -}}
+                        </span>
                         <span class="svg-wrapper">
                           {{- 'icon-arrow.svg' | inline_asset_content -}}
                         </span>
@@ -449,34 +477,42 @@
             </localization-form>
           {%- endif -%}
         </div>
-        <div class="footer__column footer__column--info">
-          {%- if section.settings.payment_enable -%}
-            <div class="footer__payment">
-              <span class="visually-hidden">{{ 'sections.footer.payment' | t }}</span>
-              <ul class="list list-payment" role="list">
-                {%- for type in shop.enabled_payment_types -%}
-                  <li class="list-payment__item">
-                    {{ type | payment_type_svg_tag: class: 'icon icon--full-color' }}
-                  </li>
-                {%- endfor -%}
-              </ul>
-            </div>
-          {%- endif -%}
-        </div>
       </div>
-      <div class="footer__content-bottom-wrapper page-width{% if section.settings.enable_country_selector == false and section.settings.enable_language_selector == false %} footer__content-bottom-wrapper--between{% endif %}">
+      <div class="footer__content-bottom-wrapper page-width footer__bottom-bar">
+        <div class="footer__copyright caption">
+          <small class="copyright__content">
+            &copy; {{ 'now' | date: '%Y' }} {{ shop.name }}. {{ section.settings.copyright_suffix | default: 'All rights reserved.' }}
+          </small>
+        </div>
+
+        {%- if section.settings.show_policy_links -%}
+          <ul class="footer__policies list-unstyled" role="list">
+            {%- for policy in shop.policies -%}
+              {%- if policy != blank -%}
+                <li><a href="{{ policy.url }}">{{ policy.title }}</a></li>
+              {%- endif -%}
+            {%- endfor -%}
+          </ul>
+        {%- endif -%}
+
+        {%- if section.settings.payment_enable and shop.enabled_payment_types.size > 0 -%}
+          <div class="footer__payment">
+            <span class="footer__payment-label">{{ section.settings.payment_label | default: 'We Accept' }}</span>
+            <ul class="list list-payment" role="list">
+              {%- for type in shop.enabled_payment_types -%}
+                <li class="list-payment__item">
+                  {{ type | payment_type_svg_tag: class: 'icon icon--full-color' }}
+                </li>
+              {%- endfor -%}
+            </ul>
+          </div>
+        {%- endif -%}
+
         {%- if section.settings.show_social and has_social_icons -%}
           <div class="footer-block__social_desktop">
             {%- render 'social-icons', class: 'footer__list-social' -%}
           </div>
         {%- endif -%}
-
-        <div class="footer__copyright caption">
-          <small class="copyright__content"
-            >&copy; {{ 'now' | date: '%Y' }}, {{ shop.name | link_to: routes.root_url -}}
-          </small>
-          <small class="copyright__content">{{ powered_by_link }}</small>
-        </div>
       </div>
     </div>
   </div>
@@ -589,6 +625,59 @@
       "id": "custom_css_class",
       "label": "Custom CSS class",
       "info": "Add a class here to target this section from assets/custom.css"
+    },
+    {
+      "type": "header",
+      "content": "Footer brand"
+    },
+    {
+      "type": "image_picker",
+      "id": "footer_logo",
+      "label": "Logo",
+      "info": "Defaults to the store logo when left empty."
+    },
+    {
+      "type": "range",
+      "id": "footer_logo_width",
+      "min": 60,
+      "max": 300,
+      "step": 10,
+      "unit": "px",
+      "default": 130,
+      "label": "Logo width"
+    },
+    {
+      "type": "richtext",
+      "id": "footer_tagline",
+      "label": "Tagline"
+    },
+    {
+      "type": "text",
+      "id": "newsletter_button_label",
+      "label": "Newsletter button label",
+      "default": "JOIN"
+    },
+    {
+      "type": "header",
+      "content": "Footer bottom bar"
+    },
+    {
+      "type": "text",
+      "id": "copyright_suffix",
+      "label": "Copyright suffix",
+      "default": "All rights reserved."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_policy_links",
+      "label": "Show policy links in the bottom bar",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "payment_label",
+      "label": "Payment icons label",
+      "default": "We Accept"
     },
     {
       "type": "color_scheme",
