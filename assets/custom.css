@@ -88,11 +88,22 @@
 }
 
 /* What We Offer */
+.custom-offer .title {
+  text-align: center;
+}
+.custom-offer .multicolumn-card__image-wrapper .media {
+  border-radius: 12px;
+}
 .custom-offer .multicolumn-list h3 {
   text-align: left;
+  font-size: 2.8rem;
+  font-weight: 400;
 }
 .custom-offer .multicolumn-card__info {
   text-align: left;
+}
+.custom-offer .multicolumn-card__info .rte {
+  font-size: 1.8rem;
 }
 
 /* Everyday, Beautifully Considered */
