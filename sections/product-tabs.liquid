@@ -66,7 +66,7 @@
 
 {%- assign default_tab = section.settings.default_tab | plus: 0 -%}
 
-<div class="color-{{ section.settings.color_scheme }} gradient">
+<div class="color-{{ section.settings.color_scheme }} gradient{% if section.settings.custom_css_class != blank %} {{ section.settings.custom_css_class }}{% endif %}">
   <div class="page-width section-{{ section.id }}-padding">
     <div class="product-tabs__header">
       {%- if section.settings.heading != blank -%}
@@ -162,6 +162,12 @@
   "settings": [
     {
       "type": "text",
+      "id": "custom_css_class",
+      "label": "Custom CSS class",
+      "info": "Add a class here to target this section from assets/custom.css"
+    },
+    {
+      "type": "text",
       "id": "heading",
       "label": "Heading",
       "default": "Explore our Products"
@@ -170,9 +176,18 @@
       "type": "select",
       "id": "heading_size",
       "options": [
-        { "value": "h2", "label": "Small" },
-        { "value": "h1", "label": "Medium" },
-        { "value": "h0", "label": "Large" }
+        {
+          "value": "h2",
+          "label": "Small"
+        },
+        {
+          "value": "h1",
+          "label": "Medium"
+        },
+        {
+          "value": "h0",
+          "label": "Large"
+        }
       ],
       "default": "h1",
       "label": "Heading size"
@@ -181,9 +196,18 @@
       "type": "select",
       "id": "default_tab",
       "options": [
-        { "value": "1", "label": "Tab 1" },
-        { "value": "2", "label": "Tab 2" },
-        { "value": "3", "label": "Tab 3" }
+        {
+          "value": "1",
+          "label": "Tab 1"
+        },
+        {
+          "value": "2",
+          "label": "Tab 2"
+        },
+        {
+          "value": "3",
+          "label": "Tab 3"
+        }
       ],
       "default": "2",
       "label": "Default active tab"
@@ -197,22 +221,61 @@
       "default": 4,
       "label": "Products per tab"
     },
-    { "type": "header", "content": "Tab 1" },
-    { "type": "text", "id": "tab_1_label", "label": "Label", "default": "Best Seller" },
-    { "type": "collection", "id": "tab_1_collection", "label": "Collection" },
-    { "type": "header", "content": "Tab 2" },
-    { "type": "text", "id": "tab_2_label", "label": "Label", "default": "New Arrival" },
-    { "type": "collection", "id": "tab_2_collection", "label": "Collection" },
-    { "type": "header", "content": "Tab 3" },
-    { "type": "text", "id": "tab_3_label", "label": "Label", "default": "Featured" },
-    { "type": "collection", "id": "tab_3_collection", "label": "Collection" },
+    {
+      "type": "header",
+      "content": "Tab 1"
+    },
+    {
+      "type": "text",
+      "id": "tab_1_label",
+      "label": "Label",
+      "default": "Best Seller"
+    },
+    {
+      "type": "collection",
+      "id": "tab_1_collection",
+      "label": "Collection"
+    },
+    {
+      "type": "header",
+      "content": "Tab 2"
+    },
+    {
+      "type": "text",
+      "id": "tab_2_label",
+      "label": "Label",
+      "default": "New Arrival"
+    },
+    {
+      "type": "collection",
+      "id": "tab_2_collection",
+      "label": "Collection"
+    },
+    {
+      "type": "header",
+      "content": "Tab 3"
+    },
+    {
+      "type": "text",
+      "id": "tab_3_label",
+      "label": "Label",
+      "default": "Featured"
+    },
+    {
+      "type": "collection",
+      "id": "tab_3_collection",
+      "label": "Collection"
+    },
     {
       "type": "color_scheme",
       "id": "color_scheme",
       "label": "t:sections.all.colors.label",
       "default": "scheme-1"
     },
-    { "type": "header", "content": "t:sections.all.padding.section_padding_heading" },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
     {
       "type": "range",
       "id": "padding_top",

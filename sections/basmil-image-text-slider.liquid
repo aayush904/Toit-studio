@@ -3,12 +3,24 @@
   "name": "Image Text Slider-Basmil",
   "settings": [
     {
+      "type": "text",
+      "id": "custom_css_class",
+      "label": "Custom CSS class",
+      "info": "Add a class here to target this section from assets/custom.css"
+    },
+    {
       "type": "select",
       "id": "text_position",
       "label": "Text Position",
       "options": [
-        { "value": "overlay", "label": "Overlay" },
-        { "value": "side", "label": "Side-by-side" }
+        {
+          "value": "overlay",
+          "label": "Overlay"
+        },
+        {
+          "value": "side",
+          "label": "Side-by-side"
+        }
       ],
       "default": "overlay"
     },
@@ -61,7 +73,17 @@
     {
       "name": "Image Text Slider-Basmil",
       "category": "Sliders",
-      "blocks": [{ "type": "slide" }, { "type": "slide" }, { "type": "slide" }]
+      "blocks": [
+        {
+          "type": "slide"
+        },
+        {
+          "type": "slide"
+        },
+        {
+          "type": "slide"
+        }
+      ]
     }
   ]
 }
@@ -69,7 +91,7 @@
 {% assign position = section.settings.text_position %}
 
 <div
-  class="image-text-slider  {% if position == 'side' %} page-width{% endif %}"
+  class="image-text-slider  {% if position == 'side' %} page-width{% endif %}{% if section.settings.custom_css_class != blank %} {{ section.settings.custom_css_class }}{% endif %}"
   data-slick-slider
   data-slidesperview="1"
   data-slidestoscroll="1"

@@ -29,6 +29,7 @@
   class="
     slider-mobile-gutter{% if section.settings.layout == 'grid' %} page-width{% endif %}
     {% if section.settings.show_text_below %} mobile-text-below{% endif %}
+    {% if section.settings.custom_css_class != blank %} {{ section.settings.custom_css_class }}{% endif %}
   "
   role="region"
   aria-roledescription="{{ 'sections.slideshow.carousel' | t }}"
@@ -274,9 +275,18 @@
   "tag": "section",
   "class": "section",
   "disabled_on": {
-    "groups": ["header", "footer"]
+    "groups": [
+      "header",
+      "footer"
+    ]
   },
   "settings": [
+    {
+      "type": "text",
+      "id": "custom_css_class",
+      "label": "Custom CSS class",
+      "info": "Add a class here to target this section from assets/custom.css"
+    },
     {
       "type": "select",
       "id": "layout",

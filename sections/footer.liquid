@@ -28,7 +28,7 @@
     }
   }
 {%- endstyle -%}
-<footer class="color-{{ section.settings.color_scheme}}" style="background-color: transparent;">
+<footer class="color-{{ section.settings.color_scheme}}{% if section.settings.custom_css_class != blank %} {{ section.settings.custom_css_class }}{% endif %}" style="background-color: transparent;">
   <div class="footer__svg">
     <svg viewBox="0 -20 700 100" width="100%" height="100" preserveAspectRatio="none">
       <path id="footer__svg--little-wave" transform="translate(0, -20)" d="M0,10 c80,-22 240,0 350,18 c90,17 260,7.5 350,-20 v50 h-700"></path>
@@ -584,6 +584,12 @@
     }
   ],
   "settings": [
+    {
+      "type": "text",
+      "id": "custom_css_class",
+      "label": "Custom CSS class",
+      "info": "Add a class here to target this section from assets/custom.css"
+    },
     {
       "type": "color_scheme",
       "id": "color_scheme",

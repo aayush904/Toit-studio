@@ -120,7 +120,7 @@
   }
 </style>
 
-<section class="marquee-section" id="marquee-{{ section.id }}">
+<section class="marquee-section{% if section.settings.custom_css_class != blank %} {{ section.settings.custom_css_class }}{% endif %}" id="marquee-{{ section.id }}">
   <div class="marquee-container">
     <div class="marquee-track">
       {% comment %} Calculate repetitions needed for smooth scrolling {% endcomment %}
@@ -186,6 +186,12 @@
   "tag": "section",
   "class": "section-marquee",
   "settings": [
+    {
+      "type": "text",
+      "id": "custom_css_class",
+      "label": "Custom CSS class",
+      "info": "Add a class here to target this section from assets/custom.css"
+    },
     {
       "type": "range",
       "id": "animation_speed",

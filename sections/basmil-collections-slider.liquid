@@ -5,6 +5,12 @@
   "settings": [
     {
       "type": "text",
+      "id": "custom_css_class",
+      "label": "Custom CSS class",
+      "info": "Add a class here to target this section from assets/custom.css"
+    },
+    {
+      "type": "text",
       "id": "heading",
       "label": "Heading",
       "default": "Shop by Collection"
@@ -104,7 +110,7 @@
     font-size: 16.64px;
   }
 </style>
-<div>
+<div{% if section.settings.custom_css_class != blank %} class="{{ section.settings.custom_css_class }}"{% endif %}>
   <section-header>
     {% if section.settings.heading != blank %}
       <h2 class="section-title">{{ section.settings.heading }}</h2>

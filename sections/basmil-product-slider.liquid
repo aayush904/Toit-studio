@@ -4,6 +4,12 @@
   "tag": "section",
   "settings": [
     {
+      "type": "text",
+      "id": "custom_css_class",
+      "label": "Custom CSS class",
+      "info": "Add a class here to target this section from assets/custom.css"
+    },
+    {
       "type": "collection",
       "id": "collection",
       "label": "Collection"
@@ -106,7 +112,7 @@
 
 {{ 'quick-add.css' | asset_url | stylesheet_tag }}
 
-<div class="basmil-product-slider-section">
+<div class="basmil-product-slider-section{% if section.settings.custom_css_class != blank %} {{ section.settings.custom_css_class }}{% endif %}">
   {% if section.settings.heading != blank
     or section.settings.subheading != blank
     or section.settings.description != blank

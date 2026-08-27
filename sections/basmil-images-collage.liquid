@@ -3,7 +3,7 @@
   Description: Responsive grid layout with 6 customizable image cards
 {% endcomment %}
 
-<div class="page-width image-collage-basmil" id="image-collage-{{ section.id }}">
+<div class="page-width image-collage-basmil{% if section.settings.custom_css_class != blank %} {{ section.settings.custom_css_class }}{% endif %}" id="image-collage-{{ section.id }}">
   {% if section.settings.heading or section.settings.subheading or section.settings.description or section.settings.button_label %}
     <div class="section-{{section.id}}-header">
       <div class="section-{{section.id}}-header-text">
@@ -366,6 +366,12 @@
   "tag": "section",
   "class": "section-image-collage-basmil",
   "settings": [
+    {
+      "type": "text",
+      "id": "custom_css_class",
+      "label": "Custom CSS class",
+      "info": "Add a class here to target this section from assets/custom.css"
+    },
     {
       "type": "header",
       "content": "Section Settings"
