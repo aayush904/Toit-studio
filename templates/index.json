@@ -184,7 +184,7 @@
         "tab_3_collection": "all",
         "color_scheme": "scheme-0130ff2c-5d75-4e86-be8d-b4ab3796a5ff",
         "padding_top": 92,
-        "padding_bottom": 60
+        "padding_bottom": 92
       }
     },
     "image_with_text_trending": {
@@ -221,7 +221,7 @@
       "name": "t:sections.image-with-text.presets.name",
       "settings": {
         "custom_css_class": "custom-trending",
-        "image": "shopify://shop_images/Screenshot_2024-03-12_at_4.48.14_PM.webp",
+        "image": "shopify://shop_images/image_46.png",
         "height": "adapt",
         "desktop_image_width": "medium",
         "layout": "image_first",
@@ -232,7 +232,7 @@
         "mobile_content_alignment": "left",
         "section_color_scheme": "",
         "color_scheme": "",
-        "padding_top": 40,
+        "padding_top": 0,
         "padding_bottom": 40
       }
     },
@@ -317,7 +317,7 @@
       "name": "t:sections.image-with-text.presets.name",
       "settings": {
         "custom_css_class": "custom-everyday",
-        "image": "shopify://shop_images/website_images_new_2.webp",
+        "image": "shopify://shop_images/803aa80a03a14ecc2b895d06a17bd0c22a2e1d45.png",
         "height": "adapt",
         "desktop_image_width": "medium",
         "layout": "text_first",
