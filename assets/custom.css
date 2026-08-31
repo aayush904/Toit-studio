@@ -370,12 +370,12 @@ body .shopify-section-group-footer-group {
   max-width: none;
 }
 .custom-footer .footer__newsletter .field {
-  background: #ffffff;
+  background: #eeeeee;
   border-radius: 100px;
-  height: 5.2rem;
-  min-height: 5.2rem;
+  height: 6.8rem;
+  min-height: 6.8rem;
   align-items: center;
-  padding: 0 0.6rem 0 2.2rem;
+  padding: 0 0.6rem 0 2.4rem;
   overflow: hidden;
 }
 .custom-footer .footer__newsletter .field:after,
@@ -400,17 +400,18 @@ body .shopify-section-group-footer-group {
 .custom-footer .footer__newsletter .field__label {
   display: none;
 }
-.custom-footer .footer__newsletter .newsletter-form__button {
+.custom-footer .footer__newsletter .newsletter-form__button,
+.custom-footer .footer__newsletter .newsletter-form__button:not(:focus-visible):not(.focused) {
   position: static;
-  height: 3.6rem;
-  min-height: 3.6rem;
+  height: 5rem;
+  min-height: 5rem;
   width: auto;
-  padding: 0 2rem;
+  padding: 0 2.6rem;
   border-radius: 100px;
-  background: #6a7a6c;
+  background: #647a73;
   color: #ffffff;
-  font-size: 1.3rem;
-  letter-spacing: 0.06em;
+  font-size: 1.4rem;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
   flex: 0 0 auto;
 }
