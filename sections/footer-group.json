@@ -16,6 +16,7 @@
       "custom_css": [],
       "name": "t:sections.custom-liquid.presets.name",
       "settings": {
+        "custom_css_class": "",
         "custom_liquid": "<style>\n.shopify-section-group-footer-group {\n{% if request.page_type == 'index' or page.handle == 'our-story' %}\n  margin-top: -100px;\n{%else%}\n  margin-top: 0px;\n{% endif %}\n}\n\n\n</style>",
         "color_scheme": "scheme-0130ff2c-5d75-4e86-be8d-b4ab3796a5ff",
         "padding_top": 0,
@@ -36,7 +37,7 @@
           "type": "link_list",
           "settings": {
             "heading": "About Us",
-            "menu": "about-us"
+            "menu": ""
           }
         },
         "brand_information_GNhgG3": {
@@ -52,12 +53,16 @@
         "brand_information_GNhgG3"
       ],
       "custom_css": [
-        ".footer-block__heading{text-align: start;}"
+        ".footer-block__heading {text-align: start;}"
       ],
       "settings": {
         "custom_css_class": "custom-footer",
         "footer_logo_width": 130,
         "footer_tagline": "<p>Thoughtfully selected kitchenware, tableware, drinkware, and décor, bringing function, character, & considered style to the spaces you live in every day.</p>",
+        "newsletter_button_label": "JOIN",
+        "copyright_suffix": "All rights reserved.",
+        "show_policy_links": true,
+        "payment_label": "We Accept",
         "color_scheme": "scheme-dfd80e20-cb87-46cc-9af1-322565d46050",
         "newsletter_enable": true,
         "newsletter_heading": "A Little Toit, In Your Inbox",
@@ -67,13 +72,9 @@
         "enable_language_selector": false,
         "payment_enable": true,
         "show_policy": false,
-        "show_policy_links": true,
-        "copyright_suffix": "All rights reserved.",
-        "payment_label": "We Accept",
-        "newsletter_button_label": "JOIN",
         "policy_heading": "Useful Links",
         "margin_top": 0,
-        "padding_top": 36,
+        "padding_top": 92,
         "padding_bottom": 36
       }
     }
