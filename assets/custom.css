@@ -210,10 +210,17 @@
 }
 
 /* ---------------- Footer ---------------- */
+/* Colours come from the section's colour scheme, not hardcoded here. */
 .custom-footer .footer {
-  background: #6a7a6c;
-  color: #ffffff;
   padding-bottom: 0;
+}
+/* This design has no decorative wave, so drop it and the negative margin
+   that only existed to pull the wave over the section above. */
+.custom-footer .footer__svg {
+  display: none;
+}
+body .shopify-section-group-footer-group {
+  margin-top: 0;
 }
 /* Match the page-width container the rest of the site uses */
 .custom-footer .footer__content-top,
@@ -367,7 +374,8 @@
 
 /* Bottom bar */
 .custom-footer .footer__content-bottom {
-  background: #5c6b5e;
+  /* Darkens whatever the colour scheme sets, so it tracks the theme */
+  background: rgba(0, 0, 0, 0.12);
   border: 0;
   padding: 2.4rem 0;
   /* Let the darker band run the full viewport width */
