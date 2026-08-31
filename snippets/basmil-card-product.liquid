@@ -363,19 +363,7 @@
                     {{- 'products.product.variant_sold_out_or_unavailable' | t -}}
                   </span>
                 {%- endcapture -%}
-                {%
-                  render 'swatch-input',
-                  id: card_product.variants[forloop.index0].id,
-                  name: 'id',
-                  value: value | escape,
-                  swatch: value.swatch,
-                  product_form_id: product_form_id,
-                  checked: value.selected,
-                  visually_disabled: false,
-                  shape: 'circle',
-                  help_text: help_text,
-                  additional_props: input_dataset
-                %}
+                {% render 'swatch-input', id: card_product.variants[forloop.index0].id, name: 'id', value: value, swatch: value.swatch, product_form_id: product_form_id, checked: value.selected, visually_disabled: false, shape: 'circle', help_text: help_text, additional_props: input_dataset %}
               {% endfor -%}
             </fieldset>
           {% endunless %}
@@ -819,3 +807,21 @@ console.log(e,input.dataset.optionValueId);
     });
   </script>
 {%- endunless -%}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{%\r\n                  render 'swatch-input',\r\n                  id: card_product.variants[forloop.index0].id,\r\n
+    \                 name: 'id',\r\n                  value: value | escape,\r\n
+    \                 swatch: value.swatch,\r\n                  product_form_id:
+    product_form_id,\r\n                  checked: value.selected,\r\n                  visually_disabled:
+    false,\r\n                  shape: 'circle',\r\n                  help_text: help_text,\r\n
+    \                 additional_props: input_dataset\r\n                %}"
+  to: "{% render 'swatch-input', id: card_product.variants[forloop.index0].id, name:
+    'id', value: value, swatch: value.swatch, product_form_id: product_form_id, checked:
+    value.selected, visually_disabled: false, shape: 'circle', help_text: help_text,
+    additional_props: input_dataset %}"
+  position: 19064..19342
+{% endcomment %}
