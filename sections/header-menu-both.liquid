@@ -194,6 +194,15 @@
               display: none;
             }
 
+            /* The mobile menu drawer lives inside .section-header but has
+               its own opaque (white) panel, so it must not inherit the
+               white-on-transparent-hero text color above -- that made the
+               drawer's own icons (close, carets, socials) invisible. */
+            #menu-drawer, #menu-drawer .svg-wrapper, #menu-drawer a,
+            #menu-drawer .header__menu-item, #menu-drawer .header__active-menu-item {
+              color: rgb(var(--color-foreground));
+            }
+
          }
       {% endif %}
       {% endif %}
