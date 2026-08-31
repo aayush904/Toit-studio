@@ -226,6 +226,49 @@
                           {%- endfor -%}
                         </ul>
                       {%- endif -%}
+                    {%- when 'contact_details' -%}
+                      {%- capture hours_rows -%}
+                        {%- for i in (1..4) -%}
+                          {%- liquid
+                            case i
+                              when 1
+                                assign hours_label = block.settings.hours_1_label
+                                assign hours_value = block.settings.hours_1_value
+                              when 2
+                                assign hours_label = block.settings.hours_2_label
+                                assign hours_value = block.settings.hours_2_value
+                              when 3
+                                assign hours_label = block.settings.hours_3_label
+                                assign hours_value = block.settings.hours_3_value
+                              when 4
+                                assign hours_label = block.settings.hours_4_label
+                                assign hours_value = block.settings.hours_4_value
+                            endcase
+                          -%}
+                          {%- if hours_label != blank or hours_value != blank -%}
+                            <div class="footer-block__hours-row">
+                              <span class="footer-block__hours-label">{{ hours_label }}</span>
+                              <span class="footer-block__hours-value">{{ hours_value }}</span>
+                            </div>
+                          {%- endif -%}
+                        {%- endfor -%}
+                      {%- endcapture -%}
+                      {%- assign hours_rows = hours_rows | strip -%}
+                      <div class="footer-block__details-content footer-block__contact">
+                        {%- if block.settings.details != blank -%}
+                          <div class="footer-block__contact-details rte">
+                            {{ block.settings.details }}
+                          </div>
+                        {%- endif -%}
+                        {%- if hours_rows != blank -%}
+                          {%- if block.settings.show_divider -%}
+                            <hr class="footer-block__divider">
+                          {%- endif -%}
+                          <div class="footer-block__hours">
+                            {{ hours_rows }}
+                          </div>
+                        {%- endif -%}
+                      </div>
                     {%- when 'brand_information' -%}
                       <div class="footer-block__brand-info">
                         {%- if settings.brand_image != blank -%}
@@ -539,6 +582,73 @@
           "id": "menu",
           "default": "footer",
           "label": "t:sections.footer.blocks.link_list.settings.menu.label"
+        }
+      ]
+    },
+    {
+      "type": "contact_details",
+      "name": "Contact details",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Connect"
+        },
+        {
+          "type": "richtext",
+          "id": "details",
+          "label": "Contact details"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_divider",
+          "label": "Show divider above opening hours",
+          "default": true
+        },
+        {
+          "type": "header",
+          "content": "Opening hours"
+        },
+        {
+          "type": "text",
+          "id": "hours_1_label",
+          "label": "Row 1 label"
+        },
+        {
+          "type": "text",
+          "id": "hours_1_value",
+          "label": "Row 1 hours"
+        },
+        {
+          "type": "text",
+          "id": "hours_2_label",
+          "label": "Row 2 label"
+        },
+        {
+          "type": "text",
+          "id": "hours_2_value",
+          "label": "Row 2 hours"
+        },
+        {
+          "type": "text",
+          "id": "hours_3_label",
+          "label": "Row 3 label"
+        },
+        {
+          "type": "text",
+          "id": "hours_3_value",
+          "label": "Row 3 hours"
+        },
+        {
+          "type": "text",
+          "id": "hours_4_label",
+          "label": "Row 4 label"
+        },
+        {
+          "type": "text",
+          "id": "hours_4_value",
+          "label": "Row 4 hours"
         }
       ]
     },
