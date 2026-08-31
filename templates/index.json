@@ -15,7 +15,7 @@
         "heading_3nUbTU": {
           "type": "heading",
           "settings": {
-            "heading": "Discover curated pairings designed for your home.",
+            "heading": "Discover\ncurated pairings\ndesigned for\nyour home.",
             "heading_size": "hxl"
           }
         },
@@ -65,14 +65,14 @@
         "heading_intro": {
           "type": "heading",
           "settings": {
-            "heading": "Your one–stop destination for beautiful home décor, curated for every corner of home",
+            "heading": "Your one–stop\ndestination for beautiful\nhome décor, curated for\nevery corner of home",
             "heading_size": "h0"
           }
         },
         "text_intro": {
           "type": "text",
           "settings": {
-            "text": "<p>A refined collection of kitchenware and décor, selected to bring beauty, character, and ease into everyday spaces, with pieces that feel timeless, practical, and effortlessly at home.<br/><br/>From beautiful kitchenware to considered décor, discover pieces chosen to make everyday spaces feel more thoughtful, functional, and uniquely yours.</p>"
+            "text": "<p>A refined collection of kitchenware and décor, selected to bring beauty, character, and ease into everyday spaces, with pieces that feel timeless, practical, and effortlessly at home.<br/><br/>From beautiful kitchenware to considered décor, discover pieces chosen to make everyday spaces feel more thoughtful, functional, and uniquely yours.</p>"
           }
         },
         "button_intro": {
@@ -172,7 +172,7 @@
       "name": "Product Tabs",
       "settings": {
         "custom_css_class": "",
-        "heading": "Explore our Products",
+        "heading": "Explore our\nProducts",
         "heading_size": "h1",
         "default_tab": "2",
         "products_to_show": 4,
@@ -193,14 +193,14 @@
         "heading_trending": {
           "type": "heading",
           "settings": {
-            "heading": "#Trending: The Modern Vase",
+            "heading": "#Trending:\nThe Modern Vase",
             "heading_size": "h1"
           }
         },
         "text_trending": {
           "type": "text",
           "settings": {
-            "text": "<p>A refined collection of kitchenware and décor, selected to bring beauty and character into everyday spaces, with pieces that feel timeless, practical, and effortlessly at home. From beautiful kitchenware to considered décor, discover pieces chosen to make everyday spaces feel more thoughtful, functional, and uniquely yours.</p>",
+            "text": "<p>A refined collection of kitchenware and décor, selected to\nbring beauty and character into everyday spaces, with\npieces that feel timeless, practical, and effortlessly at home.\nFrom beautiful kitchenware to considered décor, discover\npieces chosen to make everyday spaces feel more\nthoughtful, functional, and uniquely yours.</p>",
             "text_style": "body"
           }
         },
@@ -244,7 +244,7 @@
           "settings": {
             "image": "shopify://shop_images/4_a3070930-adea-4a4c-9387-a55525b912ee.png",
             "title": "Gift Givings",
-            "text": "<p>Discover a considered selection of kitchenware and décor chosen for thoughtful gifting. From everyday gestures to special occasions, each piece is selected to feel personal, useful, and memorable.</p>",
+            "text": "<p>Discover a considered selection of kitchenware and décor\nchosen for thoughtful gifting. From everyday gestures to\nspecial occasions, each piece is selected to feel personal,\nuseful, and memorable.</p>",
             "link_label": "",
             "link": ""
           }
@@ -254,7 +254,7 @@
           "settings": {
             "image": "shopify://shop_images/25_cfd775eb-53e7-4881-ba46-a2cb3123e01e.png",
             "title": "Wholesale/B2B",
-            "text": "<p>Explore a curated range of kitchenware and décor for cafes, restaurants, and hospitality spaces. Our wholesale collection brings together distinctive pieces with flexible options and dependable supply for different business needs.</p>",
+            "text": "<p>Explore a curated range of kitchenware and décor for cafes,\nrestaurants, and hospitality spaces. Our wholesale\ncollection brings together distinctive pieces with flexible\noptions and dependable supply for different business needs.</p>",
             "link_label": "",
             "link": ""
           }
@@ -289,14 +289,14 @@
         "heading_everyday": {
           "type": "heading",
           "settings": {
-            "heading": "Everyday, Beautifully Considered",
+            "heading": "Everyday, Beautifully\nConsidered",
             "heading_size": "h1"
           }
         },
         "text_everyday": {
           "type": "text",
           "settings": {
-            "text": "<p>Bring character to the table with pieces chosen for the moments that happen beautifully. From sculptural accents to everyday essentials, discover a collection designed to make simple spaces feel more considered, inviting, and distinctly yours.</p>",
+            "text": "<p>Bring character to the table with pieces chosen for the\nmoments that happen beautifully. From sculptural accents to\neveryday essentials, discover a collection designed to make\nsimple spaces feel more considered, inviting, and distinctly\nyours.</p>",
             "text_style": "body"
           }
         },
