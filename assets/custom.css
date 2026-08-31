@@ -6,6 +6,14 @@
   text-align: left;
   line-height: 100%;
 }
+@media (max-width: 767px) {
+  .custom-hero.banner {
+    min-height: 82vh;
+  }
+  .custom-hero .banner__content {
+    min-height: 82vh !important;
+  }
+}
 .custom-hero .banner__box > * + .banner__text {
   margin-top: 1rem !important;
   color: #f7f6f3;
@@ -23,12 +31,16 @@
 }
 .custom-intro .rich-text__heading {
   font-weight: 400;
-  font-size: 5rem;
   line-height: 105%;
   text-align: center;
   color: #000;
   max-width: 72rem;
   margin: 0 auto;
+}
+@media (min-width: 768px) {
+  .custom-intro .rich-text__heading {
+    font-size: 5rem;
+  }
 }
 .custom-intro .rich-text__text {
   font-weight: 400;
@@ -102,8 +114,13 @@
 }
 .custom-offer .multicolumn-list h3 {
   text-align: left;
-  font-size: 2.8rem;
+  font-size: 1.8rem;
   font-weight: 400;
+}
+@media (min-width: 768px) {
+  .custom-offer .multicolumn-list h3 {
+    font-size: 2.8rem;
+  }
 }
 .custom-offer .multicolumn-card__info {
   text-align: left;
@@ -163,10 +180,6 @@
 
 
 .custom-shop-categories{
-    .collection-list__item{
-      max-width: 23%;
-    height: 410px;
-    }
     .card__inner{
       height:100%;
     }
@@ -180,8 +193,17 @@
       justify-content:flex-start !important;
     }
     .card__heading{
-      font-size:2.8rem;
+      font-size:1.8rem;
       font-weight:400;
+    }
+    @media (min-width: 750px) {
+      .card__heading{
+        font-size:2.8rem;
+      }
+      .collection-list__item{
+        max-width: 23%;
+        height: 410px;
+      }
     }
 }
 
@@ -510,5 +532,35 @@ body .shopify-section-group-footer-group {
   .custom-footer .footer__policies {
     flex-wrap: wrap;
     gap: 1.6rem 2.4rem;
+  }
+}
+
+/* ---------------- Mobile homepage type scale ---------------- */
+/* Section headings (h1 size) -> 3rem on mobile */
+@media (max-width: 767px) {
+  .custom-shop-categories .collection-list-title,
+  .section-product-tabs .product-tabs__heading,
+  .custom-trending .image-with-text__heading,
+  .custom-offer .title,
+  .custom-everyday .image-with-text__heading {
+    font-size: 3rem;
+  }
+
+  /* Body copy under headings -> 1.4rem on mobile */
+  .custom-hero .banner__box > * + .banner__text,
+  .custom-intro .rich-text__text,
+  .custom-trending .image-with-text__text,
+  .custom-everyday .image-with-text__text,
+  .custom-offer .multicolumn-card__info .rte {
+    font-size: 1.4rem;
+  }
+
+  /* Button labels -> 1.5rem on mobile */
+  .custom-hero .button,
+  .custom-intro .button,
+  .custom-trending .button,
+  .custom-everyday .button,
+  .section-product-tabs .product-tabs__nav-button {
+    font-size: 1.5rem;
   }
 }
