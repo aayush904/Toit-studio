@@ -372,8 +372,9 @@ body .shopify-section-group-footer-group {
 .custom-footer .footer__newsletter .field {
   background: #eeeeee;
   border-radius: 100px;
-  height: 6.8rem;
-  min-height: 6.8rem;
+  height: 5.4rem;
+  min-height: 5.4rem;
+  max-height: 5.4rem;
   align-items: center;
   padding: 0 0.6rem 0 2.4rem;
   overflow: hidden;
@@ -403,10 +404,10 @@ body .shopify-section-group-footer-group {
 .custom-footer .footer__newsletter .newsletter-form__button,
 .custom-footer .footer__newsletter .newsletter-form__button:not(:focus-visible):not(.focused) {
   position: static;
-  height: 5rem;
-  min-height: 5rem;
+  height: 4.2rem;
+  min-height: 4.2rem;
   width: auto;
-  padding: 0 2.6rem;
+  padding: 0 2.2rem;
   border-radius: 100px;
   background: #647a73;
   color: #ffffff;
