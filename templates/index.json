@@ -200,7 +200,7 @@
         "text_trending": {
           "type": "text",
           "settings": {
-            "text": "<p>A refined collection of kitchenware and décor, selected to\nbring beauty and character into everyday spaces, with\npieces that feel timeless, practical, and effortlessly at home.\nFrom beautiful kitchenware to considered décor, discover\npieces chosen to make everyday spaces feel more\nthoughtful, functional, and uniquely yours.</p>",
+            "text": "<p>A refined collection of kitchenware and décor, selected to\nbring beauty, character, and ease into everyday spaces, with\npieces that feel timeless, practical, and effortlessly at home.\nFrom beautiful kitchenware to considered décor, discover\npieces chosen to make everyday spaces feel more\nthoughtful, functional, and uniquely yours.</p>",
             "text_style": "body"
           }
         },
@@ -296,7 +296,7 @@
         "text_everyday": {
           "type": "text",
           "settings": {
-            "text": "<p>Bring character to the table with pieces chosen for the\nmoments that happen beautifully. From sculptural accents to\neveryday essentials, discover a collection designed to make\nsimple spaces feel more considered, inviting, and distinctly\nyours.</p>",
+            "text": "<p>Bring character to the table with pieces chosen for the moments\nthat happen around it. From sculptural accents to everyday\nessentials, discover a collection designed to make simple spaces\nfeel more considered, inviting, and distinctly yours.</p>",
             "text_style": "body"
           }
         },
