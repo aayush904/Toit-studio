@@ -10,27 +10,34 @@
   .custom-intro .rich-text__heading,
   .custom-intro .rich-text__text,
   .section-product-tabs .product-tabs__heading,
-  .custom-trending .image-with-text__heading,
-  .custom-offer .multicolumn-card__info .rte,
-  .custom-everyday .image-with-text__heading {
+  .custom-offer .multicolumn-card__info .rte {
     white-space: pre-line;
   }
 }
 
-/* Trending and Everyday body copy use the same explicit line breaks
-   on desktop too, matching the design reference at that size. */
+/* Trending and Everyday headings/paragraphs carry the same explicit
+   breaks at mobile (<=767px) and at genuine desktop (>=1200px), where
+   each was verified to fit the column width at that size. The 768-
+   1199px "tablet" band in between has a meaningfully narrower column
+   (the image already takes half the viewport there) that the same
+   hard breaks don't fit, so it falls back to natural wrapping rather
+   than splitting a break-forced line a second time. */
 .custom-trending .image-with-text__text,
 .custom-everyday .image-with-text__text {
   color: #5b5553;
 }
-.custom-trending .image-with-text__text {
-  white-space: pre-line;
+@media (max-width: 767px), (min-width: 1200px) {
+  .custom-trending .image-with-text__heading,
+  .custom-everyday .image-with-text__heading,
+  .custom-trending .image-with-text__text {
+    white-space: pre-line;
+  }
 }
-@media (min-width: 768px) {
+@media (min-width: 1200px) {
   /* Everyday's first line needs more width than a mobile screen has
      at this font size even edge-to-edge, so only force the hard
-     breaks at desktop; mobile wraps naturally instead of orphaning
-     a word onto its own line. */
+     breaks at desktop; mobile and tablet wrap naturally instead of
+     orphaning a word onto its own line. */
   .custom-everyday .image-with-text__text {
     white-space: pre-line;
   }
@@ -125,7 +132,7 @@
     padding-right: 0;
   }
 }
-@media (min-width: 999px) {
+@media (min-width: 768px) {
   .custom-trending .image-with-text__grid {
     flex-wrap: nowrap;
   }
@@ -147,7 +154,7 @@
     height: 650px;
   }
   .custom-trending .image-with-text__content {
-    padding-left: 14rem;
+    padding-left: clamp(4rem, 10vw, 14rem);
   }
 }
 
@@ -198,7 +205,7 @@
     padding-right: 1.6rem;
   }
 }
-@media (min-width: 999px) {
+@media (min-width: 768px) {
   /* Image becomes a full-bleed backdrop, text overlays it on the left */
   .custom-everyday .image-with-text__grid,
   .custom-everyday .image-with-text__grid--reverse {
