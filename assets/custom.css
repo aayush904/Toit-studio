@@ -11,12 +11,18 @@
   .custom-intro .rich-text__text,
   .section-product-tabs .product-tabs__heading,
   .custom-trending .image-with-text__heading,
-  .custom-trending .image-with-text__text,
   .custom-offer .multicolumn-card__info .rte,
-  .custom-everyday .image-with-text__heading,
-  .custom-everyday .image-with-text__text {
+  .custom-everyday .image-with-text__heading {
     white-space: pre-line;
   }
+}
+
+/* Trending and Everyday body copy use the same explicit line breaks
+   on desktop too, matching the design reference at that size. */
+.custom-trending .image-with-text__text,
+.custom-everyday .image-with-text__text {
+  white-space: pre-line;
+  color: #5b5553;
 }
 
 /* Hero banner ("Discover curated pairings...") */
