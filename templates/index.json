@@ -46,7 +46,7 @@
       "name": "t:sections.image-banner.presets.name",
       "settings": {
         "custom_css_class": "custom-hero",
-        "image": "shopify://shop_images/image_3.png",
+        "image": "shopify://shop_images/Hero_Banner.avif",
         "image_overlay_opacity": 0,
         "image_height": "adapt",
         "image_behavior": "none",
@@ -157,8 +157,8 @@
       "name": "Background Video - Basmil",
       "settings": {
         "custom_css_class": "custom-story-video",
-        "title": "Our Story,Our Promise",
-        "subtitle": "Our focus on quality stretches further than appearances. <br>We want every customer to be a happy one!",
+        "title": "Our Story, Our Promise",
+        "subtitle": "Our focus on quality stretches further than appearances. We want every customer to be a happy one!",
         "description": "",
         "background_video_type": "local",
         "background_youtube_url": "https://www.youtube.com/watch?v=pWg1vgJ5Fa8",
@@ -221,7 +221,7 @@
       "name": "t:sections.image-with-text.presets.name",
       "settings": {
         "custom_css_class": "custom-trending",
-        "image": "shopify://shop_images/image_46.png",
+        "image": "shopify://shop_images/Trending_The_Modern_Vase.avif",
         "height": "adapt",
         "desktop_image_width": "medium",
         "layout": "image_first",
@@ -254,7 +254,7 @@
           "settings": {
             "image": "shopify://shop_images/25_cfd775eb-53e7-4881-ba46-a2cb3123e01e.png",
             "title": "Wholesale/B2B",
-            "text": "<p>Explore a curated range of kitchenware and décor for cafes,\nrestaurants, and hospitality spaces. Our wholesale\ncollection brings together distinctive pieces with flexible\noptions and dependable supply for different business needs.</p>",
+            "text": "<p>Explore a curated range of kitchenware and décor for cafes,<br/>restaurants, and hospitality spaces. Our wholesale<br/>collection brings together distinctive pieces with flexible<br/>options and dependable supply for different business needs.</p>",
             "link_label": "",
             "link": ""
           }
@@ -296,7 +296,7 @@
         "text_everyday": {
           "type": "text",
           "settings": {
-            "text": "<p>Bring character to the table with pieces chosen for the moments\nthat happen around it. From sculptural accents to everyday\nessentials, discover a collection designed to make simple spaces\nfeel more considered, inviting, and distinctly yours.</p>",
+            "text": "<p>Bring character to the table with pieces chosen for the moments<br/>that happen around it. From sculptural accents to everyday<br/>essentials, discover a collection designed to make simple spaces<br/>feel more considered, inviting, and distinctly yours.</p>",
             "text_style": "body"
           }
         },
@@ -317,7 +317,7 @@
       "name": "t:sections.image-with-text.presets.name",
       "settings": {
         "custom_css_class": "custom-everyday",
-        "image": "shopify://shop_images/803aa80a03a14ecc2b895d06a17bd0c22a2e1d45.png",
+        "image": "shopify://shop_images/Everyday_Beautifully_Considered.avif",
         "height": "adapt",
         "desktop_image_width": "medium",
         "layout": "text_first",

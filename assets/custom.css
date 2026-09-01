@@ -127,10 +127,17 @@
   text-transform: uppercase;
 }
 .custom-trending .image-with-text__content .image-with-text__heading + .image-with-text__text {
-  margin-top: 2rem;
+  margin-top: 0;
 }
+.custom-trending .image-with-text__heading{
+  line-height:105%;
+}
+.custom-everyday .image-with-text__heading{
+  line-height:105%;
+}
+
 .custom-trending .image-with-text__content .image-with-text__text + .button {
-  margin-top: 4.8rem;
+  margin-top: 2rem;
 }
 @media (max-width: 767px) {
   .custom-trending .image-with-text__content {
