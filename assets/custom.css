@@ -65,6 +65,19 @@
 .custom-hero .banner__box > * + .banner__buttons {
   margin-top: 2rem !important;
 }
+@media (min-width: 768px) {
+  /* .banner__content sits in normal flow by default, so its own
+     padding/text height can exceed what the image's aspect ratio
+     implies, growing the section past the image and stretching it
+     to fill the gap -- the image height stops tracking the viewport
+     predictably. Overlaying the content instead keeps the section's
+     height purely a function of the image's own aspect ratio. */
+  .custom-hero .banner__content {
+    position: absolute;
+    inset: 0;
+    height: 100%;
+  }
+}
 
 /* Intro section ("Your one-stop destination...") */
 .custom-intro.rich-text {
