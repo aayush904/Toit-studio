@@ -56,6 +56,16 @@
   }
 
   @media screen and (max-width: 767px) {
+    .product-tabs__header {
+      flex-wrap: nowrap;
+      align-items: center;
+    }
+
+    .product-tabs__heading {
+      flex: 1 1 auto;
+      min-width: 0;
+    }
+
     .product-tabs__nav {
       display: none;
     }
@@ -64,6 +74,7 @@
       position: relative;
       display: inline-flex;
       align-items: center;
+      flex: 0 0 auto;
     }
 
     .product-tabs__mobile-select {
