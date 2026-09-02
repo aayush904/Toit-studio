@@ -644,7 +644,9 @@ body .shopify-section-group-footer-group {
 
 @media (max-width: 989px) {
   .custom-footer .footer__content-top {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
   }
   .custom-footer .footer-block--newsletter {
     width: 100%;
@@ -652,8 +654,21 @@ body .shopify-section-group-footer-group {
     margin-bottom: 5rem;
   }
   .custom-footer .footer__blocks-wrapper {
+    display: flex !important;
     flex-wrap: wrap;
-    gap: 4rem;
+    align-items: flex-start;
+    gap: 3rem 2rem;
+  }
+  /* Menu columns (Shop/About Us/For Business) sit three across; the
+     Connect block (the one column without --menu) takes its own
+     full-width row below them. */
+  .custom-footer .footer__blocks-wrapper > .footer-block--menu {
+    flex: 0 0 calc(33.333% - 1.4rem);
+    max-width: calc(33.333% - 1.4rem);
+  }
+  .custom-footer .footer__blocks-wrapper > .footer-block:not(.footer-block--menu) {
+    flex: 0 0 100%;
+    max-width: 100%;
   }
   .custom-footer .footer__brand {
     display: block;
@@ -663,15 +678,40 @@ body .shopify-section-group-footer-group {
   }
 }
 
+@media (max-width: 767px) {
+  /* The default Dawn footer collapses each link-list column behind an
+     accordion toggle on mobile. This design shows all links directly,
+     so force the collapsed content open and hide the (invisible)
+     toggle overlay so it can't be tapped to re-close it. */
+  .custom-footer input[name='footer-menu-toggler'] ~ .footer-block__details-content {
+    opacity: 1 !important;
+    overflow: unset !important;
+    visibility: visible !important;
+    height: auto !important;
+    margin-top: 0 !important;
+  }
+  .custom-footer input[name='footer-menu-toggler'] ~ label.footer-menu-toggler {
+    pointer-events: none;
+  }
+}
+
 @media (max-width: 749px) {
   .custom-footer .footer__bottom-bar {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+    text-align: center;
     gap: 2rem;
   }
   .custom-footer .footer__policies {
     flex-wrap: wrap;
+    justify-content: center;
     gap: 1.6rem 2.4rem;
+  }
+  .custom-footer .footer__payment {
+    justify-content: center;
+  }
+  .custom-footer .footer__copyright {
+    text-align: center;
   }
 }
 
