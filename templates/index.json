@@ -173,7 +173,7 @@
       "name": "Product Tabs",
       "settings": {
         "custom_css_class": "",
-        "heading": "Explore our\nProducts",
+        "heading": "Explore our Products",
         "heading_size": "h1",
         "default_tab": "2",
         "products_to_show": 4,
