@@ -644,7 +644,7 @@ body .shopify-section-group-footer-group {
 
 @media (max-width: 989px) {
   .custom-footer .footer__content-top {
-    display: flex;
+    display: flex !important;
     flex-direction: column;
     gap: 0;
   }
