@@ -657,7 +657,7 @@ body .shopify-section-group-footer-group {
     display: flex !important;
     flex-wrap: wrap;
     align-items: flex-start;
-    gap: 3rem 2rem;
+    gap: 2rem;
   }
   /* Menu columns (Shop/About Us/For Business) sit three across; the
      Connect block (the one column without --menu) takes its own
@@ -692,6 +692,43 @@ body .shopify-section-group-footer-group {
   }
   .custom-footer input[name='footer-menu-toggler'] ~ label.footer-menu-toggler {
     pointer-events: none;
+  }
+
+  .custom-footer .footer {
+    padding-top: 50px !important;
+    padding-bottom: 50px !important;
+  }
+  .custom-footer .footer__content-top,
+  .custom-footer .footer__content-bottom-wrapper {
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+  }
+
+  .custom-footer .footer-block__heading {
+    font-size: 1.5rem;
+  }
+  .custom-footer .footer-block--newsletter .footer-block__heading {
+    font-size: 1.5rem;
+  }
+  .custom-footer .footer-block__details-content .list-menu__item--link,
+  .custom-footer .footer-block__details-content a,
+  .custom-footer .footer-block__details-content p,
+  .custom-footer .footer-block__contact {
+    font-size: 1.3rem;
+  }
+
+  /* Hours (Sun/Mon-Fri/Sat) sit on one wrapped line alongside the address
+     instead of stacking as three separate rows, to keep the Connect
+     column compact. */
+  .custom-footer .footer-block__hours {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.5rem;
+  }
+  .custom-footer .footer-block__hours-row {
+    display: inline-flex;
+    gap: 0.5rem;
+    margin-bottom: 0;
   }
 }
 
