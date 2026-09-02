@@ -1,6 +1,7 @@
 {{ 'component-card.css' | asset_url | stylesheet_tag }}
 {{ 'component-price.css' | asset_url | stylesheet_tag }}
 {{ 'quick-add.css' | asset_url | stylesheet_tag }}
+{{ 'component-slider.css' | asset_url | stylesheet_tag }}
 
 {%- style -%}
   .section-{{ section.id }}-padding {
@@ -258,10 +259,13 @@
           {% endif %}
         >
           {%- if tab_collection.products.size > 0 -%}
-            <ul class="grid grid--4-col-desktop grid--2-col-tablet-down product-tabs__grid" role="list">
+            <ul
+              class="grid grid--4-col-desktop grid--1-col-tablet-down slider slider--mobile grid--peek product-tabs__grid"
+              role="list"
+            >
               {%- assign skip_styles = false -%}
               {%- for product in tab_collection.products limit: section.settings.products_to_show -%}
-                <li class="grid__item">
+                <li class="grid__item slider__slide">
                   {% render 'card-product',
                     card_product: product,
                     media_aspect_ratio: 'portrait',
