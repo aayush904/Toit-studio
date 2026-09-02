@@ -51,10 +51,12 @@
 }
 @media (max-width: 767px) {
   .custom-hero.banner {
-    min-height: 82vh;
+    min-height: min(82vh, 625px);
+    max-height: 625px;
   }
   .custom-hero .banner__content {
-    min-height: 82vh !important;
+    min-height: min(82vh, 625px) !important;
+    max-height: 625px !important;
   }
 }
 .custom-hero .banner__box > * + .banner__text {
