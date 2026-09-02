@@ -13,6 +13,10 @@
 @media screen and (max-width: 767px) {
   .multicolumn .title-wrapper-with-link {
     margin-bottom: 3rem;
+    justify-content:flex-start;
+  }
+  .custom-offer .multicolumn-list p{
+    font-size:1.4rem;
   }
 }
 

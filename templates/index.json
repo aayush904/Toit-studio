@@ -172,7 +172,7 @@
       "type": "product-tabs",
       "name": "Product Tabs",
       "settings": {
-        "custom_css_class": "",
+        "custom_css_class": "products_slider",
         "heading": "Explore our Products",
         "heading_size": "h1",
         "default_tab": "2",
@@ -297,7 +297,7 @@
         "text_everyday": {
           "type": "text",
           "settings": {
-            "text": "<p>Bring character to the table with pieces chosen for the moments<br/>that happen around it. From sculptural accents to everyday<br/>essentials, discover a collection designed to make simple spaces<br/>feel more considered, inviting, and distinctly yours.</p>",
+            "text": "<p>Bring character to the table with pieces chosen for the moments that happen around it. From sculptural accents to everyday essentials, discover a collection designed to make simple spaces feel more considered, inviting, and distinctly yours.</p>",
             "text_style": "body"
           }
         },

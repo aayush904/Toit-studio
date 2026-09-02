@@ -158,10 +158,26 @@
   .custom-trending .image-with-text__content {
     padding-left: 0;
     padding-right: 0;
+    padding: 2rem 0 5rem 15px;
   }
   .custom-intro.rich-text{
     padding:5rem 0;
   }
+  .custom-intro .rich-text__blocks > * + .rich-text__text {
+  margin-top: -0.5rem;
+}
+.custom-intro .rich-text__blocks > * + .rich-text__buttons {
+  margin-top: 1rem;
+}
+
+.section-template--28091744354585__image_with_text_trending-padding .page-width{
+  padding-left:0px;
+  padding-right:0px;
+}
+
+.custom-trending .image-with-text__heading{
+  text-align:left;
+}
 
   .custom-shop-categories{
       .card--media .card__inner .card__content{
@@ -668,6 +684,7 @@ body .shopify-section-group-footer-group {
   .custom-offer .title,
   .custom-everyday .image-with-text__heading {
     font-size: 3rem;
+    text-align:left;
   }
 
   /* Body copy under headings -> 1.4rem on mobile */
