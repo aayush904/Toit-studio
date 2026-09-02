@@ -188,7 +188,14 @@
   text-align: left;
   font-size: 1.8rem;
   font-weight: 400;
+  color: #424242;
 }
+
+.custom-offer .multicolumn-list p {
+  color:#5B5553;
+  font-size:1.8rem;
+}
+
 @media (min-width: 768px) {
   .custom-offer .multicolumn-list h3 {
     font-size: 2.8rem;

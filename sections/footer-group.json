@@ -37,14 +37,14 @@
           "type": "link_list",
           "settings": {
             "heading": "About Us",
-            "menu": ""
+            "menu": "about-us"
           }
         },
         "link_list_pkEhUn": {
           "type": "link_list",
           "settings": {
-            "heading": "Quick links",
-            "menu": "footer"
+            "heading": "For Business",
+            "menu": "for-business"
           }
         },
         "contact_details_connect": {

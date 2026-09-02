@@ -242,9 +242,9 @@
         "column_gifting": {
           "type": "column",
           "settings": {
-            "image": "shopify://shop_images/4_a3070930-adea-4a4c-9387-a55525b912ee.png",
+            "image": "shopify://shop_images/Gift_Giving.avif",
             "title": "Gift Givings",
-            "text": "<p>Discover a considered selection of kitchenware and décor\nchosen for thoughtful gifting. From everyday gestures to\nspecial occasions, each piece is selected to feel personal,\nuseful, and memorable.</p>",
+            "text": "<p>Discover a considered selection of kitchenware and décor chosen for thoughtful gifting. From everyday gestures to special occasions, each piece is selected to feel personal, useful, and memorable.</p>",
             "link_label": "",
             "link": ""
           }
@@ -252,9 +252,9 @@
         "column_wholesale": {
           "type": "column",
           "settings": {
-            "image": "shopify://shop_images/25_cfd775eb-53e7-4881-ba46-a2cb3123e01e.png",
+            "image": "shopify://shop_images/Wholesale_B2B.avif",
             "title": "Wholesale/B2B",
-            "text": "<p>Explore a curated range of kitchenware and décor for cafes,<br/>restaurants, and hospitality spaces. Our wholesale<br/>collection brings together distinctive pieces with flexible<br/>options and dependable supply for different business needs.</p>",
+            "text": "<p>Explore a curated range of kitchenware and décor for cafes, restaurants, and hospitality spaces. Our wholesale collection brings together distinctive pieces with flexible options and dependable supply for different business needs.</p>",
             "link_label": "",
             "link": ""
           }
