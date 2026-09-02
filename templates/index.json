@@ -47,6 +47,7 @@
       "settings": {
         "custom_css_class": "custom-hero",
         "image": "shopify://shop_images/Hero_Banner.avif",
+        "mobile_image": "shopify://shop_images/Hero_Banner-Mobile.avif",
         "image_overlay_opacity": 0,
         "image_height": "adapt",
         "image_behavior": "none",
