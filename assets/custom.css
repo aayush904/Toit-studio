@@ -673,3 +673,18 @@ body .shopify-section-group-footer-group {
     font-size: 1.5rem;
   }
 }
+
+/* ---------------- Header (mobile) ---------------- */
+@media (max-width: 767px) {
+  .custom-header .header__icon--search,
+  .custom-header .header__icon--cart,
+  .custom-header .header__icon--account {
+    display: none !important;
+  }
+  /* Logo now sits left (mobile_logo_position), so move the hamburger
+     from its default left slot into the (now-empty) right icon slot. */
+  .custom-header header-drawer {
+    grid-area: icons;
+    justify-self: end;
+  }
+}

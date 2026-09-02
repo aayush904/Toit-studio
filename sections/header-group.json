@@ -50,9 +50,10 @@
         ".header__icon--menu .icon {position: static;}"
       ],
       "settings": {
+        "custom_css_class": "custom-header",
         "color_scheme": "scheme-1",
         "logo_position": "middle-left",
-        "mobile_logo_position": "center",
+        "mobile_logo_position": "left",
         "menu": "main-menu",
         "menu_2": "",
         "menu_type_desktop": "dropdown",
