@@ -515,16 +515,10 @@
           </ul>
         {%- endif -%}
 
-        {%- if section.settings.payment_enable and shop.enabled_payment_types.size > 0 -%}
+        {%- if section.settings.payment_enable -%}
           <div class="footer__payment">
             <span class="footer__payment-label">{{ section.settings.payment_label | default: 'We Accept' }}</span>
-            <ul class="list list-payment" role="list">
-              {%- for type in shop.enabled_payment_types -%}
-                <li class="list-payment__item">
-                  {{ type | payment_type_svg_tag: class: 'icon icon--full-color' }}
-                </li>
-              {%- endfor -%}
-            </ul>
+            <span class="footer__payment-icons">{{ 'icon-payment-icons.svg' | inline_asset_content }}</span>
           </div>
         {%- endif -%}
 

@@ -565,9 +565,14 @@ body .shopify-section-group-footer-group {
   color: rgba(255, 255, 255, 0.9);
   white-space: nowrap;
 }
-.custom-footer .footer__payment .list-payment {
-  margin: 0;
-  gap: 0.8rem;
+.custom-footer .footer__payment-icons {
+  display: inline-flex;
+  align-items: center;
+}
+.custom-footer .footer__payment-icons svg {
+  display: block;
+  height: 24px;
+  width: auto;
 }
 .custom-footer .footer__copyright {
   margin: 0;
