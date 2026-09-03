@@ -271,7 +271,38 @@
   margin-top: 4.8rem;
 }
 @media (max-width: 767px) {
+  /* Same "image as full-bleed backdrop, text overlaid on top" treatment as
+     desktop: the media becomes an absolutely-positioned background filling
+     the grid, so the grid's own height (auto, from the still-in-flow text
+     item) plus this min-height is what the image is cropped to. */
+  .custom-everyday .image-with-text__grid {
+    position: relative;
+    min-height: 56rem;
+  }
+  .custom-everyday.image-with-text .image-with-text__media-item {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    max-width: none;
+    height: 100%;
+    z-index: 0;
+  }
+  .custom-everyday .image-with-text__media {
+    height: 100% !important;
+    padding-bottom: 0 !important;
+  }
+  .custom-everyday .image-with-text__text-item {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: none;
+  }
   .custom-everyday .image-with-text__content {
+    justify-content: flex-start;
+    align-self: flex-start;
+    height: auto;
+    width: calc(100% - 3.2rem);
+    margin: 2.4rem auto 0;
     padding-left: 1.6rem;
     padding-right: 1.6rem;
   }

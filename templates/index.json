@@ -319,7 +319,7 @@
       "settings": {
         "custom_css_class": "custom-everyday",
         "image": "shopify://shop_images/Everyday_Beautifully_Considered.avif",
-        "height": "adapt",
+        "height": "large",
         "desktop_image_width": "medium",
         "layout": "text_first",
         "image_behavior": "none",
