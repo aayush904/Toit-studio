@@ -706,7 +706,7 @@ body .shopify-section-group-footer-group {
     display: block;
   }
   .custom-footer .footer__brand-logo {
-    width: 50px !important;
+    width: 80px !important;
     margin-bottom: 2rem;
   }
 }
@@ -752,18 +752,24 @@ body .shopify-section-group-footer-group {
     font-size: 1.3rem;
   }
 
-  /* Hours (Sun/Mon-Fri/Sat) sit on one wrapped line alongside the address
-     instead of stacking as three separate rows, to keep the Connect
-     column compact. */
-  .custom-footer .footer-block__hours {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem 1.5rem;
+  /* Connect column: address on the left, hours (Sun/Mon-Fri/Sat) as their
+     own stacked column on the right instead of the divider + hours-below-
+     address flow used at desktop. */
+  .custom-footer .footer-block__contact {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 2rem;
+    align-items: start;
+  }
+  .custom-footer .footer-block__divider {
+    display: none;
   }
   .custom-footer .footer-block__hours-row {
-    display: inline-flex;
-    gap: 0.5rem;
-    margin-bottom: 0;
+    grid-template-columns: auto auto;
+    column-gap: 0.8rem;
+  }
+  .custom-footer .footer-block__hours-label {
+    white-space: nowrap;
   }
 }
 
