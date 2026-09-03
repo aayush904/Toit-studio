@@ -10,7 +10,7 @@
 {
   "current": {
     "logo": "shopify://shop_images/Union.svg",
-    "light_logo": "shopify://shop_images/Union.svg",
+    "light_logo": "shopify://shop_images/Union_2.svg",
     "logo_width": 100,
     "favicon": "shopify://shop_images/Union.svg",
     "type_header_font": "geist_n4",
@@ -214,9 +214,9 @@
       },
       "scheme-dfd80e20-cb87-46cc-9af1-322565d46050": {
         "settings": {
-          "background": "#647A73",
+          "background": "#647a73",
           "background_gradient": "",
-          "text": "#FFFFFF",
+          "text": "#ffffff",
           "button": "#0d0d0d",
           "button_label": "#ffffff",
           "secondary_button_label": "#0d0d0d",
