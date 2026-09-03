@@ -619,7 +619,7 @@ body .shopify-section-group-footer-group {
 /* Bottom bar */
 .custom-footer .footer__content-bottom {
   /* Darkens whatever the colour scheme sets, so it tracks the theme */
-  background: rgba(0, 0, 0, 0.12);
+  background: #4F615B;
   border: 0;
   padding: 2.4rem 0;
   /* Let the darker band run the full viewport width */
@@ -736,7 +736,7 @@ body .shopify-section-group-footer-group {
 
   .custom-footer .footer {
     padding-top: 50px !important;
-    padding-bottom: 50px !important;
+
   }
   .custom-footer .footer__content-top,
   .custom-footer .footer__content-bottom-wrapper {
@@ -768,6 +768,9 @@ body .shopify-section-group-footer-group {
     column-gap: 2rem;
     align-items: start;
   }
+  .custom-footer .footer__content-bottom{
+    padding:0px;
+  }
   .custom-footer .footer-block__divider {
     display: none;
   }
@@ -785,7 +788,7 @@ body .shopify-section-group-footer-group {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    gap: 2rem;
+    gap: 1rem;
   }
   .custom-footer .footer__policies {
     flex-wrap: wrap;
@@ -833,6 +836,13 @@ body .shopify-section-group-footer-group {
 
 /* ---------------- Header (mobile) ---------------- */
 @media (max-width: 767px) {
+
+  .header__heading-link{
+    padding:0px !important;
+  }
+  .header{
+    padding-top:18px !important;
+  }
   .custom-header .header__icon--search,
   .custom-header .header__icon--cart,
   .custom-header .header__icon--account {
@@ -864,7 +874,7 @@ body .shopify-section-group-footer-group {
        producing an inconsistent gap above the logo/close row across
        devices. A fixed value is deterministic everywhere. */
     height: 48.5px;
-    padding-top: 0;
+    padding-top: 25px;
     padding-bottom: 0;
     padding-right: 24px;
   }
