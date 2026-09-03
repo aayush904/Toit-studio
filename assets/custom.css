@@ -735,6 +735,7 @@ body .shopify-section-group-footer-group {
   .custom-footer .footer__content-bottom-wrapper {
     padding-left: 15px !important;
     padding-right: 15px !important;
+    padding-bottom: 2rem;
   }
 
   .custom-footer .footer-block__heading {
