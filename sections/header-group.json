@@ -35,6 +35,7 @@
       ],
       "disabled": true,
       "settings": {
+        "custom_css_class": "",
         "auto_rotate": true,
         "change_slides_speed": 5,
         "color_scheme": "scheme-0130ff2c-5d75-4e86-be8d-b4ab3796a5ff",
@@ -56,6 +57,7 @@
         "mobile_logo_position": "left",
         "menu": "main-menu",
         "menu_2": "",
+        "menu_drawer_background_image": "shopify://shop_images/Mega_Menu_Background_-_Toit.svg",
         "menu_type_desktop": "dropdown",
         "show_line_separator": false,
         "transparent_header": true,
@@ -71,6 +73,7 @@
       "type": "header",
       "disabled": true,
       "settings": {
+        "custom_css_class": "",
         "logo_position": "middle-left",
         "mobile_logo_position": "left",
         "menu": "main-menu",
