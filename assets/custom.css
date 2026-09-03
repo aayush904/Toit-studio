@@ -265,6 +265,7 @@
 }
 .custom-everyday .image-with-text__content .image-with-text__heading + .image-with-text__text {
   margin-top: 2rem;
+  max-width: 45rem;
 }
 .custom-everyday .image-with-text__content .image-with-text__text + .button {
   margin-top: 4.8rem;
