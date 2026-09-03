@@ -841,4 +841,44 @@ body .shopify-section-group-footer-group {
     width: 50px !important;
     height: auto !important;
   }
+
+  /* Mobile menu drawer: logo width, close icon aligned to where the
+     hamburger sits in the real header bar, item type scale + spacing,
+     and an optional decorative background image behind the nav. */
+  .custom-header .menu-drawer__logo .drawer__logo-image {
+    width: 50px !important;
+    height: auto !important;
+  }
+  .custom-header .menu-drawer__header {
+    height: var(--header-height, 48.5px);
+    padding-top: 0;
+    padding-bottom: 0;
+    padding-right: 24px;
+  }
+  .custom-header .menu-drawer__navigation > .menu-drawer__menu {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    margin-top: 0;
+  }
+  .custom-header .menu-drawer__navigation > .menu-drawer__menu > li > .menu-drawer__menu-item,
+  .custom-header .menu-drawer__navigation > .menu-drawer__menu > li > details > summary.menu-drawer__menu-item {
+    padding: 0 20px;
+    font-size: 2rem;
+  }
+  .custom-header .menu-drawer__background-image {
+    display: block !important;
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    pointer-events: none;
+  }
+  .custom-header .menu-drawer__navigation-container,
+  .custom-header .menu-drawer__header {
+    position: relative;
+    z-index: 1;
+  }
 }

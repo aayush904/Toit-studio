@@ -402,6 +402,12 @@
           </summary>
           <div id="menu-drawer" class="gradient menu-drawer motion-reduce" tabindex="-1">
             <div class="menu-drawer__inner-container">
+              {%- if section.settings.menu_drawer_background_image != blank -%}
+                <div
+                  class="menu-drawer__background-image"
+                  style="background-image: url({{ section.settings.menu_drawer_background_image | image_url: width: 1000 }});"
+                ></div>
+              {%- endif -%}
               <div class="menu-drawer__header">
                 <div class="menu-drawer__title">
                   <a href="/" class="menu-drawer__logo">
@@ -1627,6 +1633,12 @@
       "id": "menu_2",
       "default": "main-menu",
       "label": "Menu right"
+    },
+    {
+      "type": "image_picker",
+      "id": "menu_drawer_background_image",
+      "label": "Mobile menu background image",
+      "info": "Optional. Decorative background image shown behind the mobile menu (hamburger drawer) items."
     },
     {
       "type": "select",
