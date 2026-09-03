@@ -706,6 +706,7 @@ body .shopify-section-group-footer-group {
     display: block;
   }
   .custom-footer .footer__brand-logo {
+    width: 50px !important;
     margin-bottom: 2rem;
   }
 }
@@ -739,8 +740,9 @@ body .shopify-section-group-footer-group {
   .custom-footer .footer-block__heading {
     font-size: 1.5rem;
   }
-  .custom-footer .footer-block--newsletter .footer-block__heading {
-    font-size: 1.5rem;
+  .custom-footer .footer-block--newsletter .footer-block__heading,
+  .custom-footer .footer__brand-tagline {
+    font-size: 1.3rem;
   }
   .custom-footer .footer-block__details-content .list-menu__item--link,
   .custom-footer .footer-block__details-content a,
@@ -827,5 +829,9 @@ body .shopify-section-group-footer-group {
   .custom-header header-drawer {
     grid-area: icons;
     justify-self: end;
+  }
+  .custom-header .header__heading-logo {
+    width: 50px !important;
+    height: auto !important;
   }
 }
