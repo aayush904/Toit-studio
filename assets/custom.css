@@ -402,6 +402,13 @@
 /* Colours come from the section's colour scheme, not hardcoded here. */
 .custom-footer .footer {
   padding-bottom: 0;
+  /* This scheme's background is a plain color (no gradient/image), so
+     the fixed attachment from the shared .gradient class buys nothing
+     visually here -- but background-attachment:fixed is a known source
+     of unresponsive taps/clicks on iOS Safari, especially on a page
+     that also has other fixed-position elements (sticky header, menu
+     drawer). Neutralize it for the footer specifically. */
+  background-attachment: scroll;
 }
 /* This design has no decorative wave, so drop it and the negative margin
    that only existed to pull the wave over the section above. */
