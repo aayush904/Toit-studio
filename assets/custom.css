@@ -850,7 +850,13 @@ body .shopify-section-group-footer-group {
     height: auto !important;
   }
   .custom-header .menu-drawer__header {
-    height: var(--header-height, 48.5px);
+    /* Fixed height matching the real header's own icon-row height, rather
+       than the JS-computed --header-height custom property: that value
+       is only set once (by the sticky-header custom element) and can be
+       stale, unset, or wildly wrong depending on load timing, which was
+       producing an inconsistent gap above the logo/close row across
+       devices. A fixed value is deterministic everywhere. */
+    height: 48.5px;
     padding-top: 0;
     padding-bottom: 0;
     padding-right: 24px;
@@ -858,6 +864,11 @@ body .shopify-section-group-footer-group {
   .custom-header .menu-drawer__navigation {
     padding-top: 60px;
     margin-top: 0;
+    /* Without this, the grid row below can grow to fit its content
+       instead of respecting the 1fr track, pushing the login row (and
+       potentially the whole nav) out of view with no scrollbar. */
+    min-height: 0;
+    overflow-y: auto;
   }
   .custom-header .menu-drawer__navigation > .menu-drawer__menu {
     display: flex;
