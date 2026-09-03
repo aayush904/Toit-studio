@@ -220,9 +220,12 @@
     }
 {%- endstyle -%}
 <script src="{{ 'cart-notification.js' | asset_url }}" defer="defer"></script>
-{%- if settings.cart_type == 'drawer' -%}
-  <script src="{{ 'cart-drawer.js' | asset_url }}" defer="defer"></script>
-{%- endif -%}
+{%- comment -%}
+  cart-drawer.js is already loaded, once, from layout/theme.liquid.
+  Loading it again here re-declares the CartDrawer custom element class,
+  throwing "Identifier 'CartDrawer' has already been declared" and
+  aborting the rest of that script's execution on every page.
+{%- endcomment -%}
 
 <svg xmlns="http://www.w3.org/2000/svg" class="hidden">
   <symbol id="icon-search" viewbox="0 0 22 22" fill="none">

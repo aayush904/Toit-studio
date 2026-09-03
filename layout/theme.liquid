@@ -492,6 +492,11 @@
       productCardMain.forEach((el) => {
         const sliderContainer = el.querySelector('.productMediaslider-container');
         const sliderWrapper = el.querySelector('.productMediaslider-wrapper');
+        // Most product cards don't have a hover media slider -- only run
+        // the slider setup below for the ones that do, otherwise this
+        // throws on the very first card without one and DOMContentLoaded
+        // never gets to the swatch/quick-add wiring further down.
+        if (sliderContainer && sliderWrapper) {
         const slides = sliderWrapper.querySelectorAll('.slide');
         const progressFill = sliderContainer.querySelector('.progress-fill');
 
@@ -544,8 +549,9 @@
           currentIndex = 0;
           sliderWrapper.style.transform = `translateX(-${currentIndex * 100}%)`;
         });
+        }
 
-      
+
       var sectionParent = el.closest('[id^="shopify-section-template"]');
         el.querySelectorAll('.card__content input.swatch-input__input').forEach(function(input) {
           input.addEventListener('click', function(e) {
