@@ -855,6 +855,10 @@ body .shopify-section-group-footer-group {
     padding-bottom: 0;
     padding-right: 24px;
   }
+  .custom-header .menu-drawer__navigation {
+    padding-top: 60px;
+    margin-top: 0;
+  }
   .custom-header .menu-drawer__navigation > .menu-drawer__menu {
     display: flex;
     flex-direction: column;
@@ -865,6 +869,12 @@ body .shopify-section-group-footer-group {
   .custom-header .menu-drawer__navigation > .menu-drawer__menu > li > details > summary.menu-drawer__menu-item {
     padding: 0 20px;
     font-size: 2rem;
+    font-weight: 400;
+  }
+  /* Only TikTok stays in the drawer's social row. */
+  .custom-header .menu-drawer .list-social__item:has(.icon-facebook),
+  .custom-header .menu-drawer .list-social__item:has(.icon-instagram) {
+    display: none;
   }
   .custom-header .menu-drawer__background-image {
     display: block !important;
