@@ -385,27 +385,25 @@
                   <h2 class="footer-block__heading inline-richtext">{{ section.settings.newsletter_heading }}</h2>
                 {%- endif -%}
                 {%- comment -%}
-                  This is otherwise the stock Dawn newsletter form -- the
-                  only deliberate change is that the class list below omits
-                  "newsletter-form". That exact class name is what Shopify's
-                  spam-protection script scans the page for on load to
-                  decide which forms to bind captcha-driven focus handling
-                  to, and that binding was stripping focus from this field
-                  a few seconds after it was tapped, making it impossible to
-                  type an email in. Confirmed via isolation testing: inputs
-                  with the same type/id pattern/DOM position stayed focused
-                  indefinitely once that class was removed. (An earlier,
-                  more complicated attempt at this fix used a hidden shadow
-                  form bridged by JS; reverted in favor of this much
-                  simpler one-form version, since /contact hard-rejects a
-                  submission with "Missing CAPTCHA token" if it never goes
-                  through Shopify's binding at all -- so keeping this as a
-                  single, normal, natively-submitted form is both simpler
-                  and safer than a hand-rolled bridge.) The layout rules
-                  "newsletter-form" used to provide are replicated under
-                  .footer__newsletter in custom.css instead.
+                  This form type is 'contact', not 'customer', on purpose.
+                  Shopify auto-binds hCaptcha spam-protection focus handling
+                  specifically to form_type=customer forms (confirmed: the
+                  page's /pages/contact form, which uses form_type=contact,
+                  was never affected, while this one -- identical in every
+                  other respect -- was unusable, the input losing focus/
+                  input a couple seconds after being tapped). contact[tags]
+                  = newsletter is Shopify's own documented way to have a
+                  contact-type form subscribe the submitter the same way a
+                  customer-type one does, so the actual subscribe behavior
+                  is unchanged; only the form_type differs, sidestepping
+                  whatever is special-cased for customer forms specifically.
+                  (Two earlier, more complicated fixes -- a hidden shadow
+                  form bridged by JS, then just renaming the wrapper's CSS
+                  class -- were tried and reverted; neither addressed the
+                  actual mechanism, which turned out to be the form_type
+                  itself, not DOM structure or class names.)
                 {%- endcomment -%}
-                {%- form 'customer', id: 'ContactFooter', class: 'footer__newsletter' -%}
+                {%- form 'contact', id: 'ContactFooter', class: 'footer__newsletter' -%}
                   <input type="hidden" name="contact[tags]" value="newsletter">
                   <div class="newsletter-form__field-wrapper">
                     <div class="field">
