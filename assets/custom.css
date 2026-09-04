@@ -561,6 +561,23 @@ body .shopify-section-group-footer-group {
   margin: 0;
   width: 100%;
   max-width: 38rem;
+  /* Layout previously came from the shared .newsletter-form class, but
+     that exact class name is what Shopify's spam-protection script scans
+     for on page load to decide which forms to bind captcha-focus
+     handling to -- it was matching this wrapper (not just an actual
+     <form>) and stealing focus from the visible email field a few
+     seconds after it was focused. Replicated inline under a class name
+     that isn't part of that scan instead. */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+@media screen and (min-width: 768px) {
+  .custom-footer .footer__newsletter {
+    align-items: flex-start;
+  }
 }
 .custom-footer .footer__newsletter .newsletter-form__field-wrapper {
   max-width: none;
