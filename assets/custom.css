@@ -507,6 +507,12 @@ body .shopify-section-group-footer-group {
   text-decoration: underline;
 }
 
+.contact__fields_footer{
+  .contact__button{
+    margin:0px;
+  }
+}
+
 /* Connect / contact column */
 .custom-footer .footer-block__contact {
   font-size: 1.5rem;
