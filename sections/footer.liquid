@@ -387,38 +387,51 @@
                 {%- comment -%}
                   Shopify auto-binds hCaptcha spam protection to any
                   {% form 'customer' %} output, and that binding strips focus
-                  from whichever input the shopper actually types into within
-                  ~50ms of it being focused -- making the field untypeable.
-                  /contact also rejects a plain POST with "Missing CAPTCHA
-                  token" if it isn't routed through that same binding, so the
-                  requirement can't just be skipped either.
+                  from whichever input the shopper types into within ~50ms of
+                  it being focused -- making the field untypeable. The binding
+                  doesn't attach immediately on page load either (confirmed:
+                  it's still absent right after load, present a bit later),
+                  and it turns out to be scoped to the whole <form> element,
+                  not just the specific input Shopify cares about -- so an
+                  earlier version of this fix that visually hid the real
+                  input but kept the visible one AS A CHILD of the same
+                  <form> still got caught once the binding attached.
+                  /contact also hard-rejects a plain POST with "Missing
+                  CAPTCHA token" if it isn't routed through that binding, so
+                  the requirement can't just be skipped either.
 
-                  Workaround: keep a real {% form 'customer' %} so Shopify's
-                  binding has something to attach to and the submission stays
-                  fully compliant, but make ITS input the one nobody ever
-                  focuses (visually hidden, tabindex -1). The field the
-                  shopper actually sees and types into lives outside that
-                  form entirely, so the binding never touches it. On submit,
-                  its value is copied into the real hidden input and the real
-                  form is submitted natively.
+                  Fix: keep a real {% form 'customer' %} so Shopify's binding
+                  has something to attach to and the submission stays fully
+                  compliant, but that form now contains ONLY the hidden real
+                  input/button (visually hidden, tabindex -1, never focused
+                  by a person). The field the shopper actually sees and types
+                  into is a genuine DOM sibling of the <form>, not a
+                  descendant of it, so the binding structurally cannot reach
+                  it no matter when it attaches. On submit, its value is
+                  copied into the real hidden input and the real form is
+                  submitted natively.
                 {%- endcomment -%}
-                {%- form 'customer', id: 'ContactFooter', class: 'footer__newsletter newsletter-form' -%}
-                  <input type="hidden" name="contact[tags]" value="newsletter">
-                  <div class="visually-hidden">
-                    <input
-                      type="email"
-                      name="contact[email]"
-                      value="{{ form.email }}"
-                      tabindex="-1"
-                      aria-hidden="true"
-                      data-newsletter-real-email
-                    >
-                    <button type="submit" tabindex="-1" aria-hidden="true" data-newsletter-real-submit>
-                      {{- 'newsletter.button_label' | t -}}
-                    </button>
-                  </div>
+                <div class="footer__newsletter newsletter-form" id="ContactFooter-wrapper">
+                  {%- form 'customer', id: 'ContactFooter' -%}
+                    <input type="hidden" name="contact[tags]" value="newsletter">
+                    <div class="visually-hidden">
+                      <input
+                        type="email"
+                        name="contact[email]"
+                        value="{{ form.email }}"
+                        tabindex="-1"
+                        aria-hidden="true"
+                        data-newsletter-real-email
+                      >
+                      <button type="submit" tabindex="-1" aria-hidden="true" data-newsletter-real-submit>
+                        {{- 'newsletter.button_label' | t -}}
+                      </button>
+                    </div>
+                    {%- assign newsletter_posted_successfully = form.posted_successfully? -%}
+                    {%- assign newsletter_form_errors = form.errors -%}
+                  {%- endform -%}
 
-                  {%- unless form.posted_successfully? -%}
+                  {%- unless newsletter_posted_successfully -%}
                     <div class="newsletter-form__field-wrapper">
                       <div class="field">
                         <input
@@ -429,7 +442,7 @@
                           autocorrect="off"
                           autocapitalize="off"
                           autocomplete="email"
-                          {% if form.errors %}
+                          {% if newsletter_form_errors %}
                             autofocus
                             aria-invalid="true"
                             aria-describedby="ContactFooter-error"
@@ -455,18 +468,18 @@
                           </span>
                         </button>
                       </div>
-                      {%- if form.errors -%}
+                      {%- if newsletter_form_errors -%}
                         <small class="newsletter-form__message form__message" id="ContactFooter-error">
                           <span class="svg-wrapper">
                             {{- 'icon-error.svg' | inline_asset_content -}}
                           </span>
-                          {{- form.errors.translated_fields.email | capitalize }}
-                          {{ form.errors.messages.email -}}
+                          {{- newsletter_form_errors.translated_fields.email | capitalize }}
+                          {{ newsletter_form_errors.messages.email -}}
                         </small>
                       {%- endif -%}
                     </div>
                   {%- endunless -%}
-                  {%- if form.posted_successfully? -%}
+                  {%- if newsletter_posted_successfully -%}
                     <h3
                       class="newsletter-form__message newsletter-form__message--success form__message"
                       id="ContactFooter-success"
@@ -479,14 +492,15 @@
                       {{- 'newsletter.success' | t }}
                     </h3>
                   {%- endif -%}
-                {%- endform -%}
+                </div>
                 <script>
                   (function () {
+                    var wrapper = document.getElementById('ContactFooter-wrapper');
                     var form = document.getElementById('ContactFooter');
                     var realEmail = form.querySelector('[data-newsletter-real-email]');
                     var realSubmit = form.querySelector('[data-newsletter-real-submit]');
-                    var visibleEmail = form.querySelector('[data-newsletter-visible-email]');
-                    var visibleSubmit = form.querySelector('[data-newsletter-visible-submit]');
+                    var visibleEmail = wrapper.querySelector('[data-newsletter-visible-email]');
+                    var visibleSubmit = wrapper.querySelector('[data-newsletter-visible-submit]');
                     if (!visibleEmail || !visibleSubmit) return;
 
                     function submit() {
