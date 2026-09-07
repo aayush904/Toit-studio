@@ -986,6 +986,11 @@ body .shopify-section-group-footer-group {
   display: none;
 }
 
+#product-grid.product-grid {
+  column-gap: 36px;
+  row-gap: 42px;
+}
+
 /* Collection page "load more" pagination. */
 .load-more {
   display: flex;
