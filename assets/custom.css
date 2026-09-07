@@ -774,7 +774,7 @@ body .shopify-section-group-footer-group {
     display: none;
   }
   .custom-footer .footer-block__hours-row {
-    grid-template-columns: auto auto;
+    grid-template-columns: 7.3rem 1fr;
     column-gap: 0.8rem;
   }
   .custom-footer .footer-block__hours-label {
