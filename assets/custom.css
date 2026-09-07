@@ -991,6 +991,10 @@ body .shopify-section-group-footer-group {
   row-gap: 42px;
 }
 
+#product-grid.product-grid .grid__item {
+  max-width: 333px;
+}
+
 /* Collection page "load more" pagination. */
 .load-more {
   display: flex;
