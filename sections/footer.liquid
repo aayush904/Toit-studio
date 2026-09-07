@@ -441,15 +441,13 @@
                         <span class="newsletter-form__button-label">
                           {{- section.settings.newsletter_button_label | default: 'JOIN' -}}
                         </span>
-                        <span class="svg-wrapper">
-                          {{- 'icon-arrow.svg' | inline_asset_content -}}
-                        </span>
+                      
                       </button>
                     </div>
                     {%- if form.errors -%}
                       <small class="newsletter-form__message form__message" id="ContactFooter-error">
                         <span class="svg-wrapper">
-                          {{- 'icon-error.svg' | inline_asset_content -}}
+
                         </span>
                         {{- form.errors.translated_fields.email | capitalize }}
                         {{ form.errors.messages.email -}}
@@ -464,7 +462,7 @@
                       autofocus
                     >
                       <span class="svg-wrapper">
-                        {{- 'icon-success.svg' | inline_asset_content -}}
+
                       </span>
                       {{- 'newsletter.success' | t }}
                     </h3>

@@ -13,6 +13,7 @@
       "type": "main-collection-banner",
       "disabled": true,
       "settings": {
+        "custom_css_class": "",
         "show_collection_description": true,
         "show_collection_image": true,
         "color_scheme": "scheme-1"
@@ -41,6 +42,7 @@
       ],
       "name": "Image Text Slider-Basmil",
       "settings": {
+        "custom_css_class": "",
         "text_position": "overlay",
         "autoplay": true,
         "autoplay_speed": 1000,
@@ -52,6 +54,7 @@
       "blocks": {
         "ai_gen_block_16c736e_mpK9dh": {
           "type": "ai_gen_block_16c736e",
+          "disabled": true,
           "settings": {
             "home_text": "Home",
             "collections_text": "Collections",
@@ -83,11 +86,9 @@
     },
     "product-grid": {
       "type": "main-collection-product-grid",
-      "custom_css": [
-        ".facet-filters {grid-column: 1; width: max-content; padding: 0;}",
-        ".facets-container {padding: 0;}"
-      ],
+      "custom_css": [],
       "settings": {
+        "custom_css_class": "",
         "products_per_page": 16,
         "columns_desktop": 4,
         "columns_mobile": "2",
@@ -99,7 +100,7 @@
         "show_rating": true,
         "quick_add": "standard",
         "enable_filtering": true,
-        "filter_type": "vertical",
+        "filter_type": "horizontal",
         "enable_sorting": true,
         "padding_top": 8,
         "padding_bottom": 36

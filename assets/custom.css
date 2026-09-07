@@ -513,6 +513,64 @@ body .shopify-section-group-footer-group {
   line-height: 1.4;
   color: #ffffff;
 }
+
+.custom-footer{
+   .field label{
+
+    font-weight: 350;
+     font-size: 15px;
+     letter-spacing: 0%;
+     color:#807A77;
+
+   }
+   .newsletter-form__button{
+    background-color: #0e0202;
+    font-weight: 500;
+    font-style: Medium;
+    /* background: red; */
+    font-size: 14px;
+    color: #EFF2F1;
+    line-height: 100%;
+    width: 92px;
+    border-radius: 400px;
+    position: absolute;
+    /* top: 24px; */
+    /* padding: 10px; */
+    z-index: 100;
+    letter-spacing: 6%;
+    vertical-align: middle;
+    text-transform: uppercase;
+
+
+    span{
+          background: #647A73;
+    padding: 10px 20px;
+    border-radius: 400px;
+                width: 70px;
+
+    }
+   }
+   .newsletter-form__field-wrapper .field__input{
+    background: white;
+        position: relative;
+        z-index: -13;
+        color: #807A77;
+
+        font-weight: 350;
+
+        font-size: 15px;
+
+
+        line-height: 100%;
+        letter-spacing: 0%;
+
+   }
+   .field__input:-webkit-autofill~.field__button{
+    color: #EFF2F1;
+
+   }
+  
+}
 .custom-footer .footer-block__contact-details p {
   margin: 0 0 0.9rem;
   line-height: 1.4;
