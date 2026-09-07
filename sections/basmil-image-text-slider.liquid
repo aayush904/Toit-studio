@@ -168,7 +168,9 @@
               {% endif %}
               <div class="overlay-text">
                 <h1>{{ block.settings.heading }}</h1>
-                <p>{{ block.settings.text }}</p>
+                {% if block.settings.text != blank %}
+                  <p>{{ block.settings.text }}</p>
+                {% endif %}
                 {% if section.settings.menu != blank %}
                   <nav class="slide-menu">
                     <ul class="slide-menu__list">
@@ -231,6 +233,9 @@
       height: {{ section.settings.slider_height | minus: 14 }}px;
       min-height: 200px;
       overflow: hidden;
+      }
+      .image-text-slider .slide-content {
+      height: 100%;
       }
       .image-text-slider .overlay-layout img,
       .image-text-slider .side-layout .slide-image img {
@@ -299,9 +304,13 @@
       .image-text-slider--align-left .overlay-text {
       position: absolute;
       top: 50%;
-      left: 60px;
-      right: 60px;
+      left: 0;
+      right: 0;
       width: auto;
+      /* Line the overlaid text up with the page-width container used by every
+         other section, even though the section itself is full-bleed. */
+      padding-left: max(60px, calc((100vw - var(--page-width)) / 2 + 60px));
+      padding-right: max(60px, calc((100vw - var(--page-width)) / 2 + 60px));
       transform: translateY(-50%);
       text-align: left;
       }
@@ -346,10 +355,6 @@
       }
 
       @media (max-width: 768px) {
-      .image-text-slider--align-left .overlay-text {
-        left: 20px;
-        right: 20px;
-      }
       .image-text-slider--align-left .overlay-text h1 {
         font-size: 40px;
       }

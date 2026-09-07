@@ -27,7 +27,7 @@
           "settings": {
             "image": "{{ collection.image }}",
             "heading": "{{ collection.title }}",
-            "text": "Shop the Collection"
+            "text": ""
           }
         }
       },
