@@ -43,6 +43,12 @@
       "type": "number",
       "id": "slider_height",
       "label": "Slider Height (px)"
+    },
+    {
+      "type": "image_picker",
+      "id": "override_image",
+      "label": "Override image",
+      "info": "If set, this image is used for every slide instead of each slide's own image (e.g. the collection's image on collection pages)."
     }
   ],
   "blocks": [
@@ -103,17 +109,18 @@
 >
   {% for block in section.blocks %}
     {% if block.type == 'slide' %}
+      {% assign slide_image = section.settings.override_image | default: block.settings.image %}
       <div class="slider-slide {{ position }}">
         <div class="slide-wrapper">
           {% if position == 'side' %}
             <div class="slide-content side-layout">
               <div class="slide-image">
-                {% if block.settings.image %}
+                {% if slide_image %}
                   <img
-                    src="{{ block.settings.image | image_url: width: block.settings.image.width, height: block.settings.image.height }}"
+                    src="{{ slide_image | image_url: width: slide_image.width, height: slide_image.height }}"
                     alt="{{ block.settings.heading | escape }}"
-                    width="{{ block.settings.image.width }}"
-                    height="{{ block.settings.image.height }}"
+                    width="{{ slide_image.width }}"
+                    height="{{ slide_image.height }}"
                   >
                 {% endif %}
               </div>
@@ -124,12 +131,12 @@
             </div>
           {% else %}
             <div class="slide-content overlay-layout">
-              {% if block.settings.image %}
+              {% if slide_image %}
                 <img
-                  src="{{ block.settings.image | image_url: width: block.settings.image.width, height: block.settings.image.height }}"
+                  src="{{ slide_image | image_url: width: slide_image.width, height: slide_image.height }}"
                   alt="{{ block.settings.heading | escape }}"
-                  width="{{ block.settings.image.width }}"
-                  height="{{ block.settings.image.height }}"
+                  width="{{ slide_image.width }}"
+                  height="{{ slide_image.height }}"
                 >
               {% endif %}
               <div class="overlay-text">
