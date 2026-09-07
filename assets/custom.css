@@ -840,7 +840,8 @@ body .shopify-section-group-footer-group {
     padding:0px !important;
   }
   .header{
-    padding-top:18px !important;
+    padding-top:10px !important;
+    padding-bottom:10px !important;
   }
   .custom-header .header__icon--search,
   .custom-header .header__icon--cart,
