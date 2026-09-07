@@ -930,9 +930,11 @@ body .shopify-section-group-footer-group {
 #main-collection-filters .facets__heading,
 #main-collection-filters .facet-filters__label {
   text-transform: uppercase;
-  font-weight: 600;
-  font-size: 13px;
-  letter-spacing: 0.05em;
+  font-family: 'Overused Grotesk', var(--font-heading-family, sans-serif);
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 100%;
+  letter-spacing: 0%;
   color: #4E4947;
   margin: 0 16px 0 0;
 }
@@ -946,7 +948,7 @@ body .shopify-section-group-footer-group {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 24px;
+  gap: 80px;
   border: 1px solid rgba(78, 73, 71, 0.35);
   border-radius: 55px;
   padding: 12px 16px 13px 16px;
@@ -978,4 +980,47 @@ body .shopify-section-group-footer-group {
   right: 16px;
   top: 50%;
   transform: translateY(-50%);
+}
+
+#main-collection-filters .product-count {
+  display: none;
+}
+
+/* Collection page "load more" pagination. */
+.load-more {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  padding: 40px 0;
+  text-align: center;
+}
+
+.load-more__viewed {
+  font-family: 'Overused Grotesk', var(--font-heading-family, sans-serif);
+  font-size: 16px;
+  color: #4E4947;
+  margin: 0;
+}
+
+.load-more__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #647A73;
+  color: #F7F6F3;
+  border: none;
+  border-radius: 55px;
+  padding: 16px 48px;
+  font-family: 'Overused Grotesk', var(--font-heading-family, sans-serif);
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.load-more__button[disabled] {
+  opacity: 0.6;
+  cursor: default;
 }

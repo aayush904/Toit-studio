@@ -244,7 +244,38 @@
             </ul>
 
             {%- if paginate.pages > 1 -%}
-              {% render 'pagination', paginate: paginate, anchor: '' %}
+              {%- liquid
+                assign shown_count = paginate.current_offset | plus: collection.products.size
+                assign next_url = ''
+                if paginate.next
+                  assign next_url = paginate.next.url
+                  if next_url contains '?'
+                    assign next_url = next_url | append: '&section_id=' | append: section.id
+                  else
+                    assign next_url = next_url | append: '?section_id=' | append: section.id
+                  endif
+                endif
+              -%}
+              <div class="load-more">
+                <p class="load-more__viewed">
+                  {{
+                    'sections.main-collection-product-grid.load_more.viewed_html'
+                    | t: shown: shown_count, total: paginate.items
+                  }}
+                </p>
+                <button
+                  type="button"
+                  class="load-more__button"
+                  data-load-more-button
+                  data-next-url="{{ next_url }}"
+                  {% if next_url == blank %}
+                    disabled
+                  {% endif %}
+                >
+                  {{ 'sections.main-collection-product-grid.load_more.button_label' | t }}
+                </button>
+              </div>
+              <script src="{{ 'collection-load-more.js' | asset_url }}" defer="defer"></script>
             {%- endif -%}
           </div>
         {%- endif -%}

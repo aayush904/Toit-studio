@@ -341,6 +341,12 @@
       "title": "Collection",
       "use_fewer_filters_html": "Use fewer filters or <a class=\"{{ class }}\" href=\"{{ link }}\">remove all</a>"
     },
+    "main-collection-product-grid": {
+      "load_more": {
+        "viewed_html": "You've viewed <strong>{{ shown }}</strong> of {{ total }} products.",
+        "button_label": "View more"
+      }
+    },
     "video": {
       "load_video": "Load video: {{ description }}"
     },
