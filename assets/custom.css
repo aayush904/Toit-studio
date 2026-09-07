@@ -920,3 +920,8 @@ body .shopify-section-group-footer-group {
     z-index: 1;
   }
 }
+
+.menu-drawer__header .svg-wrapper.summary > svg {
+  width: 20px;
+  height: 20px;
+}
