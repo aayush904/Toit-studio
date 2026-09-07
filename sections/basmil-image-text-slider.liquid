@@ -49,6 +49,32 @@
       "id": "override_image",
       "label": "Override image",
       "info": "If set, this image is used for every slide instead of each slide's own image (e.g. the collection's image on collection pages)."
+    },
+    {
+      "type": "header",
+      "content": "Menu"
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Menu",
+      "info": "Shown as a horizontal nav under the heading, in Overlay text position only."
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Text alignment",
+      "options": [
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "left",
+          "label": "Left"
+        }
+      ],
+      "default": "center"
     }
   ],
   "blocks": [
@@ -95,9 +121,10 @@
 }
 {% endschema %}
 {% assign position = section.settings.text_position %}
+{% assign alignment = section.settings.text_alignment %}
 
 <div
-  class="image-text-slider  {% if position == 'side' %} page-width{% endif %}{% if section.settings.custom_css_class != blank %} {{ section.settings.custom_css_class }}{% endif %}"
+  class="image-text-slider {% if alignment == 'left' %} image-text-slider--align-left{% endif %} {% if position == 'side' %} page-width{% endif %}{% if section.settings.custom_css_class != blank %} {{ section.settings.custom_css_class }}{% endif %}"
   data-slick-slider
   data-slidesperview="1"
   data-slidestoscroll="1"
@@ -142,6 +169,17 @@
               <div class="overlay-text">
                 <h1>{{ block.settings.heading }}</h1>
                 <p>{{ block.settings.text }}</p>
+                {% if section.settings.menu != blank %}
+                  <nav class="slide-menu">
+                    <ul class="slide-menu__list">
+                      {% for link in section.settings.menu.links %}
+                        <li class="slide-menu__item{% if link.active %} slide-menu__item--active{% endif %}">
+                          <a href="{{ link.url }}">{{ link.title }}</a>
+                        </li>
+                      {% endfor %}
+                    </ul>
+                  </nav>
+                {% endif %}
               </div>
             </div>
           {% endif %}
@@ -257,6 +295,71 @@
             color: #fff;
         {% endif %}
         }
+
+      .image-text-slider--align-left .overlay-text {
+      position: absolute;
+      top: 50%;
+      left: 60px;
+      right: 60px;
+      width: auto;
+      transform: translateY(-50%);
+      text-align: left;
+      }
+
+      .image-text-slider--align-left .overlay-text:before {
+      content: none;
+      }
+
+      .image-text-slider--align-left .overlay-text h1 {
+      font-family: 'Overused Grotesk', var(--font-heading-family, sans-serif);
+      font-weight: 400;
+      font-size: 72px;
+      line-height: 100%;
+      letter-spacing: 0%;
+      margin: 0 0 1rem;
+      }
+
+      .slide-menu__list {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 36px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      }
+
+      .slide-menu__item a {
+      font-family: 'Overused Grotesk', var(--font-heading-family, sans-serif);
+      font-weight: 400;
+      font-size: 20px;
+      line-height: 160%;
+      letter-spacing: 0%;
+      vertical-align: middle;
+      color: #F7F6F3;
+      text-decoration: none;
+      opacity: 0.6;
+      }
+
+      .slide-menu__item--active a {
+      opacity: 1;
+      }
+
+      @media (max-width: 768px) {
+      .image-text-slider--align-left .overlay-text {
+        left: 20px;
+        right: 20px;
+      }
+      .image-text-slider--align-left .overlay-text h1 {
+        font-size: 40px;
+      }
+      .slide-menu__list {
+        gap: 20px;
+      }
+      .slide-menu__item a {
+        font-size: 16px;
+      }
+      }
 
       .image-text-slider .slick-dots {
       position: absolute;
