@@ -1123,3 +1123,58 @@ body .shopify-section-group-footer-group {
     font-size: 3.2rem;
   }
 }
+
+/* Our Story: "Objects Built Around a Way of Living" -- image left, copy
+   right, closing with an italic serif pull quote and attribution. */
+.custom-story-founder .image-with-text__heading {
+  text-align: left;
+  font-weight: 400;
+  line-height: 1.2;
+  /* Wide enough to keep "Objects Built Around" on the first line, narrow
+     enough that the heading still breaks onto two lines as designed. */
+  max-width: 46rem;
+}
+
+.custom-story-founder .image-with-text__text {
+  color: #5b5553;
+}
+
+.custom-story-founder .image-with-text__text p {
+  margin: 0 0 2rem;
+  font-size: 1.5rem;
+  line-height: 1.6;
+}
+
+.custom-story-founder .image-with-text__text p:last-child {
+  margin-bottom: 0;
+}
+
+/* The pull quote is the only emphasised line in the block. */
+.custom-story-founder .image-with-text__text p em {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-style: italic;
+  color: #7a6a55;
+  font-size: 1.6rem;
+  line-height: 1.5;
+}
+
+@media screen and (min-width: 750px) {
+  /* Run the image to the section's left edge with no gutter, and give the
+     copy room to breathe on the right, as in the design. */
+  .custom-story-founder .image-with-text__grid {
+    column-gap: 0;
+  }
+
+  .custom-story-founder .image-with-text__content {
+    padding-left: clamp(3rem, 6vw, 8rem);
+    padding-right: clamp(2rem, 4vw, 6rem);
+  }
+}
+
+/* Our Story: framed video */
+.custom-story-video-embed .video-section__media,
+.custom-story-video-embed .video-section__poster,
+.custom-story-video-embed deferred-media {
+  border-radius: 12px;
+  overflow: hidden;
+}

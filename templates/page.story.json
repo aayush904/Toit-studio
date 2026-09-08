@@ -120,6 +120,89 @@
         "padding_bottom": 96
       }
     },
+    "story_founder": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Objects Built Around a Way of Living",
+            "heading_size": "h1"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Born in Nepal, Toit Studio began with a simple idea, everyday objects should feel considered, useful, and personal. Inspired by the way we gather, cook, share, and live, we curate homeware that brings warmth and character to everyday moments.</p><p>From drinkware and tableware to kitchenware and décor, each piece is selected with intention, designed to be enjoyed often, live beautifully in your home, and last beyond the moment.</p><p><em>“Clarity, considered materials, human empathy, and lasting strength guide everything we create and how we do business.”</em></p><p>– Pragya, Founder</p>",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": ["heading", "text"],
+      "name": "Objects Built Around a Way of Living",
+      "settings": {
+        "custom_css_class": "custom-story-founder",
+        "image": "shopify://shop_images/Screenshot_2024-03-12_at_4.48.14_PM.webp",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "image_behavior": "none",
+        "content_layout": "no-overlap",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "left",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "story_sustainability": {
+      "type": "rich-text",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Thoughtful Choices, Lasting Pieces",
+            "heading_size": "h1"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Using pieces thoughtfully, cleaning them properly, storing them with care, and appreciating the natural signs of everyday use can all help extend their place in our homes. We believe beautiful objects are meant to be lived with, not simply displayed.</p><p>Our approach to sustainability will continue to develop as Toit Studio grows. We want to make more considered decisions wherever we can, while being transparent about what we do today and where there is still room to improve. Rather than claiming perfection, we prefer progress that is thoughtful, practical, and genuine.</p>"
+          }
+        }
+      },
+      "block_order": ["heading", "text"],
+      "custom_css": [],
+      "name": "Thoughtful Choices, Lasting Pieces",
+      "settings": {
+        "custom_css_class": "custom-story-intro custom-story-sustainability",
+        "desktop_content_position": "left",
+        "content_alignment": "left",
+        "color_scheme": "scheme-0130ff2c-5d75-4e86-be8d-b4ab3796a5ff",
+        "full_width": true,
+        "padding_top": 96,
+        "padding_bottom": 48
+      }
+    },
+    "story_video": {
+      "type": "video",
+      "name": "Our Story video",
+      "settings": {
+        "custom_css_class": "custom-story-video-embed",
+        "heading": "",
+        "heading_size": "h1",
+        "enable_video_looping": false,
+        "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+        "description": "Toit Studio homeware being made by hand",
+        "full_width": false,
+        "color_scheme": "scheme-0130ff2c-5d75-4e86-be8d-b4ab3796a5ff",
+        "padding_top": 0,
+        "padding_bottom": 96
+      }
+    },
     "image_with_text_htK9Fi": {
       "type": "image-with-text",
       "blocks": {
@@ -246,6 +329,9 @@
     "image_banner_fznyDm",
     "basmil_video_7JBjGU",
     "rich_text_edJKHX",
+    "story_founder",
+    "story_sustainability",
+    "story_video",
     "image_with_text_htK9Fi",
     "basmil_product_slider_ciMay7",
     "basmil_product_slider_hktzaU",
