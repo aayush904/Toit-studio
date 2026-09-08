@@ -305,8 +305,8 @@
                     {% endif %}
                   >
                     <summary class="facets__summary caption-large focus-offset">
-                      <div>
-                        <span>{{ filter.label | escape }}</span>
+                      <div class="facets_container">
+                        <span class="facets__summary-label">{{ filter.label | escape }}</span>
                         {{- 'icon-caret-facets.svg' | inline_asset_content -}}
                       </div>
                     </summary>
