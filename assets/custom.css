@@ -1126,6 +1126,12 @@ body .shopify-section-group-footer-group {
 
 /* Our Story: "Objects Built Around a Way of Living" -- image left, copy
    right, closing with an italic serif pull quote and attribution. */
+.custom-story-founder.image-with-text {
+  padding: 0;
+  margin-left: calc(50% - 50vw);
+  width: calc(50% + 50vw);
+}
+
 .custom-story-founder .image-with-text__heading {
   text-align: left;
   font-weight: 400;
@@ -1141,7 +1147,7 @@ body .shopify-section-group-footer-group {
 
 .custom-story-founder .image-with-text__text p {
   margin: 0 0 2rem;
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   line-height: 1.6;
 }
 
@@ -1153,21 +1159,35 @@ body .shopify-section-group-footer-group {
 .custom-story-founder .image-with-text__text p em {
   font-family: Georgia, 'Times New Roman', serif;
   font-style: italic;
-  color: #7a6a55;
-  font-size: 1.6rem;
+  color: #5b5553;
+  font-size: 2rem;
   line-height: 1.5;
 }
 
 @media screen and (min-width: 750px) {
-  /* Run the image to the section's left edge with no gutter, and give the
-     copy room to breathe on the right, as in the design. */
+  /* Run the image full-bleed to the viewport's left edge, taking the full
+     left half of the section, and give the copy responsive padding on
+     the right (up to 140px). */
   .custom-story-founder .image-with-text__grid {
+    flex-wrap: nowrap;
     column-gap: 0;
   }
 
+  .custom-story-founder .image-with-text__media-item {
+    flex: 0 0 50%;
+    width: 50%;
+    max-width: 50%;
+  }
+
+  .custom-story-founder .image-with-text__text-item {
+    flex: 1 1 auto;
+    width: auto;
+    max-width: none;
+  }
+
   .custom-story-founder .image-with-text__content {
-    padding-left: clamp(3rem, 6vw, 8rem);
-    padding-right: clamp(2rem, 4vw, 6rem);
+    padding-left: clamp(2rem, 6vw, 14rem);
+    padding-right: clamp(2rem, 6vw, 14rem);
   }
 }
 
