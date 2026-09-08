@@ -13,15 +13,70 @@
       "type": "main-page",
       "disabled": true,
       "settings": {
+        "custom_css_class": "",
         "padding_top": 28,
         "padding_bottom": 28
       }
     },
+    "image_banner_fznyDm": {
+      "type": "image-banner",
+      "blocks": {
+        "heading_iaLG7k": {
+          "type": "heading",
+          "settings": {
+            "heading": "Our Story",
+            "heading_size": "h1"
+          }
+        },
+        "text_y4CR3d": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "Give customers details about the banner image(s) or content on the template.",
+            "text_style": "body"
+          }
+        },
+        "buttons_Xkmdyy": {
+          "type": "buttons",
+          "disabled": true,
+          "settings": {
+            "button_label_1": "Button label",
+            "button_link_1": "",
+            "button_style_secondary_1": false,
+            "button_label_2": "Button label",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_iaLG7k",
+        "text_y4CR3d",
+        "buttons_Xkmdyy"
+      ],
+      "name": "t:sections.image-banner.presets.name",
+      "settings": {
+        "custom_css_class": "",
+        "image": "shopify://shop_images/Collection.avif",
+        "image_overlay_opacity": 0,
+        "image_height": "adapt",
+        "image_behavior": "none",
+        "desktop_content_position": "middle-left",
+        "desktop_content_alignment": "left",
+        "show_text_box": false,
+        "color_scheme": "scheme-2",
+        "stack_images_on_mobile": true,
+        "mobile_content_alignment": "left",
+        "show_text_below": false
+      }
+    },
     "basmil_video_7JBjGU": {
       "type": "basmil-video",
+      "disabled": true,
       "custom_css": [],
       "name": "Background Video - Basmil",
       "settings": {
+        "custom_css_class": "",
         "title": "Our Story",
         "subtitle": "",
         "description": "",
@@ -62,6 +117,7 @@
       ],
       "name": "t:sections.rich-text.presets.name",
       "settings": {
+        "custom_css_class": "",
         "desktop_content_position": "center",
         "content_alignment": "center",
         "color_scheme": "",
@@ -94,6 +150,7 @@
       ],
       "name": "t:sections.image-with-text.presets.name",
       "settings": {
+        "custom_css_class": "",
         "image": "shopify://shop_images/Screenshot_2024-03-12_at_4.48.14_PM.webp",
         "height": "adapt",
         "desktop_image_width": "medium",
@@ -122,6 +179,7 @@
       ],
       "name": "Product Slider - Basmil",
       "settings": {
+        "custom_css_class": "",
         "collection": "frontpage",
         "heading": "Shop Jayant's Favourites",
         "subheading": "<script>\n  $(function () {\n    const $section = $('#shopify-section-{{ section.id }}');\n    const $first   = $section.find('.slick-first-slide');\n    const $normalSlide= $section.find('.slick-active:not(.slick-first-slide)');\n    const styleId  = 'slick-first-slide-style-{{ section.id }}';\n\n    function applyWidth () {\n      if (!$first.length) return;\n      const w = $normalSlide.outerWidth();\n      const css = `#shopify-section-{{ section.id }} { .slick-first-slide{width:${w}px;min-width:${w}px!important;max-width:${w}px!important;}}`;\n      let $style = $('#' + styleId);\n      if ($style.length) {\n        $style.text(css);\n      } else {\n        $('<style>', { id: styleId }).text(css).appendTo('footer');\n      }\n    }\n\n    applyWidth();\n\n    let t;\n    $(window).on('resize orientationchange load', () => {\n      clearTimeout(t);\n      t = setTimeout(applyWidth, 100);\n    });\n  });\n</script>",
@@ -134,7 +192,6 @@
         "autoplay": false,
         "autoplay_speed": 3000,
         "show_collection_slide": true,
-        "collection_slide_image": "shopify://shop_images/13_ed48ffd7-8fbd-4725-bc5b-1e11c51d4c9e.webp",
         "collection_slide_heading": "",
         "collection_slide_button_link": "",
         "collection_slide_button_label": "View Collection"
@@ -153,6 +210,7 @@
       ],
       "name": "Product Slider - Basmil",
       "settings": {
+        "custom_css_class": "",
         "collection": "frontpage",
         "heading": "Shop Jayant's Favourites",
         "subheading": "<script>\n  $(function () {\n    const $section = $('#shopify-section-{{ section.id }}');\n    const $first   = $section.find('.slick-first-slide');\n    const $normalSlide= $section.find('.slick-active:not(.slick-first-slide)');\n    const styleId  = 'slick-first-slide-style-{{ section.id }}';\n\n    function applyWidth () {\n      if (!$first.length) return;\n      const w = $normalSlide.outerWidth();\n      const css = `#shopify-section-{{ section.id }} { .slick-first-slide{width:${w}px;min-width:${w}px!important;max-width:${w}px!important;}}`;\n      let $style = $('#' + styleId);\n      if ($style.length) {\n        $style.text(css);\n      } else {\n        $('<style>', { id: styleId }).text(css).appendTo('footer');\n      }\n    }\n\n    applyWidth();\n\n    let t;\n    $(window).on('resize orientationchange load', () => {\n      clearTimeout(t);\n      t = setTimeout(applyWidth, 100);\n    });\n  });\n</script>",
@@ -165,7 +223,6 @@
         "autoplay": false,
         "autoplay_speed": 3000,
         "show_collection_slide": true,
-        "collection_slide_image": "shopify://shop_images/13_ed48ffd7-8fbd-4725-bc5b-1e11c51d4c9e.webp",
         "collection_slide_heading": "",
         "collection_slide_button_link": "",
         "collection_slide_button_label": "View Collection"
@@ -178,6 +235,7 @@
       ],
       "name": "Background Video - Basmil",
       "settings": {
+        "custom_css_class": "",
         "title": "",
         "subtitle": "",
         "description": "",
@@ -191,6 +249,7 @@
   },
   "order": [
     "main",
+    "image_banner_fznyDm",
     "basmil_video_7JBjGU",
     "rich_text_edJKHX",
     "image_with_text_htK9Fi",
