@@ -1013,27 +1013,27 @@ body .shopify-section-group-footer-group {
 }
 
 .load-more__viewed {
-  font-family: 'Overused Grotesk', var(--font-heading-family, sans-serif);
   font-size: 16px;
-  color: #4E4947;
-  margin: 0;
+    color: #807A77;
+    margin: 0;
+    font-weight: 350;
 }
 
 .load-more__button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background: #647A73;
-  color: #F7F6F3;
-  border: none;
-  border-radius: 55px;
-  padding: 16px 48px;
-  font-family: 'Overused Grotesk', var(--font-heading-family, sans-serif);
-  font-weight: 500;
-  font-size: 14px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  cursor: pointer;
+ display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #647a73;
+    color: #f7f6f3;
+    border: none;
+    border-radius: 55px;
+    padding: 15px 32px;
+    font-family: "Overused Grotesk", var(--font-heading-family, sans-serif);
+    font-weight: 500;
+    font-size: 16px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    cursor: pointer;
 }
 
 .load-more__button[disabled] {
