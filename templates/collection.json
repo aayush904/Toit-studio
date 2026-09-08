@@ -46,7 +46,7 @@
         "autoplay": true,
         "autoplay_speed": 1000,
         "slider_height": 550,
-        "override_image": "shopify://shop_images/3b5611d6220ba611dbe036c5693eb548245f798c.png",
+        "override_image": "shopify://shop_images/Collection.avif",
         "menu": "collection-menu",
         "text_alignment": "left"
       }
