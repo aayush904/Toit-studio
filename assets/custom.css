@@ -1063,3 +1063,54 @@ body .shopify-section-group-footer-group {
   opacity: 0.6;
   cursor: default;
 }
+
+/* Our Story intro: heading on the left, body copy on the right. The
+   rich-text section stacks its blocks by default, so lay the two out
+   as columns and collapse back to a stack on mobile. */
+.custom-story-intro .rich-text__blocks {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 8rem;
+  align-items: start;
+  max-width: none;
+  width: 100%;
+}
+
+.custom-story-intro .rich-text__heading {
+  margin: 0;
+  font-size: 4rem;
+  font-weight: 400;
+  line-height: 1.2;
+  /* base.css centers every h2 globally, and this heading is an h2. */
+  text-align: left;
+  /* Wraps the heading onto three lines to match the design rather than
+     running the full width of its column. */
+  max-width: 34rem;
+}
+
+.custom-story-intro .rich-text__text {
+  margin: 0;
+  color: #5b5553;
+  text-align: left;
+}
+
+.custom-story-intro .rich-text__text > p {
+  margin: 0 0 2.4rem;
+  font-size: 1.6rem;
+  line-height: 1.6;
+}
+
+.custom-story-intro .rich-text__text > p:last-child {
+  margin-bottom: 0;
+}
+
+@media screen and (max-width: 989px) {
+  .custom-story-intro .rich-text__blocks {
+    grid-template-columns: 1fr;
+    row-gap: 2.4rem;
+  }
+
+  .custom-story-intro .rich-text__heading {
+    font-size: 3.2rem;
+  }
+}

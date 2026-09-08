@@ -93,14 +93,14 @@
         "heading_9kfPxr": {
           "type": "heading",
           "settings": {
-            "heading": "A Message from Our Founders",
+            "heading": "Made for Today. Considered for Tomorrow.",
             "heading_size": "h1"
           }
         },
         "text_YrENir": {
           "type": "text",
           "settings": {
-            "text": "<p>At Muun Home, my brother and I set out to create something deeply personal—a brand that merges our love for Scandinavian minimalism with the vibrant colors and rich heritage of Indian craftsmanship. Growing up, we were surrounded by the beauty of Indian art and traditions, but we always felt there was a way to present it through a modern lens.</p><p>Muun Home is about more than just decor; it’s about celebrating the artistry of skilled Indian craftspeople. We work closely with artisans from Agra, Moradabad, and Delhi, combining traditional techniques with contemporary design to create pieces that feel timeless yet fresh. From hand-finishing every detail to sourcing sustainably, we pour intention into every step of the process.</p><p>Our goal is simple: to craft objects that not only elevate spaces but also tell a story—one of culture, craftsmanship, and a deep respect for the past while embracing the possibilities of the future.</p><p>Through Muun Home, we hope to bring a touch of art into everyday life, one piece at a time.</p><p><strong>Dhruv and Jayant Talwar</strong></p>"
+            "text": "<p>At Toit Studio, we believe the things we bring into our homes should feel useful, personal, and worth keeping. Our approach to sustainability begins with thoughtful selection—choosing pieces that balance function, character, and versatility, and can become part of everyday routines long beyond a single season.</p><p>From drinkware and tableware to kitchenware and décor, we look for objects you can enjoy often, style in different ways, and continue using over time. Because a piece that remains useful and loved holds more value than something chosen only for the moment.</p><p>We're not interested in making big promises. We simply believe that better choices, longer use, and a little more consideration can make everyday living feel more meaningful.</p>"
           }
         }
       },
@@ -108,22 +108,16 @@
         "heading_9kfPxr",
         "text_YrENir"
       ],
-      "custom_css": [
-        "p:nth-child(2) {margin-right: 20px;}",
-        "p:nth-child(3) {vertical-align: top;}",
-        "p:nth-child(3),p:nth-child(2) {max-width: 48%; display: inline-block;}",
-        ".rich-text__blocks {max-width: 980px;}",
-        "@media (max-width: 768px) {p:nth-child(3), p:nth-child(2) {max-width: 100%; padding: 0; }}"
-      ],
+      "custom_css": [],
       "name": "t:sections.rich-text.presets.name",
       "settings": {
-        "custom_css_class": "",
-        "desktop_content_position": "center",
-        "content_alignment": "center",
+        "custom_css_class": "custom-story-intro",
+        "desktop_content_position": "left",
+        "content_alignment": "left",
         "color_scheme": "",
         "full_width": true,
-        "padding_top": 40,
-        "padding_bottom": 0
+        "padding_top": 96,
+        "padding_bottom": 96
       }
     },
     "image_with_text_htK9Fi": {
