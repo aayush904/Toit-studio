@@ -1025,6 +1025,18 @@ body .shopify-section-group-footer-group {
   }
 }
 
+.about_banner{
+  .h1{
+    text-align:left;
+    font-size:7.2rem;
+  }
+}
+
+.custom-story-intro{
+
+}
+
+
 /* Collection page "load more" pagination. */
 .load-more {
   display: flex;
@@ -1070,22 +1082,19 @@ body .shopify-section-group-footer-group {
 .custom-story-intro .rich-text__blocks {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  column-gap: 8rem;
+  column-gap: 3rem;
   align-items: start;
-  max-width: none;
+  max-width: none; 
   width: 100%;
 }
 
 .custom-story-intro .rich-text__heading {
   margin: 0;
-  font-size: 4rem;
-  font-weight: 400;
-  line-height: 1.2;
-  /* base.css centers every h2 globally, and this heading is an h2. */
-  text-align: left;
-  /* Wraps the heading onto three lines to match the design rather than
-     running the full width of its column. */
-  max-width: 34rem;
+    font-size: 5rem;
+    font-weight: 400;
+    line-height: 1.2;
+    text-align: left;
+    max-width: 34rem;
 }
 
 .custom-story-intro .rich-text__text {
@@ -1096,8 +1105,8 @@ body .shopify-section-group-footer-group {
 
 .custom-story-intro .rich-text__text > p {
   margin: 0 0 2.4rem;
-  font-size: 1.6rem;
-  line-height: 1.6;
+  font-size: 1.8rem;
+  line-height: 150%;
 }
 
 .custom-story-intro .rich-text__text > p:last-child {

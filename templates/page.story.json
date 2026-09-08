@@ -56,7 +56,7 @@
       ],
       "name": "t:sections.image-banner.presets.name",
       "settings": {
-        "custom_css_class": "",
+        "custom_css_class": "about_banner",
         "image": "shopify://shop_images/Collection.avif",
         "image_overlay_opacity": 0,
         "image_height": "adapt",
@@ -114,7 +114,7 @@
         "custom_css_class": "custom-story-intro",
         "desktop_content_position": "left",
         "content_alignment": "left",
-        "color_scheme": "",
+        "color_scheme": "scheme-0130ff2c-5d75-4e86-be8d-b4ab3796a5ff",
         "full_width": true,
         "padding_top": 96,
         "padding_bottom": 96
