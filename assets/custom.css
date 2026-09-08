@@ -1129,7 +1129,11 @@ body .shopify-section-group-footer-group {
 .custom-story-founder.image-with-text {
   padding: 0;
   margin-left: calc(50% - 50vw);
-  width: calc(50% + 50vw);
+  /* Not calc(50% + 50vw): that 50% resolves against the parent
+     .page-width's padded content box, not the viewport, so the section
+     came up 60px short of the true right edge. width:100vw is immune
+     to the parent's own padding. */
+  width: 100vw;
 }
 
 .custom-story-founder .image-with-text__heading {
