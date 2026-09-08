@@ -78,16 +78,26 @@
   }
 
   @media screen and (max-width: 767px) {
+    /* Two cards per row leaves ~167px each -- not enough for the title and
+       price to share a line, which breaks titles mid-word. Stack them. */
+    .product-grid .card__title-row {
+      flex-direction: column;
+      align-items: flex-start;
+      row-gap: 0.4rem;
+      padding-bottom: 12px;
+    }
+
     .product-grid .card__heading {
-      font-size: 1.8rem;
+      font-size: 1.6rem;
     }
 
     .product-grid .price {
-      font-size: 1.8rem;
+      font-size: 1.6rem;
     }
 
     .product-grid .card__description {
       font-size: 1.4rem;
+      margin-top: 0.8rem;
     }
   }
 {%- endstyle -%}

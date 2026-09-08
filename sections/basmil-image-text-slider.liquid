@@ -355,6 +355,12 @@
       }
 
       @media (max-width: 768px) {
+      /* The configured slider height is sized for desktop; at phone widths
+         it leaves a lot of empty image above and below the heading, so cap
+         it well below whatever the section setting is. */
+      .image-text-slider .slide-wrapper {
+        height: 380px;
+      }
       .image-text-slider--align-left .overlay-text h1 {
         font-size: 40px;
       }

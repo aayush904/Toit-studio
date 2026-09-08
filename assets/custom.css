@@ -998,8 +998,31 @@ body .shopify-section-group-footer-group {
     row-gap: 42px;
 }
 
-#product-grid.product-grid .grid__item {
-  max-width: 23%;
+/* Only clamp cards to a 4-up width where Dawn actually switches the grid
+   to 4 columns (>=1280px). Below that Dawn's own grid--2-col-tablet-down
+   rule sizes them 2-up, and an unscoped max-width here would squash them. */
+@media screen and (min-width: 1280px) {
+  #product-grid.product-grid .grid__item {
+    max-width: 23%;
+  }
+}
+
+/* Below 1280px Dawn lays the grid out 2-up, sizing cards by subtracting its
+   own spacing variables -- but the column-gap above is 2.5%, so Dawn's widths
+   come out a few px too wide and the second card wraps to its own row. Size
+   the cards off the same 2.5% so exactly two fit. */
+@media screen and (max-width: 1279px) {
+  #product-grid.product-grid .grid__item {
+    width: calc((100% - 2.5%) / 2);
+    max-width: calc((100% - 2.5%) / 2);
+  }
+}
+
+@media screen and (max-width: 767px) {
+  #product-grid.product-grid {
+    margin-top: 2.4rem;
+    row-gap: 28px;
+  }
 }
 
 /* Collection page "load more" pagination. */
