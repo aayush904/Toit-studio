@@ -138,7 +138,10 @@
           }
         }
       },
-      "block_order": ["heading", "text"],
+      "block_order": [
+        "heading",
+        "text"
+      ],
       "name": "Objects Built Around a Way of Living",
       "settings": {
         "custom_css_class": "custom-story-founder",
@@ -174,7 +177,10 @@
           }
         }
       },
-      "block_order": ["heading", "text"],
+      "block_order": [
+        "heading",
+        "text"
+      ],
       "custom_css": [],
       "name": "Thoughtful Choices, Lasting Pieces",
       "settings": {
@@ -195,132 +201,13 @@
         "heading": "",
         "heading_size": "h1",
         "enable_video_looping": false,
+        "video": "shopify://files/videos/dc3df06d2f1c48af98902d5198338d8a.mp4",
         "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
         "description": "Toit Studio homeware being made by hand",
         "full_width": false,
         "color_scheme": "scheme-0130ff2c-5d75-4e86-be8d-b4ab3796a5ff",
         "padding_top": 0,
         "padding_bottom": 96
-      }
-    },
-    "image_with_text_htK9Fi": {
-      "type": "image-with-text",
-      "blocks": {
-        "heading_ggM7er": {
-          "type": "heading",
-          "settings": {
-            "heading": "Behind the Scenes",
-            "heading_size": "h1"
-          }
-        },
-        "text_pLm6JK": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Handcrafted by skilled artisans from different parts of India, every muun product undergoes a meticulous process of design, production, quality control, and art direction before being delivered to you.</p>",
-            "text_style": "body"
-          }
-        }
-      },
-      "block_order": [
-        "heading_ggM7er",
-        "text_pLm6JK"
-      ],
-      "name": "t:sections.image-with-text.presets.name",
-      "settings": {
-        "custom_css_class": "",
-        "image": "shopify://shop_images/Screenshot_2024-03-12_at_4.48.14_PM.webp",
-        "height": "adapt",
-        "desktop_image_width": "medium",
-        "layout": "image_first",
-        "image_behavior": "none",
-        "content_layout": "no-overlap",
-        "desktop_content_position": "middle",
-        "desktop_content_alignment": "center",
-        "mobile_content_alignment": "center",
-        "section_color_scheme": "",
-        "color_scheme": "",
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
-    "basmil_product_slider_ciMay7": {
-      "type": "basmil-product-slider",
-      "custom_css": [
-        ".basmil-product-slider-section {padding-top: 60px;}",
-        ".slick-first-slide img {aspect-ratio: 4/5.5;}",
-        ".slick-double-width {max-width: calc(100% / 6) !important; min-width: calc(100% / 6) !important;}",
-        ".section-product-slider-heading * {text-align: start; width: 100%; max-width: 1600px;}",
-        "h2 {font-size: 36px; text-align: start;}",
-        "@media (max-width: 1440px) {h2 {font-size: 26.88px; }}",
-        "@media (max-width: 768px) {h2 {font-size: 22.4px; padding: 0 20px; }}"
-      ],
-      "name": "Product Slider - Basmil",
-      "settings": {
-        "custom_css_class": "",
-        "collection": "frontpage",
-        "heading": "Shop Jayant's Favourites",
-        "subheading": "<script>\n  $(function () {\n    const $section = $('#shopify-section-{{ section.id }}');\n    const $first   = $section.find('.slick-first-slide');\n    const $normalSlide= $section.find('.slick-active:not(.slick-first-slide)');\n    const styleId  = 'slick-first-slide-style-{{ section.id }}';\n\n    function applyWidth () {\n      if (!$first.length) return;\n      const w = $normalSlide.outerWidth();\n      const css = `#shopify-section-{{ section.id }} { .slick-first-slide{width:${w}px;min-width:${w}px!important;max-width:${w}px!important;}}`;\n      let $style = $('#' + styleId);\n      if ($style.length) {\n        $style.text(css);\n      } else {\n        $('<style>', { id: styleId }).text(css).appendTo('footer');\n      }\n    }\n\n    applyWidth();\n\n    let t;\n    $(window).on('resize orientationchange load', () => {\n      clearTimeout(t);\n      t = setTimeout(applyWidth, 100);\n    });\n  });\n</script>",
-        "description": "",
-        "heading_link": "",
-        "slides_per_view": 4,
-        "arrows": true,
-        "dots": false,
-        "loop": false,
-        "autoplay": false,
-        "autoplay_speed": 3000,
-        "show_collection_slide": true,
-        "collection_slide_heading": "",
-        "collection_slide_button_link": "",
-        "collection_slide_button_label": "View Collection"
-      }
-    },
-    "basmil_product_slider_hktzaU": {
-      "type": "basmil-product-slider",
-      "custom_css": [
-        ".basmil-product-slider-section {padding-top: 60px; padding-bottom: 60px;}",
-        ".slick-first-slide img {aspect-ratio: 4/5.5;}",
-        ".slick-double-width {max-width: calc(100% / 6) !important; min-width: calc(100% / 6) !important;}",
-        ".section-product-slider-heading * {text-align: start; width: 100%; max-width: 1600px;}",
-        "h2 {font-size: 36px; text-align: start;}",
-        "@media (max-width: 1440px) {h2 {font-size: 26.88px; }}",
-        "@media (max-width: 768px) {h2 {font-size: 22.4px; padding: 0 20px; }}"
-      ],
-      "name": "Product Slider - Basmil",
-      "settings": {
-        "custom_css_class": "",
-        "collection": "frontpage",
-        "heading": "Shop Jayant's Favourites",
-        "subheading": "<script>\n  $(function () {\n    const $section = $('#shopify-section-{{ section.id }}');\n    const $first   = $section.find('.slick-first-slide');\n    const $normalSlide= $section.find('.slick-active:not(.slick-first-slide)');\n    const styleId  = 'slick-first-slide-style-{{ section.id }}';\n\n    function applyWidth () {\n      if (!$first.length) return;\n      const w = $normalSlide.outerWidth();\n      const css = `#shopify-section-{{ section.id }} { .slick-first-slide{width:${w}px;min-width:${w}px!important;max-width:${w}px!important;}}`;\n      let $style = $('#' + styleId);\n      if ($style.length) {\n        $style.text(css);\n      } else {\n        $('<style>', { id: styleId }).text(css).appendTo('footer');\n      }\n    }\n\n    applyWidth();\n\n    let t;\n    $(window).on('resize orientationchange load', () => {\n      clearTimeout(t);\n      t = setTimeout(applyWidth, 100);\n    });\n  });\n</script>",
-        "description": "",
-        "heading_link": "",
-        "slides_per_view": 4,
-        "arrows": true,
-        "dots": false,
-        "loop": false,
-        "autoplay": false,
-        "autoplay_speed": 3000,
-        "show_collection_slide": true,
-        "collection_slide_heading": "",
-        "collection_slide_button_link": "",
-        "collection_slide_button_label": "View Collection"
-      }
-    },
-    "basmil_video_TLGC4w": {
-      "type": "basmil-video",
-      "custom_css": [
-        "button {display: none;}"
-      ],
-      "name": "Background Video - Basmil",
-      "settings": {
-        "custom_css_class": "",
-        "title": "",
-        "subtitle": "",
-        "description": "",
-        "background_video_type": "local",
-        "background_youtube_url": "https://www.youtube.com/watch?v=pWg1vgJ5Fa8",
-        "background_local_video": "shopify://files/videos/dc3df06d2f1c48af98902d5198338d8a.mp4",
-        "modal_video_type": "youtube",
-        "modal_youtube_url": "https://www.youtube.com/watch?v=pWg1vgJ5Fa8"
       }
     }
   },
@@ -331,10 +218,6 @@
     "rich_text_edJKHX",
     "story_founder",
     "story_sustainability",
-    "story_video",
-    "image_with_text_htK9Fi",
-    "basmil_product_slider_ciMay7",
-    "basmil_product_slider_hktzaU",
-    "basmil_video_TLGC4w"
+    "story_video"
   ]
 }
