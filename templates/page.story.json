@@ -204,7 +204,7 @@
         "video": "shopify://files/videos/dc3df06d2f1c48af98902d5198338d8a.mp4",
         "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
         "description": "Toit Studio homeware being made by hand",
-        "full_width": false,
+        "full_width": true,
         "color_scheme": "scheme-0130ff2c-5d75-4e86-be8d-b4ab3796a5ff",
         "padding_top": 0,
         "padding_bottom": 96

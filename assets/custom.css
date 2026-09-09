@@ -1207,10 +1207,23 @@ body .shopify-section-group-footer-group {
    aspect-ratio hack, which a plain max-height can't reliably clamp.
    Give it a real height via aspect-ratio instead so max-height works;
    the poster <img> already has object-fit: cover, so it still fills
-   the box cleanly once the ratio gets capped. */
-.custom-story-video-embed .video-section__media {
-  aspect-ratio: 16 / 9;
-  height: auto;
+   the box cleanly once the ratio gets capped.
+
+   The section runs full-width now, which adds
+   .global-media-settings--full-width -- same specificity as the plain
+   .video-section__media selector below, so its own padding-bottom rule
+   in video-section.css was winning the tie by cascade order. Target
+   both classes together to win on specificity instead.
+
+   aspect-ratio (rather than an explicit height) would shrink the box's
+   *width* to stay 16:9 once height hits the 565px cap, undoing the
+   full-width layout. Using min(56.25vw, 565px) keeps the box genuinely
+   full width and only clamps height; object-fit: cover on the poster
+   handles the resulting crop once past the cap. */
+.custom-story-video-embed .video-section__media,
+.custom-story-video-embed .video-section__media.global-media-settings--full-width {
+  width: 100%;
+  height: min(56.25vw, 565px);
   max-height: 565px;
   padding-bottom: 0;
 }

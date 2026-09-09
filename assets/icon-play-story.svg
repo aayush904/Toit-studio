@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80" fill="none">
-<foreignObject x="-7" y="-7" width="94" height="94"><div xmlns="http://www.w3.org/1999/xhtml" style="backdrop-filter:blur(3.5px);clip-path:url(#bgblur_0_592_193_clip_path);height:100%;width:100%"></div></foreignObject><circle data-figma-bg-blur-radius="7" cx="40" cy="40" r="39.5" fill="white" fill-opacity="0.25" stroke="white"/>
+<foreignObject x="-7" y="-7" width="94" height="94"><div xmlns="http://www.w3.org/1999/xhtml" style="backdrop-filter:blur(3.5px);clip-path:url(#bgblur_0_592_193_clip_path);height:100%;width:100%"></div></foreignObject><circle data-figma-bg-blur-radius="7" cx="40" cy="40" r="39.5" fill="white" fill-opacity="0.25" stroke="white" stroke-width="2"/>
 <path d="M49 38.2679C50.3333 39.0378 50.3333 40.9623 49 41.7321L37 48.6603C35.6667 49.4301 34 48.4678 34 46.9282L34 33.0718C34 31.5322 35.6667 30.5699 37 31.3397L49 38.2679Z" fill="white"/>
 <defs>
 <clipPath id="bgblur_0_592_193_clip_path" transform="translate(7 7)"><circle cx="40" cy="40" r="39.5"/>
