@@ -1199,31 +1199,29 @@ body .shopify-section-group-footer-group {
 .custom-story-video-embed .video-section__media,
 .custom-story-video-embed .video-section__poster,
 .custom-story-video-embed deferred-media {
-  border-radius: 12px;
+  border-radius: 16px;
   overflow: hidden;
 }
 
 /* .video-section__media normally gets its height from a padding-bottom
    aspect-ratio hack, which a plain max-height can't reliably clamp.
-   Give it a real height via aspect-ratio instead so max-height works;
-   the poster <img> already has object-fit: cover, so it still fills
-   the box cleanly once the ratio gets capped.
+   Swapping to an explicit width + aspect-ratio gives it a real height
+   that max-height can cap; object-fit: cover on the poster handles the
+   crop once past the cap.
 
-   The section runs full-width now, which adds
-   .global-media-settings--full-width -- same specificity as the plain
-   .video-section__media selector below, so its own padding-bottom rule
-   in video-section.css was winning the tie by cascade order. Target
-   both classes together to win on specificity instead.
+   width: 100% matters -- with the width left indefinite, aspect-ratio
+   shrinks the box's *width* to hold 16:9 once the height hits the cap,
+   so the video stops filling its container.
 
-   aspect-ratio (rather than an explicit height) would shrink the box's
-   *width* to stay 16:9 once height hits the 565px cap, undoing the
-   full-width layout. Using min(56.25vw, 565px) keeps the box genuinely
-   full width and only clamps height; object-fit: cover on the poster
-   handles the resulting crop once past the cap. */
+   The second selector guards the case where the section's full_width
+   setting is switched on in the theme editor: that adds
+   .global-media-settings--full-width, whose own padding-bottom rule in
+   video-section.css otherwise ties on specificity and wins on order. */
 .custom-story-video-embed .video-section__media,
 .custom-story-video-embed .video-section__media.global-media-settings--full-width {
   width: 100%;
-  height: min(56.25vw, 565px);
+  aspect-ratio: 16 / 9;
+  height: auto;
   max-height: 565px;
   padding-bottom: 0;
 }
