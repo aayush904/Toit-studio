@@ -1248,53 +1248,61 @@ body .shopify-section-group-footer-group {
    Product page
    ========================================================================== */
 
-/* The info column is laid out as a two-column grid so adjacent blocks can
-   share a row -- title + stock badge, and quantity + add-to-cart. Every
-   other block spans the full width. "auto 1fr" (rather than "1fr auto")
-   sizes column 1 to its content, which is what both of those rows need:
-   the badge and the add-to-cart button take the remaining space. */
+/* Wrapping flex row rather than a two-column grid: the two pairs that share
+   a row (title + stock badge, quantity + add-to-cart) want different column
+   widths, and a grid's shared column track forced both to the same split --
+   the long title widened column 1, which squashed add-to-cart. Flex sizes
+   each row independently. Everything else takes a full-width row. */
 .custom-product .product__info-container {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  align-items: baseline;
-  column-gap: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
 }
 
 .custom-product .product__info-container > * {
-  grid-column: 1 / -1;
+  flex: 0 0 100%;
+  min-width: 0;
 }
 
 .custom-product .product__title {
-  grid-column: 1;
+  flex: 1 1 auto;
 }
 
 .custom-product .product__inventory {
-  grid-column: 2;
-  justify-self: end;
+  flex: 0 0 auto;
+  margin-left: 2rem;
 }
 
+/* Top-aligned rather than inheriting the container's align-items:center,
+   which is there for the title/badge row -- the buy wrapper is taller than
+   the button it contains, so centring offset the stepper beside it. */
 .custom-product .product-form__quantity {
-  grid-column: 1;
-  align-self: center;
+  flex: 0 0 16rem;
+  align-self: flex-start;
 }
 
 .custom-product .product-buy-btn {
-  grid-column: 2;
-  align-self: center;
+  flex: 1 1 auto;
+  margin-left: 1.6rem;
+  align-self: flex-start;
 }
 
 /* SKU */
-.custom-product .product__sku {
+.custom-product .product__info-container .product__sku {
   font-family: 'Overused Grotesk', var(--font-heading-family, sans-serif);
   font-weight: 400;
   font-size: 18px;
   line-height: 100%;
   letter-spacing: 0.06em;
   color: #807a77;
-  margin: 0 0 1.2rem;
+  margin: 0 0 16px;
 }
 
 /* Title */
+.custom-product .product__info-container .product__title {
+  margin: 0;
+}
+
 .custom-product .product__title > h1,
 .custom-product .product__title .h1 {
   font-family: 'Overused Grotesk', var(--font-heading-family, sans-serif);
@@ -1338,28 +1346,38 @@ body .shopify-section-group-footer-group {
   font-size: 18px;
   line-height: 150%;
   color: #5b5553;
-  margin: 1.6rem 0 0;
+  margin: 16px 0 0;
 }
 
 .custom-product .product__description p {
   margin: 0 0 1.2rem;
 }
 
-/* Tax / shipping note, right-aligned opposite the price. Only renders once
-   the store has taxes-included pricing or a shipping policy configured. */
-.custom-product .product__tax {
-  grid-column: 2;
-  justify-self: end;
-  text-align: right;
+/* Tax / shipping note, sitting directly under the price. */
+.custom-product .product__info-container .product__tax {
+  margin: 0.8rem 0 0;
   text-transform: uppercase;
   font-size: 12px;
+  line-height: 140%;
   letter-spacing: 0.06em;
   color: #807a77;
 }
 
-.custom-product [id^='price-'] {
-  grid-column: 1;
-  margin-top: 2.4rem;
+.custom-product .product__tax p {
+  margin: 0;
+}
+
+.custom-product .product__info-container [id^='price-'] {
+  margin: 24px 0 0;
+}
+
+.custom-product [id^='price-'] .price-item {
+  font-family: 'Overused Grotesk', var(--font-heading-family, sans-serif);
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 100%;
+  letter-spacing: 0;
+  color: #000;
 }
 
 /* Quantity stepper: no label in the design, pill outline to match the
@@ -1369,8 +1387,8 @@ body .shopify-section-group-footer-group {
   display: none;
 }
 
-.custom-product .product-form__quantity {
-  margin-top: 2.4rem;
+.custom-product .product__info-container .product-form__quantity {
+  margin: 40px 0 0;
 }
 
 .custom-product .product-form__quantity .quantity {
@@ -1385,15 +1403,28 @@ body .shopify-section-group-footer-group {
   content: none;
 }
 
-.custom-product .product-buy-btn {
-  margin-top: 2.4rem;
+.custom-product .product__info-container .product-buy-btn {
+  margin: 40px 0 0;
 }
 
 .custom-product .product-form__buttons {
   max-width: none;
 }
 
+.custom-product .product-buy-btn .product-form,
+.custom-product .product-buy-btn form,
+.custom-product .product-form__buttons {
+  width: 100%;
+}
+
+/* section-main-product.css gives .product-form a 2.5rem block margin, which
+   offset the button from the quantity stepper beside it. */
+.custom-product .product__info-container .product-form {
+  margin: 0;
+}
+
 .custom-product .product-form__submit {
+  width: 100%;
   background: #7c8d82;
   color: #fff;
   border-radius: 55px;
@@ -1411,12 +1442,15 @@ body .shopify-section-group-footer-group {
 }
 
 /* WhatsApp button */
+.custom-product .product__info-container .product__whatsapp-button {
+  margin: 16px 0 0;
+}
+
 .custom-product .product__whatsapp-button {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 1rem;
-  margin-top: 1.2rem;
   padding: 1.6rem 2.4rem;
   min-height: 5.6rem;
   box-sizing: border-box;
@@ -1437,12 +1471,38 @@ body .shopify-section-group-footer-group {
 }
 
 /* Accordions */
-.custom-product .product__accordion {
-  border-bottom: 1px solid rgba(78, 73, 71, 0.25);
+/* section-main-product.css sets `border: none !important` on these, so the
+   override needs !important plus higher specificity to win. */
+.custom-product .product__info-container .product__accordion.accordion {
+  border: none !important;
+  border-bottom: 0.5px solid #000 !important;
+  opacity: 1;
+  padding: 0;
 }
 
-.custom-product .product__accordion summary {
-  padding: 2.4rem 0;
+/* The installment/payment-terms wrapper is empty here but still picks up a
+   0.8rem bottom margin from the theme's generic sibling rule. */
+.custom-product .product__info-container .product__installment-wrapper {
+  margin: 0;
+}
+
+/* 48px between the buttons and the first accordion. :first-of-type can't be
+   used -- it matches the first div sibling, which is the title. */
+.custom-product .product__info-container .product-buy-btn + .product__accordion.accordion,
+.custom-product .product__info-container .product__whatsapp-button + .product__accordion.accordion {
+  margin-top: 48px;
+}
+
+.custom-product .product__info-container .product__accordion.accordion + .product__accordion.accordion {
+  margin-top: 0;
+}
+
+.custom-product .product__info-container .product__accordion.accordion summary {
+  padding: 0 0 28px;
+}
+
+.custom-product .product__info-container .product__accordion.accordion + .product__accordion.accordion summary {
+  padding-top: 28px;
 }
 
 .custom-product .product__accordion .accordion__title {
@@ -1477,20 +1537,17 @@ body .shopify-section-group-footer-group {
 @media screen and (max-width: 749px) {
   /* Single column on phones -- the title/badge and quantity/button pairs
      do not have room to share a row. */
-  .custom-product .product__info-container {
-    grid-template-columns: 1fr;
-  }
-
   .custom-product .product__info-container > *,
   .custom-product .product__title,
   .custom-product .product__inventory,
-  .custom-product .product-form__quantity,
-  .custom-product .product-buy-btn,
-  .custom-product .product__tax,
-  .custom-product [id^='price-'] {
-    grid-column: 1;
-    justify-self: stretch;
+  .custom-product .product-buy-btn {
+    flex: 0 0 100%;
+    margin-left: 0;
     text-align: left;
+  }
+
+  .custom-product .product-form__quantity {
+    flex: 0 0 16rem;
   }
 
   .custom-product .product__title > h1,
