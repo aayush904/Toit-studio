@@ -59,7 +59,7 @@
         "whatsapp_button": {
           "type": "whatsapp_button",
           "settings": {
-            "phone_number": "",
+            "phone_number": "123",
             "label": "Shop on WhatsApp",
             "message_prefix": "Hi! I'm interested in"
           }
@@ -69,7 +69,8 @@
           "settings": {
             "heading": "Materials",
             "icon": "none",
-            "content": "<p>{{ product.metafields.custom.materials.value | newline_to_br }}</p>"
+            "content": "<p>{{ product.metafields.custom.materials.value | newline_to_br }}</p>",
+            "page": ""
           }
         },
         "tab_specification": {
@@ -77,7 +78,8 @@
           "settings": {
             "heading": "Specification",
             "icon": "none",
-            "content": "<p>{{ product.metafields.custom.specifications.value | newline_to_br }}</p>"
+            "content": "<p>{{ product.metafields.custom.specifications.value | newline_to_br }}</p>",
+            "page": ""
           }
         },
         "tab_shipping": {
@@ -85,7 +87,8 @@
           "settings": {
             "heading": "Shipping, Payment & Return",
             "icon": "none",
-            "content": "<p>Orders are dispatched within 2-3 business days. Delivery times vary by location.</p><p>We accept all major cards and digital wallets at checkout.</p><p>Returns are accepted within 7 days of delivery on unused items in their original packaging.</p>"
+            "content": "<p>Orders are dispatched within 2-3 business days. Delivery times vary by location.</p><p>We accept all major cards and digital wallets at checkout.</p><p>Returns are accepted within 7 days of delivery on unused items in their original packaging.</p>",
+            "page": ""
           }
         }
       },
@@ -129,7 +132,7 @@
         "products_to_show": 4,
         "columns_desktop": 4,
         "columns_mobile": "2",
-        "color_scheme": "scheme-0130ff2c-5d75-4e86-be8d-b4ab3796a5ff",
+        "color_scheme": "scheme-1",
         "image_ratio": "square",
         "image_shape": "default",
         "show_secondary_image": true,
@@ -145,4 +148,3 @@
     "recommended"
   ]
 }
-

@@ -1295,7 +1295,7 @@ body .shopify-section-group-footer-group {
   line-height: 100%;
   letter-spacing: 0.06em;
   color: #807a77;
-  margin: 0 0 16px;
+  margin: 0 0 12px;
 }
 
 /* Title */
@@ -1346,7 +1346,7 @@ body .shopify-section-group-footer-group {
   font-size: 18px;
   line-height: 150%;
   color: #5b5553;
-  margin: 16px 0 0;
+  margin: 14px 0 0;
 }
 
 .custom-product .product__description p {
@@ -1355,12 +1355,18 @@ body .shopify-section-group-footer-group {
 
 /* Tax / shipping note, sitting directly under the price. */
 .custom-product .product__info-container .product__tax {
-  margin: 0.8rem 0 0;
-  text-transform: uppercase;
-  font-size: 12px;
-  line-height: 140%;
-  letter-spacing: 0.06em;
-  color: #807a77;
+  font-family: Overused Grotesk;
+font-weight: 500;
+font-style: Medium;
+font-size: 12px;
+
+line-height: 130%;
+letter-spacing: 6%;
+text-align: right;
+vertical-align: middle;
+text-transform: uppercase;
+color:#424242;
+
 }
 
 .custom-product .product__tax p {
@@ -1368,7 +1374,7 @@ body .shopify-section-group-footer-group {
 }
 
 .custom-product .product__info-container [id^='price-'] {
-  margin: 24px 0 0;
+  margin: 14px 0 0;
 }
 
 .custom-product [id^='price-'] .price-item {
@@ -1388,7 +1394,7 @@ body .shopify-section-group-footer-group {
 }
 
 .custom-product .product__info-container .product-form__quantity {
-  margin: 40px 0 0;
+  margin: 26px 0 0;
 }
 
 .custom-product .product-form__quantity .quantity {
@@ -1404,17 +1410,18 @@ body .shopify-section-group-footer-group {
 }
 
 .custom-product .product__info-container .product-buy-btn {
-  margin: 40px 0 0;
+  margin: 26px 0 0;
 }
 
 .custom-product .product-form__buttons {
   max-width: none;
+  margin-left: 16px;
 }
 
 .custom-product .product-buy-btn .product-form,
 .custom-product .product-buy-btn form,
 .custom-product .product-form__buttons {
-  width: 100%;
+  /* width: 100%; */
 }
 
 /* section-main-product.css gives .product-form a 2.5rem block margin, which
@@ -1431,7 +1438,7 @@ body .shopify-section-group-footer-group {
   min-height: 5.6rem;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  font-size: 14px;
+  font-size: 18px;
   font-weight: 500;
   box-shadow: none;
 }
@@ -1443,7 +1450,7 @@ body .shopify-section-group-footer-group {
 
 /* WhatsApp button */
 .custom-product .product__info-container .product__whatsapp-button {
-  margin: 16px 0 0;
+  margin: 4px 0 0;
 }
 
 .custom-product .product__whatsapp-button {
@@ -1460,7 +1467,7 @@ body .shopify-section-group-footer-group {
   text-decoration: none;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  font-size: 14px;
+  font-size: 18px;
   font-weight: 500;
 }
 
@@ -1572,10 +1579,19 @@ body .shopify-section-group-footer-group {
   margin: 0 0 4rem;
 }
 
-.custom-recommended .product-grid {
+
+
+.custom-recommended{
+
+  .product-grid {
   column-gap: 2.5%;
   row-gap: 42px;
 }
+
+  .grid__item{
+     max-width: 23%;
+  }
+} 
 
 .custom-recommended .product-grid .card__title-row {
   display: flex;
@@ -1728,7 +1744,7 @@ product-info .page-width.custom-product {
 
 .custom-product .product__info-container .product__tax {
   flex: 0 1 auto;
-  margin: 24px 0 0 auto;
+  margin: 0 0 0 auto;
   text-align: right;
 }
 
