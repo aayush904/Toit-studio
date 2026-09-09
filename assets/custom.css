@@ -1786,3 +1786,96 @@ product-info .page-width.custom-product {
   position: relative;
   z-index: 4;
 }
+
+/* ==========================================================================
+   Product page -- phone refinements
+   ========================================================================== */
+@media screen and (max-width: 749px) {
+  /* Type scale steps down: the desktop sizes were set against a ~537px
+     column, and the phone column is 343px. */
+  .custom-product .product__info-container .product__sku {
+    font-size: 14px;
+  }
+
+  .custom-product .product__title > h1,
+  .custom-product .product__title .h1 {
+    font-size: 26px;
+  }
+
+  .custom-product .product__info-container .product__description {
+    font-size: 15px;
+  }
+
+  .custom-product [id^='price-'] .price-item {
+    font-size: 26px;
+  }
+
+  .custom-product .product__info-container .product__tax,
+  .custom-product .product__inventory {
+    font-size: 11px;
+  }
+
+  .custom-product .product__accordion .accordion__title {
+    font-size: 18px;
+  }
+
+  .custom-product .product-form__submit,
+  .custom-product .product__whatsapp-button {
+    font-size: 15px;
+  }
+
+  /* Buttons span the full content column. `.product-form__buttons` carries a
+     16px left margin for the desktop row, which inset the button here. */
+  .custom-product .product-buy-btn,
+  .custom-product .product-buy-btn .product-form,
+  .custom-product .product-buy-btn form,
+  .custom-product .product-form__buttons,
+  .custom-product .product-form__submit,
+  .custom-product .product__whatsapp-button {
+    width: 100%;
+    max-width: none;
+    margin-left: 0;
+  }
+
+  /* Quantity stepper matches them -- 16rem on desktop, where it shares a row
+     with add-to-cart; stacked here, so it runs the full width too. */
+  .custom-product .product__info-container .product-form__quantity {
+    flex: 0 0 100%;
+    width: 100%;
+  }
+
+  .custom-product .product-form__quantity .quantity {
+    width: 100%;
+    max-width: none;
+  }
+
+  /* Tighten the stack: quantity -> add to cart -> WhatsApp. */
+  .custom-product .product__info-container .product-buy-btn {
+    margin-top: 8px;
+  }
+
+  .custom-product .product__info-container .product__whatsapp-button {
+    margin-top: 8px;
+  }
+}
+
+/* ==========================================================================
+   Recommended products -- two per row on phones.
+
+   The `.grid__item { max-width: 23% }` rule above is unscoped, so it holds at
+   every width and squeezes the grid to four columns on a phone.
+   ========================================================================== */
+@media screen and (max-width: 749px) {
+  .custom-recommended .product-grid .grid__item {
+    width: calc((100% - 2.5%) / 2);
+    max-width: calc((100% - 2.5%) / 2);
+  }
+
+  .custom-recommended .product-grid {
+    row-gap: 28px;
+  }
+
+  .custom-recommended .related-products__heading {
+    margin: 0 0 2.4rem;
+  }
+}
