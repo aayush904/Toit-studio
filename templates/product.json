@@ -12,8 +12,26 @@
     "main": {
       "type": "main-product",
       "blocks": {
+        "sku_bckFfk": {
+          "type": "sku",
+          "settings": {
+            "text_style": "body"
+          }
+        },
         "title": {
           "type": "title",
+          "settings": {}
+        },
+        "inventory_CQUGng": {
+          "type": "inventory",
+          "settings": {
+            "text_style": "body",
+            "inventory_threshold": 10,
+            "show_inventory_quantity": true
+          }
+        },
+        "description": {
+          "type": "description",
           "settings": {}
         },
         "price": {
@@ -22,7 +40,10 @@
         },
         "variant_picker": {
           "type": "variant_picker",
-          "settings": {}
+          "settings": {
+            "picker_type": "button",
+            "swatch_shape": "circle"
+          }
         },
         "quantity_selector": {
           "type": "quantity_selector",
@@ -30,30 +51,35 @@
         },
         "buy_buttons": {
           "type": "buy_buttons",
-          "settings": {}
-        },
-        "description": {
-          "type": "description",
-          "settings": {}
+          "settings": {
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": true
+          }
         }
       },
       "block_order": [
+        "sku_bckFfk",
         "title",
+        "inventory_CQUGng",
+        "description",
         "price",
         "variant_picker",
         "quantity_selector",
-        "buy_buttons",
-        "description"
+        "buy_buttons"
       ],
       "settings": {
+        "custom_css_class": "",
         "enable_sticky_info": true,
-        "media_size": "large",
+        "color_scheme": "scheme-0130ff2c-5d75-4e86-be8d-b4ab3796a5ff",
+        "media_size": "medium",
         "constrain_to_viewport": true,
         "media_fit": "contain",
-        "gallery_layout": "stacked",
+        "gallery_layout": "thumbnail",
         "mobile_thumbnails": "show",
         "media_position": "left",
         "image_zoom": "lightbox",
+        "hide_variants": false,
+        "enable_video_looping": false,
         "padding_top": 36,
         "padding_bottom": 36
       }
