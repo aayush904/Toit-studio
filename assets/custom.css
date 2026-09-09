@@ -1758,3 +1758,31 @@ product-info .page-width.custom-product {
     text-align: left;
   }
 }
+
+/* ---------------------------------------------------------------------------
+   Product card: make the image clickable.
+
+   Dawn only links the card title -- its ::after overlay resolves against
+   .card__information, so it covers the title row and nothing else, and the
+   .card__content layer inside .card__inner (z-index 2) sits over the artwork.
+   The anchor added in snippets/card-product.liquid stretches over the media
+   and is raised above that layer.
+--------------------------------------------------------------------------- */
+/* base.css:529 hides empty anchors (`a:empty { display: none }`), which this
+   deliberately-empty overlay matches -- hence the extra specificity. */
+.card__inner > a.card__media-link {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: block;
+}
+
+/* Keep genuine controls in the overlaying content layer reachable -- the
+   overlay would otherwise swallow clicks meant for quick-add. */
+.card__inner > .card__content .quick-add,
+.card__inner > .card__content .quick-add-bulk,
+.card__inner > .card__content button,
+.card__inner > .card__content a {
+  position: relative;
+  z-index: 4;
+}

@@ -295,6 +295,19 @@
               {%- endif -%}
             </div>
           </div>
+          {%- comment -%}
+            The title link's ::after overlay only stretches across the title
+            row, and a z-index:2 .card__content layer sits over the artwork, so
+            the image itself was not clickable. This anchor covers the media.
+            aria-hidden + tabindex="-1" keep it out of the accessibility tree
+            and the tab order, so it does not duplicate the title link.
+          {%- endcomment -%}
+          <a
+            href="{{ card_product.url }}"
+            class="card__media-link"
+            aria-hidden="true"
+            tabindex="-1"
+          ></a>
         {%- endif -%}
         <div class="card__content">
           <div class="card__information">
