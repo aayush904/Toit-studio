@@ -1701,3 +1701,44 @@ body .shopify-section-group-footer-group {
   font-weight: 400;
   color: #000;
 }
+
+/* ---------------------------------------------------------------------------
+   Product page: match the header's content width.
+
+   assets/section-main-product.css:13 caps `product-info .page-width` at
+   1425px, which insets the product 7.5px either side relative to the header
+   (and every other page-width section). Restore the site-wide container so
+   the columns line up with the nav above them.
+--------------------------------------------------------------------------- */
+product-info .page-width.custom-product {
+  max-width: var(--page-width);
+}
+
+/* ---------------------------------------------------------------------------
+   Price row: price on the left, tax/shipping note right-aligned beside it.
+
+   Both are direct children of the wrapping flex info-container, whose children
+   default to `flex: 0 0 100%`. Opting these two out of that lets them share a
+   row; the description above and the buy buttons below stay full width, so
+   they still force a wrap either side.
+--------------------------------------------------------------------------- */
+.custom-product .product__info-container [id^='price-'] {
+  flex: 0 1 auto;
+}
+
+.custom-product .product__info-container .product__tax {
+  flex: 0 1 auto;
+  margin: 24px 0 0 auto;
+  text-align: right;
+}
+
+@media screen and (max-width: 749px) {
+  /* Not enough room for price and note to share a row on phones, so the note
+     stacks underneath -- left-aligned, since a right-aligned block on its own
+     line reads as a stray indent. */
+  .custom-product .product__info-container .product__tax {
+    flex: 0 0 100%;
+    margin: 0.8rem 0 0;
+    text-align: left;
+  }
+}
