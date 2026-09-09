@@ -1243,3 +1243,404 @@ body .shopify-section-group-footer-group {
   height: 8rem;
   margin-left: 0;
 }
+
+/* ==========================================================================
+   Product page
+   ========================================================================== */
+
+/* The info column is laid out as a two-column grid so adjacent blocks can
+   share a row -- title + stock badge, and quantity + add-to-cart. Every
+   other block spans the full width. "auto 1fr" (rather than "1fr auto")
+   sizes column 1 to its content, which is what both of those rows need:
+   the badge and the add-to-cart button take the remaining space. */
+.custom-product .product__info-container {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: baseline;
+  column-gap: 2rem;
+}
+
+.custom-product .product__info-container > * {
+  grid-column: 1 / -1;
+}
+
+.custom-product .product__title {
+  grid-column: 1;
+}
+
+.custom-product .product__inventory {
+  grid-column: 2;
+  justify-self: end;
+}
+
+.custom-product .product-form__quantity {
+  grid-column: 1;
+  align-self: center;
+}
+
+.custom-product .product-buy-btn {
+  grid-column: 2;
+  align-self: center;
+}
+
+/* SKU */
+.custom-product .product__sku {
+  font-family: 'Overused Grotesk', var(--font-heading-family, sans-serif);
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 100%;
+  letter-spacing: 0.06em;
+  color: #807a77;
+  margin: 0 0 1.2rem;
+}
+
+/* Title */
+.custom-product .product__title > h1,
+.custom-product .product__title .h1 {
+  font-family: 'Overused Grotesk', var(--font-heading-family, sans-serif);
+  font-weight: 400;
+  font-size: 50px;
+  line-height: 100%;
+  letter-spacing: 0;
+  color: #000;
+  margin: 0;
+  text-align: left;
+}
+
+/* "IN STOCK" badge, sitting on the title's row */
+.custom-product .product__inventory {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: 'Overused Grotesk', var(--font-heading-family, sans-serif);
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 100%;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #424242;
+  white-space: nowrap;
+  margin: 0;
+}
+
+.custom-product .product__inventory .svg-wrapper {
+  display: inline-flex;
+  width: 0.8rem;
+  height: 0.8rem;
+}
+
+/* Description -- scoped through .product__info-container to outrank
+   section-main-product.css, which sets 13.68px at the same specificity
+   and loads after custom.css. */
+.custom-product .product__info-container .product__description {
+  font-family: 'Overused Grotesk', var(--font-heading-family, sans-serif);
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 150%;
+  color: #5b5553;
+  margin: 1.6rem 0 0;
+}
+
+.custom-product .product__description p {
+  margin: 0 0 1.2rem;
+}
+
+/* Tax / shipping note, right-aligned opposite the price. Only renders once
+   the store has taxes-included pricing or a shipping policy configured. */
+.custom-product .product__tax {
+  grid-column: 2;
+  justify-self: end;
+  text-align: right;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  color: #807a77;
+}
+
+.custom-product [id^='price-'] {
+  grid-column: 1;
+  margin-top: 2.4rem;
+}
+
+/* Quantity stepper: no label in the design, pill outline to match the
+   add-to-cart button beside it. */
+.custom-product .product-form__quantity .quantity__label,
+.custom-product .product-form__quantity .quantity__rules {
+  display: none;
+}
+
+.custom-product .product-form__quantity {
+  margin-top: 2.4rem;
+}
+
+.custom-product .product-form__quantity .quantity {
+  border: 1px solid rgba(78, 73, 71, 0.35);
+  border-radius: 55px;
+  width: 16rem;
+  min-height: 5.6rem;
+}
+
+.custom-product .product-form__quantity .quantity:before,
+.custom-product .product-form__quantity .quantity:after {
+  content: none;
+}
+
+.custom-product .product-buy-btn {
+  margin-top: 2.4rem;
+}
+
+.custom-product .product-form__buttons {
+  max-width: none;
+}
+
+.custom-product .product-form__submit {
+  background: #7c8d82;
+  color: #fff;
+  border-radius: 55px;
+  min-height: 5.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 14px;
+  font-weight: 500;
+  box-shadow: none;
+}
+
+.custom-product .product-form__submit:after,
+.custom-product .product-form__submit:before {
+  content: none;
+}
+
+/* WhatsApp button */
+.custom-product .product__whatsapp-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.2rem;
+  padding: 1.6rem 2.4rem;
+  min-height: 5.6rem;
+  box-sizing: border-box;
+  background: #16263f;
+  color: #f7f6f3;
+  border-radius: 55px;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.custom-product .product__whatsapp-button .svg-wrapper {
+  display: inline-flex;
+  width: 2rem;
+  height: 2rem;
+}
+
+/* Accordions */
+.custom-product .product__accordion {
+  border-bottom: 1px solid rgba(78, 73, 71, 0.25);
+}
+
+.custom-product .product__accordion summary {
+  padding: 2.4rem 0;
+}
+
+.custom-product .product__accordion .accordion__title {
+  font-family: 'Overused Grotesk', var(--font-heading-family, sans-serif);
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 100%;
+  letter-spacing: 0;
+  color: #424242;
+  margin: 0;
+}
+
+.custom-product .product__accordion .plus-minus {
+  color: #24130b;
+  width: 2rem;
+  height: 2rem;
+}
+
+.custom-product .product__accordion .plus-minus .icon {
+  width: 2rem;
+  height: 2rem;
+}
+
+.custom-product .product__accordion .accordion__content {
+  font-family: 'Overused Grotesk', var(--font-heading-family, sans-serif);
+  font-size: 16px;
+  line-height: 150%;
+  color: #5b5553;
+  padding-bottom: 2.4rem;
+}
+
+@media screen and (max-width: 749px) {
+  /* Single column on phones -- the title/badge and quantity/button pairs
+     do not have room to share a row. */
+  .custom-product .product__info-container {
+    grid-template-columns: 1fr;
+  }
+
+  .custom-product .product__info-container > *,
+  .custom-product .product__title,
+  .custom-product .product__inventory,
+  .custom-product .product-form__quantity,
+  .custom-product .product-buy-btn,
+  .custom-product .product__tax,
+  .custom-product [id^='price-'] {
+    grid-column: 1;
+    justify-self: stretch;
+    text-align: left;
+  }
+
+  .custom-product .product__title > h1,
+  .custom-product .product__title .h1 {
+    font-size: 32px;
+  }
+
+  .custom-product .product__inventory {
+    justify-self: start;
+  }
+}
+
+/* ==========================================================================
+   Recommended products -- mirrors the homepage "Explore our Products" cards
+   (sections/product-tabs.liquid)
+   ========================================================================== */
+.custom-recommended .related-products__heading {
+  font-family: 'Overused Grotesk', var(--font-heading-family, sans-serif);
+  font-weight: 400;
+  color: #000;
+  text-align: left;
+  margin: 0 0 4rem;
+}
+
+.custom-recommended .product-grid {
+  column-gap: 2.5%;
+  row-gap: 42px;
+}
+
+.custom-recommended .product-grid .card__title-row {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: baseline;
+  justify-content: space-between;
+  column-gap: 1rem;
+  padding-bottom: 20px;
+  border-bottom: 0.5px solid #8b8b8b;
+}
+
+.custom-recommended .product-grid .card__heading {
+  flex: 1 1 auto;
+  min-width: 0;
+  font-size: 2.2rem;
+  font-weight: 350;
+  margin: 0;
+}
+
+.custom-recommended .product-grid .card-information {
+  display: contents;
+}
+
+.custom-recommended .product-grid .price {
+  flex: 0 0 auto;
+  white-space: nowrap;
+  font-size: 2.2rem;
+  font-weight: 500;
+  color: rgb(var(--color-foreground));
+}
+
+.custom-recommended .product-grid .card__description {
+  margin-top: 1rem;
+  font-size: 1.8rem;
+  font-weight: 350;
+  color: #807a77;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+@media screen and (max-width: 767px) {
+  .custom-recommended .product-grid .card__title-row {
+    flex-direction: column;
+    align-items: flex-start;
+    row-gap: 0.4rem;
+    padding-bottom: 12px;
+  }
+
+  .custom-recommended .product-grid .card__heading,
+  .custom-recommended .product-grid .price {
+    font-size: 1.6rem;
+  }
+
+  .custom-recommended .product-grid .card__description {
+    font-size: 1.4rem;
+    margin-top: 0.8rem;
+  }
+}
+
+/* Gallery: thumbnails as a vertical strip to the left of the main image
+   (Dawn's "thumbnail" layout stacks them underneath by default). */
+@media screen and (min-width: 750px) {
+  /* Grid rather than flex: the media list is itself a .grid whose items are
+     sized in percentages, so it needs a column with a definite width --
+     minmax(0, 1fr) gives it one. As a flex item it collapsed to zero. */
+  .custom-product media-gallery {
+    display: grid;
+    grid-template-columns: 9.6rem minmax(0, 1fr);
+    column-gap: 1.6rem;
+    align-items: start;
+  }
+
+  /* The grid items are media-gallery's two slider-component wrappers, not
+     the lists inside them. */
+  .custom-product media-gallery > .thumbnail-slider {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .custom-product media-gallery > .slider-mobile-gutter:not(.thumbnail-slider) {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .custom-product media-gallery .thumbnail-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.6rem;
+    margin: 0;
+  }
+
+  .custom-product media-gallery .thumbnail-list__item {
+    width: 100%;
+    max-width: none;
+  }
+
+  .custom-product media-gallery .product__media-list {
+    margin: 0;
+  }
+
+  /* The thumbnail slider's prev/next arrows are meaningless once the
+     thumbnails are a static vertical stack. */
+  .custom-product media-gallery .thumbnail-slider .slider-button {
+    display: none;
+  }
+}
+
+.custom-product .product__media,
+.custom-product .product__media img,
+.custom-product .thumbnail {
+  border-radius: 12px;
+}
+
+.custom-product .thumbnail-list__item .thumbnail {
+  border-radius: 8px;
+}
+
+/* Price */
+.custom-product .price .price-item {
+  font-size: 3.2rem;
+  font-weight: 400;
+  color: #000;
+}

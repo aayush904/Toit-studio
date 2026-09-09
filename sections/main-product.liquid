@@ -235,18 +235,25 @@
                           focusable="false"
                           role="presentation"
                           class="icon icon-toggle-plus"
-                          viewBox="0 0 192 192"
+                          width="20"
+                          height="20"
+                          viewBox="0 0 20 20"
+                          fill="none"
                         >
-                          <path d="M30 96h132M96 30v132" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path>
+                          <path d="M3 10L17 10" stroke="currentColor" stroke-width="1.25" stroke-linecap="square" stroke-linejoin="round"></path>
+                          <path d="M10 3L10 17" stroke="currentColor" stroke-width="1.25" stroke-linecap="square" stroke-linejoin="round"></path>
                         </svg>
                         <svg
                           aria-hidden="true"
                           focusable="false"
                           role="presentation"
                           class="icon icon-toggle-minus"
-                          viewBox="0 0 192 192"
+                          width="20"
+                          height="20"
+                          viewBox="0 0 20 20"
+                          fill="none"
                         >
-                          <path d="M30 96h132" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path>
+                          <path d="M3 10L17 10" stroke="currentColor" stroke-width="1.25" stroke-linecap="square" stroke-linejoin="round"></path>
                         </svg>
                       </span>
                       {% comment %} {{- 'icon-caret.svg' | inline_asset_content -}} {% endcomment %}
@@ -504,6 +511,27 @@
                   section_id: section.id,
                   show_pickup_availability: true
                 -%}
+              {%- when 'whatsapp_button' -%}
+                {%- liquid
+                  assign wa_number = block.settings.phone_number | remove: ' ' | remove: '+' | remove: '-' | remove: '(' | remove: ')'
+                -%}
+                {%- if wa_number != blank -%}
+                  {%- capture wa_message -%}
+                    {{ block.settings.message_prefix }} {{ product.title }} - {{ shop.url }}{{ product.url }}
+                  {%- endcapture -%}
+                  <a
+                    class="product__whatsapp-button"
+                    href="https://wa.me/{{ wa_number }}?text={{ wa_message | strip | url_encode }}"
+                    target="_blank"
+                    rel="noopener"
+                    {{ block.shopify_attributes }}
+                  >
+                    <span class="svg-wrapper">
+                      {{- 'icon-whatsapp.svg' | inline_asset_content -}}
+                    </span>
+                    {{ block.settings.label | escape }}
+                  </a>
+                {%- endif -%}
               {%- when 'rating' -%}
                 {%- if product.metafields.reviews.rating.value != blank -%}
                   <div class="rating-wrapper">
@@ -1099,6 +1127,32 @@
           "default": true,
           "label": "t:sections.main-product.blocks.buy_buttons.settings.show_gift_card_recipient.label",
           "info": "t:sections.main-product.blocks.buy_buttons.settings.show_gift_card_recipient.info"
+        }
+      ]
+    },
+    {
+      "type": "whatsapp_button",
+      "name": "WhatsApp button",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "phone_number",
+          "label": "WhatsApp number",
+          "info": "Include the country code, e.g. 9779812345678. The button is hidden until this is filled in."
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Button label",
+          "default": "Shop on WhatsApp"
+        },
+        {
+          "type": "text",
+          "id": "message_prefix",
+          "label": "Prefilled message",
+          "default": "Hi! I'm interested in",
+          "info": "The product name and link are added after this."
         }
       ]
     },

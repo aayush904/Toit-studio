@@ -38,14 +38,23 @@
         {% assign skip_card_product_styles = false %}
         {% for recommendation in recommendations.products %}
           <li class="grid__item">
+            {% comment %}
+              Card params mirror the homepage "Explore our Products" section
+              (sections/product-tabs.liquid) so both grids render identically.
+            {% endcomment %}
             {% render 'card-product',
               card_product: recommendation,
               media_aspect_ratio: section.settings.image_ratio,
               image_shape: section.settings.image_shape,
               show_secondary_image: section.settings.show_secondary_image,
-              show_vendor: section.settings.show_vendor,
-              show_rating: section.settings.show_rating,
-              skip_styles: skip_card_product_styles
+              show_vendor: false,
+              show_rating: false,
+              skip_styles: skip_card_product_styles,
+              section_id: section.id,
+              quick_add: 'none',
+              show_description: true,
+              show_compare_at_price: false,
+              hide_from_price: true
             %}
           </li>
           {%- assign skip_card_product_styles = true -%}

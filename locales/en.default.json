@@ -119,7 +119,7 @@
       "choose_options": "QUICK BUY",
       "choose_product_options": "Choose options for {{ product_name }}",
       "description": "Description",
-      "inventory_in_stock": "item is in stock",
+      "inventory_in_stock": "In stock",
       "inventory_in_stock_show_count": "Item is in stock ({{ quantity }})",
       "inventory_low_stock": "Low stock",
       "inventory_low_stock_show_count": "Only {{ quantity }} items left",
