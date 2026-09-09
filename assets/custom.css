@@ -1202,3 +1202,33 @@ body .shopify-section-group-footer-group {
   border-radius: 12px;
   overflow: hidden;
 }
+
+/* .video-section__media normally gets its height from a padding-bottom
+   aspect-ratio hack, which a plain max-height can't reliably clamp.
+   Give it a real height via aspect-ratio instead so max-height works;
+   the poster <img> already has object-fit: cover, so it still fills
+   the box cleanly once the ratio gets capped. */
+.custom-story-video-embed .video-section__media {
+  aspect-ratio: 16 / 9;
+  height: auto;
+  max-height: 565px;
+  padding-bottom: 0;
+}
+
+/* This icon is a complete, self-contained button (blurred circle,
+   stroke, and triangle baked into the SVG), not a glyph meant to sit
+   inside the theme's own circular button chrome -- drop that chrome
+   and let the icon be the whole 80x80 button. */
+.custom-story-video-embed .deferred-media__poster-button {
+  background: none;
+  border: none;
+  width: 8rem;
+  height: 8rem;
+}
+
+.custom-story-video-embed .deferred-media__poster-button .icon,
+.custom-story-video-embed .deferred-media__poster-button svg {
+  width: 8rem;
+  height: 8rem;
+  margin-left: 0;
+}
