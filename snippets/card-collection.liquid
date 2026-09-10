@@ -75,6 +75,21 @@
             >
           </div>
         </div>
+        {%- comment -%}
+          Matches the product cards: the title link's ::after overlay only
+          covers the title row, so the image itself was not clickable. This
+          anchor covers the media. aria-hidden + tabindex="-1" keep it out of
+          the accessibility tree and tab order so it does not duplicate the
+          title link.
+        {%- endcomment -%}
+        {%- unless card_collection == blank -%}
+          <a
+            href="{{ card_collection.url }}"
+            class="card__media-link"
+            aria-hidden="true"
+            tabindex="-1"
+          ></a>
+        {%- endunless -%}
       {%- endif -%}
       {%- if card_collection == blank -%}
         <div class="card__media">
