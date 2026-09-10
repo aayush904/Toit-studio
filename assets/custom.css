@@ -1114,6 +1114,14 @@ body .shopify-section-group-footer-group {
 }
 
 @media screen and (max-width: 989px) {
+
+
+
+
+  .custom-product .price-per-item__container {
+   width:auto !important;
+  min-height:4.2rem !important;
+}
   .custom-story-intro .rich-text__blocks {
     grid-template-columns: 1fr;
     row-gap: 2.4rem;
@@ -1397,11 +1405,12 @@ color:#424242;
   margin: 26px 0 0;
 }
 
-.custom-product .product-form__quantity .quantity {
+.custom-product .price-per-item__container {
   border: 1px solid #647A73;
   border-radius: 55px;
   width: 16rem;
   max-height: 5.2rem;
+  min-height:5.2rem;
 }
 
 .custom-product .product-form__quantity .quantity:before,
