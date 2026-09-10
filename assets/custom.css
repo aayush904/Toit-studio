@@ -1548,7 +1548,7 @@ color:#424242;
   .custom-product .product__title,
   .custom-product .product__inventory,
   .custom-product .product-buy-btn {
-    flex: 0 0 100%;
+
     margin-left: 0;
     text-align: left;
   }
@@ -1753,9 +1753,8 @@ product-info .page-width.custom-product {
      stacks underneath -- left-aligned, since a right-aligned block on its own
      line reads as a stray indent. */
   .custom-product .product__info-container .product__tax {
-    flex: 0 0 100%;
-    margin: 0.8rem 0 0;
-    text-align: left;
+    
+    text-align: right;
   }
 }
 
@@ -1812,7 +1811,7 @@ product-info .page-width.custom-product {
 
   .custom-product .product__info-container .product__tax,
   .custom-product .product__inventory {
-    font-size: 11px;
+    font-size: 9px;
   }
 
   .custom-product .product__accordion .accordion__title {
@@ -1822,6 +1821,9 @@ product-info .page-width.custom-product {
   .custom-product .product-form__submit,
   .custom-product .product__whatsapp-button {
     font-size: 15px;
+  }
+  .custom-product .product-form__submit{
+    margin:0;
   }
 
   /* Buttons span the full content column. `.product-form__buttons` carries a
