@@ -1398,10 +1398,10 @@ color:#424242;
 }
 
 .custom-product .product-form__quantity .quantity {
-  border: 1px solid rgba(78, 73, 71, 0.35);
+  border: 1px solid #647A73;
   border-radius: 55px;
   width: 16rem;
-  min-height: 5.6rem;
+  max-height: 5.2rem;
 }
 
 .custom-product .product-form__quantity .quantity:before,
@@ -1435,7 +1435,7 @@ color:#424242;
   background: #7c8d82;
   color: #fff;
   border-radius: 55px;
-  min-height: 5.6rem;
+  max-height: 5.2rem;
   text-transform: uppercase;
   letter-spacing: 0.06em;
   font-size: 18px;
@@ -1459,7 +1459,7 @@ color:#424242;
   justify-content: center;
   gap: 1rem;
   padding: 1.6rem 2.4rem;
-  min-height: 5.6rem;
+  max-height: 5.2rem;
   box-sizing: border-box;
   background: #16263f;
   color: #f7f6f3;
