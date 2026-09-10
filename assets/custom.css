@@ -1881,3 +1881,20 @@ product-info .page-width.custom-product {
     margin: 0 0 2.4rem;
   }
 }
+
+/* Quantity stepper: number and stepper icons share the border colour.
+   The icons are dedicated assets (icon-minus-quantity / icon-plus-quantity)
+   rather than edits to icon-minus/icon-plus, which the cart, cart drawer and
+   quick-add all render too. */
+.custom-product .product-form__quantity .quantity__input {
+  color: #647a73;
+}
+
+/* The .svg-wrapper span is sized to the old 10px icon, and the svg is a
+   shrinkable flex item inside it, so both need sizing. */
+.custom-product .product-form__quantity .quantity__button .svg-wrapper,
+.custom-product .product-form__quantity .quantity__button svg {
+  width: 16px;
+  height: 16px;
+  flex: 0 0 auto;
+}
