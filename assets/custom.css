@@ -2074,7 +2074,7 @@ product-info .page-width.custom-product {
 
 .spec-table dd,
 .spec-table td:last-child {
-  color: #2b2725;
+  color: #424242;
   margin: 0;
   padding: 0;
 }
@@ -2110,4 +2110,18 @@ product-info .page-width.custom-product {
   .custom-product .product__info-container .product__description * {
     font-size: 15px;
   }
+}
+
+/* The description rule above paints every descendant #5B5553, and at (0,3,0)
+   it outranks the plain .spec-table selectors, so the label/value split is
+   restated here with the description in the chain. */
+.custom-product .product__info-container .product__description .spec-table dt,
+.custom-product .product__info-container .product__description .spec-table th,
+.custom-product .product__info-container .product__description .spec-table td:first-child {
+  color: #807a77;
+}
+
+.custom-product .product__info-container .product__description .spec-table dd,
+.custom-product .product__info-container .product__description .spec-table td:last-child {
+  color: #424242;
 }
