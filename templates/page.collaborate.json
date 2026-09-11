@@ -24,7 +24,7 @@
         "heading_iaLG7k": {
           "type": "heading",
           "settings": {
-            "heading": "Our Story",
+            "heading": "Collaborate with Us",
             "heading_size": "h1"
           }
         },
@@ -57,7 +57,7 @@
       "name": "t:sections.image-banner.presets.name",
       "settings": {
         "custom_css_class": "about_banner",
-        "image": "shopify://shop_images/Our_Story_Banner_Image.avif",
+        "image": "shopify://shop_images/Collaborate_with_us_Banner_Image.avif",
         "image_overlay_opacity": 0,
         "image_height": "adapt",
         "image_behavior": "none",
@@ -93,20 +93,32 @@
         "heading_9kfPxr": {
           "type": "heading",
           "settings": {
-            "heading": "Made for Today. Considered for Tomorrow.",
+            "heading": "Collaborate with Us",
             "heading_size": "h1"
           }
         },
         "text_YrENir": {
           "type": "text",
           "settings": {
-            "text": "<p>At Toit Studio, we believe the things we bring into our homes should feel useful, personal, and worth keeping. Our approach to sustainability begins with thoughtful selection—choosing pieces that balance function, character, and versatility, and can become part of everyday routines long beyond a single season.</p><p>From drinkware and tableware to kitchenware and décor, we look for objects you can enjoy often, style in different ways, and continue using over time. Because a piece that remains useful and loved holds more value than something chosen only for the moment.</p><p>We're not interested in making big promises. We simply believe that better choices, longer use, and a little more consideration can make everyday living feel more meaningful.</p>"
+            "text": "<p>Different ideas can make good things happen. Toit Studio is open to collaborations with people and businesses who see an interesting way for our products, spaces and ideas to come together. Whether you are creating a campaign, styling a shoot, planning an event or working on something we have not thought of yet, we would be happy to hear about it.</p>"
+          }
+        },
+        "button_9Dh4cp": {
+          "type": "button",
+          "settings": {
+            "button_label": "TELL US ABOUT YOUR IDEA",
+            "button_link": "shopify://pages/contact",
+            "button_style_secondary": true,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
           }
         }
       },
       "block_order": [
         "heading_9kfPxr",
-        "text_YrENir"
+        "text_YrENir",
+        "button_9Dh4cp"
       ],
       "custom_css": [],
       "name": "t:sections.rich-text.presets.name",
@@ -142,6 +154,7 @@
         "heading",
         "text"
       ],
+      "disabled": true,
       "name": "Objects Built Around a Way of Living",
       "settings": {
         "custom_css_class": "custom-story-founder",
@@ -181,6 +194,7 @@
         "heading",
         "text"
       ],
+      "disabled": true,
       "custom_css": [],
       "name": "Thoughtful Choices, Lasting Pieces",
       "settings": {
@@ -195,6 +209,7 @@
     },
     "story_video": {
       "type": "video",
+      "disabled": true,
       "name": "Our Story video",
       "settings": {
         "custom_css_class": "custom-story-video-embed",
@@ -209,6 +224,75 @@
         "padding_top": 0,
         "padding_bottom": 96
       }
+    },
+    "multicolumn_JTzyeW": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_6ebfQr": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Creative_Projects.avif",
+            "title": "Creative Projects",
+            "text": "<p>For photographers, stylists, filmmakers, creators and creative teams looking to feature Toit Studio pieces in shoots, editorials or content projects.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_JgVnAW": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Spaces_Hospitality.avif",
+            "title": "Spaces & Hospitality",
+            "text": "<p>For cafés, restaurants, hotels, studios and other spaces interested in working with Toit Studio beyond a standard product order.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_C7y6Uf": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Event_Hosting.avif",
+            "title": "Event Hosting",
+            "text": "<p>For table settings, launches, pop-ups, workshops, intimate gatherings and other experiences where the objects around the room are part of the idea.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_CgGzRn": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Brand_Collaborations.avif",
+            "title": "Brand Collaborations",
+            "text": "<p>For brands with a project, collection or concept where working together feels like a natural fit.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_6ebfQr",
+        "column_JgVnAW",
+        "column_C7y6Uf",
+        "column_CgGzRn"
+      ],
+      "name": "t:sections.multicolumn.presets.name",
+      "settings": {
+        "custom_css_class": "custom-offer",
+        "title": "",
+        "heading_size": "h1",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "button_label": "",
+        "button_link": "",
+        "columns_desktop": 2,
+        "column_alignment": "left",
+        "background_style": "primary",
+        "color_scheme": "scheme-0130ff2c-5d75-4e86-be8d-b4ab3796a5ff",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
     }
   },
   "order": [
@@ -218,6 +302,7 @@
     "rich_text_edJKHX",
     "story_founder",
     "story_sustainability",
-    "story_video"
+    "story_video",
+    "multicolumn_JTzyeW"
   ]
 }
