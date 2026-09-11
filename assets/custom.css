@@ -2031,3 +2031,57 @@ product-info .page-width.custom-product {
 .custom-collab-intro .rich-text__heading span {
   display: block;
 }
+
+/* ==========================================================================
+   Spec table inside a product description.
+
+   Opt-in: add class="spec-table" to a <dl> or <table> in the description's
+   HTML view. Both markups are supported because Shopify's rich-text editor
+   handles them differently -- it has a table button, so <table> tends to
+   survive a round-trip through the visual editor, while <dl> is the better
+   semantic fit when the markup is left alone.
+
+     <dl class="spec-table">
+       <dt>Material</dt><dd>Ceramic</dd>
+     </dl>
+   ========================================================================== */
+.spec-table {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+  column-gap: 1.6rem;
+  row-gap: 1.2rem;
+  width: 100%;
+  margin: 2rem 0 0;
+  border-collapse: collapse;
+}
+
+/* <table> markup: flatten the row wrappers so the cells land on the same grid
+   as the <dl> version rather than nesting inside a row box. */
+.spec-table tbody,
+.spec-table tr {
+  display: contents;
+}
+
+.spec-table dt,
+.spec-table th,
+.spec-table td:first-child {
+  color: #807a77;
+  font-weight: 400;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+}
+
+.spec-table dd,
+.spec-table td:last-child {
+  color: #2b2725;
+  margin: 0;
+  padding: 0;
+}
+
+@media screen and (max-width: 749px) {
+  .spec-table {
+    column-gap: 1.2rem;
+    row-gap: 1rem;
+  }
+}
