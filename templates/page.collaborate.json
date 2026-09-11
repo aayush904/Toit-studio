@@ -123,7 +123,7 @@
       "custom_css": [],
       "name": "t:sections.rich-text.presets.name",
       "settings": {
-        "custom_css_class": "custom-story-intro",
+        "custom_css_class": "custom-story-intro custom-collab-intro",
         "desktop_content_position": "left",
         "content_alignment": "left",
         "color_scheme": "scheme-0130ff2c-5d75-4e86-be8d-b4ab3796a5ff",
@@ -277,7 +277,7 @@
       ],
       "name": "t:sections.multicolumn.presets.name",
       "settings": {
-        "custom_css_class": "custom-offer",
+        "custom_css_class": "custom-offer custom-collab-offer",
         "title": "",
         "heading_size": "h1",
         "image_width": "full",

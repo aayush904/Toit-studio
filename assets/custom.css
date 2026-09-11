@@ -1907,3 +1907,77 @@ product-info .page-width.custom-product {
   height: 16px;
   flex: 0 0 auto;
 }
+
+/* ==========================================================================
+   Page banner (Our Story, Collaborate With Us -- both use .about_banner)
+   ========================================================================== */
+
+/* The banner image is set to "adapt", so its height follows the artwork and
+   can collapse on short or wide viewports. Hold a floor of 30vh. */
+.about_banner {
+  min-height: 30vh;
+}
+
+/* Line the banner content up with the header's content edges. base.css insets
+   the header by 16px, 32px (>=768) and 60px (>=1280); .banner__content ships
+   with a flat 50px, so it sat inside the nav above it. */
+.about_banner .banner__content {
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+@media screen and (min-width: 768px) {
+  .about_banner .banner__content {
+    padding-left: 3.2rem;
+    padding-right: 3.2rem;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .about_banner .banner__content {
+    padding-left: 6rem;
+    padding-right: 6rem;
+  }
+}
+
+/* .banner__box adds its own 15px inset below 750px, which pushed the heading
+   past the header's 16px edge. The content wrapper above owns the alignment. */
+.about_banner .banner__box {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+/* Heading caps at 42px -- the nested .about_banner rule above sets 7.2rem. */
+.about_banner .banner__box .h1,
+.about_banner .h1 {
+  font-size: 42px;
+}
+
+@media screen and (max-width: 749px) {
+  .about_banner .banner__box .h1,
+  .about_banner .h1 {
+    font-size: 32px;
+  }
+}
+
+/* ==========================================================================
+   Collaborate With Us -- desktop only. Below 750px the page is left to match
+   Our Story, which is why these are scoped rather than applied outright.
+   ========================================================================== */
+@media screen and (min-width: 750px) {
+  /* Cards carry the same colour as the section behind them, so the fill only
+     shows up as a seam. section-multicolumn.css sets this at (0,3,0) and is
+     injected after custom.css, so the override needs the extra class to win.
+     .custom-collab-offer sits on the .multicolumn element itself. */
+  .custom-collab-offer.multicolumn.background-primary .multicolumn-card,
+  .custom-collab-offer.multicolumn:not(.background-none) .multicolumn-card {
+    background: none;
+  }
+
+  /* CTA moves under the body copy in the right-hand column, rather than
+     starting a new row on the left. */
+  .custom-collab-intro .rich-text__blocks .rich-text__buttons {
+    grid-column: 2;
+    justify-self: start;
+  }
+}
