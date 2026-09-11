@@ -2024,3 +2024,10 @@ product-info .page-width.custom-product {
     padding: 32px 15px;
   }
 }
+
+/* Collaborate heading breaks after the first word. inline_richtext rejects
+   <br>, so the second line is a <span> in the setting, promoted to a block
+   here. Scoped to this section so other headings are unaffected. */
+.custom-collab-intro .rich-text__heading span {
+  display: block;
+}

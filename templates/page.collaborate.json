@@ -93,7 +93,7 @@
         "heading_9kfPxr": {
           "type": "heading",
           "settings": {
-            "heading": "Collaborate with Us",
+            "heading": "Collaborate <span>with Us</span>",
             "heading_size": "h1"
           }
         },
