@@ -1314,7 +1314,7 @@ body .shopify-section-group-footer-group {
 .custom-product .product__title > h1,
 .custom-product .product__title .h1 {
   font-family: 'Overused Grotesk', var(--font-heading-family, sans-serif);
-  font-weight: 400;
+  font-weight: var(--font-weight-regular);
   font-size: 50px;
   line-height: 100%;
   letter-spacing: 0;
@@ -1350,7 +1350,7 @@ body .shopify-section-group-footer-group {
    and loads after custom.css. */
 .custom-product .product__info-container .product__description {
   font-family: 'Overused Grotesk', var(--font-heading-family, sans-serif);
-  font-weight: 400;
+  font-weight: var(--font-weight-book);
   font-size: 18px;
   line-height: 150%;
   color: #5b5553;
@@ -2083,5 +2083,31 @@ product-info .page-width.custom-product {
   .spec-table {
     column-gap: 1.2rem;
     row-gap: 1rem;
+  }
+}
+
+/* ==========================================================================
+   Product description: one treatment for the whole block, descendants
+   included, so pasted <strong>/<span> markup and the spec table cannot
+   introduce their own colour, weight or size.
+
+   "font-style: Book" in the spec is a Figma label for the 350 weight, not a
+   CSS font-style, so it is expressed as font-weight below and font-style is
+   left alone (anything genuinely italic stays italic).
+   ========================================================================== */
+.custom-product .product__info-container .product__description,
+.custom-product .product__info-container .product__description * {
+  font-family: 'Overused Grotesk', var(--font-heading-family, sans-serif);
+  font-weight: var(--font-weight-book);
+  font-size: 18px;
+  line-height: 150%;
+  letter-spacing: 0;
+  color: #5b5553;
+}
+
+@media screen and (max-width: 749px) {
+  .custom-product .product__info-container .product__description,
+  .custom-product .product__info-container .product__description * {
+    font-size: 15px;
   }
 }
