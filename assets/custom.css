@@ -2047,12 +2047,12 @@ product-info .page-width.custom-product {
    ========================================================================== */
 .spec-table {
   display: grid;
-  grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
-  column-gap: 1.6rem;
-  row-gap: 1.2rem;
-  width: 100%;
-  margin: 2rem 0 0;
-  border-collapse: collapse;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 3fr);
+    column-gap: 0px;
+    row-gap: 0px;
+    width: 100%;
+        margin: 0 0 1rem 0 !important;
+    border-collapse: collapse;
 }
 
 /* <table> markup: flatten the row wrappers so the cells land on the same grid
