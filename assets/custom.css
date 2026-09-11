@@ -1965,19 +1965,62 @@ product-info .page-width.custom-product {
    Our Story, which is why these are scoped rather than applied outright.
    ========================================================================== */
 @media screen and (min-width: 750px) {
-  /* Cards carry the same colour as the section behind them, so the fill only
-     shows up as a seam. section-multicolumn.css sets this at (0,3,0) and is
-     injected after custom.css, so the override needs the extra class to win.
-     .custom-collab-offer sits on the .multicolumn element itself. */
-  .custom-collab-offer.multicolumn.background-primary .multicolumn-card,
-  .custom-collab-offer.multicolumn:not(.background-none) .multicolumn-card {
-    background: none;
-  }
-
   /* CTA moves under the body copy in the right-hand column, rather than
      starting a new row on the left. */
   .custom-collab-intro .rich-text__blocks .rich-text__buttons {
     grid-column: 2;
     justify-self: start;
+  }
+}
+
+/* ==========================================================================
+   Phone: header inset and the content that lines up with it
+   ========================================================================== */
+@media screen and (max-width: 767px) {
+  /* base.css insets .page-width by 16px below 768px. */
+  .header.page-width {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  /* Banner content tracks the header, so it moves with it. */
+  .about_banner .banner__content {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
+
+/* 767px, not Dawn's usual 749px, so this band matches the header rule above --
+   base.css switches .page-width's inset at 768px. */
+@media screen and (max-width: 767px) {
+  /* "Made for Today" / "Thoughtful Choices" (Our Story) and "Collaborate with
+     Us" -- all three are .custom-story-intro, so they share this.
+     .rich-text__wrapper stacks a 20px margin on a 16px pad, which put the
+     copy 36px in; the section's own 72px block padding comes down too. */
+  .rich-text.custom-story-intro {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+
+  .custom-story-intro .rich-text__wrapper {
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  /* Collaborate CTA */
+  .custom-collab-intro .rich-text__buttons .button {
+    padding: 1.8rem 2.6rem;
+  }
+}
+
+/* "Objects Built Around a Way of Living" -- the text column carries its own
+   40px/50px padding rather than the section. Scoped to 749px, not 767px like
+   the block above: image-with-text splits into two columns at 750px, and a
+   15px inset inside that narrow text column would be far too tight. */
+@media screen and (max-width: 749px) {
+  .custom-story-founder .image-with-text__content {
+    padding: 32px 15px;
   }
 }

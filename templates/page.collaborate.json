@@ -286,7 +286,7 @@
         "button_link": "",
         "columns_desktop": 2,
         "column_alignment": "left",
-        "background_style": "primary",
+        "background_style": "none",
         "color_scheme": "scheme-0130ff2c-5d75-4e86-be8d-b4ab3796a5ff",
         "columns_mobile": "1",
         "swipe_on_mobile": false,
