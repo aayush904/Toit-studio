@@ -26,9 +26,16 @@
       background-repeat: no-repeat;
       border-radius: {{ section.settings.background_radius }}px;
       overflow: hidden;
+      {%- comment -%}
+        base.css:3276 sets `background-attachment: fixed` on every .gradient
+        element, so this has to be reset explicitly rather than just left
+        unset -- otherwise `cover` sizes the image to the window instead of
+        the card, blowing a short banner up several times over.
+      {%- endcomment -%}
       {%- if section.settings.background_attachment %}
-        /* Parallax. Not supported on iOS Safari, which falls back to scroll. */
         background-attachment: fixed;
+      {%- else %}
+        background-attachment: scroll;
       {%- endif %}
     }
 
@@ -270,7 +277,7 @@
       "id": "background_attachment",
       "label": "Fixed background",
       "default": false,
-      "info": "Image stays put while the page scrolls. iOS Safari does not support this and shows a normal scrolling image."
+      "info": "Parallax: the image stays put while the page scrolls. Only suits tall images -- it scales the image to the whole window, so a short banner gets blown up and cropped. Not supported on iOS Safari."
     },
     {
       "type": "range",
