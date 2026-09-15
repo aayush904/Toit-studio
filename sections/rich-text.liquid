@@ -82,11 +82,15 @@
 {%- endstyle -%}
 
 {%- comment -%}
-  With a background image the section padding moves to this outer wrapper, so
-  it reads as space around the card rather than inflating the card itself.
+  With a background image the colour scheme and the section padding move out to
+  this wrapper, which sits outside page-width so the scheme paints edge to
+  edge around the card. The card itself keeps the scheme class (for the button
+  and text colour variables) but not `gradient`, so nothing paints over the
+  image. Without an image both stay on the card, exactly as before.
 {%- endcomment -%}
-<div class="isolate{% unless section.settings.full_width %} page-width{% endunless %}{% if section.settings.background_image != blank %} section-{{ section.id }}-padding{% endif %}">
-  <div class="rich-text content-container color-{{ section.settings.color_scheme }} gradient{% if section.settings.full_width %} rich-text--full-width content-container--full-width{% endif %} {% unless section.settings.background_image != blank %}section-{{ section.id }}-padding{% endunless %}{% if section.settings.background_image != blank %} rich-text--bg-{{ section.id }} rich-text--has-background{% endif %}{% if section.settings.custom_css_class != blank %} {{ section.settings.custom_css_class }}{% endif %}">
+<div class="rich-text-section{% if section.settings.background_image != blank %} color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-padding{% endif %}">
+  <div class="isolate{% unless section.settings.full_width %} page-width{% endunless %}">
+    <div class="rich-text content-container color-{{ section.settings.color_scheme }}{% unless section.settings.background_image != blank %} gradient section-{{ section.id }}-padding{% endunless %}{% if section.settings.full_width %} rich-text--full-width content-container--full-width{% endif %}{% if section.settings.background_image != blank %} rich-text--bg-{{ section.id }} rich-text--has-background{% endif %}{% if section.settings.custom_css_class != blank %} {{ section.settings.custom_css_class }}{% endif %}">
     <div class="rich-text__wrapper rich-text__wrapper--{{ section.settings.desktop_content_position }}{% if section.settings.full_width %} page-width{% endif %}">
       <div class="rich-text__blocks {{ section.settings.content_alignment }}">
         {%- for block in section.blocks -%}
@@ -165,6 +169,7 @@
       </div>
     </div>
   </div>
+</div>
 </div>
 
 {% schema %}
