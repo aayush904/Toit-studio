@@ -84,7 +84,7 @@
         "heading_9kfPxr": {
           "type": "heading",
           "settings": {
-            "heading": "For spaces with                                         people to welcome.",
+            "heading": "For spaces with <span>people to welcome.</span>",
             "heading_size": "h1"
           }
         },
