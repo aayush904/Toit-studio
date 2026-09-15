@@ -12,10 +12,54 @@
       padding-bottom: {{ section.settings.padding_bottom }}px;
     }
   }
+
+  {%- if section.settings.background_image != blank -%}
+    {%- comment -%}
+      Doubled class for specificity: .gradient sets the `background` shorthand,
+      which would otherwise reset background-image back to none.
+    {%- endcomment -%}
+    .rich-text.rich-text--bg-{{ section.id }} {
+      position: relative;
+      background-image: url({{ section.settings.background_image | image_url: width: 1200 }});
+      background-size: cover;
+      background-position: {{ section.settings.background_position }};
+      background-repeat: no-repeat;
+      border-radius: {{ section.settings.background_radius }}px;
+      overflow: hidden;
+    }
+
+    @media screen and (min-width: 750px) {
+      .rich-text.rich-text--bg-{{ section.id }} {
+        background-image: url({{ section.settings.background_image | image_url: width: 2400 }});
+      }
+    }
+
+    .rich-text--bg-{{ section.id }}::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-color: rgba(0, 0, 0, {{ section.settings.background_overlay_opacity | divided_by: 100.0 }});
+      pointer-events: none;
+    }
+
+    /* Lift the content above the overlay. */
+    .rich-text--bg-{{ section.id }} > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .rich-text--bg-{{ section.id }},
+    .rich-text--bg-{{ section.id }} .rich-text__heading,
+    .rich-text--bg-{{ section.id }} .rich-text__text,
+    .rich-text--bg-{{ section.id }} .rich-text__text *,
+    .rich-text--bg-{{ section.id }} .rich-text__caption {
+      color: {{ section.settings.background_text_color }};
+    }
+  {%- endif -%}
 {%- endstyle -%}
 
 <div class="isolate{% unless section.settings.full_width %} page-width{% endunless %}">
-  <div class="rich-text content-container color-{{ section.settings.color_scheme }} gradient{% if section.settings.full_width %} rich-text--full-width content-container--full-width{% endif %} section-{{ section.id }}-padding{% if section.settings.custom_css_class != blank %} {{ section.settings.custom_css_class }}{% endif %}">
+  <div class="rich-text content-container color-{{ section.settings.color_scheme }} gradient{% if section.settings.full_width %} rich-text--full-width content-container--full-width{% endif %} section-{{ section.id }}-padding{% if section.settings.background_image != blank %} rich-text--bg-{{ section.id }} rich-text--has-background{% endif %}{% if section.settings.custom_css_class != blank %} {{ section.settings.custom_css_class }}{% endif %}">
     <div class="rich-text__wrapper rich-text__wrapper--{{ section.settings.desktop_content_position }}{% if section.settings.full_width %} page-width{% endif %}">
       <div class="rich-text__blocks {{ section.settings.content_alignment }}">
         {%- for block in section.blocks -%}
@@ -150,6 +194,56 @@
       ],
       "default": "center",
       "label": "t:sections.rich-text.settings.content_alignment.label"
+    },
+    {
+      "type": "header",
+      "content": "Background image"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background image",
+      "info": "Sits behind the section content. Leave empty for a plain background."
+    },
+    {
+      "type": "range",
+      "id": "background_overlay_opacity",
+      "min": 0,
+      "max": 90,
+      "step": 5,
+      "unit": "%",
+      "label": "Image darkening",
+      "default": 40,
+      "info": "Darkens the image so text stays readable."
+    },
+    {
+      "type": "color",
+      "id": "background_text_color",
+      "label": "Text colour over image",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "select",
+      "id": "background_position",
+      "options": [
+        { "value": "center center", "label": "Centre" },
+        { "value": "center top", "label": "Top" },
+        { "value": "center bottom", "label": "Bottom" },
+        { "value": "left center", "label": "Left" },
+        { "value": "right center", "label": "Right" }
+      ],
+      "default": "center center",
+      "label": "Image position"
+    },
+    {
+      "type": "range",
+      "id": "background_radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Corner radius",
+      "default": 16
     },
     {
       "type": "color_scheme",

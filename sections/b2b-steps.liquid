@@ -1,0 +1,200 @@
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 768px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="color-{{ section.settings.color_scheme }} gradient{% if section.settings.custom_css_class != blank %} {{ section.settings.custom_css_class }}{% endif %}">
+  <div class="b2b-steps page-width section-{{ section.id }}-padding">
+    <div class="b2b-steps__intro">
+      {%- if section.settings.heading != blank -%}
+        <h2 class="b2b-steps__heading inline-richtext {{ section.settings.heading_size }}">
+          {{ section.settings.heading }}
+        </h2>
+      {%- endif -%}
+
+      {%- if section.settings.subtext != blank -%}
+        <div class="b2b-steps__subtext rte">{{ section.settings.subtext }}</div>
+      {%- endif -%}
+
+      {%- if section.settings.button_label != blank -%}
+        <a
+          {% if section.settings.button_link == blank %}
+            role="link" aria-disabled="true"
+          {% else %}
+            href="{{ section.settings.button_link }}"
+          {% endif %}
+          class="b2b-steps__button button{% if section.settings.button_style_secondary %} button--secondary{% else %} button--primary{% endif %}"
+        >
+          <span>{{ section.settings.button_label | escape }}</span>
+          {%- if section.settings.show_button_arrow -%}
+            <svg
+              class="b2b-steps__button-arrow"
+              width="16"
+              height="16"
+              viewBox="0 0 16 16"
+              fill="none"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path d="M6 3L11 8L6 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          {%- endif -%}
+        </a>
+      {%- endif -%}
+    </div>
+
+    {%- if section.blocks.size > 0 -%}
+      <ol class="b2b-steps__list" role="list">
+        {%- for block in section.blocks -%}
+          <li class="b2b-steps__item" {{ block.shopify_attributes }}>
+            <span class="b2b-steps__marker" aria-hidden="true">{{ forloop.index }}</span>
+            <div class="b2b-steps__body">
+              {%- if block.settings.heading != blank -%}
+                <h3 class="b2b-steps__item-heading">{{ block.settings.heading | escape }}</h3>
+              {%- endif -%}
+              {%- if block.settings.text != blank -%}
+                <div class="b2b-steps__item-text rte">{{ block.settings.text }}</div>
+              {%- endif -%}
+            </div>
+          </li>
+        {%- endfor -%}
+      </ol>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "B2B steps",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "custom_css_class",
+      "label": "Custom CSS class",
+      "info": "Add a class here to target this section from assets/custom.css"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "How B2B Orders Work"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "options": [
+        { "value": "h2", "label": "Medium" },
+        { "value": "h1", "label": "Large" },
+        { "value": "h0", "label": "Extra large" }
+      ],
+      "default": "h1",
+      "label": "Heading size"
+    },
+    {
+      "type": "richtext",
+      "id": "subtext",
+      "label": "Text below heading",
+      "default": "<p>Tell us what you are looking for and we can start from there.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Button"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "Or simply WhatsApp us"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "checkbox",
+      "id": "button_style_secondary",
+      "label": "Use outline button style",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_button_arrow",
+      "label": "Show arrow on button",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Colour scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 140,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 96
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 140,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 96
+    }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Step",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Step heading",
+          "default": "Tell us about your requirement"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Step text",
+          "default": "<p>Share your business, the products you are interested in and the quantity.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "B2B steps",
+      "blocks": [
+        { "type": "step" },
+        { "type": "step" },
+        { "type": "step" },
+        { "type": "step" }
+      ]
+    }
+  ]
+}
+{% endschema %}

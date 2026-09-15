@@ -2125,3 +2125,203 @@ product-info .page-width.custom-product {
 .custom-product .product__info-container .product__description .spec-table td:last-child {
   color: #424242;
 }
+
+/* ==========================================================================
+   Rich text with a background image.
+
+   The image, overlay and radius are emitted per-section by rich-text.liquid
+   (they depend on the chosen image). Everything here is layout that holds for
+   any instance: inner padding so the content is not flush against the edges,
+   and a two-column split matching the rest of the site's rich-text sections.
+   ========================================================================== */
+.rich-text--has-background .rich-text__wrapper {
+  padding: 4.8rem 4rem;
+}
+
+.rich-text--has-background .rich-text__blocks {
+  max-width: none;
+}
+
+/* Buttons read as light pills on the darkened image. */
+.rich-text--has-background .rich-text__buttons .button {
+  background: #f7f6f3;
+  color: #2b2725;
+  border: none;
+  box-shadow: none;
+}
+
+@media screen and (min-width: 990px) {
+  .rich-text--has-background .rich-text__blocks {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    column-gap: 4rem;
+    align-items: start;
+  }
+
+  /* Heading holds the left column; text and button stack down the right. */
+  .rich-text--has-background .rich-text__heading {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+    margin: 0;
+  }
+
+  .rich-text--has-background .rich-text__text {
+    grid-column: 2;
+  }
+
+  .rich-text--has-background .rich-text__buttons {
+    grid-column: 2;
+    margin-top: 2.4rem;
+  }
+}
+
+@media screen and (max-width: 749px) {
+  .rich-text--has-background .rich-text__wrapper {
+    padding: 3.2rem 2.4rem;
+  }
+}
+
+/* ==========================================================================
+   B2B steps -- intro on the left, numbered list on the right, with a dashed
+   rule running between the markers.
+   ========================================================================== */
+.b2b-steps__heading {
+  margin: 0 0 1.2rem;
+  text-align: left;
+}
+
+.b2b-steps__subtext {
+  margin: 0;
+  color: #5b5553;
+}
+
+.b2b-steps__subtext p {
+  margin: 0;
+}
+
+.b2b-steps__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  margin-top: 2.4rem;
+  border-radius: 55px;
+  padding: 1.6rem 2.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 14px;
+}
+
+.b2b-steps__button-arrow {
+  flex: 0 0 auto;
+}
+
+.b2b-steps__list {
+  list-style: none;
+  margin: 4rem 0 0;
+  padding: 0;
+}
+
+.b2b-steps__item {
+  display: grid;
+  grid-template-columns: 4.8rem minmax(0, 1fr);
+  column-gap: 2rem;
+  position: relative;
+  padding-bottom: 3.2rem;
+}
+
+.b2b-steps__item:last-child {
+  padding-bottom: 0;
+}
+
+/* Dashed connector, drawn from each marker down to the next one. Uses a
+   gradient rather than a dashed border so the dash length is controllable. */
+.b2b-steps__item:not(:last-child)::before {
+  content: '';
+  position: absolute;
+  left: 2.4rem;
+  top: 4.8rem;
+  bottom: 0;
+  width: 1px;
+  transform: translateX(-50%);
+  background-image: linear-gradient(to bottom, rgba(78, 73, 71, 0.45) 0 4px, transparent 4px 10px);
+  background-size: 1px 10px;
+  background-repeat: repeat-y;
+}
+
+.b2b-steps__marker {
+  grid-column: 1;
+  width: 4.8rem;
+  height: 4.8rem;
+  border: 1px solid rgba(78, 73, 71, 0.35);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  color: #2b2725;
+  background: transparent;
+}
+
+.b2b-steps__body {
+  grid-column: 2;
+  padding-top: 1.1rem;
+}
+
+.b2b-steps__item-heading {
+  margin: 0 0 0.6rem;
+  font-size: 20px;
+  font-weight: var(--font-weight-regular, 400);
+  line-height: 130%;
+  color: #2b2725;
+}
+
+.b2b-steps__item-text {
+  font-size: 15px;
+  line-height: 150%;
+  color: #5b5553;
+}
+
+.b2b-steps__item-text p {
+  margin: 0;
+}
+
+@media screen and (min-width: 990px) {
+  .b2b-steps {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    column-gap: 8rem;
+    align-items: start;
+  }
+
+  .b2b-steps__list {
+    margin-top: 0;
+  }
+}
+
+@media screen and (max-width: 749px) {
+  .b2b-steps__item {
+    grid-template-columns: 4rem minmax(0, 1fr);
+    column-gap: 1.6rem;
+    padding-bottom: 2.4rem;
+  }
+
+  .b2b-steps__marker {
+    width: 4rem;
+    height: 4rem;
+    font-size: 15px;
+  }
+
+  .b2b-steps__item:not(:last-child)::before {
+    left: 2rem;
+    top: 4rem;
+  }
+
+  .b2b-steps__body {
+    padding-top: 0.8rem;
+  }
+
+  .b2b-steps__item-heading {
+    font-size: 18px;
+  }
+}
