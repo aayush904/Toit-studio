@@ -25,15 +25,45 @@
         <div class="b2b-steps__subtext rte">{{ section.settings.subtext }}</div>
       {%- endif -%}
 
+      {%- liquid
+        # A WhatsApp number takes precedence over the plain link, and is
+        # stripped of the spacing and punctuation people naturally type, since
+        # wa.me only accepts digits.
+        assign wa_number = section.settings.whatsapp_number | remove: ' ' | remove: '+' | remove: '-' | remove: '(' | remove: ')'
+        assign button_url = section.settings.button_link
+        assign is_whatsapp = false
+
+        if wa_number != blank
+          assign is_whatsapp = true
+          capture wa_message
+            echo section.settings.whatsapp_message
+          endcapture
+          capture button_url
+            echo 'https://wa.me/'
+            echo wa_number
+            if wa_message != blank
+              echo '?text='
+              echo wa_message | strip | url_encode
+            endif
+          endcapture
+        endif
+      -%}
+
       {%- if section.settings.button_label != blank -%}
         <a
-          {% if section.settings.button_link == blank %}
+          {% if button_url == blank %}
             role="link" aria-disabled="true"
           {% else %}
-            href="{{ section.settings.button_link }}"
+            href="{{ button_url }}"
           {% endif %}
-          class="b2b-steps__button button{% if section.settings.button_style_secondary %} button--secondary{% else %} button--primary{% endif %}"
+          {% if is_whatsapp %}target="_blank" rel="noopener"{% endif %}
+          class="b2b-steps__button button{% if section.settings.button_style_secondary %} button--secondary{% else %} button--primary{% endif %}{% if is_whatsapp %} b2b-steps__button--whatsapp{% endif %}"
         >
+          {%- if is_whatsapp and section.settings.show_whatsapp_icon -%}
+            <span class="svg-wrapper b2b-steps__button-icon">
+              {{- 'icon-whatsapp.svg' | inline_asset_content -}}
+            </span>
+          {%- endif -%}
           <span>{{ section.settings.button_label | escape }}</span>
           {%- if section.settings.show_button_arrow -%}
             <svg
@@ -120,7 +150,26 @@
     {
       "type": "url",
       "id": "button_link",
-      "label": "Button link"
+      "label": "Button link",
+      "info": "Ignored when a WhatsApp number is set below."
+    },
+    {
+      "type": "text",
+      "id": "whatsapp_number",
+      "label": "WhatsApp number",
+      "info": "Include the country code, e.g. +977 98XXXXXXXX. Spaces, dashes and brackets are fine. Leave empty to use the button link instead."
+    },
+    {
+      "type": "text",
+      "id": "whatsapp_message",
+      "label": "Pre-filled WhatsApp message",
+      "default": "Hi! I would like to enquire about a B2B order."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_whatsapp_icon",
+      "label": "Show WhatsApp icon",
+      "default": true
     },
     {
       "type": "checkbox",

@@ -2335,3 +2335,17 @@ product-info .page-width.custom-product {
     font-size: 16px;
   }
 }
+
+/* WhatsApp variant of the B2B button: mark sits before the label. */
+.b2b-steps__button-icon {
+  display: inline-flex;
+  align-items: center;
+  flex: 0 0 auto;
+  width: 20px;
+  height: 20px;
+}
+
+.b2b-steps__button-icon svg {
+  width: 20px;
+  height: 20px;
+}
