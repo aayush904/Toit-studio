@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "main": {
@@ -308,7 +299,7 @@
         "heading_AtmREh": {
           "type": "heading",
           "settings": {
-            "heading": "Need more than a few?",
+            "heading": "Need more <span>than a few?</span>",
             "heading_size": "h1"
           }
         },
@@ -338,7 +329,7 @@
       "custom_css": [],
       "name": "t:sections.rich-text.presets.name",
       "settings": {
-        "custom_css_class": "custom-story-intro custom-collab-intro",
+        "custom_css_class": "custom-story-intro custom-collab-intro custom-gifting-cta",
         "desktop_content_position": "left",
         "content_alignment": "left",
         "background_image": "shopify://shop_images/Need_more_than_a_few.avif",
@@ -348,8 +339,10 @@
         "background_radius": 16,
         "color_scheme": "scheme-0130ff2c-5d75-4e86-be8d-b4ab3796a5ff",
         "full_width": false,
-        "padding_top": 96,
-        "padding_bottom": 96
+        "padding_top": 0,
+        "padding_bottom": 96,
+        "background_attachment": true,
+        "background_max_height": 305
       }
     }
   },

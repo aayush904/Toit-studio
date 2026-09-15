@@ -26,7 +26,23 @@
       background-repeat: no-repeat;
       border-radius: {{ section.settings.background_radius }}px;
       overflow: hidden;
+      {%- if section.settings.background_attachment %}
+        /* Parallax. Not supported on iOS Safari, which falls back to scroll. */
+        background-attachment: fixed;
+      {%- endif %}
     }
+
+    {%- if section.settings.background_max_height > 0 %}
+      {%- comment -%}
+        Desktop only. Below 990px the blocks stack into one column, so the
+        content is far taller and a fixed cap would clip the button off.
+      {%- endcomment -%}
+      @media screen and (min-width: 990px) {
+        .rich-text.rich-text--bg-{{ section.id }} {
+          max-height: {{ section.settings.background_max_height }}px;
+        }
+      }
+    {%- endif %}
 
     @media screen and (min-width: 750px) {
       .rich-text.rich-text--bg-{{ section.id }} {
@@ -58,8 +74,12 @@
   {%- endif -%}
 {%- endstyle -%}
 
-<div class="isolate{% unless section.settings.full_width %} page-width{% endunless %}">
-  <div class="rich-text content-container color-{{ section.settings.color_scheme }} gradient{% if section.settings.full_width %} rich-text--full-width content-container--full-width{% endif %} section-{{ section.id }}-padding{% if section.settings.background_image != blank %} rich-text--bg-{{ section.id }} rich-text--has-background{% endif %}{% if section.settings.custom_css_class != blank %} {{ section.settings.custom_css_class }}{% endif %}">
+{%- comment -%}
+  With a background image the section padding moves to this outer wrapper, so
+  it reads as space around the card rather than inflating the card itself.
+{%- endcomment -%}
+<div class="isolate{% unless section.settings.full_width %} page-width{% endunless %}{% if section.settings.background_image != blank %} section-{{ section.id }}-padding{% endif %}">
+  <div class="rich-text content-container color-{{ section.settings.color_scheme }} gradient{% if section.settings.full_width %} rich-text--full-width content-container--full-width{% endif %} {% unless section.settings.background_image != blank %}section-{{ section.id }}-padding{% endunless %}{% if section.settings.background_image != blank %} rich-text--bg-{{ section.id }} rich-text--has-background{% endif %}{% if section.settings.custom_css_class != blank %} {{ section.settings.custom_css_class }}{% endif %}">
     <div class="rich-text__wrapper rich-text__wrapper--{{ section.settings.desktop_content_position }}{% if section.settings.full_width %} page-width{% endif %}">
       <div class="rich-text__blocks {{ section.settings.content_alignment }}">
         {%- for block in section.blocks -%}
@@ -244,6 +264,24 @@
       "unit": "px",
       "label": "Corner radius",
       "default": 16
+    },
+    {
+      "type": "checkbox",
+      "id": "background_attachment",
+      "label": "Fixed background",
+      "default": false,
+      "info": "Image stays put while the page scrolls. iOS Safari does not support this and shows a normal scrolling image."
+    },
+    {
+      "type": "range",
+      "id": "background_max_height",
+      "min": 0,
+      "max": 500,
+      "step": 5,
+      "unit": "px",
+      "label": "Maximum height",
+      "default": 0,
+      "info": "0 means no limit. Content taller than this is clipped."
     },
     {
       "type": "color_scheme",
