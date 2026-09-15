@@ -1,0 +1,308 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "custom_css_class": "",
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "image_banner_fznyDm": {
+      "type": "image-banner",
+      "blocks": {
+        "heading_iaLG7k": {
+          "type": "heading",
+          "settings": {
+            "heading": "Wholesale/B2B",
+            "heading_size": "h1"
+          }
+        },
+        "text_y4CR3d": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "Give customers details about the banner image(s) or content on the template.",
+            "text_style": "body"
+          }
+        },
+        "buttons_Xkmdyy": {
+          "type": "buttons",
+          "disabled": true,
+          "settings": {
+            "button_label_1": "Button label",
+            "button_link_1": "",
+            "button_style_secondary_1": false,
+            "button_label_2": "Button label",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_iaLG7k",
+        "text_y4CR3d",
+        "buttons_Xkmdyy"
+      ],
+      "name": "t:sections.image-banner.presets.name",
+      "settings": {
+        "custom_css_class": "about_banner",
+        "image": "shopify://shop_images/Wholesale_Banner.avif",
+        "image_overlay_opacity": 0,
+        "image_height": "adapt",
+        "image_behavior": "none",
+        "desktop_content_position": "middle-left",
+        "desktop_content_alignment": "left",
+        "show_text_box": false,
+        "color_scheme": "scheme-2",
+        "stack_images_on_mobile": true,
+        "mobile_content_alignment": "left",
+        "show_text_below": false
+      }
+    },
+    "basmil_video_7JBjGU": {
+      "type": "basmil-video",
+      "disabled": true,
+      "custom_css": [],
+      "name": "Background Video - Basmil",
+      "settings": {
+        "custom_css_class": "",
+        "title": "Our Story",
+        "subtitle": "",
+        "description": "",
+        "background_video_type": "local",
+        "background_youtube_url": "https://www.youtube.com/watch?v=pWg1vgJ5Fa8",
+        "background_local_video": "shopify://files/videos/dc3df06d2f1c48af98902d5198338d8a.mp4",
+        "modal_video_type": "youtube",
+        "modal_youtube_url": "https://www.youtube.com/watch?v=pWg1vgJ5Fa8"
+      }
+    },
+    "rich_text_edJKHX": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_9kfPxr": {
+          "type": "heading",
+          "settings": {
+            "heading": "For spaces with                                         people to welcome.",
+            "heading_size": "h1"
+          }
+        },
+        "text_YrENir": {
+          "type": "text",
+          "settings": {
+            "text": "<p>A good hospitality space is built from hundreds of small decisions. The cup used for coffee, the plate carrying breakfast, the serving piece arriving at the table and the objects placed around the room all become part of the experience.</p><p>Toit Studio works with businesses looking for drinkware, tableware, kitchenware, serveware and décor in larger quantities.</p>"
+          }
+        },
+        "button_9Dh4cp": {
+          "type": "button",
+          "settings": {
+            "button_label": "LET'S GET STARTED",
+            "button_link": "shopify://pages/contact",
+            "button_style_secondary": true,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_9kfPxr",
+        "text_YrENir",
+        "button_9Dh4cp"
+      ],
+      "custom_css": [],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "custom_css_class": "custom-story-intro custom-collab-intro",
+        "desktop_content_position": "left",
+        "content_alignment": "left",
+        "color_scheme": "scheme-0130ff2c-5d75-4e86-be8d-b4ab3796a5ff",
+        "full_width": true,
+        "padding_top": 96,
+        "padding_bottom": 96
+      }
+    },
+    "story_founder": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Objects Built Around a Way of Living",
+            "heading_size": "h1"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Born in Nepal, Toit Studio began with a simple idea, everyday objects should feel considered, useful, and personal. Inspired by the way we gather, cook, share, and live, we curate homeware that brings warmth and character to everyday moments.</p><p>From drinkware and tableware to kitchenware and décor, each piece is selected with intention, designed to be enjoyed often, live beautifully in your home, and last beyond the moment.</p><p><em>“Clarity, considered materials, human empathy, and lasting strength guide everything we create and how we do business.”</em></p><p>– Pragya, Founder</p>",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "text"
+      ],
+      "disabled": true,
+      "name": "Objects Built Around a Way of Living",
+      "settings": {
+        "custom_css_class": "custom-story-founder",
+        "image": "shopify://shop_images/Screenshot_2024-03-12_at_4.48.14_PM.webp",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "image_behavior": "none",
+        "content_layout": "no-overlap",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "left",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "story_sustainability": {
+      "type": "rich-text",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Thoughtful Choices, Lasting Pieces",
+            "heading_size": "h1"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Using pieces thoughtfully, cleaning them properly, storing them with care, and appreciating the natural signs of everyday use can all help extend their place in our homes. We believe beautiful objects are meant to be lived with, not simply displayed.</p><p>Our approach to sustainability will continue to develop as Toit Studio grows. We want to make more considered decisions wherever we can, while being transparent about what we do today and where there is still room to improve. Rather than claiming perfection, we prefer progress that is thoughtful, practical, and genuine.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "text"
+      ],
+      "disabled": true,
+      "custom_css": [],
+      "name": "Thoughtful Choices, Lasting Pieces",
+      "settings": {
+        "custom_css_class": "custom-story-intro custom-story-sustainability",
+        "desktop_content_position": "left",
+        "content_alignment": "left",
+        "color_scheme": "scheme-0130ff2c-5d75-4e86-be8d-b4ab3796a5ff",
+        "full_width": true,
+        "padding_top": 96,
+        "padding_bottom": 48
+      }
+    },
+    "story_video": {
+      "type": "video",
+      "disabled": true,
+      "name": "Our Story video",
+      "settings": {
+        "custom_css_class": "custom-story-video-embed",
+        "heading": "",
+        "heading_size": "h1",
+        "enable_video_looping": false,
+        "video": "shopify://files/videos/dc3df06d2f1c48af98902d5198338d8a.mp4",
+        "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+        "description": "Toit Studio homeware being made by hand",
+        "full_width": false,
+        "color_scheme": "scheme-0130ff2c-5d75-4e86-be8d-b4ab3796a5ff",
+        "padding_top": 0,
+        "padding_bottom": 96
+      }
+    },
+    "multicolumn_JTzyeW": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_6ebfQr": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Drinkware.avif",
+            "title": "Drinkware",
+            "text": "<p>Mugs, cups and pieces designed around everyday drinks and service.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_JgVnAW": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Tableware.avif",
+            "title": "Tableware",
+            "text": "<p>Plates, bowls and other essentials for everyday dining.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_C7y6Uf": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Kitchenware_Serveware.avif",
+            "title": "Kitchenware & Serveware",
+            "text": "<p>Functional pieces for preparation, presentation and the table.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_CgGzRn": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Decor.avif",
+            "title": "Décor",
+            "text": "<p>Objects that help complete the visual language of a space.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_6ebfQr",
+        "column_JgVnAW",
+        "column_C7y6Uf",
+        "column_CgGzRn"
+      ],
+      "name": "t:sections.multicolumn.presets.name",
+      "settings": {
+        "custom_css_class": "custom-offer custom-collab-offer",
+        "title": "",
+        "heading_size": "h1",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "button_label": "",
+        "button_link": "",
+        "columns_desktop": 2,
+        "column_alignment": "left",
+        "background_style": "none",
+        "color_scheme": "scheme-0130ff2c-5d75-4e86-be8d-b4ab3796a5ff",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "main",
+    "image_banner_fznyDm",
+    "basmil_video_7JBjGU",
+    "rich_text_edJKHX",
+    "story_founder",
+    "story_sustainability",
+    "story_video",
+    "multicolumn_JTzyeW"
+  ]
+}
