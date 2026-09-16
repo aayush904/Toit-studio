@@ -1,0 +1,412 @@
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 768px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="color-{{ section.settings.color_scheme }} gradient{% if section.settings.custom_css_class != blank %} {{ section.settings.custom_css_class }}{% endif %}">
+  <div class="enquiry page-width section-{{ section.id }}-padding">
+    <div class="enquiry__intro">
+      {%- if section.settings.heading != blank -%}
+        <h2 class="enquiry__heading inline-richtext {{ section.settings.heading_size }}">
+          {{ section.settings.heading }}
+        </h2>
+      {%- endif -%}
+
+      {%- if section.settings.text != blank -%}
+        <div class="enquiry__text rte">{{ section.settings.text }}</div>
+      {%- endif -%}
+
+      {%- if section.settings.address != blank
+          or section.settings.email != blank
+          or section.settings.phone != blank
+      -%}
+        <dl class="enquiry__details">
+          {%- if section.settings.address != blank -%}
+            <div class="enquiry__detail">
+              <dt class="enquiry__detail-label">
+                <span class="enquiry__detail-icon">
+                  {{- 'icon-enquiry-address.svg' | inline_asset_content -}}
+                </span>
+                {{ section.settings.address_label | escape }}
+              </dt>
+              <dd class="enquiry__detail-value">{{ section.settings.address | escape }}</dd>
+            </div>
+          {%- endif -%}
+
+          {%- if section.settings.email != blank -%}
+            <div class="enquiry__detail">
+              <dt class="enquiry__detail-label">
+                <span class="enquiry__detail-icon">
+                  {{- 'icon-enquiry-email.svg' | inline_asset_content -}}
+                </span>
+                {{ section.settings.email_label | escape }}
+              </dt>
+              <dd class="enquiry__detail-value">
+                <a href="mailto:{{ section.settings.email }}">{{ section.settings.email }}</a>
+              </dd>
+            </div>
+          {%- endif -%}
+
+          {%- if section.settings.phone != blank -%}
+            {%- assign tel = section.settings.phone | remove: ' ' | remove: '-' | remove: '(' | remove: ')' -%}
+            <div class="enquiry__detail">
+              <dt class="enquiry__detail-label">
+                <span class="enquiry__detail-icon">
+                  {{- 'icon-enquiry-phone.svg' | inline_asset_content -}}
+                </span>
+                {{ section.settings.phone_label | escape }}
+              </dt>
+              <dd class="enquiry__detail-value">
+                <a href="tel:{{ tel }}">{{ section.settings.phone }}</a>
+              </dd>
+            </div>
+          {%- endif -%}
+        </dl>
+      {%- endif -%}
+    </div>
+
+    <div class="enquiry__form-wrap">
+      {%- form 'contact', id: 'EnquiryForm', class: 'enquiry__form' -%}
+        {%- if form.posted_successfully? -%}
+          <div class="enquiry__message enquiry__message--success form-status" role="status" tabindex="-1" autofocus>
+            {{- 'icon-success.svg' | inline_asset_content -}}
+            {{ section.settings.success_message | default: 'Thanks — your enquiry is on its way. We will be in touch shortly.' }}
+          </div>
+        {%- elsif form.errors -%}
+          <div class="enquiry__message enquiry__message--error form-status" role="alert" tabindex="-1" autofocus>
+            {{- 'icon-error.svg' | inline_asset_content -}}
+            {{ form.errors.translated_fields.email | capitalize }}
+            {{ form.errors.messages.email }}
+          </div>
+        {%- endif -%}
+
+        <div class="enquiry__grid">
+          <div class="enquiry__field">
+            <label class="enquiry__label" for="EnquiryFirstName">
+              {{ section.settings.label_first_name | escape }}<span class="enquiry__required">*</span>
+            </label>
+            <input
+              class="enquiry__input"
+              type="text"
+              id="EnquiryFirstName"
+              name="contact[First name]"
+              placeholder="{{ section.settings.ph_first_name | escape }}"
+              autocomplete="given-name"
+              required
+            >
+          </div>
+
+          <div class="enquiry__field">
+            <label class="enquiry__label" for="EnquiryLastName">
+              {{ section.settings.label_last_name | escape }}<span class="enquiry__required">*</span>
+            </label>
+            <input
+              class="enquiry__input"
+              type="text"
+              id="EnquiryLastName"
+              name="contact[Last name]"
+              placeholder="{{ section.settings.ph_last_name | escape }}"
+              autocomplete="family-name"
+              required
+            >
+          </div>
+
+          <div class="enquiry__field enquiry__field--full">
+            <label class="enquiry__label" for="EnquiryReason">
+              {{ section.settings.label_reason | escape }}<span class="enquiry__required">*</span>
+            </label>
+            <div class="enquiry__select-wrap">
+              <select
+                class="enquiry__input enquiry__select"
+                id="EnquiryReason"
+                name="contact[{{ section.settings.label_reason }}]"
+                required
+              >
+                <option value="" disabled selected>{{ section.settings.ph_reason | escape }}</option>
+                {%- assign reasons = section.settings.reason_options | newline_to_br | split: '<br />' -%}
+                {%- for reason in reasons -%}
+                  {%- assign r = reason | strip -%}
+                  {%- if r != blank -%}
+                    <option value="{{ r | escape }}">{{ r | escape }}</option>
+                  {%- endif -%}
+                {%- endfor -%}
+              </select>
+              <span class="enquiry__select-caret" aria-hidden="true">
+                {{- 'icon-caret-facets.svg' | inline_asset_content -}}
+              </span>
+            </div>
+          </div>
+
+          <div class="enquiry__field">
+            <label class="enquiry__label" for="EnquiryEmail">
+              {{ section.settings.label_email | escape }}<span class="enquiry__required">*</span>
+            </label>
+            <input
+              class="enquiry__input{% if form.errors contains 'email' %} enquiry__input--error{% endif %}"
+              type="email"
+              id="EnquiryEmail"
+              name="contact[email]"
+              value="{{ form.email }}"
+              placeholder="{{ section.settings.ph_email | escape }}"
+              autocomplete="email"
+              spellcheck="false"
+              autocapitalize="off"
+              required
+            >
+          </div>
+
+          <div class="enquiry__field">
+            <label class="enquiry__label" for="EnquiryPhone">
+              {{ section.settings.label_phone | escape }}<span class="enquiry__required">*</span>
+            </label>
+            <input
+              class="enquiry__input"
+              type="tel"
+              id="EnquiryPhone"
+              name="contact[Phone number]"
+              placeholder="{{ section.settings.ph_phone | escape }}"
+              autocomplete="tel"
+              required
+            >
+          </div>
+
+          <div class="enquiry__field enquiry__field--full">
+            <label class="enquiry__label" for="EnquiryCategory">
+              {{ section.settings.label_category | escape }}
+            </label>
+            <div class="enquiry__select-wrap">
+              <select
+                class="enquiry__input enquiry__select"
+                id="EnquiryCategory"
+                name="contact[{{ section.settings.label_category }}]"
+              >
+                <option value="" disabled selected>{{ section.settings.ph_category | escape }}</option>
+                {%- assign cats = section.settings.category_options | newline_to_br | split: '<br />' -%}
+                {%- for cat in cats -%}
+                  {%- assign c = cat | strip -%}
+                  {%- if c != blank -%}
+                    <option value="{{ c | escape }}">{{ c | escape }}</option>
+                  {%- endif -%}
+                {%- endfor -%}
+              </select>
+              <span class="enquiry__select-caret" aria-hidden="true">
+                {{- 'icon-caret-facets.svg' | inline_asset_content -}}
+              </span>
+            </div>
+          </div>
+
+          <div class="enquiry__field">
+            <label class="enquiry__label" for="EnquiryQuantity">
+              {{ section.settings.label_quantity | escape }}
+            </label>
+            <input
+              class="enquiry__input"
+              type="text"
+              id="EnquiryQuantity"
+              name="contact[Approximate quantity]"
+              placeholder="{{ section.settings.ph_quantity | escape }}"
+            >
+          </div>
+
+          <div class="enquiry__field">
+            <label class="enquiry__label" for="EnquiryOrder">
+              {{ section.settings.label_order | escape }}
+            </label>
+            <input
+              class="enquiry__input"
+              type="text"
+              id="EnquiryOrder"
+              name="contact[Order number]"
+              placeholder="{{ section.settings.ph_order | escape }}"
+            >
+          </div>
+
+          <div class="enquiry__field enquiry__field--full">
+            <label class="enquiry__label" for="EnquiryBusiness">
+              {{ section.settings.label_business | escape }}
+            </label>
+            <input
+              class="enquiry__input"
+              type="text"
+              id="EnquiryBusiness"
+              name="contact[Business or organisation]"
+              placeholder="{{ section.settings.ph_business | escape }}"
+            >
+          </div>
+
+          <div class="enquiry__field enquiry__field--full">
+            <label class="enquiry__label" for="EnquiryMessage">
+              {{ section.settings.label_message | escape }}
+            </label>
+            <textarea
+              class="enquiry__input enquiry__textarea"
+              id="EnquiryMessage"
+              name="contact[body]"
+              rows="1"
+              placeholder="{{ section.settings.ph_message | escape }}"
+            ></textarea>
+          </div>
+        </div>
+
+        {%- if section.settings.helper_note != blank -%}
+          <p class="enquiry__note">{{ section.settings.helper_note }}</p>
+        {%- endif -%}
+
+        <button type="submit" class="enquiry__submit button">
+          <span>{{ section.settings.button_label | escape }}</span>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true" focusable="false">
+            <path d="M6 3L11 8L6 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      {%- endform -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Enquiry form",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "custom_css_class",
+      "label": "Custom CSS class",
+      "info": "Add a class here to target this section from assets/custom.css"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Tell us what you're looking for."
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "options": [
+        { "value": "h2", "label": "Medium" },
+        { "value": "h1", "label": "Large" },
+        { "value": "h0", "label": "Extra large" }
+      ],
+      "default": "h1",
+      "label": "Heading size"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text below heading",
+      "default": "<p>Not every question fits neatly into one category. Use our enquiry form and give us a little context so we can understand what you need and get your message to the right person.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Contact details"
+    },
+    { "type": "text", "id": "address_label", "label": "Address label", "default": "Address" },
+    { "type": "text", "id": "address", "label": "Address" },
+    { "type": "text", "id": "email_label", "label": "Email label", "default": "Email" },
+    { "type": "text", "id": "email", "label": "Email address" },
+    { "type": "text", "id": "phone_label", "label": "Phone label", "default": "Phone" },
+    { "type": "text", "id": "phone", "label": "Phone number" },
+    {
+      "type": "header",
+      "content": "Dropdown options",
+      "info": "One option per line."
+    },
+    {
+      "type": "textarea",
+      "id": "reason_options",
+      "label": "\"What brings you here?\" options",
+      "default": "General enquiry\nB2B or wholesale\nGifting\nCollaboration\nOrder support\nSomething else"
+    },
+    {
+      "type": "textarea",
+      "id": "category_options",
+      "label": "\"What caught your eye?\" options",
+      "default": "Drinkware\nTableware\nKitchenware\nDecor\nBundles\nNot sure yet"
+    },
+    {
+      "type": "header",
+      "content": "Field labels"
+    },
+    { "type": "text", "id": "label_first_name", "label": "First name", "default": "First name" },
+    { "type": "text", "id": "label_last_name", "label": "Last name", "default": "Last name" },
+    { "type": "text", "id": "label_reason", "label": "Reason", "default": "What brings you here?" },
+    { "type": "text", "id": "label_email", "label": "Email", "default": "Email" },
+    { "type": "text", "id": "label_phone", "label": "Phone", "default": "Phone number" },
+    { "type": "text", "id": "label_category", "label": "Category", "default": "What caught your eye?" },
+    { "type": "text", "id": "label_quantity", "label": "Quantity", "default": "Approximate quantity" },
+    { "type": "text", "id": "label_order", "label": "Order number", "default": "Order number" },
+    { "type": "text", "id": "label_business", "label": "Business", "default": "Business/Organization" },
+    { "type": "text", "id": "label_message", "label": "Message", "default": "Your message" },
+    {
+      "type": "header",
+      "content": "Placeholders"
+    },
+    { "type": "text", "id": "ph_first_name", "label": "First name", "default": "First name" },
+    { "type": "text", "id": "ph_last_name", "label": "Last name", "default": "Last name" },
+    { "type": "text", "id": "ph_reason", "label": "Reason", "default": "Please Select" },
+    { "type": "text", "id": "ph_email", "label": "Email", "default": "Email address" },
+    { "type": "text", "id": "ph_phone", "label": "Phone", "default": "Phone number" },
+    { "type": "text", "id": "ph_category", "label": "Category", "default": "Select Product Category" },
+    { "type": "text", "id": "ph_quantity", "label": "Quantity", "default": "How Much Would You Like?" },
+    { "type": "text", "id": "ph_order", "label": "Order number", "default": "For Existing Order Enquiries" },
+    { "type": "text", "id": "ph_business", "label": "Business", "default": "Business/Organization Name" },
+    { "type": "text", "id": "ph_message", "label": "Message", "default": "Type Your Message" },
+    {
+      "type": "header",
+      "content": "Submit"
+    },
+    {
+      "type": "richtext",
+      "id": "helper_note",
+      "label": "Note above the button",
+      "default": "<p>For B2B, gifting and collaboration enquiries, sharing a few details about your requirement, quantity, timeline or idea will help us understand what you are looking for from the beginning.</p>"
+    },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "Submit enquiry" },
+    { "type": "text", "id": "success_message", "label": "Success message", "default": "Thanks — your enquiry is on its way. We will be in touch shortly." },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Colour scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 140,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 140,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 96
+    }
+  ],
+  "presets": [
+    { "name": "Enquiry form" }
+  ]
+}
+{% endschema %}
