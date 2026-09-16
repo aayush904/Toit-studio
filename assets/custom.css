@@ -2377,3 +2377,15 @@ product-info .page-width.custom-product {
     margin-right: 0;
   }
 }
+
+/* "Made for Today" (Our Story) -- tighter block padding on phones only.
+   Scoped to its own class rather than .custom-story-intro, which Collaborate,
+   Gifting and Wholesale also use. Desktop keeps the section's own 96px.
+   .rich-text doubles the specificity so this beats the section's inline
+   padding class, which is injected after custom.css. */
+@media screen and (max-width: 749px) {
+  .rich-text.custom-made-for-today {
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+}
