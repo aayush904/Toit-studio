@@ -2608,10 +2608,14 @@ letter-spacing: 0%;
   padding: 1.6rem 2.8rem;
   border: none;
   border-radius: 55px;
-  background: #7c8d82;
+  background: #647a73;
   color: #fff;
-  font-size: 13px;
-  letter-spacing: 0.08em;
+  font-weight: var(--font-weight-medium);
+  font-size: 18px;
+  line-height: 100%;
+  /* 0.06em rather than 6%: equivalent here, and percentage letter-spacing has
+     patchier browser support than the em form. */
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   cursor: pointer;
   box-shadow: none;
