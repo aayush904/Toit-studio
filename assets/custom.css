@@ -2422,21 +2422,23 @@ product-info .page-width.custom-product {
   padding-bottom: 1.2rem;
 }
 
+/* ADDRESS / EMAIL / PHONE labels.
+   "font-style: Medium" is a Figma weight name, not a CSS font-style, so it is
+   expressed as font-weight. 6% becomes 0.06em -- same 1.08px at this size,
+   with broader support. vertical-align does nothing on a flex container; the
+   icon and text are centred by align-items already. */
 .enquiry__detail-label {
   display: flex;
   align-items: center;
   gap: 0.8rem;
   margin: 0 0 0.6rem;
-
-font-weight: 500;
-font-style: Medium;
-font-size: 18px;
-
-line-height: 100%;
-letter-spacing: 6%;
-vertical-align: middle;
-text-transform: uppercase;
-
+  font-family: 'Overused Grotesk', var(--font-heading-family, sans-serif);
+  font-weight: var(--font-weight-medium);
+  font-size: 18px;
+  line-height: 100%;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #647a73;
 }
 
 /* The supplied icons carry their own #647A73 fill and are not all square
