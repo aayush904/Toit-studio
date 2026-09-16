@@ -258,7 +258,13 @@
         </div>
 
         {%- if section.settings.helper_note != blank -%}
-          <p class="enquiry__note">{{ section.settings.helper_note }}</p>
+          {%- comment -%}
+            A div, not a p: helper_note is a richtext setting and emits its own
+            <p>. Nesting p inside p is invalid, so the browser closed the outer
+            one early and hoisted the inner one out as a sibling, leaving the
+            styled element empty.
+          {%- endcomment -%}
+          <div class="enquiry__note rte">{{ section.settings.helper_note }}</div>
         {%- endif -%}
 
         <button type="submit" class="enquiry__submit button">

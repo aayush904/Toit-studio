@@ -2591,8 +2591,12 @@ letter-spacing: 0%;
   color: #5b5553;
 }
 
+/* The richtext setting emits its own <p>; make sure it takes the same
+   treatment rather than relying on inheritance alone. */
 .enquiry__note p {
   margin: 0;
+  font: inherit;
+  color: inherit;
 }
 
 .enquiry__submit {
