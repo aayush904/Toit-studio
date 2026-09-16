@@ -2349,3 +2349,29 @@ product-info .page-width.custom-product {
   width: 20px;
   height: 20px;
 }
+
+/* ==========================================================================
+   Gifting CTA on phones: smaller button, card flush to the screen edges.
+
+   The band is targeted with :has() rather than by adding another class in
+   Liquid, so the markup stays as it is for every other rich-text section.
+   ========================================================================== */
+@media screen and (max-width: 749px) {
+  .custom-gifting-cta .rich-text__buttons .button {
+    font-size: 1.2rem;
+    padding: 1rem 2rem;
+  }
+
+  /* Drop the band's own spacing and the page-width inset around it. */
+  .rich-text-section:has(.custom-gifting-cta) {
+    padding: 0;
+    margin: 0;
+  }
+
+  .rich-text-section:has(.custom-gifting-cta) > .isolate {
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
