@@ -2400,7 +2400,7 @@ product-info .page-width.custom-product {
 
 .enquiry__text {
   color: #5b5553;
-  font-size: 15px;
+  font-size: 18px;
   line-height: 160%;
   margin: 0 0 4rem;
 }
@@ -2427,10 +2427,16 @@ product-info .page-width.custom-product {
   align-items: center;
   gap: 0.8rem;
   margin: 0 0 0.6rem;
-  font-size: 11px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: #807a77;
+
+font-weight: 500;
+font-style: Medium;
+font-size: 18px;
+
+line-height: 100%;
+letter-spacing: 6%;
+vertical-align: middle;
+text-transform: uppercase;
+
 }
 
 .enquiry__detail-icon {
@@ -2448,8 +2454,16 @@ product-info .page-width.custom-product {
 
 .enquiry__detail-value {
   margin: 0;
-  font-size: 15px;
+
   color: #2b2725;
+  font-family: Overused Grotesk;
+font-weight: 400;
+font-style: Regular;
+font-size: 20px;
+
+line-height: 100%;
+letter-spacing: 0%;
+
 }
 
 .enquiry__detail-value a {
@@ -2472,10 +2486,17 @@ product-info .page-width.custom-product {
 .enquiry__label {
   display: block;
   margin: 0 0 1.2rem;
-  font-size: 11px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #5b5553;
+  color: #647A73;
+font-weight: 500;
+font-style: Medium;
+font-size: 18px;
+line-height: 100%;
+letter-spacing: 6%;
+vertical-align: middle;
+text-transform: uppercase;
+
 }
 
 .enquiry__required {
@@ -2490,14 +2511,19 @@ product-info .page-width.custom-product {
   margin: 0;
   padding: 0 0 1rem;
   border: none;
-  border-bottom: 1px solid rgba(78, 73, 71, 0.25);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
   border-radius: 0;
   background: transparent;
   box-shadow: none;
-  font-family: inherit;
-  font-size: 15px;
-  color: #2b2725;
+  color: #ADA5A1;
   min-height: 0;
+font-weight: 350;
+font-style: Book;
+font-size: 18px;
+
+line-height: 180%;
+letter-spacing: 0%;
+
 }
 
 .enquiry__input::placeholder {
@@ -2612,7 +2638,7 @@ product-info .page-width.custom-product {
 @media screen and (min-width: 990px) {
   .enquiry {
     display: grid;
-    grid-template-columns: minmax(0, 26rem) minmax(0, 1fr);
+    grid-template-columns: minmax(0, 39rem) minmax(0, 1fr);
     column-gap: 11rem;
     align-items: start;
   }
@@ -2626,5 +2652,13 @@ product-info .page-width.custom-product {
   .enquiry__details {
     margin-bottom: 4.8rem;
     max-width: none;
+  }
+}
+
+
+
+.enquiry__message{
+  .icon{
+    height:40px;
   }
 }
