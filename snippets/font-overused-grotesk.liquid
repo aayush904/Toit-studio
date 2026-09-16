@@ -18,11 +18,19 @@
     font-display: swap;
   }
 
+  {% comment %}
+    Italics come from the variable font's `slnt` axis (-10deg to 0), which
+    covers the full 300-900 weight range -- the static italic file is Regular
+    only, so "Light Italic" could not render from it. It stays as the fallback
+    src for browsers without variable-font support. CSS oblique angles run
+    opposite in sign to slnt; the browser handles that mapping.
+  {% endcomment %}
   @font-face {
     font-family: 'Overused Grotesk';
-    src: url({{ 'overused-grotesk-italic.woff2' | asset_url }}) format('woff2');
-    font-weight: 400;
-    font-style: italic;
+    src: url({{ 'overused-grotesk-variable.woff2' | asset_url }}) format('woff2-variations'),
+         url({{ 'overused-grotesk-italic.woff2' | asset_url }}) format('woff2');
+    font-weight: 300 900;
+    font-style: oblique 0deg 10deg;
     font-display: swap;
   }
 

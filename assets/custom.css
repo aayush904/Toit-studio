@@ -2439,17 +2439,21 @@ text-transform: uppercase;
 
 }
 
+/* The supplied icons carry their own #647A73 fill and are not all square
+   (the address pin is 18x17), so height is normalised and width left to the
+   artwork. The wrapper is fixed so all three labels start at the same x. */
 .enquiry__detail-icon {
   display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
   flex: 0 0 auto;
-  width: 14px;
-  height: 14px;
-  color: #647a73;
+  width: 18px;
+  height: 16px;
 }
 
 .enquiry__detail-icon svg {
-  width: 14px;
-  height: 14px;
+  width: auto;
+  height: 16px;
 }
 
 .enquiry__detail-value {
@@ -2578,10 +2582,13 @@ letter-spacing: 0%;
 
 .enquiry__note {
   margin: 3.2rem 0 0;
+  font-family: 'Overused Grotesk', var(--font-heading-family, sans-serif);
+  font-weight: var(--font-weight-light);
   font-style: italic;
-  font-size: 13px;
+  font-size: 16px;
   line-height: 150%;
-  color: #807a77;
+  letter-spacing: 0;
+  color: #5b5553;
 }
 
 .enquiry__note p {
