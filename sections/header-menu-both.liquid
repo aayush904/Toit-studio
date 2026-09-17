@@ -403,7 +403,17 @@
               {{- 'icon-hamburger.svg' | inline_asset_content -}}
             </span>
           </summary>
-          <div id="menu-drawer" class="gradient menu-drawer motion-reduce" tabindex="-1">
+          {%- comment -%}
+            The colour scheme class was missing here, so the drawer defined
+            none of its own colour variables and only looked opaque because
+            custom properties inherit from <body>. Defaulted rather than left
+            bare, so an unset setting still yields a real scheme.
+          {%- endcomment -%}
+          <div
+            id="menu-drawer"
+            class="gradient menu-drawer motion-reduce color-{{ section.settings.menu_color_scheme | default: 'scheme-1' }}"
+            tabindex="-1"
+          >
             <div class="menu-drawer__inner-container">
               {%- if section.settings.menu_drawer_background_image != blank -%}
                 <div

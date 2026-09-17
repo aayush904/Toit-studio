@@ -2801,3 +2801,33 @@ div#insta-feed > h2 {
   position: relative;
   z-index: 10;
 }
+
+/* ==========================================================================
+   Mobile menu drawer: guarantee an opaque panel.
+
+   Two compounding problems left the drawer transparent on iOS Safari while
+   its links stayed tappable:
+
+   1. The header's "menu colour scheme" setting was empty, so the drawer
+      rendered class="gradient menu-drawer color-" -- not a valid scheme
+      class. It therefore defined none of its own colour variables and only
+      looked white in Chrome because custom properties inherit from <body>.
+      Now set to scheme-1 in header-group.json.
+
+   2. .gradient (base.css:3276) also applies background-attachment: fixed.
+      On an element that is itself position: fixed, iOS Safari can fail to
+      paint the background entirely. This is the same declaration that
+      scaled the rich-text background to the viewport instead of the card.
+
+   Each colour is declared twice: a literal first, then the scheme-aware
+   value. If the variable is ever missing the second declaration is invalid
+   and the literal stands, so the panel can never end up transparent.
+   ========================================================================== */
+.menu-drawer,
+.menu-drawer__submenu {
+  background-color: #ffffff;
+  background-color: rgb(var(--color-background));
+  background-attachment: scroll;
+  color: #0d0d0d;
+  color: rgb(var(--color-foreground));
+}
