@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "main": {
@@ -404,7 +395,8 @@
       ],
       "settings": {
         "custom_css_class": "custom-insta-feed",
-        "include_margins": true
+        "include_margins": true,
+        "color_scheme": "scheme-0130ff2c-5d75-4e86-be8d-b4ab3796a5ff"
       }
     }
   },

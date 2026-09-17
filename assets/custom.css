@@ -2755,12 +2755,6 @@ div#insta-feed > h2 {
   }
 }
 
-/* The Instafeed app section has no colour-scheme setting of its own, so the
-   white background from the heading above it is continued here -- otherwise
-   the band would change colour halfway down. */
-.custom-insta-feed {
-  background: #ffffff;
-}
 
 /* Filter dropdowns open instantly. component-facets.css:220 runs a 200ms
    `animateMenuOpen` on the panel, which reads as lag when you click a filter.

@@ -234,7 +234,8 @@
       ],
       "settings": {
         "custom_css_class": "custom-insta-feed",
-        "include_margins": true
+        "include_margins": true,
+        "color_scheme": "scheme-1"
       }
     }
   },
