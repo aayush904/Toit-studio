@@ -2769,3 +2769,19 @@ div#insta-feed > h2 {
 #main-collection-filters .facets__disclosure-vertical[open] .facets__display-vertical {
   animation: none;
 }
+
+/* Collection filtering renders instantly.
+
+   Dawn replaces the section HTML on every facet change and re-runs its
+   scroll-reveal, so the filter bar faded in over 600ms and each card slid in
+   on a stagger -- results appeared to trickle rather than snap. The reveal is
+   left alone everywhere else, since it is a global theme setting. */
+.facets-container.scroll-trigger,
+#product-grid .grid__item.scroll-trigger,
+#main-collection-filters .scroll-trigger {
+  animation: none !important;
+  transition: none !important;
+  opacity: 1 !important;
+  transform: none !important;
+  visibility: visible !important;
+}

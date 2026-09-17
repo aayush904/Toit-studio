@@ -3,12 +3,22 @@ class FacetFiltersForm extends HTMLElement {
     super();
     this.onActiveFilterClick = this.onActiveFilterClick.bind(this);
 
+    // A debounce only earns its keep on the price range's number inputs, where
+    // it lets someone finish typing before the grid reloads. Checkboxes,
+    // radios and selects are single discrete choices, so waiting on them just
+    // reads as lag -- they submit straight away. Was a flat 800ms on everything.
     this.debouncedOnSubmit = debounce((event) => {
       this.onSubmitHandler(event);
-    }, 800);
+    }, 300);
 
     const facetForm = this.querySelector('form');
-    facetForm.addEventListener('input', this.debouncedOnSubmit.bind(this));
+    facetForm.addEventListener('input', (event) => {
+      if (event.target.matches('input[type="checkbox"], input[type="radio"], select')) {
+        this.onSubmitHandler(event);
+      } else {
+        this.debouncedOnSubmit(event);
+      }
+    });
 
     const facetWrapper = this.querySelector('#FacetsWrapperDesktop');
     if (facetWrapper) facetWrapper.addEventListener('keyup', onKeyUpEscape);
