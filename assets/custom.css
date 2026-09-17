@@ -1542,11 +1542,15 @@ color:#424242;
   height: 2rem;
 }
 
+/* "font-style: Book" is a Figma weight name, not a CSS font-style -- Book is
+   the 350 step on the variable font's weight axis. */
 .custom-product .product__accordion .accordion__content p {
   font-family: 'Overused Grotesk', var(--font-heading-family, sans-serif);
+  font-weight: var(--font-weight-book);
   font-size: 16px;
   line-height: 150%;
-  color: #5b5553;
+  letter-spacing: 0;
+  color: #807a77;
   padding-bottom: 2.4rem;
 }
 
