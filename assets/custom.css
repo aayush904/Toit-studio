@@ -2895,3 +2895,28 @@ div#insta-feed > h2 {
   box-shadow: var(--drawer-shadow-horizontal-offset) var(--drawer-shadow-vertical-offset)
     var(--drawer-shadow-blur-radius) rgba(var(--color-shadow), var(--drawer-shadow-opacity));
 }
+
+/* ==========================================================================
+   Sliding panels must not use a viewport-anchored background.
+
+   .gradient (base.css:3276) sets background-attachment: fixed, and the mobile
+   filter panel carries that class on its inner wrapper, its main area and
+   each submenu. A fixed background is painted relative to the viewport, so
+   while the panel is sliding in on a transform the browser has nothing to
+   paint in place -- the panel arrives see-through and the product cards show
+   through it for the length of the animation.
+
+   Third bug from this one declaration: it also scaled the rich-text
+   background to the window instead of its card, and left the nav drawer
+   transparent on iOS. Every panel that animates gets a normal background.
+   ========================================================================== */
+.mobile-facets,
+.mobile-facets .gradient,
+.mobile-facets__inner,
+.mobile-facets__main,
+.mobile-facets__submenu,
+.menu-drawer,
+.menu-drawer .gradient,
+.menu-drawer__submenu {
+  background-attachment: scroll !important;
+}
