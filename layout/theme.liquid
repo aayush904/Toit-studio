@@ -28,13 +28,12 @@
 
 
 
-    {{"jquery.min.js" | asset_url | script_tag }}
-    {{"slick.min.js" | asset_url | script_tag }}
-    {{ 'slick-init.js' | asset_url | script_tag }}
+    <script src="{{ 'jquery.min.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'slick.min.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'slick-init.js' | asset_url }}" defer="defer"></script>
 
 
-    <script src="{{ 'constants.js' | asset_url }}" defer="defer"></>
-    <script src="{{ 'pubsub.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'constants.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'pubsub.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'global.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'details-disclosure.js' | asset_url }}" defer="defer"></script>
