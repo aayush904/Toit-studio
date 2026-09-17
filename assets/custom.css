@@ -2831,3 +2831,18 @@ div#insta-feed > h2 {
   color: #0d0d0d;
   color: rgb(var(--color-foreground));
 }
+
+/* iOS Safari can skip painting the background of a position: fixed element,
+   which is what leaves the drawer see-through while its links stay tappable.
+   Setting background-color on .menu-drawer alone therefore did not help.
+
+   .menu-drawer__inner-container is ordinary flow (position: relative) and
+   fills the panel, so painting that gives an opaque background regardless of
+   how the fixed ancestor behaves. Literal values, not custom properties, so
+   nothing can resolve away; the decorative pattern sits above this at
+   z-index 0 and is unaffected. */
+.menu-drawer__inner-container,
+.menu-drawer__submenu .menu-drawer__inner-container {
+  background-color: #ffffff !important;
+  background-image: none !important;
+}
