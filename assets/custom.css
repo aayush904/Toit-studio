@@ -2791,15 +2791,23 @@ div#insta-feed > h2 {
 
    Two parts: cards contain their own stacking, so their internal layering
    cannot leak out; and the disclosure is raised above grid content.
-   ========================================================================== */
-.card-wrapper {
-  isolation: isolate;
-}
 
-#main-collection-filters .facets__disclosure,
-#main-collection-filters .facets__disclosure-vertical {
-  position: relative;
-  z-index: 10;
+   Desktop only, from 750px -- the width at which .facets.small-hide stops
+   being hidden and this dropdown actually exists. Below it the filters open
+   as their own drawer instead, so neither rule has anything to do: the
+   isolation is unnecessary, and raising a hidden disclosure to z-index 10
+   would only risk competing with the nav drawer, which sits at 3.
+   ========================================================================== */
+@media screen and (min-width: 750px) {
+  .card-wrapper {
+    isolation: isolate;
+  }
+
+  #main-collection-filters .facets__disclosure,
+  #main-collection-filters .facets__disclosure-vertical {
+    position: relative;
+    z-index: 10;
+  }
 }
 
 /* ==========================================================================
