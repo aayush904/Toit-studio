@@ -2865,3 +2865,33 @@ div#insta-feed > h2 {
     z-index: auto;
   }
 }
+
+/* ==========================================================================
+   Drawer panels: box-shadow instead of filter: drop-shadow().
+
+   component-menu-drawer.css:47 and component-facets.css:784 both put
+   filter: drop-shadow() on a panel that also has a background-color and an
+   animating transform. A filter forces the element onto its own compositing
+   layer, and WebKit can paint that layer without the background -- the panel
+   is laid out and hit-testable but see-through. That is the mobile filter
+   panel sliding in with no background, and the nav drawer staying
+   transparent on iOS while its links still work.
+
+   It also explains why setting a background on the drawer's inner container
+   did not help: the child sits inside the same filtered layer.
+
+   box-shadow is visually identical on a rectangular panel and needs no
+   compositing layer.
+   ========================================================================== */
+/* !important because both stylesheets are injected by their sections, so they
+   load after custom.css and win on equal specificity. The theme's shadow is
+   set to 0 opacity anyway -- it paints nothing while still costing a layer --
+   so the box-shadow here is only so a shadow still works if it is ever
+   turned back on in settings. */
+.menu-drawer,
+.mobile-facets__inner,
+.menu-drawer__submenu {
+  filter: none !important;
+  box-shadow: var(--drawer-shadow-horizontal-offset) var(--drawer-shadow-vertical-offset)
+    var(--drawer-shadow-blur-radius) rgba(var(--color-shadow), var(--drawer-shadow-opacity));
+}
