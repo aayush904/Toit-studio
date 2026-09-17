@@ -2779,3 +2779,25 @@ div#insta-feed > h2 {
   transform: none !important;
   visibility: visible !important;
 }
+
+/* ==========================================================================
+   Filter dropdown must sit above the product grid.
+
+   The card image overlay link needs z-index 3 to clear .card__content (2)
+   inside its own card, but nothing between the cards and the filter panel
+   established a stacking context -- so that 3 competed directly with the
+   panel's 2 and, being later in the DOM, the cards painted over the open
+   dropdown.
+
+   Two parts: cards contain their own stacking, so their internal layering
+   cannot leak out; and the disclosure is raised above grid content.
+   ========================================================================== */
+.card-wrapper {
+  isolation: isolate;
+}
+
+#main-collection-filters .facets__disclosure,
+#main-collection-filters .facets__disclosure-vertical {
+  position: relative;
+  z-index: 10;
+}
