@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "banner": {
@@ -125,7 +134,7 @@
             "title_color": "#000000",
             "title_size_v2": 50,
             "alignment": "left",
-            "instafeed_margin_top": 0,
+            "instafeed_margin_top": 50,
             "instafeed_margin_bottom": 100,
             "instafeed_margin_sides": 0,
             "show_instagram_link": false,
