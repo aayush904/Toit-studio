@@ -1542,7 +1542,7 @@ color:#424242;
   height: 2rem;
 }
 
-.custom-product .product__accordion .accordion__content {
+.custom-product .product__accordion .accordion__content p {
   font-family: 'Overused Grotesk', var(--font-heading-family, sans-serif);
   font-size: 16px;
   line-height: 150%;
@@ -2102,6 +2102,7 @@ product-info .page-width.custom-product {
   font-size: 18px;
   line-height: 150%;
   letter-spacing: 0;
+  gap:5px;
   color: #5b5553;
 }
 
@@ -2123,7 +2124,7 @@ product-info .page-width.custom-product {
 
 .custom-product .product__info-container .product__description .spec-table dd,
 .custom-product .product__info-container .product__description .spec-table td:last-child {
-  color: #424242;
+  color: #000000;
 }
 
 /* ==========================================================================
