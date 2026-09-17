@@ -418,6 +418,36 @@
         "button_link": "https://instagram.com/toit.studio",
         "section_id": "image-collage-basmil"
       }
+    },
+    "17896241899c6f0ff7": {
+      "type": "apps",
+      "blocks": {
+        "instafeed_app_block_ihB6nG": {
+          "type": "shopify://apps/instafeed/blocks/app-block/c447db20-095d-4a10-9725-b5977662c9d5",
+          "settings": {
+            "title": "",
+            "title_color": "#000000",
+            "title_size_v2": 50,
+            "alignment": "left",
+            "instafeed_margin_top": 50,
+            "instafeed_margin_bottom": 100,
+            "instafeed_margin_sides": 0,
+            "show_instagram_link": false,
+            "link_alignment": "left",
+            "link_color": "#000000",
+            "background_color": "",
+            "feed_id": "",
+            "html_area": ""
+          }
+        }
+      },
+      "block_order": [
+        "instafeed_app_block_ihB6nG"
+      ],
+      "settings": {
+        "custom_css_class": "",
+        "include_margins": true
+      }
     }
   },
   "order": [
@@ -429,6 +459,7 @@
     "image_with_text_trending",
     "multicolumn_offer",
     "image_with_text_everyday",
-    "basmil_images_collage_KYPywD"
+    "basmil_images_collage_KYPywD",
+    "17896241899c6f0ff7"
   ]
 }
