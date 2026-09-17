@@ -536,7 +536,12 @@
         {%- if section.settings.payment_enable -%}
           <div class="footer__payment">
             <span class="footer__payment-label">{{ section.settings.payment_label | default: 'We Accept' }}</span>
-            <span class="footer__payment-icons">{{ 'icon-payment-icons.svg' | inline_asset_content }}</span>
+            {%- comment -%}
+              Cash on Delivery only. icon-payment-icons.svg still holds all
+              four badges (COD, eSewa, fonepay, PayPal) for when the others go
+              live -- swap the filename back to show them again.
+            {%- endcomment -%}
+            <span class="footer__payment-icons">{{ 'icon-payment-cod.svg' | inline_asset_content }}</span>
           </div>
         {%- endif -%}
 

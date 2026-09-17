@@ -2761,3 +2761,11 @@ div#insta-feed > h2 {
 .custom-insta-feed {
   background: #ffffff;
 }
+
+/* Filter dropdowns open instantly. component-facets.css:220 runs a 200ms
+   `animateMenuOpen` on the panel, which reads as lag when you click a filter.
+   Scoped to the collection filter bar so facet drawers elsewhere keep theirs. */
+#main-collection-filters .facets__disclosure[open] .facets__display,
+#main-collection-filters .facets__disclosure-vertical[open] .facets__display-vertical {
+  animation: none;
+}
