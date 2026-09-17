@@ -2854,3 +2854,14 @@ div#insta-feed > h2 {
   background-color: #ffffff !important;
   background-image: none !important;
 }
+
+/* Collection cards drop their overlay z-index on phones.
+
+   Without it the overlay sat at 3 in the root stacking context -- the same
+   level as the nav drawer -- and being later in the DOM it won over the
+   drawer wherever the two overlapped. */
+@media screen and (max-width: 749px) {
+  #product-grid .card__inner > a.card__media-link {
+    z-index: auto;
+  }
+}
