@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "main": {
@@ -293,6 +284,52 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
+    },
+    "insta_heading": {
+      "type": "section-heading-link",
+      "settings": {
+        "custom_css_class": "custom-insta-heading",
+        "heading": "@toit.studio",
+        "heading_size": 50,
+        "heading_size_mobile": 28,
+        "button_label": "Follow us",
+        "button_link": "https://instagram.com/toit.studio",
+        "open_in_new_tab": true,
+        "show_arrow": true,
+        "color_scheme": "scheme-1",
+        "padding_top": 80,
+        "padding_bottom": 0
+      }
+    },
+    "insta_feed": {
+      "type": "apps",
+      "blocks": {
+        "instafeed_app_block": {
+          "type": "shopify://apps/instafeed/blocks/app-block/c447db20-095d-4a10-9725-b5977662c9d5",
+          "settings": {
+            "title": "",
+            "title_color": "#000000",
+            "title_size_v2": 50,
+            "alignment": "left",
+            "instafeed_margin_top": 0,
+            "instafeed_margin_bottom": 100,
+            "instafeed_margin_sides": 0,
+            "show_instagram_link": false,
+            "link_alignment": "left",
+            "link_color": "#000000",
+            "background_color": "",
+            "feed_id": "",
+            "html_area": ""
+          }
+        }
+      },
+      "block_order": [
+        "instafeed_app_block"
+      ],
+      "settings": {
+        "custom_css_class": "custom-insta-feed",
+        "include_margins": true
+      }
     }
   },
   "order": [
@@ -303,6 +340,8 @@
     "story_founder",
     "story_sustainability",
     "story_video",
-    "multicolumn_JTzyeW"
+    "multicolumn_JTzyeW",
+    "insta_heading",
+    "insta_feed"
   ]
 }

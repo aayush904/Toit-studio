@@ -2749,3 +2749,10 @@ div#insta-feed > h2 {
     font-size: 13px;
   }
 }
+
+/* The Instafeed app section has no colour-scheme setting of its own, so the
+   white background from the heading above it is continued here -- otherwise
+   the band would change colour halfway down. */
+.custom-insta-feed {
+  background: #ffffff;
+}
