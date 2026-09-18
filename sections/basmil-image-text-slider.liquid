@@ -258,6 +258,27 @@
 
       }
 
+      /* The slide image is decorative and must never take clicks meant for the
+         heading and links laid over it. That animation makes Safari promote the
+         image to its own compositing layer, and Safari then hit-tests that
+         layer above the overlay text even though the text comes later in the
+         DOM -- which left the banner links dead there while they worked in
+         Chrome. The overlay is also given an explicit stacking order so paint
+         order is not left to chance. */
+      .image-text-slider .slide-content > img,
+      .image-text-slider .slide-image img {
+        pointer-events: none;
+      }
+
+      .image-text-slider .overlay-text {
+        z-index: 2;
+      }
+
+      .image-text-slider .overlay-text a {
+        position: relative;
+        z-index: 3;
+      }
+
       .overlay-text {
       position: absolute;
       top: 50%;
