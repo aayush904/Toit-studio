@@ -3017,3 +3017,16 @@ div#insta-feed > h2 {
 .drawer__footer summary > * {
   pointer-events: none;
 }
+
+/* Safari supports ::details-content but not details:open before Safari 26, so a
+   closed-state rule written with only the :open form leaves content invisible
+   forever. Keep the product accordions and the collection facets exempt. */
+.accordion details::details-content,
+#main-collection-filters details::details-content,
+.facets details::details-content,
+.product__accordion details::details-content {
+  block-size: auto;
+  visibility: visible;
+  opacity: 1;
+  transition: none;
+}

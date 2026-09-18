@@ -58,7 +58,13 @@ menu-drawer > details[open] > summary::before {
   );
 } */
 
-details::details-content {
+/* Scoped to the drawer menus. As a bare `details` selector this hid the content
+   of every accordion and facet disclosure in Safari, which supports
+   ::details-content but not the :open pseudo-class before Safari 26, so the
+   closed rule applied and the open one never matched. `[open]` is a separate
+   rule because an unsupported selector invalidates an entire selector list. */
+menu-drawer details::details-content,
+.mobile-facets details::details-content {
   block-size: 0;
   transition: opacity 0.3s ease, block-size 0.3s ease, visibility 0s 0.3s,
     content-visibility 0s 0.3s;
@@ -67,7 +73,18 @@ details::details-content {
   transition-behavior: allow-discrete;
 }
 
-details:open::details-content {
+menu-drawer details[open]::details-content,
+.mobile-facets details[open]::details-content {
+  block-size: auto;
+  opacity: 1;
+  visibility: visible;
+  overflow: unset;
+  transition: opacity 1s ease, block-size 0.5s ease, visibility 0s,
+    content-visibility 0s;
+}
+
+menu-drawer details:open::details-content,
+.mobile-facets details:open::details-content {
   block-size: auto;
   opacity: 1;
   visibility: visible;

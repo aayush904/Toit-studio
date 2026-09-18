@@ -32,14 +32,6 @@
     <script src="{{ 'slick.min.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'slick-init.js' | asset_url }}" defer="defer"></script>
 
-
-    {%- comment -%}
-      TEMPORARY: prints a diagnostic panel only when ?debug=links is in the
-      URL. Added to identify a Safari-only failure on the collection banner
-      links. Remove this line and assets/debug-banner-links.js once resolved.
-    {%- endcomment -%}
-    <script src="{{ 'debug-banner-links.js' | asset_url }}"></script>
-
     <script src="{{ 'constants.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'pubsub.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'global.js' | asset_url }}" defer="defer"></script>
