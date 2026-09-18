@@ -307,12 +307,30 @@
       left: 0;
       right: 0;
       width: auto;
-      /* Line the overlaid text up with the page-width container used by every
-         other section, even though the section itself is full-bleed. */
-      padding-left: max(60px, calc((100vw - var(--page-width)) / 2 + 60px));
-      padding-right: max(60px, calc((100vw - var(--page-width)) / 2 + 60px));
+      /* Heading and links line up with the header's content edge. The header
+         is .header.page-width, which base.css insets by 16px, 3.2rem from
+         768px and 6rem from 1280px -- and 15px below 768px via custom.css.
+         A flat 60px only matched the widest of those. */
+      padding-left: 15px;
+      padding-right: 15px;
       transform: translateY(-50%);
       text-align: left;
+      }
+
+      @media screen and (min-width: 768px) {
+        .image-text-slider--align-left .overlay-text {
+          padding-left: 3.2rem;
+          padding-right: 3.2rem;
+        }
+      }
+
+      @media screen and (min-width: 1280px) {
+        /* Past --page-width the header stops growing and centres, so the
+           banner has to follow it inwards rather than stay at 6rem. */
+        .image-text-slider--align-left .overlay-text {
+          padding-left: max(6rem, calc((100vw - var(--page-width)) / 2 + 6rem));
+          padding-right: max(6rem, calc((100vw - var(--page-width)) / 2 + 6rem));
+        }
       }
 
       .image-text-slider--align-left .overlay-text:before {
