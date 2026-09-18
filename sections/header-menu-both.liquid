@@ -132,6 +132,18 @@
   }
 </style>
 
+{%- liquid
+  # The transparent header pulls page content up under itself with a negative
+  # margin so a full-bleed hero shows through. Pages that do not open with a
+  # hero (the cart, search results, 404) then render their first heading behind
+  # the header, so the treatment is limited to page types that have one.
+  assign no_hero_page_types = 'product,cart,search,404'
+  assign hero_page = true
+  if no_hero_page_types contains request.page_type
+    assign hero_page = false
+  endif
+-%}
+
 {%- style -%}
     .header {
     padding-top: {{ section.settings.padding_top | times: 0.5 | round: 0 }}px;
@@ -157,7 +169,7 @@
       position: relative;
       width: 100%;
       {% if section.settings.transparent_header %}
-        {%  if request.page_type != 'product'  %}
+        {% if hero_page %}
         margin-bottom:-100%;
       {% endif %}
       {% endif %}
@@ -170,7 +182,7 @@
   {% endif %}
 
       {% if section.settings.transparent_header   %}
-        {%  if request.page_type != 'product'  %}
+        {% if hero_page %}
 
          .section-header:not(.shopify-section-header-sticky):not(.skip-sticky) {
            .svg-wrapper, a, .header__menu-item, .header__active-menu-item {

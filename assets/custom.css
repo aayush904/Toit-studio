@@ -3030,3 +3030,24 @@ div#insta-feed > h2 {
   opacity: 1;
   transition: none;
 }
+
+/* ---------- Cart page ---------- */
+
+/* The line-item totals inherited a 12.9px caption size, too small to read
+   against the 16px product title beside them. */
+.cart-item__totals .price,
+.cart-item__totals .cart-item__old-price,
+.cart-item__price-wrapper .price {
+  font-size: 1.6rem;
+  font-weight: var(--font-weight-regular);
+}
+
+.cart-item__totals .cart-item__old-price {
+  font-weight: var(--font-weight-book);
+}
+
+/* The tax note is body copy, not a heading; `caption-large` left it at 700. */
+.tax-note,
+.tax-note * {
+  font-weight: var(--font-weight-book);
+}
