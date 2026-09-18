@@ -1513,8 +1513,26 @@ color:#424242;
   margin-top: 0;
 }
 
+/* Safari drops a <summary>'s native click-to-toggle when its display is
+   overridden, and component-accordion.css:1 sets `.accordion summary` to
+   flex -- which left these accordions unopenable on Safari while working in
+   Chrome. The summary keeps its default list-item display; the flex row moved
+   to the wrapper added in main-product.liquid. */
 .custom-product .product__info-container .product__accordion.accordion summary {
+  display: list-item;
+  list-style: none;
   padding: 0 0 28px;
+}
+
+.custom-product .product__accordion.accordion summary::-webkit-details-marker {
+  display: none;
+}
+
+.custom-product .product__accordion-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.6rem;
 }
 
 .custom-product .product__info-container .product__accordion.accordion + .product__accordion.accordion summary {

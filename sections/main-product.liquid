@@ -221,7 +221,14 @@
               {%- when 'collapsible_tab' -%}
                 <div class="product__accordion accordion quick-add-hidden" {{ block.shopify_attributes }}>
                   <details id="Details-{{ block.id }}-{{ section.id }}">
+                    {%- comment -%}
+                      The row wrapper exists so `summary` itself does not need
+                      display: flex -- Safari drops a summary's native
+                      click-to-toggle when its display is overridden, which
+                      left these accordions dead on that browser.
+                    {%- endcomment -%}
                     <summary>
+                      <div class="product__accordion-row">
                       <div class="summary__title">
                         {% render 'icon-accordion', icon: block.settings.icon %}
                         <h2 class="h4 accordion__title inline-richtext">
@@ -255,6 +262,7 @@
                           <path d="M3 10L17 10" stroke="currentColor" stroke-width="1.25" stroke-linecap="square" stroke-linejoin="round"></path>
                         </svg>
                       </span>
+                      </div>
                       {% comment %} {{- 'icon-caret.svg' | inline_asset_content -}} {% endcomment %}
                     </summary>
                     <div class="accordion__content rte" id="ProductAccordion-{{ block.id }}-{{ section.id }}">
