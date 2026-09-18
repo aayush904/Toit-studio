@@ -2973,3 +2973,47 @@ div#insta-feed > h2 {
   justify-content: space-between;
   gap: 1.6rem;
 }
+
+/* ==========================================================================
+   Header sections must not swallow clicks outside their own content.
+
+   The diagnostic on Safari reported DIV.shopify-section-group-header-group as
+   the element on top of the collection banner links -- every one of them
+   unreachable, while in Chrome at the same 1920px width that section measures
+   73px tall against links at 218px and does not overlap at all.
+
+   The header group carries z-index 4 and the banner tucks up underneath it, so
+   wherever that box extends further than its visible bar it covers the banner
+   and eats the clicks. Rather than chase why the box is taller on Safari, the
+   wrapper stops taking pointer events and its contents take them back: the
+   header, nav, icons and drawer behave exactly as before, but the empty area
+   of the section no longer intercepts anything.
+
+   No-op in Chrome, where there is no overlap to begin with.
+   ========================================================================== */
+.shopify-section-group-header-group {
+  pointer-events: none;
+}
+
+.shopify-section-group-header-group > * {
+  pointer-events: auto;
+}
+
+/* ==========================================================================
+   Accordion summaries: taps must land on the summary, not its children.
+
+   The Safari diagnostic showed taps reaching H2.accordion__title,
+   DIV.summary__title and the toggle svg -- all children inside the summary --
+   with nothing covering them, no JS errors, and default not prevented. Safari
+   fails to activate a <summary> when the click target is a nested block
+   child, so the accordion never opened while Chrome was happy.
+
+   Making the contents pointer-transparent means any tap resolves to the
+   summary element itself, which Safari does activate. No JS involved, so
+   there is nothing to double-toggle against the native behaviour. Safe here
+   because nothing inside these summaries is interactive in its own right.
+   ========================================================================== */
+.accordion summary > *,
+.drawer__footer summary > * {
+  pointer-events: none;
+}
