@@ -2938,3 +2938,38 @@ div#insta-feed > h2 {
 .menu-drawer__submenu {
   background-attachment: scroll !important;
 }
+
+/* ==========================================================================
+   Every remaining <summary> keeps its native toggle.
+
+   Same fault as the product accordions: Safari drops a summary's
+   click-to-toggle when its display is overridden, and the theme sets
+   `display: flex` on .accordion summary (component-accordion.css:1) and
+   .drawer__footer summary (component-cart-drawer.css:131). Those cover the
+   collapsible-content section and the cart drawer's order-note field, so both
+   were unopenable on Safari for the same reason.
+
+   The cart drawer summary holds a single .summary__title, so it needs nothing
+   further. collapsible-content had three children on a row, so they now sit in
+   a wrapper added in that section, mirroring the product accordion fix.
+   ========================================================================== */
+/* !important because component-accordion.css and component-cart-drawer.css are
+   injected by their sections, so they load after custom.css and win on equal
+   specificity -- the plain rule computed flex regardless. */
+.accordion summary,
+.drawer__footer summary {
+  display: list-item !important;
+  list-style: none;
+}
+
+.accordion summary::-webkit-details-marker,
+.drawer__footer summary::-webkit-details-marker {
+  display: none;
+}
+
+.accordion__summary-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.6rem;
+}
