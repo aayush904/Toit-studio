@@ -76,6 +76,18 @@ $(function () {
         $slider.data("draggable") !== "false";
       var asNavFor = $slider.data("asnavfor");
 
+      // With nothing to scroll to, Slick's drag handling is pure downside: it
+      // binds mouse/touch tracking and calls preventDefault() on clicks it
+      // reads as drags, which silently kills links inside the slide. Safari is
+      // the browser where that bites. Turn dragging off when every slide is
+      // already on screen.
+      var slideCount = $slider.children().length;
+      if (slideCount <= slidesToShow) {
+        swipe = false;
+        swipeToSlide = false;
+        touchMove = false;
+        draggable = false;
+      }
 
       $slider.slick({
         slidesToShow: slidesToShow,
