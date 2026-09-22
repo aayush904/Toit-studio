@@ -29,17 +29,21 @@
   >
     {% if recommendations.performed %}
       {%- liquid
-        # Shopify's recommendation engine often returns fewer than the
-        # requested number of products (in a small catalogue it can return
-        # none at all), which leaves a ragged, part-empty row. Track what it
-        # gave us so the grid can be topped up below.
-        assign shown_ids = ','
-        for recommendation in recommendations.products
-          assign shown_ids = shown_ids | append: recommendation.id | append: ','
-        endfor
-        assign current_id = ',' | append: product.id | append: ','
-        assign shown_ids = shown_ids | append: product.id | append: ','
-        assign fill_count = section.settings.products_to_show | minus: recommendations.products_count
+        # Relevance is decided here, not by Shopify's engine.
+        #
+        # That engine's main signal is order history; with none it falls back
+        # to catalogue proximity, and proximity carries no information on this
+        # store -- frontpage, new-arrivals and tableware each hold ~90 of the
+        # 91 products, while the narrow collections (mug, cup, plates-platters)
+        # are empty. With nothing to discriminate on it returns whatever type
+        # is most numerous, which is why a mug was shown four dinner plates.
+        #
+        # Product type and tags are well maintained, so they lead: same type
+        # first, then a shared tag, and only then Shopify's own picks and
+        # finally anything else, purely to avoid a part-empty row.
+        assign shown_ids = ',' | append: product.id | append: ','
+        assign wanted = section.settings.products_to_show
+        assign added = 0
       -%}
       <h2 class="related-products__heading inline-richtext {{ section.settings.heading_size }}">
         {{ section.settings.heading }}
@@ -49,79 +53,72 @@
         role="list"
       >
         {% assign skip_card_product_styles = false %}
-        {% for recommendation in recommendations.products %}
-          <li class="grid__item">
-            {% comment %}
-              Card params mirror the homepage "Explore our Products" section
-              (sections/product-tabs.liquid) so both grids render identically.
-            {% endcomment %}
-            {% render 'card-product',
-              card_product: recommendation,
-              media_aspect_ratio: section.settings.image_ratio,
-              image_shape: section.settings.image_shape,
-              show_secondary_image: section.settings.show_secondary_image,
-              show_vendor: false,
-              show_rating: false,
-              skip_styles: skip_card_product_styles,
-              section_id: section.id,
-              quick_add: 'none',
-              show_description: true,
-              show_compare_at_price: false,
-              hide_from_price: true
-            %}
-          </li>
-          {%- assign skip_card_product_styles = true -%}
-        {% endfor %}
 
-        {%- comment -%}
-          Fallback fill. Pass 1 takes products of the same type so the row
-          stays relevant; pass 2 takes anything else only if still short.
-        {%- endcomment -%}
-        {%- if fill_count > 0 -%}
-          {%- assign added = 0 -%}
-          {%- for pass in (1..2) -%}
-            {%- for candidate in collections.all.products -%}
-              {%- if added >= fill_count -%}{%- break -%}{%- endif -%}
-              {%- assign candidate_key = ',' | append: candidate.id | append: ',' -%}
-              {%- unless shown_ids contains candidate_key -%}
-                {%- comment -%}
-                  Built as a single boolean rather than a compound condition:
-                  Liquid has no parentheses and evaluates and/or right to
-                  left, so `pass == 1 and type_matches or pass == 2` parses
-                  as `pass == 1 and (type_matches or pass == 2)` -- pass 2
-                  would never match and the fill would come up short.
-                {%- endcomment -%}
-                {%- assign use_candidate = false -%}
-                {%- if pass == 2 -%}
+        {%- for pass in (1..4) -%}
+          {%- if added >= wanted -%}{%- break -%}{%- endif -%}
+
+          {%- comment -%}
+            Pass 3 draws from Shopify's recommendations; the others scan the
+            catalogue. Note that an unpaginated product loop is capped at 50
+            items, so the scan sees a slice of a large catalogue rather than
+            all of it -- enough for relevance, since passes run in order.
+          {%- endcomment -%}
+          {%- if pass == 3 -%}
+            {%- assign candidates = recommendations.products -%}
+          {%- else -%}
+            {%- assign candidates = collections.all.products -%}
+          {%- endif -%}
+
+          {%- for candidate in candidates -%}
+            {%- if added >= wanted -%}{%- break -%}{%- endif -%}
+            {%- assign candidate_key = ',' | append: candidate.id | append: ',' -%}
+            {%- unless shown_ids contains candidate_key -%}
+              {%- assign use_candidate = false -%}
+              {%- case pass -%}
+                {%- when 1 -%}
+                  {%- if product.type != blank and candidate.type == product.type -%}
+                    {%- assign use_candidate = true -%}
+                  {%- endif -%}
+                {%- when 2 -%}
+                  {%- for tag in candidate.tags -%}
+                    {%- if product.tags contains tag -%}
+                      {%- assign use_candidate = true -%}
+                      {%- break -%}
+                    {%- endif -%}
+                  {%- endfor -%}
+                {%- else -%}
                   {%- assign use_candidate = true -%}
-                {%- elsif product.type != blank and candidate.type == product.type -%}
-                  {%- assign use_candidate = true -%}
-                {%- endif -%}
-                {%- if use_candidate -%}
-                  {%- assign shown_ids = shown_ids | append: candidate.id | append: ',' -%}
-                  {%- assign added = added | plus: 1 -%}
-                  <li class="grid__item">
-                    {% render 'card-product',
-                      card_product: candidate,
-                      media_aspect_ratio: section.settings.image_ratio,
-                      image_shape: section.settings.image_shape,
-                      show_secondary_image: section.settings.show_secondary_image,
-                      show_vendor: false,
-                      show_rating: false,
-                      skip_styles: skip_card_product_styles,
-                      section_id: section.id,
-                      quick_add: 'none',
-                      show_description: true,
-                      show_compare_at_price: false,
-                      hide_from_price: true
-                    %}
-                  </li>
-                  {%- assign skip_card_product_styles = true -%}
-                {%- endif -%}
-              {%- endunless -%}
-            {%- endfor -%}
+              {%- endcase -%}
+
+              {%- if use_candidate -%}
+                {%- assign shown_ids = shown_ids | append: candidate.id | append: ',' -%}
+                {%- assign added = added | plus: 1 -%}
+                <li class="grid__item">
+                  {% comment %}
+                    Card params mirror the homepage "Explore our Products"
+                    section (sections/product-tabs.liquid) so both grids
+                    render identically.
+                  {% endcomment %}
+                  {% render 'card-product',
+                    card_product: candidate,
+                    media_aspect_ratio: section.settings.image_ratio,
+                    image_shape: section.settings.image_shape,
+                    show_secondary_image: section.settings.show_secondary_image,
+                    show_vendor: false,
+                    show_rating: false,
+                    skip_styles: skip_card_product_styles,
+                    section_id: section.id,
+                    quick_add: 'none',
+                    show_description: true,
+                    show_compare_at_price: false,
+                    hide_from_price: true
+                  %}
+                </li>
+                {%- assign skip_card_product_styles = true -%}
+              {%- endif -%}
+            {%- endunless -%}
           {%- endfor -%}
-        {%- endif -%}
+        {%- endfor -%}
       </ul>
     {% endif %}
   </product-recommendations>
