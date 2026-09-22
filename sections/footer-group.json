@@ -99,7 +99,25 @@
     },
     "promo_popup": {
       "type": "promo-popup",
-      "settings": {}
+      "settings": {
+        "image": "shopify://shop_images/Pop-up-Toit.png",
+        "heading": "Claim Your",
+        "heading_emphasis": "10% OFF",
+        "text": "<p>Sign up to unlock 10% Off on your first purchase, valid for any product.</p>",
+        "field_label": "Email Address",
+        "button_label": "Claim 10% Off",
+        "success_text": "Thanks — your discount is on its way to your inbox.",
+        "max_width": 900,
+        "background_color": "#FCFEFF",
+        "heading_color": "#2B2B2B",
+        "text_color": "#5B5553",
+        "field_border_color": "#647A73",
+        "placeholder_color": "#999999",
+        "button_color": "#647a73",
+        "button_label_color": "#ffffff",
+        "delay": 5,
+        "reset_key": "1"
+      }
     }
   },
   "order": [
