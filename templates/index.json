@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "image_banner_hTHP44": {
@@ -101,6 +110,75 @@
         "padding_bottom": 40
       }
     },
+    "product_tabs_explore": {
+      "type": "product-tabs",
+      "name": "Product Tabs",
+      "settings": {
+        "custom_css_class": "products_slider",
+        "heading": "Explore our Products",
+        "heading_size": "h1",
+        "default_tab": "2",
+        "products_to_show": 4,
+        "tab_1_label": "Best Seller",
+        "tab_1_collection": "all",
+        "tab_2_label": "New Arrival",
+        "tab_2_collection": "new-arrivals",
+        "tab_3_label": "Featured",
+        "tab_3_collection": "all",
+        "color_scheme": "scheme-1",
+        "padding_top": 92,
+        "padding_bottom": 92
+      }
+    },
+    "image_with_text_trending": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_trending": {
+          "type": "heading",
+          "settings": {
+            "heading": "#Trending:\nThe Modern Vase",
+            "heading_size": "h1"
+          }
+        },
+        "text_trending": {
+          "type": "text",
+          "settings": {
+            "text": "<p>A refined collection of kitchenware and décor, selected to\nbring beauty, character, and ease into everyday spaces, with\npieces that feel timeless, practical, and effortlessly at home.\nFrom beautiful kitchenware to considered décor, discover\npieces chosen to make everyday spaces feel more\nthoughtful, functional, and uniquely yours.</p>",
+            "text_style": "body"
+          }
+        },
+        "button_trending": {
+          "type": "button",
+          "settings": {
+            "button_label": "Shop Now",
+            "button_link": "shopify://collections/all",
+            "button_style_secondary": true
+          }
+        }
+      },
+      "block_order": [
+        "heading_trending",
+        "text_trending",
+        "button_trending"
+      ],
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "custom_css_class": "custom-trending",
+        "image": "shopify://shop_images/Trending_The_Modern_Vase.avif",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "image_behavior": "none",
+        "content_layout": "no-overlap",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "left",
+        "section_color_scheme": "scheme-0130ff2c-5d75-4e86-be8d-b4ab3796a5ff",
+        "color_scheme": "scheme-0130ff2c-5d75-4e86-be8d-b4ab3796a5ff",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
     "collection_list_categories": {
       "type": "collection-list",
       "blocks": {
@@ -152,6 +230,7 @@
     },
     "basmil_video_dfJ7ME": {
       "type": "basmil-video",
+      "disabled": true,
       "name": "Background Video - Basmil",
       "settings": {
         "custom_css_class": "custom-story-video",
@@ -163,75 +242,6 @@
         "background_local_video": "shopify://files/videos/dc3df06d2f1c48af98902d5198338d8a.mp4",
         "modal_video_type": "youtube",
         "modal_youtube_url": "https://www.youtube.com/watch?v=pWg1vgJ5Fa8"
-      }
-    },
-    "product_tabs_explore": {
-      "type": "product-tabs",
-      "name": "Product Tabs",
-      "settings": {
-        "custom_css_class": "products_slider",
-        "heading": "Explore our Products",
-        "heading_size": "h1",
-        "default_tab": "2",
-        "products_to_show": 4,
-        "tab_1_label": "Best Seller",
-        "tab_1_collection": "all",
-        "tab_2_label": "New Arrival",
-        "tab_2_collection": "new-arrivals",
-        "tab_3_label": "Featured",
-        "tab_3_collection": "all",
-        "color_scheme": "scheme-0130ff2c-5d75-4e86-be8d-b4ab3796a5ff",
-        "padding_top": 92,
-        "padding_bottom": 92
-      }
-    },
-    "image_with_text_trending": {
-      "type": "image-with-text",
-      "blocks": {
-        "heading_trending": {
-          "type": "heading",
-          "settings": {
-            "heading": "#Trending:\nThe Modern Vase",
-            "heading_size": "h1"
-          }
-        },
-        "text_trending": {
-          "type": "text",
-          "settings": {
-            "text": "<p>A refined collection of kitchenware and décor, selected to\nbring beauty, character, and ease into everyday spaces, with\npieces that feel timeless, practical, and effortlessly at home.\nFrom beautiful kitchenware to considered décor, discover\npieces chosen to make everyday spaces feel more\nthoughtful, functional, and uniquely yours.</p>",
-            "text_style": "body"
-          }
-        },
-        "button_trending": {
-          "type": "button",
-          "settings": {
-            "button_label": "Shop Now",
-            "button_link": "shopify://collections/all",
-            "button_style_secondary": true
-          }
-        }
-      },
-      "block_order": [
-        "heading_trending",
-        "text_trending",
-        "button_trending"
-      ],
-      "name": "t:sections.image-with-text.presets.name",
-      "settings": {
-        "custom_css_class": "custom-trending",
-        "image": "shopify://shop_images/Trending_The_Modern_Vase.avif",
-        "height": "adapt",
-        "desktop_image_width": "medium",
-        "layout": "image_first",
-        "image_behavior": "none",
-        "content_layout": "no-overlap",
-        "desktop_content_position": "middle",
-        "desktop_content_alignment": "left",
-        "mobile_content_alignment": "left",
-        "section_color_scheme": "",
-        "color_scheme": "",
-        "padding_top": 0,
-        "padding_bottom": 0
       }
     },
     "multicolumn_offer": {
@@ -461,10 +471,10 @@
   "order": [
     "image_banner_hTHP44",
     "rich_text_intro",
-    "collection_list_categories",
-    "basmil_video_dfJ7ME",
     "product_tabs_explore",
     "image_with_text_trending",
+    "collection_list_categories",
+    "basmil_video_dfJ7ME",
     "multicolumn_offer",
     "image_with_text_everyday",
     "basmil_images_collage_KYPywD",
