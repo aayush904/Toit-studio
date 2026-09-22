@@ -121,14 +121,23 @@
     border-radius: 52px;
     background: transparent;
     font-family: var(--font-body-family);
+    /* `font-style: Book` is a weight name, not a style. */
+    font-weight: var(--font-weight-book);
     font-size: 16px;
+    line-height: 100%;
+    letter-spacing: 0;
     color: {{ section.settings.text_color }};
     box-sizing: border-box;
   }
 
   .promo-popup__field::placeholder {
-    color: {{ section.settings.text_color }};
-    opacity: 0.6;
+    font-weight: var(--font-weight-book);
+    font-size: 16px;
+    line-height: 100%;
+    letter-spacing: 0;
+    color: {{ section.settings.placeholder_color }};
+    /* Firefox dims placeholders by default. */
+    opacity: 1;
   }
 
   .promo-popup__button {
@@ -144,10 +153,11 @@
     border-radius: 52px;
     background: {{ section.settings.button_color }};
     font-family: var(--font-body-family);
+    /* `font-style: Medium` is a weight name, already covered by 500. */
     font-weight: var(--font-weight-medium);
-    font-size: 15px;
+    font-size: 18px;
     line-height: 100%;
-    letter-spacing: 0.07em;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
     color: {{ section.settings.button_label_color }};
     cursor: pointer;
@@ -329,6 +339,7 @@
     { "type": "color", "id": "heading_color", "label": "Heading", "default": "#1A1A1A" },
     { "type": "color", "id": "text_color", "label": "Text", "default": "#424242" },
     { "type": "color", "id": "field_border_color", "label": "Field border", "default": "#1A1A1A" },
+    { "type": "color", "id": "placeholder_color", "label": "Field placeholder", "default": "#999999" },
     { "type": "color", "id": "button_color", "label": "Button", "default": "#647A73" },
     { "type": "color", "id": "button_label_color", "label": "Button label", "default": "#FFFFFF" },
     { "type": "header", "content": "Behavior" },
