@@ -29,6 +29,14 @@
       role="list"
     >
       {%- for collection in collections -%}
+        {%- comment -%}
+          An empty collection has no image of its own and no product image to
+          fall back on, so it renders as a flat colour box among the photo
+          cards -- and it leads the shopper to an empty page. Skip it.
+        {%- endcomment -%}
+        {%- if section.settings.hide_empty_collections and collection.all_products_count == 0 -%}
+          {%- continue -%}
+        {%- endif -%}
         <li
           class="collection-list__item grid__item{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
           {% if settings.animations_reveal_on_scroll %}
@@ -95,6 +103,13 @@
       ],
       "default": "alphabetical",
       "label": "t:sections.main-list-collections.settings.sort.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "hide_empty_collections",
+      "default": true,
+      "label": "Hide empty collections",
+      "info": "A collection with no products has no image to show and leads to an empty page."
     },
     {
       "type": "select",

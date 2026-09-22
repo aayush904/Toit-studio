@@ -50,7 +50,7 @@
         "whatsapp_button": {
           "type": "whatsapp_button",
           "settings": {
-            "phone_number": "123",
+            "phone_number": "+977 9803459366",
             "label": "Shop on WhatsApp",
             "message_prefix": "Hi! I'm interested in"
           }
