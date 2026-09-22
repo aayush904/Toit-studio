@@ -1,0 +1,24 @@
+{% comment %}
+  The chevron used by the "Heading with button" button and the announcement
+  bar, kept in one place so the two cannot drift apart.
+
+  Accepts:
+  - size: {Number} width and height in px. Default: 16 (optional)
+{% endcomment %}
+{%- assign icon_size = size | default: 16 -%}
+<svg
+  width="{{ icon_size }}"
+  height="{{ icon_size }}"
+  viewBox="0 0 16 16"
+  fill="none"
+  aria-hidden="true"
+  focusable="false"
+>
+  <path
+    d="M6 3L11 8L6 13"
+    stroke="currentColor"
+    stroke-width="1.5"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+</svg>

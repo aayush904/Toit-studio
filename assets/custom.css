@@ -3058,3 +3058,66 @@ div#insta-feed > h2 {
 .custom-story-sustainability .rich-text__heading span {
   display: block;
 }
+
+/* ==========================================================================
+   Announcement bar
+
+   .utility-bar carries the colour scheme's `gradient` class, whose
+   `background` shorthand would otherwise win, so the green is set on
+   `.utility-bar.gradient` and the gradient image cleared.
+
+   Three values from the design are not CSS and are translated here:
+   `font-style: Medium` is the weight name, already covered by weight 500;
+   `letter-spacing: 7%` becomes 0.07em, since percentages are invalid for
+   letter-spacing; and `leading-trim`/`vertical-align` have no effect on a
+   flex line box, so the text is centred with flexbox instead.
+   ========================================================================== */
+.utility-bar.gradient {
+  background: #647a73;
+  background-image: none;
+  /* Dawn's own min-height is taller than 40px, so both bounds are set to
+     hold the bar at exactly the 40px ceiling with the text centred. */
+  min-height: 40px;
+  max-height: 40px;
+  display: flex;
+  align-items: center;
+}
+
+.utility-bar .utility-bar__grid {
+  width: 100%;
+}
+
+.utility-bar .announcement-bar,
+.utility-bar .announcement-bar__announcement {
+  min-height: 0;
+}
+
+.utility-bar .announcement-bar__message {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  min-height: 0;
+  padding: 0;
+  font-family: var(--font-body-family);
+  font-weight: var(--font-weight-medium);
+  font-size: 15px;
+  line-height: 100%;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+/* The bar is a link on hover in Dawn; keep the text white rather than
+   letting the scheme's link colour through. */
+.utility-bar .announcement-bar__link,
+.utility-bar .announcement-bar__link:hover,
+.utility-bar .announcement-bar__message span {
+  color: #ffffff;
+}
+
+.utility-bar .announcement-bar__message svg {
+  flex: 0 0 auto;
+  width: 14px;
+  height: 14px;
+}

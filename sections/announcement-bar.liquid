@@ -41,9 +41,11 @@
           {%- endif -%}
           <p class="announcement-bar__message">
             <span>{{ section.blocks.first.settings.text }}</span>
-            {%- if section.blocks.first.settings.link != blank -%}
-              {{- 'icon-arrow.svg' | inline_asset_content -}}
-            {%- endif -%}
+            {%- comment -%}
+              The chevron is part of the bar's design, so it shows whether or
+              not the announcement carries a link.
+            {%- endcomment -%}
+            {%- render 'icon-chevron-arrow', size: 14 -%}
           </p>
           {%- if section.blocks.first.settings.link != blank -%}
             </a>
@@ -119,9 +121,7 @@
                           {{ text }}
                         {% endif %}
                       </span>
-                      {%- if block.settings.link != blank -%}
-                        {{- 'icon-arrow.svg' | inline_asset_content -}}
-                      {%- endif -%}
+                      {%- render 'icon-chevron-arrow', size: 14 -%}
                     </p>
                     {%- if block.settings.link != blank -%}
                       </a>
