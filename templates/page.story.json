@@ -93,14 +93,14 @@
         "heading_9kfPxr": {
           "type": "heading",
           "settings": {
-            "heading": "Made for Today. Considered for Tomorrow.",
+            "heading": "The Beginning",
             "heading_size": "h1"
           }
         },
         "text_YrENir": {
           "type": "text",
           "settings": {
-            "text": "<p>At Toit Studio, we believe the things we bring into our homes should feel useful, personal, and worth keeping. Our approach to sustainability begins with thoughtful selection—choosing pieces that balance function, character, and versatility, and can become part of everyday routines long beyond a single season.</p><p>From drinkware and tableware to kitchenware and décor, we look for objects you can enjoy often, style in different ways, and continue using over time. Because a piece that remains useful and loved holds more value than something chosen only for the moment.</p><p>We're not interested in making big promises. We simply believe that better choices, longer use, and a little more consideration can make everyday living feel more meaningful.</p>"
+            "text": "<p>At Toit Studio, we believe the things we bring into our homes should feel useful, personal, and worth keeping. Our approach to sustainability begins with thoughtful selection—choosing pieces that balance function, character, and versatility, and can become part of everyday routines long beyond a single season.<br/><br/>From drinkware and tableware to kitchenware and décor, we look for objects you can enjoy often, style in different ways, and continue using over time. Because a piece that remains useful and loved holds more value than something chosen only for the moment.<br/><br/>We’re not interested in making big promises. We simply believe that better choices, longer use, and a little more consideration can make everyday living feel more meaningful.</p>"
           }
         }
       },
@@ -132,7 +132,7 @@
         "heading": {
           "type": "heading",
           "settings": {
-            "heading": "Objects Built Around a Way of Living",
+            "heading": "From the Founder",
             "heading_size": "h1"
           }
         },
@@ -172,14 +172,14 @@
         "heading": {
           "type": "heading",
           "settings": {
-            "heading": "Thoughtful Choices, Lasting Pieces",
+            "heading": "What Makes the Cut",
             "heading_size": "h1"
           }
         },
         "text": {
           "type": "text",
           "settings": {
-            "text": "<p>Using pieces thoughtfully, cleaning them properly, storing them with care, and appreciating the natural signs of everyday use can all help extend their place in our homes. We believe beautiful objects are meant to be lived with, not simply displayed.</p><p>Our approach to sustainability will continue to develop as Toit Studio grows. We want to make more considered decisions wherever we can, while being transparent about what we do today and where there is still room to improve. Rather than claiming perfection, we prefer progress that is thoughtful, practical, and genuine.</p>"
+            "text": "<p>At Toit Studio, we believe everyday objects should feel considered, useful, and naturally connected to the spaces they live in. We choose pieces for the way they balance form, texture, colour, and function, with a focus on designs that feel distinctive without being difficult to live with. Our aim is to bring together objects that add warmth and character to daily routines, whether they are used at the table, in the kitchen, or simply as part of the home.</p>"
           }
         }
       },
