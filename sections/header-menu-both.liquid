@@ -134,14 +134,16 @@
 
 {%- liquid
   # The transparent header pulls page content up under itself with a negative
-  # margin so a full-bleed hero shows through. Pages that do not open with a
-  # hero (the cart, search results, 404) then render their first heading behind
-  # the header, so the treatment is limited to page types that have one.
-  assign no_hero_page_types = 'product,cart,search,404'
-  assign hero_page = true
-  if no_hero_page_types contains request.page_type
-    assign hero_page = false
-  endif
+  # margin so a full-bleed hero shows through. A page that does not open with
+  # a hero then renders its first heading behind the header, which is what
+  # happened on the cart and on the collections list.
+  #
+  # Rather than keep a list of page types in step with the templates, the
+  # treatment is gated on whether the first section actually rendered contains
+  # a hero: a banner image, a collection banner carrying an image, or the
+  # image-text slider. If :has() is unsupported the selector simply never
+  # matches, which degrades to an ordinary opaque header -- the safe direction.
+  assign hero_first = 'body:has(#MainContent > .shopify-section:first-child .banner__media), body:has(#MainContent > .shopify-section:first-child .collection-hero--with-image), body:has(#MainContent > .shopify-section:first-child .image-text-slider)'
 -%}
 
 {%- style -%}
@@ -168,12 +170,15 @@
     .section-header:not(.shopify-section-header-sticky):not(.skip-sticky) {
       position: relative;
       width: 100%;
-      {% if section.settings.transparent_header %}
-        {% if hero_page %}
-        margin-bottom:-100%;
-      {% endif %}
-      {% endif %}
-  }
+    }
+
+    {% if section.settings.transparent_header %}
+      {{ hero_first }} {
+        .section-header:not(.shopify-section-header-sticky):not(.skip-sticky) {
+          margin-bottom: -100%;
+        }
+      }
+    {% endif %}
 
   {%  if request.page_type == 'collection' %}
     .shopify-section-header-sticky {
@@ -182,7 +187,7 @@
   {% endif %}
 
       {% if section.settings.transparent_header   %}
-        {% if hero_page %}
+        {{ hero_first }} {
 
          .section-header:not(.shopify-section-header-sticky):not(.skip-sticky) {
            .svg-wrapper, a, .header__menu-item, .header__active-menu-item {
@@ -216,7 +221,7 @@
             }
 
          }
-      {% endif %}
+      }
       {% endif %}
     @media screen and (min-width: 768px) {
     .section-header {
