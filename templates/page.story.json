@@ -172,7 +172,7 @@
         "heading": {
           "type": "heading",
           "settings": {
-            "heading": "What Makes the Cut",
+            "heading": "What Makes <span>the Cut</span>",
             "heading_size": "h1"
           }
         },

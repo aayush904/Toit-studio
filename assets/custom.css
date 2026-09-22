@@ -3051,3 +3051,10 @@ div#insta-feed > h2 {
 .tax-note * {
   font-weight: var(--font-weight-book);
 }
+
+/* "What Makes / the Cut" breaks onto two lines. Matches the Collaborate
+   heading above: inline_richtext rejects <br> but permits <span>, so the
+   second line is a span promoted to a block. */
+.custom-story-sustainability .rich-text__heading span {
+  display: block;
+}
