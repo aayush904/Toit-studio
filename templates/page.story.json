@@ -207,6 +207,7 @@
     },
     "story_video": {
       "type": "video",
+      "disabled": true,
       "name": "Our Story video",
       "settings": {
         "custom_css_class": "custom-story-video-embed",

@@ -51,14 +51,14 @@
           "type": "contact_details",
           "settings": {
             "heading": "Connect",
-            "details": "<p>Shanta Bhawan Marg, Lalitpur 44600</p><p>+977 976-9366599</p><p>support@toitstudio.com</p>",
+            "details": "<p>Shanta Bhawan Marg, Jhamsikhel, Lalitpur 44600</p><p>+977 9803459366</p><p><a href=\"mailto:toitstudionepal@gmail.com\" title=\"mailto:toitstudionepal@gmail.com\">toitstudionepal@gmail.com</a></p>",
             "show_divider": true,
-            "hours_1_label": "Sun:",
-            "hours_1_value": "Closed",
-            "hours_2_label": "Mon – Fri:",
-            "hours_2_value": "8am – 5pm",
-            "hours_3_label": "Sat:",
-            "hours_3_value": "9am — 1pm",
+            "hours_1_label": "Daily:",
+            "hours_1_value": "11:00 am - 07:00 pm",
+            "hours_2_label": "",
+            "hours_2_value": "",
+            "hours_3_label": "",
+            "hours_3_value": "",
             "hours_4_label": "",
             "hours_4_value": ""
           }
@@ -75,6 +75,7 @@
       ],
       "settings": {
         "custom_css_class": "custom-footer",
+        "footer_logo": "shopify://shop_images/toit_footer_logo.svg",
         "footer_logo_width": 130,
         "footer_tagline": "<p>Thoughtfully selected kitchenware, tableware, drinkware, and décor, bringing function, character, & considered style to the spaces you live in every day.</p>",
         "newsletter_button_label": "JOIN",

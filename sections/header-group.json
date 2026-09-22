@@ -17,14 +17,15 @@
         "announcement-bar-0": {
           "type": "announcement",
           "settings": {
-            "text": "Welcome to our store",
+            "text": "10% Off on First purchase",
             "link": ""
           }
         },
         "announcement_et4Nmg": {
           "type": "announcement",
+          "disabled": true,
           "settings": {
-            "text": "Save 5% on your first order with <span>NEWMUNNS</span>",
+            "text": "",
             "link": ""
           }
         }
@@ -33,7 +34,6 @@
         "announcement-bar-0",
         "announcement_et4Nmg"
       ],
-      "disabled": true,
       "settings": {
         "custom_css_class": "",
         "auto_rotate": true,
