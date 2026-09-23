@@ -1,10 +1,4 @@
-/*
- * Promo popup. Opens after a delay, once per visitor, and remembers the
- * dismissal in localStorage against a key the merchant can change to show it
- * again. Every storage access is wrapped because localStorage throws in
- * private windows and when site data is blocked -- in that case the popup
- * simply behaves as if it had not been seen.
- */
+
 (function () {
   var root = document.querySelector('[data-promo-popup]');
   if (!root) return;
@@ -24,7 +18,7 @@
     try {
       localStorage.setItem(storageKey, 'seen');
     } catch (e) {
-      /* no-op */
+
     }
   }
 
@@ -51,14 +45,11 @@
   }
 
   root.addEventListener('click', function (event) {
-    // The overlay closes on a click that lands outside the dialog itself.
+
     if (event.target === root) close();
     if (event.target.closest('[data-promo-popup-close]')) close();
   });
 
-  // Anything carrying data-promo-popup-open (the announcement bar) opens the
-  // popup on demand. Registered before the checks below so it keeps working
-  // for a visitor who has already dismissed the popup once.
   document.addEventListener('click', function (event) {
     var trigger = event.target.closest('[data-promo-popup-open]');
     if (!trigger) return;
@@ -66,8 +57,6 @@
     open();
   });
 
-  // A submitted form reloads the page, so reopen to show the outcome and do
-  // not let the delay or the stored dismissal suppress it.
   if (root.dataset.openOnLoad === 'true') {
     open();
     return;

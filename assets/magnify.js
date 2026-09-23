@@ -1,4 +1,4 @@
-// create a container and set the full-size image as its background
+
 function createOverlay(image) {
   const overlayImage = document.createElement('img');
   overlayImage.setAttribute('src', `${image.src}`);
@@ -30,7 +30,7 @@ function toggleLoadingSpinner(image) {
 }
 
 function moveWithHover(image, event, zoomRatio) {
-  // calculate mouse position
+
   const ratio = image.height / image.width;
   const container = event.target.getBoundingClientRect();
   const xPosition = event.clientX - container.left;
@@ -38,7 +38,6 @@ function moveWithHover(image, event, zoomRatio) {
   const xPercent = `${xPosition / (image.clientWidth / 100)}%`;
   const yPercent = `${yPosition / ((image.clientWidth * ratio) / 100)}%`;
 
-  // determine what to show in the frame
   overlay.style.backgroundPosition = `${xPercent} ${yPercent}`;
   overlay.style.backgroundSize = `${image.width * zoomRatio}px`;
 }

@@ -3,7 +3,6 @@ const SCROLL_ANIMATION_OFFSCREEN_CLASSNAME = 'scroll-trigger--offscreen';
 const SCROLL_ZOOM_IN_TRIGGER_CLASSNAME = 'animate--zoom-in';
 const SCROLL_ANIMATION_CANCEL_CLASSNAME = 'scroll-trigger--cancel';
 
-// Scroll in animation logic
 function onIntersection(elements, observer) {
   elements.forEach((element, index) => {
     if (element.isIntersecting) {
@@ -38,7 +37,6 @@ function initializeScrollAnimationTrigger(rootEl = document, isDesignModeEvent =
   animationTriggerElements.forEach((element) => observer.observe(element));
 }
 
-// Zoom in animation logic
 function initializeScrollZoomAnimationTrigger() {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
@@ -78,14 +76,13 @@ function percentageSeen(element) {
   const elementHeight = element.offsetHeight;
 
   if (elementPositionY > scrollY + viewportHeight) {
-    // If we haven't reached the image yet
+
     return 0;
   } else if (elementPositionY + elementHeight < scrollY) {
-    // If we've completely scrolled past the image
+
     return 100;
   }
 
-  // When the image is in the viewport
   const distance = scrollY + viewportHeight - elementPositionY;
   let percentage = distance / ((viewportHeight + elementHeight) / 100);
   return Math.round(percentage);

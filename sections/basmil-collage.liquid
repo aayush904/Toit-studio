@@ -10,7 +10,6 @@
   style="background-color: {{ section.settings.background_color }}; padding-top: {{ section.settings.padding_top }}px; padding-bottom: {{ section.settings.padding_bottom }}px;"
 >
   <div class="collage-showcase__container page-width{% if section.settings.custom_css_class != blank %} {{ section.settings.custom_css_class }}{% endif %}">
-    <!-- Left Column - Featured Item -->
     <div class="collage-showcase__featured">
       {% case section.settings.featured_type %}
         {% when 'product' %}
@@ -57,7 +56,6 @@
       {% endcase %}
     </div>
 
-    <!-- Right Column - Scrollable Grid -->
     <div class="collage-showcase__grid mobile-scroll-container">
       {% assign skip_styles = false %}
 
@@ -252,7 +250,7 @@
     if (!isDragging) return;
     e.preventDefault();
     const x = e.pageX - container.offsetLeft;
-    const walk = (x - startX) * 1.5; // Scroll speed
+    const walk = (x - startX) * 1.5;
     container.scrollLeft = scrollLeft - walk;
   });
 </script>

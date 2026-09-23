@@ -35,7 +35,6 @@
     }
   }
 
-  /* Match the "Explore our Products" card styling from sections/product-tabs.liquid */
   .product-grid .card__title-row {
     display: flex;
     flex-wrap: nowrap;
@@ -78,8 +77,7 @@
   }
 
   @media screen and (max-width: 767px) {
-    /* Two cards per row leaves ~167px each -- not enough for the title and
-       price to share a line, which breaks titles mid-word. Stack them. */
+
     .product-grid .card__title-row {
       flex-direction: column;
       align-items: flex-start;
@@ -104,7 +102,6 @@
 
 <div class="section-{{ section.id }}-padding gradient color-{{ section.settings.color_scheme }}{% if section.settings.custom_css_class != blank %} {{ section.settings.custom_css_class }}{% endif %}">
   {%- paginate collection.products by section.settings.products_per_page -%}
-    {% comment %} Sort is the first tabbable element when filter type is vertical {% endcomment %}
     {%- if section.settings.enable_sorting and section.settings.filter_type == 'vertical' -%}
       <facet-filters-form class="facets facets-vertical-sort page-width small-hide">
         <form class="facets-vertical-form" id="FacetSortForm">

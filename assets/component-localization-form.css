@@ -337,7 +337,6 @@
   transform: rotate(180deg);
 }
 
-/* Header localization */
 .header-localization .localization-form:only-child {
   margin: 0;
   padding: 0;
@@ -366,7 +365,6 @@
   box-shadow: 0 0 0.2rem 0 rgba(var(--color-foreground), 0.3);
 }
 
-/* Header icons (desktop) */
 .desktop-localization-wrapper {
   display: flex;
   flex-wrap: wrap;
@@ -417,7 +415,6 @@
   transform: translateY(0);
 }
 
-/* Menu drawer */
 @media screen and (min-width: 990px) {
   .menu-drawer__localization {
     display: none;

@@ -57,7 +57,7 @@ if (!customElements.get('media-gallery')) {
             activeMedia.parentElement.scrollTo({ left: activeMedia.offsetLeft });
           }
           const activeMediaRect = activeMedia.getBoundingClientRect();
-          // Don't scroll if the image is already in view
+
           if (activeMediaRect.top > -0.5) return;
           const top = activeMediaRect.top + window.scrollY;
           window.scrollTo({ top: top, behavior: 'smooth' });

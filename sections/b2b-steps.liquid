@@ -26,9 +26,6 @@
       {%- endif -%}
 
       {%- liquid
-        # A WhatsApp number takes precedence over the plain link, and is
-        # stripped of the spacing and punctuation people naturally type, since
-        # wa.me only accepts digits.
         assign wa_number = section.settings.whatsapp_number | remove: ' ' | remove: '+' | remove: '-' | remove: '(' | remove: ')'
         assign button_url = section.settings.button_link
         assign is_whatsapp = false

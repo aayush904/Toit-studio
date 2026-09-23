@@ -133,16 +133,6 @@
 </style>
 
 {%- liquid
-  # The transparent header pulls page content up under itself with a negative
-  # margin so a full-bleed hero shows through. A page that does not open with
-  # a hero then renders its first heading behind the header, which is what
-  # happened on the cart and on the collections list.
-  #
-  # Rather than keep a list of page types in step with the templates, the
-  # treatment is gated on whether the first section actually rendered contains
-  # a hero: a banner image, a collection banner carrying an image, or the
-  # image-text slider. If :has() is unsupported the selector simply never
-  # matches, which degrades to an ordinary opaque header -- the safe direction.
   assign hero_first = 'body:has(#MainContent > .shopify-section:first-child .banner__media), body:has(#MainContent > .shopify-section:first-child .collection-hero--with-image), body:has(#MainContent > .shopify-section:first-child .image-text-slider)'
 -%}
 
@@ -211,10 +201,6 @@
               display: none;
             }
 
-            /* The mobile menu drawer lives inside .section-header but has
-               its own opaque (white) panel, so it must not inherit the
-               white-on-transparent-hero text color above -- that made the
-               drawer's own icons (close, carets, socials) invisible. */
             #menu-drawer, #menu-drawer .svg-wrapper, #menu-drawer a,
             #menu-drawer .header__menu-item, #menu-drawer .header__active-menu-item {
               color: rgb(var(--color-foreground));
@@ -237,13 +223,6 @@
     }
 {%- endstyle -%}
 <script src="{{ 'cart-notification.js' | asset_url }}" defer="defer"></script>
-{%- comment -%}
-  cart-drawer.js is already loaded, once, from layout/theme.liquid.
-  Loading it again here re-declares the CartDrawer custom element class,
-  throwing "Identifier 'CartDrawer' has already been declared" and
-  aborting the rest of that script's execution on every page.
-{%- endcomment -%}
-
 <svg xmlns="http://www.w3.org/2000/svg" class="hidden">
   <symbol id="icon-search" viewbox="0 0 22 22" fill="none">
     <path d="M19.7356 18.7636L15.4327 14.4616C16.6799 12.9643 17.3018 11.0438 17.169 9.09971C17.0363 7.15558 16.1592 5.33747 14.7201 4.02358C13.281 2.7097 11.3908 2.0012 9.44264 2.04547C7.49449 2.08975 5.63841 2.88339 4.2605 4.26129C2.8826 5.6392 2.08896 7.49528 2.04468 9.44343C2.00041 11.3916 2.7089 13.2818 4.02279 14.7209C5.33667 16.16 7.15479 17.0371 9.09891 17.1698C11.043 17.3026 12.9635 16.6807 14.4608 15.4335L18.7628 19.7364C18.8267 19.8003 18.9025 19.851 18.986 19.8855C19.0694 19.9201 19.1589 19.9379 19.2492 19.9379C19.3396 19.9379 19.429 19.9201 19.5125 19.8855C19.5959 19.851 19.6718 19.8003 19.7356 19.7364C19.7995 19.6725 19.8502 19.5967 19.8847 19.5133C19.9193 19.4298 19.9371 19.3403 19.9371 19.25C19.9371 19.1597 19.9193 19.0702 19.8847 18.9868C19.8502 18.9033 19.7995 18.8275 19.7356 18.7636ZM3.43672 9.62501C3.43672 8.40124 3.79961 7.20495 4.4795 6.18742C5.15939 5.16989 6.12575 4.37683 7.25637 3.90851C8.38698 3.44019 9.63108 3.31766 10.8313 3.5564C12.0316 3.79515 13.1341 4.38445 13.9994 5.24979C14.8648 6.11513 15.4541 7.21763 15.6928 8.41789C15.9316 9.61815 15.809 10.8622 15.3407 11.9929C14.8724 13.1235 14.0793 14.0898 13.0618 14.7697C12.0443 15.4496 10.848 15.8125 9.62422 15.8125C7.98375 15.8107 6.41099 15.1582 5.25101 13.9982C4.09102 12.8382 3.43854 11.2655 3.43672 9.62501Z" fill="currentColor"/>
@@ -420,12 +399,6 @@
               {{- 'icon-hamburger.svg' | inline_asset_content -}}
             </span>
           </summary>
-          {%- comment -%}
-            The colour scheme class was missing here, so the drawer defined
-            none of its own colour variables and only looked opaque because
-            custom properties inherit from <body>. Defaulted rather than left
-            bare, so an unset setting still yields a real scheme.
-          {%- endcomment -%}
           <div
             id="menu-drawer"
             class="gradient menu-drawer motion-reduce color-{{ section.settings.menu_color_scheme | default: 'scheme-1' }}"
@@ -481,10 +454,6 @@
                               >
                                 {{ link.title | escape }}
                               </a>
-                              {% comment %}
-                                <span class="svg-wrapper">{{- 'icon-arrow.svg' | inline_asset_content -}}</span>
-                                <span class="svg-wrapper">{{- 'icon-caret.svg' | inline_asset_content -}}</span>
-                              {% endcomment %}
                               <span class="svg-wrapper plus-minus">
                                 <svg
                                   aria-hidden="true"
@@ -512,15 +481,6 @@
                               tabindex="-1"
                             >
                               <div class="menu-drawer__inner-submenu">
-                                {% comment %}
-                                  <button
-                                    class="menu-drawer__close-button link link--text focus-inset"
-                                    aria-expanded="true"
-                                  >
-                                    <span class="svg-wrapper">{{- 'icon-arrow.svg' | inline_asset_content -}}</span>
-                                    {{ link.title | escape }}
-                                  </button>
-                                {% endcomment %}
                                 <ul class="menu-drawer__menu list-menu" role="list" tabindex="-1">
                                   {%- for childlink in link.links -%}
                                     <li>
@@ -538,14 +498,6 @@
                                         <details id="Details-menu-drawer-submenu-{{ forloop.index }}">
                                           <summary class="menu-drawer__menu-item link link--text list-menu__item focus-inset">
                                             {{ childlink.title | escape }}
-                                            {% comment %}
-                                              <span class="svg-wrapper">
-                                                {{- 'icon-arrow.svg' | inline_asset_content -}}
-                                              </span>
-                                              <span class="svg-wrapper">
-                                                {{- 'icon-caret.svg' | inline_asset_content -}}
-                                              </span>
-                                            {% endcomment %}
                                             <span class="svg-wrapper plus-minus">
                                               <svg
                                                 aria-hidden="true"
@@ -571,17 +523,6 @@
                                             id="childlink-{{ childlink.handle | escape }}"
                                             class="menu-drawer__submenu has-submenu gradient motion-reduce"
                                           >
-                                            {% comment %}
-                                              <button
-                                                class="menu-drawer__close-button link link--text focus-inset"
-                                                aria-expanded="true"
-                                              >
-                                                <span class="svg-wrapper">
-                                                  {{- 'icon-arrow.svg' | inline_asset_content -}}
-                                                </span>
-                                                {{ childlink.title | escape }}
-                                              </button>
-                                            {% endcomment %}
                                             <ul class="menu-drawer__menu list-menu" role="list" tabindex="-1">
                                               {%- for grandchildlink in childlink.links -%}
                                                 <li>
@@ -625,10 +566,6 @@
                           <details id="Details-menu-drawer-menu-item-{{ forloop.index }}">
                             <summary class="menu-drawer__menu-item list-menu__item link link--text focus-inset{% if link.child_active %} menu-drawer__menu-item--active{% endif %}">
                               {{ link.title | escape }}
-                              {% comment %}
-                                <span class="svg-wrapper">{{- 'icon-arrow.svg' | inline_asset_content -}}</span>
-                                <span class="svg-wrapper">{{- 'icon-caret.svg' | inline_asset_content -}}</span>
-                              {% endcomment %}
                               <span class="svg-wrapper plus-minus">
                                 <svg
                                   aria-hidden="true"
@@ -656,15 +593,6 @@
                               tabindex="-1"
                             >
                               <div class="menu-drawer__inner-submenu">
-                                {% comment %}
-                                  <button
-                                    class="menu-drawer__close-button link link--text focus-inset"
-                                    aria-expanded="true"
-                                  >
-                                    <span class="svg-wrapper">{{- 'icon-arrow.svg' | inline_asset_content -}}</span>
-                                    {{ link.title | escape }}
-                                  </button>
-                                {% endcomment %}
                                 <ul class="menu-drawer__menu list-menu" role="list" tabindex="-1">
                                   {%- for childlink in link.links -%}
                                     <li>
@@ -707,17 +635,6 @@
                                             id="childlink-{{ childlink.handle | escape }}"
                                             class="menu-drawer__submenu has-submenu gradient motion-reduce"
                                           >
-                                            {% comment %}
-                                              <button
-                                                class="menu-drawer__close-button link link--text focus-inset"
-                                                aria-expanded="true"
-                                              >
-                                                <span class="svg-wrapper">
-                                                  {{- 'icon-arrow.svg' | inline_asset_content -}}
-                                                </span>
-                                                {{ childlink.title | escape }}
-                                              </button>
-                                            {% endcomment %}
                                             <ul class="menu-drawer__menu list-menu" role="list" tabindex="-1">
                                               {%- for grandchildlink in childlink.links -%}
                                                 <li>
@@ -1029,8 +946,7 @@
                             {{- link.title | escape -}}
                           </span>
                         </a>
-                        {% comment %} <span class="svg-wrapper">{{- 'icon-caret.svg' | inline_asset_content -}}</span> {% endcomment %}
-                      </summary>
+                        </summary>
                       <ul
                         id="HeaderMenu-MenuList-{{ forloop.index }}"
                         class="header__submenu list-menu list-menu--disclosure gradient caption-large motion-reduce global-settings-popup"
@@ -1125,8 +1041,7 @@
                             {{- link.title | escape -}}
                           </span>
                         </a>
-                        {% comment %} <span class="svg-wrapper">{{- 'icon-caret.svg' | inline_asset_content -}}</span> {% endcomment %}
-                      </summary>
+                        </summary>
                       <ul
                         id="HeaderMenu-MenuList-{{ forloop.index }}"
                         class="header__submenu list-menu list-menu--disclosure gradient caption-large motion-reduce global-settings-popup"
@@ -1360,9 +1275,7 @@
       this.predictiveSearch = this.querySelector('predictive-search');
 
       this.onScrollHandler = this.onScroll.bind(this);
-      // this.hideHeaderOnScrollUp = () => (this.preventReveal = true);
 
-      // this.addEventListener('preventHeaderReveal', this.hideHeaderOnScrollUp);
       window.addEventListener('scroll', this.onScrollHandler, false);
 
       this.createObserver();
@@ -1390,44 +1303,15 @@
       const stickyHeaderTop = this.getBoundingClientRect().bottom + 10;
       const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
-      // Case 1: sticky-header reaches top of the screen while scrolling down
       if (stickyHeaderTop <= 0) {
         this.header.classList.add('shopify-section-header-sticky', 'scrolled-past-header');
         document.querySelector('body').classList.add('has-scrolled');
       }
 
-      // Case 2: user scrolls back up past the original bottom of sticky-header
       if (scrollTop <= this.headerBounds.bottom) {
         this.header.classList.remove('shopify-section-header-sticky', 'scrolled-past-header');
       }
 
-      // const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
-      // if (this.predictiveSearch && this.predictiveSearch.isOpen) return;
-
-      // if (scrollTop > this.currentScrollTop && scrollTop > this.headerBounds.bottom) {
-      //   this.header.classList.add('scrolled-past-header');
-      //   if (this.preventHide) return;
-      //   requestAnimationFrame(this.hide.bind(this));
-      // } else if (scrollTop < this.currentScrollTop && scrollTop > this.headerBounds.bottom) {
-      //   this.header.classList.add('scrolled-past-header');
-      //   if (!this.preventReveal) {
-      //     requestAnimationFrame(this.reveal.bind(this));
-      //   } else {
-      //     window.clearTimeout(this.isScrolling);
-
-      //     this.isScrolling = setTimeout(() => {
-      //       this.preventReveal = false;
-      //     }, 66);
-
-      //     requestAnimationFrame(this.hide.bind(this));
-      //   }
-      // } else if (scrollTop <= this.headerBounds.top) {
-      //   this.header.classList.remove('scrolled-past-header');
-      //   requestAnimationFrame(this.reset.bind(this));
-      // }
-
-      // this.currentScrollTop = scrollTop;
     }
 
     hide() {
@@ -1460,8 +1344,6 @@
   }
 
   customElements.define('sticky-header', StickyHeader);
-
-  // dropdown navigation menu on hover
 
   const inlineMenus = document.querySelectorAll('.header__inline-menu ul');
   inlineMenus.forEach((inlineMenu) => {

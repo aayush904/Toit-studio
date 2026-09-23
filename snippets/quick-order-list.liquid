@@ -1,19 +1,4 @@
-{% comment %}
-  Renders a list of product's variants
-
-  Accepts:
-  - product: {Object} Product Liquid object
-  - show_image: {Boolean} Shows image of the variant in the row
-  - is_modal: {Boolean} Defines if this snippet lives in a modal (optional)
-
-  Usage:
-  {% render 'quick-order-list', product: product %}
-{% endcomment %}
-
-{% comment %} TODO: enable theme-check once `line_items_for` is accepted as valid filter {% endcomment %}
-{% # theme-check-disable %}
 {%- assign items_in_cart = cart | line_items_for: product | sum: 'quantity' -%}
-{% # theme-check-enable %}
 <div class="quick-order-list-container color-{{ section.settings.color_scheme }}{% unless is_modal %} gradient{% endunless %}">
   <quick-order-list
     class="page-width section-{{ section.id }}-padding"
@@ -123,8 +108,7 @@
 
     {%- if product.has_only_default_variant or product.variants_count == 1 -%}
       <span class="quick-order-list-error">
-        {% comment %} Populated by JS {% endcomment %}
-      </span>
+        </span>
     {%- else -%}
       <div
         class="quick-order-list__total{% unless is_modal %} gradient{% endunless %}"
@@ -163,8 +147,7 @@
               <span class="quick-order-list__message-text"></span>
             </span>
             <span class="quick-order-list-error">
-              {% comment %} Populated by JS {% endcomment %}
-            </span>
+              </span>
           </div>
           <div class="quick-order-list__total-items">
             <span>
@@ -175,11 +158,8 @@
           <div class="quick-order-list-total__price">
             <div class="totals__product-total">
               <span class="totals__subtotal-value">
-                {% comment %} TODO: enable theme-check once `line_items_for` is accepted as valid filter {% endcomment %}
-                {% # theme-check-disable %}
                 {{ cart | line_items_for: product | sum: 'original_line_price' | money }}
-                {% # theme-check-enable %}
-              </span>
+                </span>
               <p class="totals__subtotal h5">{{ 'sections.quick_order_list.product_total' | t }}</p>
             </div>
             <small class="tax-note caption-large rte">
@@ -255,8 +235,7 @@
               <span class="quick-order-list__message-text"></span>
             </span>
             <span class="quick-order-list-error">
-              {% comment %} Populated by JS {% endcomment %}
-            </span>
+              </span>
           </div>
         </div>
         <div class="quick-order-list-total__confirmation hidden">

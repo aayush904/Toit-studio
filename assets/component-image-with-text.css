@@ -312,13 +312,11 @@
   z-index: 2;
 }
 
-/* Needed for gradient continuity with or without animation so that transparent PNG images come up as we would expect */
 .image-with-text.image-with-text--overlap .backround-transparent,
 .image-with-text:not(.image-with-text--overlap) .background-transparent {
   background: transparent;
 }
 
-/* Needed for gradient continuity with or without animation, the transform scopes the gradient to its container which happens already when animation are turned on */
 .image-with-text .gradient {
   transform: perspective(0);
 }
@@ -393,17 +391,12 @@
   }
 }
 
-/* check for flexbox gap in older Safari versions */
 @supports not (inset: 10px) {
   .image-with-text .grid {
     margin-left: 0;
   }
 }
 
-/*
-  Multirow
-  note: consider removing from this stylesheet if multirow-specific styles increase signficantly
-*/
 .multirow__inner {
   display: flex;
   flex-direction: column;

@@ -1,15 +1,3 @@
-{% comment %}
-  Quantity input
-
-  Accepts:
-  - variant: {Object} Variant object
-  - variant_id: {String} Variant ID (optional)
-  - min: {Number} Min (optional)
-
-  Usage:
-  {% render 'quantity-input' variant: variant %}
-{% endcomment %}
-
 <quantity-input class="quantity cart-quantity">
   <button class="quantity__button" name="minus" type="button" data-target="decrement-{{ variant.id }}">
     <span class="visually-hidden">
@@ -22,7 +10,6 @@
     data-quantity-variant-id="{{ variant.id }}"
     type="number"
     name="updates[{{ variant_id }}]"
-    {% # theme-check-disable %}
     value="{{ cart | item_count_for_variant: variant.id }}"
     data-cart-quantity="{{ cart | item_count_for_variant: variant.id }}"
     min="{{ min }}"
@@ -31,7 +18,6 @@
       max="{{ variant.quantity_rule.max }}"
     {% endif %}
     step="{{ variant.quantity_rule.increment }}"
-    {% # theme-check-enable %}
     aria-label="{{ 'products.product.quantity.input_label' | t: product: variant.title | escape }}"
     id="Quantity-{{ variant.id }}"
     data-index="{{ variant.id }}"

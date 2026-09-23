@@ -1,13 +1,3 @@
-{% comment %}
-  Renders a collection card
-
-  Accepts:
-  - card_collection: {Object} Collection Liquid object
-  - image_ratio: {String} Size of the product image card. Values are "square", "rectangle", "round", "natural". Default is "square" (optional)
-  - columns_desktop: {Number}
-  Usage:
-  {% render 'card-collection' %}
-{% endcomment %}
 {% liquid
   assign corner_image = false
   if section.settings.edges_type == 'rounded_corners'
@@ -15,7 +5,7 @@
   endif
   if is_lazy
     assign loadingImg = "lazy"
-  else 
+  else
     assign loadingImg = "eager"
   endif
 
@@ -109,7 +99,7 @@
                               {% endif %}
                             {% endcapture %}
                             {%- if custom_image_collection != blank or image != blank -%}
-                                
+
                               <div class="w-full h-full top-0 left-0 absolute overflow-hidden duration-300 transition ease-out">
                                 {% if custom_image_collection != blank %}
                                   <img
@@ -209,7 +199,7 @@
                           {%- if card_collection != blank -%}
                             <p
                               class="text-[rgba(var(--colors-title))] otsb-p-break-words transition duration-200">
-                              
+
                               {% if card_collection.title != blank or custom_name_collection != blank %}
                                 {%- if custom_name_collection != blank  -%}
                                   {{ custom_name_collection }}

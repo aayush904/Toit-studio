@@ -1,9 +1,3 @@
-{%- comment -%}
-  A heading with a button on the same row. Built for the Instafeed app block,
-  whose markup belongs to the app and so cannot take a button of its own --
-  this sits directly above it and the app's own title is hidden in CSS.
-{%- endcomment -%}
-
 {%- style -%}
   .section-{{ section.id }}-padding {
     padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;

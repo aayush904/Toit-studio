@@ -1,16 +1,3 @@
-{% comment %}
-  Renders a swatch component.
-  Accepts:
-  - swatch: {Object} a swatch object
-  - shape: {String} swatch shape. Accepts 'square', defaults to circle.
-
-  Usage:
-  {% render 'swatch',
-    swatch: value.swatch
-    shape: 'square'
-  %}
-{% endcomment %}
-
 {%- liquid
   assign swatch_value = null
   if swatch.image
@@ -21,7 +8,6 @@
     assign swatch_value = 'rgb(' | append: swatch.color.rgb | append: ')'
   endif
 -%}
-
 
 <span
   {% if swatch_value %}

@@ -106,7 +106,7 @@
         "text": "<p>Sign up to unlock 10% Off on your first purchase, valid for any product.</p>",
         "field_label": "Email Address",
         "button_label": "Claim 10% Off",
-        "success_text": "Thanks — your discount is on its way to your inbox.",
+        "success_text": "Your code for discount",
         "max_width": 900,
         "background_color": "#FCFEFF",
         "heading_color": "#2B2B2B",
@@ -116,7 +116,8 @@
         "button_color": "#647a73",
         "button_label_color": "#ffffff",
         "delay": 5,
-        "reset_key": "1"
+        "reset_key": "1",
+        "discount_code": "FIRST10"
       }
     }
   },

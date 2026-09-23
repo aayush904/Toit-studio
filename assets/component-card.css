@@ -65,20 +65,18 @@
     var(--shadow-blur-radius) rgba(var(--color-shadow), var(--shadow-opacity));
 }
 
-/* Needed for gradient continuity with or without animation, the transform scopes the gradient to its container which happens already when animation are turned on */
 .card--card.gradient,
 .card__inner.gradient {
   transform: perspective(0);
 }
 
-/* Needed for gradient continuity with or without animation so that transparent PNG images come up as we would expect */
 .card__inner.color-scheme-1 {
   background: transparent;
 }
 
 .card .card__inner .card__media {
   overflow: hidden;
-  /* Fix for Safari border bug on hover */
+
   z-index: 1;
   border-radius: 8px;
 }
@@ -422,10 +420,6 @@
     transform: scale(1.03);
   }
 
-  /* .underline-links-hover:hover a {
-    text-decoration: underline;
-    text-underline-offset: 0.3rem;
-  } */
 }
 
 .card--standard.card--media .card__inner .card__information,
@@ -510,7 +504,6 @@
   margin-top: 0.4rem;
 }
 
-/* Specificity needed due to the changes below */
 .card-information
   > *:not(.visually-hidden:first-child)
   + quantity-popover:not(.rating):not(.card__information-volume-pricing-note),
@@ -533,15 +526,13 @@
   margin-top: 1rem;
 }
 
-/* Card Shapes */
-
 .card--shape .card__content {
   padding-top: 0;
 }
 
 .card--shape.card--standard:not(.card--text) .card__inner {
   border: 0;
-  /* Border is not currently compatible with image shapes for standard cards. */
+
   background-color: transparent;
   filter: drop-shadow(
     var(--shadow-horizontal-offset) var(--shadow-vertical-offset)
@@ -576,8 +567,6 @@
 .grid__item:nth-child(8n) .shape--blob {
   clip-path: polygon(var(--shape--blob-1));
 }
-
-/* Card Shape Hover Rules */
 
 @media (prefers-reduced-motion: no-preference) {
   .product-card-wrapper .shape--round {

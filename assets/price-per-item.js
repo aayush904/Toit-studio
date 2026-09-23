@@ -17,7 +17,7 @@ if (!customElements.get('price-per-item')) {
       variantIdChangedUnsubscriber = undefined;
 
       connectedCallback() {
-        // Update variantId if variant is switched on product page
+
         this.variantIdChangedUnsubscriber = subscribe(PUB_SUB_EVENTS.variantChange, (event) => {
           this.variantId = event.data.variant.id.toString();
           this.getVolumePricingArray();
@@ -26,20 +26,19 @@ if (!customElements.get('price-per-item')) {
         this.updatePricePerItemUnsubscriber = subscribe(PUB_SUB_EVENTS.cartUpdate, (response) => {
           if (!response.cartData) return;
 
-          // Item was added to cart via product page
           if (response.cartData['variant_id'] !== undefined) {
             if (response.productVariantId === this.variantId) this.updatePricePerItem(response.cartData.quantity);
-            // Qty was updated in cart
+
           } else if (response.cartData.item_count !== 0) {
             const isVariant = response.cartData.items.find((item) => item.variant_id.toString() === this.variantId);
             if (isVariant && isVariant.id.toString() === this.variantId) {
-              // The variant is still in cart
+
               this.updatePricePerItem(isVariant.quantity);
             } else {
-              // The variant was removed from cart, qty is 0
+
               this.updatePricePerItem(0);
             }
-            // All items were removed from cart
+
           } else {
             this.updatePricePerItem(0);
           }
@@ -65,8 +64,6 @@ if (!customElements.get('price-per-item')) {
           this.step = parseInt(this.input.step)
         }
 
-        // updatedCartQuantity is undefined when qty is updated on product page. We need to sum entered qty and current qty in cart.
-        // updatedCartQuantity is not undefined when qty is updated in cart. We need to sum qty in cart and min qty for product.
         this.currentQtyForVolumePricing = updatedCartQuantity === undefined ? this.getCartQuantity(updatedCartQuantity) + this.enteredQty : this.getCartQuantity(updatedCartQuantity) + parseInt(this.step);
 
         if (this.classList.contains('variant-item__price-per-item')) {

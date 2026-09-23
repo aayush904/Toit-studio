@@ -1,10 +1,5 @@
 
 
-/* These headings/paragraphs carry literal newlines in their content
-   (set in templates/index.json) to force exact mobile line breaks
-   matching the design reference. white-space:pre-line turns those
-   newlines into real breaks -- but only at mobile, so desktop ignores
-   them and wraps its own (wider) copy naturally. */
 @media (max-width: 767px) {
   .custom-hero .banner__heading,
   .custom-intro .rich-text__heading,
@@ -15,13 +10,6 @@
   }
 }
 
-/* Trending and Everyday headings/paragraphs carry the same explicit
-   breaks at mobile (<=767px) and at genuine desktop (>=1200px), where
-   each was verified to fit the column width at that size. The 768-
-   1199px "tablet" band in between has a meaningfully narrower column
-   (the image already takes half the viewport there) that the same
-   hard breaks don't fit, so it falls back to natural wrapping rather
-   than splitting a break-forced line a second time. */
 .custom-trending .image-with-text__text,
 .custom-everyday .image-with-text__text {
   color: #5b5553;
@@ -34,16 +22,12 @@
   }
 }
 @media (min-width: 1200px) {
-  /* Everyday's first line needs more width than a mobile screen has
-     at this font size even edge-to-edge, so only force the hard
-     breaks at desktop; mobile and tablet wrap naturally instead of
-     orphaning a word onto its own line. */
+
   .custom-everyday .image-with-text__text {
     white-space: pre-line;
   }
 }
 
-/* Hero banner ("Discover curated pairings...") */
 .custom-hero .banner__heading {
   max-width: 52rem;
   text-align: left;
@@ -68,12 +52,7 @@
   margin-top: 2rem !important;
 }
 @media (min-width: 768px) {
-  /* .banner__content sits in normal flow by default, so its own
-     padding/text height can exceed what the image's aspect ratio
-     implies, growing the section past the image and stretching it
-     to fill the gap -- the image height stops tracking the viewport
-     predictably. Overlaying the content instead keeps the section's
-     height purely a function of the image's own aspect ratio. */
+
   .custom-hero .banner__content {
     position: absolute;
     inset: 0;
@@ -81,7 +60,6 @@
   }
 }
 
-/* Intro section ("Your one-stop destination...") */
 .custom-intro.rich-text {
   background: #f7f6f4;
   padding-top: 10rem;
@@ -126,13 +104,11 @@
   margin-top: 3rem;
 }
 
-/* Our Story, Our Promise (background video) */
 .custom-story-video .video-background-wrapper {
   padding-top: 56px;
   padding-bottom: 48px;
 }
 
-/* #Trending: The Modern Vase */
 .custom-trending.image-with-text {
   padding: 0;
   margin-left: calc(50% - 50vw);
@@ -215,7 +191,6 @@
   }
 }
 
-/* What We Offer */
 .custom-offer .multicolumn__title {
   justify-content: center;
 }
@@ -252,7 +227,6 @@
   font-size: 1.8rem;
 }
 
-/* Everyday, Beautifully Considered */
 .custom-everyday.image-with-text {
   padding: 0;
   margin-left: calc(50% - 50vw);
@@ -271,10 +245,7 @@
   margin-top: 4.8rem;
 }
 @media (max-width: 767px) {
-  /* Same "image as full-bleed backdrop, text overlaid on top" treatment as
-     desktop: the media becomes an absolutely-positioned background filling
-     the grid, so the grid's own height (auto, from the still-in-flow text
-     item) plus this min-height is what the image is cropped to. */
+
   .custom-everyday .image-with-text__grid {
     position: relative;
     min-height: 56rem;
@@ -308,7 +279,7 @@
   }
 }
 @media (min-width: 768px) {
-  /* Image becomes a full-bleed backdrop, text overlays it on the left */
+
   .custom-everyday .image-with-text__grid,
   .custom-everyday .image-with-text__grid--reverse {
     position: relative;
@@ -339,12 +310,10 @@
   }
   .custom-everyday .image-with-text__content {
     height: 650px;
-    /* Line the overlaid text up with the page-width container used by every
-       other section, even though the section itself is full-bleed. */
+
     padding-left: max(60px, calc((100vw - var(--page-width)) / 2 + 60px));
   }
 }
-
 
 .custom-shop-categories{
     .card__inner{
@@ -374,8 +343,6 @@
     }
 }
 
-
-
 .custom-hero .hxl {
   font-size: calc(var(--font-heading-scale) * 3.6rem);
 }
@@ -398,27 +365,19 @@
   }
 }
 
-/* ---------------- Footer ---------------- */
-/* Colours come from the section's colour scheme, not hardcoded here. */
 .custom-footer .footer {
   padding-bottom: 0;
-  /* This scheme's background is a plain color (no gradient/image), so
-     the fixed attachment from the shared .gradient class buys nothing
-     visually here -- but background-attachment:fixed is a known source
-     of unresponsive taps/clicks on iOS Safari, especially on a page
-     that also has other fixed-position elements (sticky header, menu
-     drawer). Neutralize it for the footer specifically. */
+
   background-attachment: scroll;
 }
-/* This design has no decorative wave, so drop it and the negative margin
-   that only existed to pull the wave over the section above. */
+
 .custom-footer .footer__svg {
   display: none;
 }
 body .shopify-section-group-footer-group {
   margin-top: 0;
 }
-/* Match the page-width container the rest of the site uses */
+
 .custom-footer .footer__content-top,
 .custom-footer .footer__bottom-bar {
   max-width: var(--page-width);
@@ -433,7 +392,6 @@ body .shopify-section-group-footer-group {
   border: 0;
 }
 
-/* Left column: brand + newsletter */
 .custom-footer .footer-block--newsletter {
   order: -1;
   display: block;
@@ -467,7 +425,6 @@ body .shopify-section-group-footer-group {
   margin: 0;
 }
 
-/* Right columns */
 .custom-footer .footer__blocks-wrapper {
   flex: 1 1 auto;
   flex-wrap: nowrap;
@@ -507,7 +464,6 @@ body .shopify-section-group-footer-group {
   text-decoration: underline;
 }
 
-/* Connect / contact column */
 .custom-footer .footer-block__contact {
   font-size: 1.5rem;
   line-height: 1.4;
@@ -527,20 +483,18 @@ body .shopify-section-group-footer-group {
     background-color: #0e0202;
     font-weight: 500;
     font-style: Medium;
-    /* background: red; */
+
     font-size: 14px;
     color: #EFF2F1;
     line-height: 100%;
     width: 92px;
     border-radius: 400px;
     position: absolute;
-    /* top: 24px; */
-    /* padding: 10px; */
+
     z-index: 100;
     letter-spacing: 6%;
     vertical-align: middle;
     text-transform: uppercase;
-
 
     span{
           background: #647A73;
@@ -560,7 +514,6 @@ body .shopify-section-group-footer-group {
 
         font-size: 15px;
 
-
         line-height: 100%;
         letter-spacing: 0%;
 
@@ -569,7 +522,7 @@ body .shopify-section-group-footer-group {
     color: #EFF2F1;
 
    }
-  
+
 }
 .custom-footer .footer-block__contact-details p {
   margin: 0 0 0.9rem;
@@ -606,7 +559,6 @@ body .shopify-section-group-footer-group {
   color: #ffffff;
 }
 
-/* Newsletter */
 .custom-footer .footer-block--newsletter .footer-block__heading {
   font-size: 1.7rem;
   font-weight: 400;
@@ -615,13 +567,13 @@ body .shopify-section-group-footer-group {
 .custom-footer .footer-block--newsletter .footer-block__newsletter {
   width: 100%;
 }
-/* Bottom bar */
+
 .custom-footer .footer__content-bottom {
-  /* Darkens whatever the colour scheme sets, so it tracks the theme */
+
   background: #4F615B;
   border: 0;
   padding: 2.4rem 0;
-  /* Let the darker band run the full viewport width */
+
   max-width: none;
   width: 100%;
   margin: 0;
@@ -697,9 +649,7 @@ body .shopify-section-group-footer-group {
     align-items: flex-start;
     gap: 2rem;
   }
-  /* Menu columns (Shop/About Us/For Business) sit three across; the
-     Connect block (the one column without --menu) takes its own
-     full-width row below them. */
+
   .custom-footer .footer__blocks-wrapper > .footer-block--menu {
     flex: 0 0 calc(33.333% - 1.4rem);
     max-width: calc(33.333% - 1.4rem);
@@ -718,10 +668,7 @@ body .shopify-section-group-footer-group {
 }
 
 @media (max-width: 767px) {
-  /* The default Dawn footer collapses each link-list column behind an
-     accordion toggle on mobile. This design shows all links directly,
-     so force the collapsed content open and hide the (invisible)
-     toggle overlay so it can't be tapped to re-close it. */
+
   .custom-footer input[name='footer-menu-toggler'] ~ .footer-block__details-content {
     opacity: 1 !important;
     overflow: unset !important;
@@ -758,9 +705,6 @@ body .shopify-section-group-footer-group {
     font-size: 1.3rem;
   }
 
-  /* Connect column: address on the left, hours (Sun/Mon-Fri/Sat) as their
-     own stacked column on the right instead of the divider + hours-below-
-     address flow used at desktop. */
   .custom-footer .footer-block__contact {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -802,8 +746,6 @@ body .shopify-section-group-footer-group {
   }
 }
 
-/* ---------------- Mobile homepage type scale ---------------- */
-/* Section headings (h1 size) -> 3rem on mobile */
 @media (max-width: 767px) {
   .custom-shop-categories .collection-list-title,
   .section-product-tabs .product-tabs__heading,
@@ -814,7 +756,6 @@ body .shopify-section-group-footer-group {
     text-align:left;
   }
 
-  /* Body copy under headings -> 1.4rem on mobile */
   .custom-hero .banner__box > * + .banner__text,
   .custom-intro .rich-text__text,
   .custom-trending .image-with-text__text,
@@ -823,7 +764,6 @@ body .shopify-section-group-footer-group {
     font-size: 1.4rem;
   }
 
-  /* Button labels -> 1.5rem on mobile */
   .custom-hero .button,
   .custom-intro .button,
   .custom-trending .button,
@@ -833,7 +773,6 @@ body .shopify-section-group-footer-group {
   }
 }
 
-/* ---------------- Header (mobile) ---------------- */
 @media (max-width: 767px) {
 
   .header__heading-link{
@@ -848,8 +787,7 @@ body .shopify-section-group-footer-group {
   .custom-header .header__icon--account {
     display: none !important;
   }
-  /* Logo now sits left (mobile_logo_position), so move the hamburger
-     from its default left slot into the (now-empty) right icon slot. */
+
   .custom-header header-drawer {
     grid-area: icons;
     justify-self: end;
@@ -859,20 +797,12 @@ body .shopify-section-group-footer-group {
     height: auto !important;
   }
 
-  /* Mobile menu drawer: logo width, close icon aligned to where the
-     hamburger sits in the real header bar, item type scale + spacing,
-     and an optional decorative background image behind the nav. */
   .custom-header .menu-drawer__logo .drawer__logo-image {
     width: 50px !important;
     height: auto !important;
   }
   .custom-header .menu-drawer__header {
-    /* Fixed height matching the real header's own icon-row height, rather
-       than the JS-computed --header-height custom property: that value
-       is only set once (by the sticky-header custom element) and can be
-       stale, unset, or wildly wrong depending on load timing, which was
-       producing an inconsistent gap above the logo/close row across
-       devices. A fixed value is deterministic everywhere. */
+
     height: 48.5px;
     padding-top: 25px;
     padding-bottom: 0;
@@ -881,9 +811,7 @@ body .shopify-section-group-footer-group {
   .custom-header .menu-drawer__navigation {
     padding-top: 60px;
     margin-top: 0;
-    /* Without this, the grid row below can grow to fit its content
-       instead of respecting the 1fr track, pushing the login row (and
-       potentially the whole nav) out of view with no scrollbar. */
+
     min-height: 0;
     overflow-y: auto;
   }
@@ -899,7 +827,7 @@ body .shopify-section-group-footer-group {
     font-size: 2rem;
     font-weight: 400;
   }
-  /* Only TikTok stays in the drawer's social row. */
+
   .custom-header .menu-drawer .list-social__item:has(.icon-facebook),
   .custom-header .menu-drawer .list-social__item:has(.icon-instagram) {
     display: none;
@@ -926,7 +854,6 @@ body .shopify-section-group-footer-group {
   height: 20px;
 }
 
-/* Collection page filter/sort bar: pill-style dropdowns. */
 #main-collection-filters .facets__heading,
 #main-collection-filters .facet-filters__label {
   text-transform: uppercase;
@@ -945,7 +872,6 @@ body .shopify-section-group-footer-group {
 }
 
 #main-collection-filters .facets__summary-label {
-
 
  font-size: 15px;
     color: #4e4947;
@@ -998,19 +924,12 @@ body .shopify-section-group-footer-group {
     row-gap: 42px;
 }
 
-/* Only clamp cards to a 4-up width where Dawn actually switches the grid
-   to 4 columns (>=1280px). Below that Dawn's own grid--2-col-tablet-down
-   rule sizes them 2-up, and an unscoped max-width here would squash them. */
 @media screen and (min-width: 1280px) {
   #product-grid.product-grid .grid__item {
     max-width: 23%;
   }
 }
 
-/* Below 1280px Dawn lays the grid out 2-up, sizing cards by subtracting its
-   own spacing variables -- but the column-gap above is 2.5%, so Dawn's widths
-   come out a few px too wide and the second card wraps to its own row. Size
-   the cards off the same 2.5% so exactly two fit. */
 @media screen and (max-width: 1279px) {
   #product-grid.product-grid .grid__item {
     width: calc((100% - 2.5%) / 2);
@@ -1036,8 +955,6 @@ body .shopify-section-group-footer-group {
 
 }
 
-
-/* Collection page "load more" pagination. */
 .load-more {
   display: flex;
   flex-direction: column;
@@ -1076,15 +993,12 @@ body .shopify-section-group-footer-group {
   cursor: default;
 }
 
-/* Our Story intro: heading on the left, body copy on the right. The
-   rich-text section stacks its blocks by default, so lay the two out
-   as columns and collapse back to a stack on mobile. */
 .custom-story-intro .rich-text__blocks {
   display: grid;
   grid-template-columns: 1fr 1fr;
   column-gap: 3rem;
   align-items: start;
-  max-width: none; 
+  max-width: none;
   width: 100%;
 }
 
@@ -1115,9 +1029,6 @@ body .shopify-section-group-footer-group {
 
 @media screen and (max-width: 989px) {
 
-
-
-
   .custom-product .price-per-item__container {
    width:auto !important;
   min-height:4.2rem !important;
@@ -1132,15 +1043,10 @@ body .shopify-section-group-footer-group {
   }
 }
 
-/* Our Story: "Objects Built Around a Way of Living" -- image left, copy
-   right, closing with an italic serif pull quote and attribution. */
 .custom-story-founder.image-with-text {
   padding: 0;
   margin-left: calc(50% - 50vw);
-  /* Not calc(50% + 50vw): that 50% resolves against the parent
-     .page-width's padded content box, not the viewport, so the section
-     came up 60px short of the true right edge. width:100vw is immune
-     to the parent's own padding. */
+
   width: 100vw;
 }
 
@@ -1148,8 +1054,7 @@ body .shopify-section-group-footer-group {
   text-align: left;
   font-weight: 400;
   line-height: 1.2;
-  /* Wide enough to keep "Objects Built Around" on the first line, narrow
-     enough that the heading still breaks onto two lines as designed. */
+
   max-width: 46rem;
 }
 
@@ -1167,7 +1072,6 @@ body .shopify-section-group-footer-group {
   margin-bottom: 0;
 }
 
-/* The pull quote is the only emphasised line in the block. */
 .custom-story-founder .image-with-text__text p em {
   font-family: Georgia, 'Times New Roman', serif;
   font-style: italic;
@@ -1177,9 +1081,7 @@ body .shopify-section-group-footer-group {
 }
 
 @media screen and (min-width: 750px) {
-  /* Run the image full-bleed to the viewport's left edge, taking the full
-     left half of the section, and give the copy responsive padding on
-     the right (up to 140px). */
+
   .custom-story-founder .image-with-text__grid {
     flex-wrap: nowrap;
     column-gap: 0;
@@ -1203,7 +1105,6 @@ body .shopify-section-group-footer-group {
   }
 }
 
-/* Our Story: framed video */
 .custom-story-video-embed .video-section__media,
 .custom-story-video-embed .video-section__poster,
 .custom-story-video-embed deferred-media {
@@ -1211,20 +1112,6 @@ body .shopify-section-group-footer-group {
   overflow: hidden;
 }
 
-/* .video-section__media normally gets its height from a padding-bottom
-   aspect-ratio hack, which a plain max-height can't reliably clamp.
-   Swapping to an explicit width + aspect-ratio gives it a real height
-   that max-height can cap; object-fit: cover on the poster handles the
-   crop once past the cap.
-
-   width: 100% matters -- with the width left indefinite, aspect-ratio
-   shrinks the box's *width* to hold 16:9 once the height hits the cap,
-   so the video stops filling its container.
-
-   The second selector guards the case where the section's full_width
-   setting is switched on in the theme editor: that adds
-   .global-media-settings--full-width, whose own padding-bottom rule in
-   video-section.css otherwise ties on specificity and wins on order. */
 .custom-story-video-embed .video-section__media,
 .custom-story-video-embed .video-section__media.global-media-settings--full-width {
   width: 100%;
@@ -1234,10 +1121,6 @@ body .shopify-section-group-footer-group {
   padding-bottom: 0;
 }
 
-/* This icon is a complete, self-contained button (blurred circle,
-   stroke, and triangle baked into the SVG), not a glyph meant to sit
-   inside the theme's own circular button chrome -- drop that chrome
-   and let the icon be the whole 80x80 button. */
 .custom-story-video-embed .deferred-media__poster-button {
   background: none;
   border: none;
@@ -1252,15 +1135,6 @@ body .shopify-section-group-footer-group {
   margin-left: 0;
 }
 
-/* ==========================================================================
-   Product page
-   ========================================================================== */
-
-/* Wrapping flex row rather than a two-column grid: the two pairs that share
-   a row (title + stock badge, quantity + add-to-cart) want different column
-   widths, and a grid's shared column track forced both to the same split --
-   the long title widened column 1, which squashed add-to-cart. Flex sizes
-   each row independently. Everything else takes a full-width row. */
 .custom-product .product__info-container {
   display: flex;
   flex-wrap: wrap;
@@ -1281,9 +1155,6 @@ body .shopify-section-group-footer-group {
   margin-left: 2rem;
 }
 
-/* Top-aligned rather than inheriting the container's align-items:center,
-   which is there for the title/badge row -- the buy wrapper is taller than
-   the button it contains, so centring offset the stepper beside it. */
 .custom-product .product-form__quantity {
   flex: 0 0 16rem;
   align-self: flex-start;
@@ -1295,7 +1166,6 @@ body .shopify-section-group-footer-group {
   align-self: flex-start;
 }
 
-/* SKU */
 .custom-product .product__info-container .product__sku {
   font-family: 'Overused Grotesk', var(--font-heading-family, sans-serif);
   font-weight: 400;
@@ -1306,7 +1176,6 @@ body .shopify-section-group-footer-group {
   margin: 0 0 12px;
 }
 
-/* Title */
 .custom-product .product__info-container .product__title {
   margin: 0;
 }
@@ -1323,7 +1192,6 @@ body .shopify-section-group-footer-group {
   text-align: left;
 }
 
-/* "IN STOCK" badge, sitting on the title's row */
 .custom-product .product__inventory {
   display: inline-flex;
   align-items: center;
@@ -1345,9 +1213,6 @@ body .shopify-section-group-footer-group {
   height: 0.8rem;
 }
 
-/* Description -- scoped through .product__info-container to outrank
-   section-main-product.css, which sets 13.68px at the same specificity
-   and loads after custom.css. */
 .custom-product .product__info-container .product__description {
   font-family: 'Overused Grotesk', var(--font-heading-family, sans-serif);
   font-weight: var(--font-weight-book);
@@ -1361,7 +1226,6 @@ body .shopify-section-group-footer-group {
   margin: 0 0 1.2rem;
 }
 
-/* Tax / shipping note, sitting directly under the price. */
 .custom-product .product__info-container .product__tax {
   font-family: Overused Grotesk;
 font-weight: 500;
@@ -1394,8 +1258,6 @@ color:#424242;
   color: #000;
 }
 
-/* Quantity stepper: no label in the design, pill outline to match the
-   add-to-cart button beside it. */
 .custom-product .product-form__quantity .quantity__label,
 .custom-product .product-form__quantity .quantity__rules {
   display: none;
@@ -1430,11 +1292,9 @@ color:#424242;
 .custom-product .product-buy-btn .product-form,
 .custom-product .product-buy-btn form,
 .custom-product .product-form__buttons {
-  /* width: 100%; */
+
 }
 
-/* section-main-product.css gives .product-form a 2.5rem block margin, which
-   offset the button from the quantity stepper beside it. */
 .custom-product .product__info-container .product-form {
   margin: 0;
 }
@@ -1457,7 +1317,6 @@ color:#424242;
   content: none;
 }
 
-/* WhatsApp button */
 .custom-product .product__info-container .product__whatsapp-button {
   margin: 4px 0 0;
 }
@@ -1486,9 +1345,6 @@ color:#424242;
   height: 2rem;
 }
 
-/* Accordions */
-/* section-main-product.css sets `border: none !important` on these, so the
-   override needs !important plus higher specificity to win. */
 .custom-product .product__info-container .product__accordion.accordion {
   border: none !important;
   border-bottom: 0.5px solid #000 !important;
@@ -1496,14 +1352,10 @@ color:#424242;
   padding: 0;
 }
 
-/* The installment/payment-terms wrapper is empty here but still picks up a
-   0.8rem bottom margin from the theme's generic sibling rule. */
 .custom-product .product__info-container .product__installment-wrapper {
   margin: 0;
 }
 
-/* 48px between the buttons and the first accordion. :first-of-type can't be
-   used -- it matches the first div sibling, which is the title. */
 .custom-product .product__info-container .product-buy-btn + .product__accordion.accordion,
 .custom-product .product__info-container .product__whatsapp-button + .product__accordion.accordion {
   margin-top: 48px;
@@ -1513,11 +1365,6 @@ color:#424242;
   margin-top: 0;
 }
 
-/* Safari drops a <summary>'s native click-to-toggle when its display is
-   overridden, and component-accordion.css:1 sets `.accordion summary` to
-   flex -- which left these accordions unopenable on Safari while working in
-   Chrome. The summary keeps its default list-item display; the flex row moved
-   to the wrapper added in main-product.liquid. */
 .custom-product .product__info-container .product__accordion.accordion summary {
   display: list-item;
   list-style: none;
@@ -1560,8 +1407,6 @@ color:#424242;
   height: 2rem;
 }
 
-/* "font-style: Book" is a Figma weight name, not a CSS font-style -- Book is
-   the 350 step on the variable font's weight axis. */
 .custom-product .product__accordion .accordion__content p {
   font-family: 'Overused Grotesk', var(--font-heading-family, sans-serif);
   font-weight: var(--font-weight-book);
@@ -1573,8 +1418,7 @@ color:#424242;
 }
 
 @media screen and (max-width: 749px) {
-  /* Single column on phones -- the title/badge and quantity/button pairs
-     do not have room to share a row. */
+
   .custom-product .product__info-container > *,
   .custom-product .product__title,
   .custom-product .product__inventory,
@@ -1598,10 +1442,6 @@ color:#424242;
   }
 }
 
-/* ==========================================================================
-   Recommended products -- mirrors the homepage "Explore our Products" cards
-   (sections/product-tabs.liquid)
-   ========================================================================== */
 .custom-recommended .related-products__heading {
   font-family: 'Overused Grotesk', var(--font-heading-family, sans-serif);
   font-weight: 400;
@@ -1609,8 +1449,6 @@ color:#424242;
   text-align: left;
   margin: 0 0 4rem;
 }
-
-
 
 .custom-recommended{
 
@@ -1622,7 +1460,7 @@ color:#424242;
   .grid__item{
      max-width: 23%;
   }
-} 
+}
 
 .custom-recommended .product-grid .card__title-row {
   display: flex;
@@ -1684,12 +1522,8 @@ color:#424242;
   }
 }
 
-/* Gallery: thumbnails as a vertical strip to the left of the main image
-   (Dawn's "thumbnail" layout stacks them underneath by default). */
 @media screen and (min-width: 750px) {
-  /* Grid rather than flex: the media list is itself a .grid whose items are
-     sized in percentages, so it needs a column with a definite width --
-     minmax(0, 1fr) gives it one. As a flex item it collapsed to zero. */
+
   .custom-product media-gallery {
     display: grid;
     grid-template-columns: 9.6rem minmax(0, 1fr);
@@ -1697,8 +1531,6 @@ color:#424242;
     align-items: start;
   }
 
-  /* The grid items are media-gallery's two slider-component wrappers, not
-     the lists inside them. */
   .custom-product media-gallery > .thumbnail-slider {
     grid-column: 1;
     grid-row: 1;
@@ -1725,8 +1557,6 @@ color:#424242;
     margin: 0;
   }
 
-  /* The thumbnail slider's prev/next arrows are meaningless once the
-     thumbnails are a static vertical stack. */
   .custom-product media-gallery .thumbnail-slider .slider-button {
     display: none;
   }
@@ -1742,33 +1572,16 @@ color:#424242;
   border-radius: 8px;
 }
 
-/* Price */
 .custom-product .price .price-item {
   font-size: 3.2rem;
   font-weight: 400;
   color: #000;
 }
 
-/* ---------------------------------------------------------------------------
-   Product page: match the header's content width.
-
-   assets/section-main-product.css:13 caps `product-info .page-width` at
-   1425px, which insets the product 7.5px either side relative to the header
-   (and every other page-width section). Restore the site-wide container so
-   the columns line up with the nav above them.
---------------------------------------------------------------------------- */
 product-info .page-width.custom-product {
   max-width: var(--page-width);
 }
 
-/* ---------------------------------------------------------------------------
-   Price row: price on the left, tax/shipping note right-aligned beside it.
-
-   Both are direct children of the wrapping flex info-container, whose children
-   default to `flex: 0 0 100%`. Opting these two out of that lets them share a
-   row; the description above and the buy buttons below stay full width, so
-   they still force a wrap either side.
---------------------------------------------------------------------------- */
 .custom-product .product__info-container [id^='price-'] {
   flex: 0 1 auto;
 }
@@ -1780,26 +1593,13 @@ product-info .page-width.custom-product {
 }
 
 @media screen and (max-width: 749px) {
-  /* Not enough room for price and note to share a row on phones, so the note
-     stacks underneath -- left-aligned, since a right-aligned block on its own
-     line reads as a stray indent. */
+
   .custom-product .product__info-container .product__tax {
-    
+
     text-align: right;
   }
 }
 
-/* ---------------------------------------------------------------------------
-   Product card: make the image clickable.
-
-   Dawn only links the card title -- its ::after overlay resolves against
-   .card__information, so it covers the title row and nothing else, and the
-   .card__content layer inside .card__inner (z-index 2) sits over the artwork.
-   The anchor added in snippets/card-product.liquid stretches over the media
-   and is raised above that layer.
---------------------------------------------------------------------------- */
-/* base.css:529 hides empty anchors (`a:empty { display: none }`), which this
-   deliberately-empty overlay matches -- hence the extra specificity. */
 .card__inner > a.card__media-link {
   position: absolute;
   inset: 0;
@@ -1807,8 +1607,6 @@ product-info .page-width.custom-product {
   display: block;
 }
 
-/* Keep genuine controls in the overlaying content layer reachable -- the
-   overlay would otherwise swallow clicks meant for quick-add. */
 .card__inner > .card__content .quick-add,
 .card__inner > .card__content .quick-add-bulk,
 .card__inner > .card__content button,
@@ -1817,12 +1615,8 @@ product-info .page-width.custom-product {
   z-index: 4;
 }
 
-/* ==========================================================================
-   Product page -- phone refinements
-   ========================================================================== */
 @media screen and (max-width: 749px) {
-  /* Type scale steps down: the desktop sizes were set against a ~537px
-     column, and the phone column is 343px. */
+
   .custom-product .product__info-container .product__sku {
     font-size: 14px;
   }
@@ -1857,8 +1651,6 @@ product-info .page-width.custom-product {
     margin:0;
   }
 
-  /* Buttons span the full content column. `.product-form__buttons` carries a
-     16px left margin for the desktop row, which inset the button here. */
   .custom-product .product-buy-btn,
   .custom-product .product-buy-btn .product-form,
   .custom-product .product-buy-btn form,
@@ -1870,8 +1662,6 @@ product-info .page-width.custom-product {
     margin-left: 0;
   }
 
-  /* Quantity stepper matches them -- 16rem on desktop, where it shares a row
-     with add-to-cart; stacked here, so it runs the full width too. */
   .custom-product .product__info-container .product-form__quantity {
     flex: 0 0 100%;
     width: 100%;
@@ -1882,7 +1672,6 @@ product-info .page-width.custom-product {
     max-width: none;
   }
 
-  /* Tighten the stack: quantity -> add to cart -> WhatsApp. */
   .custom-product .product__info-container .product-buy-btn {
     margin-top: 8px;
   }
@@ -1892,12 +1681,6 @@ product-info .page-width.custom-product {
   }
 }
 
-/* ==========================================================================
-   Recommended products -- two per row on phones.
-
-   The `.grid__item { max-width: 23% }` rule above is unscoped, so it holds at
-   every width and squeezes the grid to four columns on a phone.
-   ========================================================================== */
 @media screen and (max-width: 749px) {
   .custom-recommended .product-grid .grid__item {
     width: calc((100% - 2.5%) / 2);
@@ -1913,16 +1696,10 @@ product-info .page-width.custom-product {
   }
 }
 
-/* Quantity stepper: number and stepper icons share the border colour.
-   The icons are dedicated assets (icon-minus-quantity / icon-plus-quantity)
-   rather than edits to icon-minus/icon-plus, which the cart, cart drawer and
-   quick-add all render too. */
 .custom-product .product-form__quantity .quantity__input {
   color: #647a73;
 }
 
-/* The .svg-wrapper span is sized to the old 10px icon, and the svg is a
-   shrinkable flex item inside it, so both need sizing. */
 .custom-product .product-form__quantity .quantity__button .svg-wrapper,
 .custom-product .product-form__quantity .quantity__button svg {
   width: 16px;
@@ -1930,19 +1707,10 @@ product-info .page-width.custom-product {
   flex: 0 0 auto;
 }
 
-/* ==========================================================================
-   Page banner (Our Story, Collaborate With Us -- both use .about_banner)
-   ========================================================================== */
-
-/* The banner image is set to "adapt", so its height follows the artwork and
-   can collapse on short or wide viewports. Hold a floor of 30vh. */
 .about_banner {
   min-height: 30vh;
 }
 
-/* Line the banner content up with the header's content edges. base.css insets
-   the header by 16px, 32px (>=768) and 60px (>=1280); .banner__content ships
-   with a flat 50px, so it sat inside the nav above it. */
 .about_banner .banner__content {
   padding-left: 16px;
   padding-right: 16px;
@@ -1962,14 +1730,11 @@ product-info .page-width.custom-product {
   }
 }
 
-/* .banner__box adds its own 15px inset below 750px, which pushed the heading
-   past the header's 16px edge. The content wrapper above owns the alignment. */
 .about_banner .banner__box {
   padding-left: 0;
   padding-right: 0;
 }
 
-/* Heading caps at 42px -- the nested .about_banner rule above sets 7.2rem. */
 .about_banner .banner__box .h1,
 .about_banner .h1 {
   font-size: 42px;
@@ -1982,46 +1747,31 @@ product-info .page-width.custom-product {
   }
 }
 
-/* ==========================================================================
-   Collaborate With Us -- desktop only. Below 750px the page is left to match
-   Our Story, which is why these are scoped rather than applied outright.
-   ========================================================================== */
 @media screen and (min-width: 750px) {
-  /* CTA moves under the body copy in the right-hand column, rather than
-     starting a new row on the left. */
+
   .custom-collab-intro .rich-text__blocks .rich-text__buttons {
     grid-column: 2;
     justify-self: start;
   }
 }
 
-/* ==========================================================================
-   Phone: header inset and the content that lines up with it
-   ========================================================================== */
 @media screen and (max-width: 767px) {
-  /* base.css insets .page-width by 16px below 768px. */
+
   .header.page-width {
     padding-left: 15px;
     padding-right: 15px;
   }
 
-  /* Banner content tracks the header, so it moves with it. */
   .about_banner .banner__content {
     padding-left: 15px;
     padding-right: 15px;
   }
 }
 
-/* 767px, not Dawn's usual 749px, so this band matches the header rule above --
-   base.css switches .page-width's inset at 768px. */
 @media screen and (max-width: 767px) {
-  /* "Made for Today" / "Thoughtful Choices" (Our Story) and "Collaborate with
-     Us" -- all three are .custom-story-intro, so they share this.
-     .rich-text__wrapper stacks a 20px margin on a 16px pad, which put the
-     copy 36px in; the section's own 72px block padding comes down too. */
+
   .rich-text.custom-story-intro {
-    /* padding-top: 40px;
-    padding-bottom: 40px; */
+
   }
 
   .custom-story-intro .rich-text__wrapper {
@@ -2031,42 +1781,21 @@ product-info .page-width.custom-product {
     padding-right: 15px;
   }
 
-  /* Collaborate CTA */
   .custom-collab-intro .rich-text__buttons .button {
     padding: 1.8rem 2.6rem;
   }
 }
 
-/* "Objects Built Around a Way of Living" -- the text column carries its own
-   40px/50px padding rather than the section. Scoped to 749px, not 767px like
-   the block above: image-with-text splits into two columns at 750px, and a
-   15px inset inside that narrow text column would be far too tight. */
 @media screen and (max-width: 749px) {
   .custom-story-founder .image-with-text__content {
     padding: 32px 15px;
   }
 }
 
-/* Collaborate heading breaks after the first word. inline_richtext rejects
-   <br>, so the second line is a <span> in the setting, promoted to a block
-   here. Scoped to this section so other headings are unaffected. */
 .custom-collab-intro .rich-text__heading span {
   display: block;
 }
 
-/* ==========================================================================
-   Spec table inside a product description.
-
-   Opt-in: add class="spec-table" to a <dl> or <table> in the description's
-   HTML view. Both markups are supported because Shopify's rich-text editor
-   handles them differently -- it has a table button, so <table> tends to
-   survive a round-trip through the visual editor, while <dl> is the better
-   semantic fit when the markup is left alone.
-
-     <dl class="spec-table">
-       <dt>Material</dt><dd>Ceramic</dd>
-     </dl>
-   ========================================================================== */
 .spec-table {
   display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(0, 3fr);
@@ -2077,8 +1806,6 @@ product-info .page-width.custom-product {
     border-collapse: collapse;
 }
 
-/* <table> markup: flatten the row wrappers so the cells land on the same grid
-   as the <dl> version rather than nesting inside a row box. */
 .spec-table tbody,
 .spec-table tr {
   display: contents;
@@ -2108,15 +1835,6 @@ product-info .page-width.custom-product {
   }
 }
 
-/* ==========================================================================
-   Product description: one treatment for the whole block, descendants
-   included, so pasted <strong>/<span> markup and the spec table cannot
-   introduce their own colour, weight or size.
-
-   "font-style: Book" in the spec is a Figma label for the 350 weight, not a
-   CSS font-style, so it is expressed as font-weight below and font-style is
-   left alone (anything genuinely italic stays italic).
-   ========================================================================== */
 .custom-product .product__info-container .product__description,
 .custom-product .product__info-container .product__description * {
   font-family: 'Overused Grotesk', var(--font-heading-family, sans-serif);
@@ -2135,9 +1853,6 @@ product-info .page-width.custom-product {
   }
 }
 
-/* The description rule above paints every descendant #5B5553, and at (0,3,0)
-   it outranks the plain .spec-table selectors, so the label/value split is
-   restated here with the description in the chain. */
 .custom-product .product__info-container .product__description .spec-table dt,
 .custom-product .product__info-container .product__description .spec-table th,
 .custom-product .product__info-container .product__description .spec-table td:first-child {
@@ -2149,14 +1864,6 @@ product-info .page-width.custom-product {
   color: #000000;
 }
 
-/* ==========================================================================
-   Rich text with a background image.
-
-   The image, overlay and radius are emitted per-section by rich-text.liquid
-   (they depend on the chosen image). Everything here is layout that holds for
-   any instance: inner padding so the content is not flush against the edges,
-   and a two-column split matching the rest of the site's rich-text sections.
-   ========================================================================== */
 .rich-text--has-background .rich-text__wrapper {
   padding: 4.8rem 4rem;
 }
@@ -2165,7 +1872,6 @@ product-info .page-width.custom-product {
   max-width: none;
 }
 
-/* Buttons read as light pills on the darkened image. */
 .rich-text--has-background .rich-text__buttons .button {
   background: #f7f6f3;
   color: #2b2725;
@@ -2181,7 +1887,6 @@ product-info .page-width.custom-product {
     align-items: start;
   }
 
-  /* Heading holds the left column; text and button stack down the right. */
   .rich-text--has-background .rich-text__heading {
     grid-column: 1;
     grid-row: 1 / span 2;
@@ -2206,10 +1911,6 @@ product-info .page-width.custom-product {
   }
 }
 
-/* ==========================================================================
-   B2B steps -- intro on the left, numbered list on the right, with a dashed
-   rule running between the markers.
-   ========================================================================== */
 .b2b-steps__heading {
   margin: 0 0 1.2rem;
   text-align: left;
@@ -2250,7 +1951,7 @@ product-info .page-width.custom-product {
 
 .b2b-steps__item {
   --marker-size: 4.8rem;
-  --heading-line-height: 3.64rem; /* 28px heading x 130% */
+  --heading-line-height: 3.64rem;
   display: grid;
   grid-template-columns: var(--marker-size) minmax(0, 1fr);
   column-gap: 2rem;
@@ -2262,8 +1963,6 @@ product-info .page-width.custom-product {
   padding-bottom: 0;
 }
 
-/* Dashed connector, drawn from each marker down to the next one. Uses a
-   gradient rather than a dashed border so the dash length is controllable. */
 .b2b-steps__item:not(:last-child)::before {
   content: '';
   position: absolute;
@@ -2294,8 +1993,7 @@ product-info .page-width.custom-product {
 
 .b2b-steps__body {
   grid-column: 2;
-  /* Centres the heading's first line on the numeral. Derived rather than a
-     fixed value, so changing either size keeps them aligned. */
+
   padding-top: calc((var(--marker-size) - var(--heading-line-height)) / 2);
 }
 
@@ -2333,7 +2031,7 @@ product-info .page-width.custom-product {
 @media screen and (max-width: 749px) {
   .b2b-steps__item {
     --marker-size: 4rem;
-    --heading-line-height: 2.86rem; /* 22px heading x 130% */
+    --heading-line-height: 2.86rem;
     column-gap: 1.6rem;
     padding-bottom: 2.4rem;
   }
@@ -2349,8 +2047,6 @@ product-info .page-width.custom-product {
     top: var(--marker-size);
   }
 
-
-
   .b2b-steps__item-heading {
     font-size: 22px;
   }
@@ -2361,7 +2057,6 @@ product-info .page-width.custom-product {
   }
 }
 
-/* WhatsApp variant of the B2B button: mark sits before the label. */
 .b2b-steps__button-icon {
   display: inline-flex;
   align-items: center;
@@ -2375,37 +2070,24 @@ product-info .page-width.custom-product {
   height: 20px;
 }
 
-/* ==========================================================================
-   Gifting CTA on phones: smaller button, card flush to the screen edges.
-
-   The band is targeted with :has() rather than by adding another class in
-   Liquid, so the markup stays as it is for every other rich-text section.
-   ========================================================================== */
 @media screen and (max-width: 749px) {
   .custom-gifting-cta .rich-text__buttons .button {
     font-size: 1.2rem;
     padding: 1rem 2rem;
   }
 
-  /* Drop the band's own spacing and the page-width inset around it. */
   .rich-text-section:has(.custom-gifting-cta) {
     padding: 0;
     margin: 0;
   }
 
   .rich-text-section:has(.custom-gifting-cta) > .isolate {
-    /* padding-left: 0;
-    padding-right: 0; */
+
     margin-left: 0;
     margin-right: 0;
   }
 }
 
-/* "Made for Today" (Our Story) -- tighter block padding on phones only.
-   Scoped to its own class rather than .custom-story-intro, which Collaborate,
-   Gifting and Wholesale also use. Desktop keeps the section's own 96px.
-   .rich-text doubles the specificity so this beats the section's inline
-   padding class, which is injected after custom.css. */
 @media screen and (max-width: 749px) {
   .rich-text.custom-made-for-today {
     padding-top: 30px;
@@ -2413,9 +2095,6 @@ product-info .page-width.custom-product {
   }
 }
 
-/* ==========================================================================
-   Enquiry form (contact page): intro column left, form right.
-   ========================================================================== */
 .enquiry__heading {
   margin: 0 0 1.6rem;
   text-align: left;
@@ -2445,11 +2124,6 @@ product-info .page-width.custom-product {
   padding-bottom: 1.2rem;
 }
 
-/* ADDRESS / EMAIL / PHONE labels.
-   "font-style: Medium" is a Figma weight name, not a CSS font-style, so it is
-   expressed as font-weight. 6% becomes 0.06em -- same 1.08px at this size,
-   with broader support. vertical-align does nothing on a flex container; the
-   icon and text are centred by align-items already. */
 .enquiry__detail-label {
   display: flex;
   align-items: center;
@@ -2464,9 +2138,6 @@ product-info .page-width.custom-product {
   color: #647a73;
 }
 
-/* The supplied icons carry their own #647A73 fill and are not all square
-   (the address pin is 18x17), so height is normalised and width left to the
-   artwork. The wrapper is fixed so all three labels start at the same x. */
 .enquiry__detail-icon {
   display: inline-flex;
   align-items: center;
@@ -2500,7 +2171,6 @@ letter-spacing: 0%;
   text-decoration: none;
 }
 
-/* --- form ---------------------------------------------------------------- */
 .enquiry__grid {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
@@ -2533,7 +2203,6 @@ text-transform: uppercase;
   margin-left: 0.2rem;
 }
 
-/* Underline-only fields, matching the design. */
 .enquiry__input {
   width: 100%;
   box-sizing: border-box;
@@ -2577,7 +2246,6 @@ letter-spacing: 0%;
   line-height: 150%;
 }
 
-/* Native select arrow replaced with the theme's caret. */
 .enquiry__select-wrap {
   position: relative;
 }
@@ -2616,8 +2284,6 @@ letter-spacing: 0%;
   color: #5b5553;
 }
 
-/* The richtext setting emits its own <p>; make sure it takes the same
-   treatment rather than relying on inheritance alone. */
 .enquiry__note p {
   margin: 0;
   font: inherit;
@@ -2638,8 +2304,7 @@ letter-spacing: 0%;
   font-weight: var(--font-weight-medium);
   font-size: 18px;
   line-height: 100%;
-  /* 0.06em rather than 6%: equivalent here, and percentage letter-spacing has
-     patchier browser support than the em form. */
+
   letter-spacing: 0.06em;
   text-transform: uppercase;
   cursor: pointer;
@@ -2695,16 +2360,12 @@ letter-spacing: 0%;
   }
 }
 
-
-
 .enquiry__message{
   .icon{
     height:40px;
   }
 }
-/* ==========================================================================
-   Heading with a button on one row (used above the Instafeed app block).
-   ========================================================================== */
+
 .heading-link {
   display: flex;
   align-items: center;
@@ -2746,18 +2407,10 @@ letter-spacing: 0%;
   flex: 0 0 auto;
 }
 
-/* The Instafeed app block renders its own <h2>. The heading above replaces it,
-   so hide the app's rather than have two titles stacked.
-
-   !important and the extra element qualifier are needed here: the app loads
-   instafeed-19.1.0.css from its own CDN, which is cross-origin and so cannot
-   be inspected, and something in it outranked a plain `#insta-feed > h2`. */
 div#insta-feed > h2 {
   display: none !important;
 }
 
-/* Pull the feed up against the heading row, since the app's own top margin is
-   set in its block settings and assumes it carries the title itself. */
 .custom-insta-heading + .shopify-section .instafeed-new-layout-container {
   margin-top: 2.4rem;
 }
@@ -2773,21 +2426,11 @@ div#insta-feed > h2 {
   }
 }
 
-
-/* Filter dropdowns open instantly. component-facets.css:220 runs a 200ms
-   `animateMenuOpen` on the panel, which reads as lag when you click a filter.
-   Scoped to the collection filter bar so facet drawers elsewhere keep theirs. */
 #main-collection-filters .facets__disclosure[open] .facets__display,
 #main-collection-filters .facets__disclosure-vertical[open] .facets__display-vertical {
   animation: none;
 }
 
-/* Collection filtering renders instantly.
-
-   Dawn replaces the section HTML on every facet change and re-runs its
-   scroll-reveal, so the filter bar faded in over 600ms and each card slid in
-   on a stagger -- results appeared to trickle rather than snap. The reveal is
-   left alone everywhere else, since it is a global theme setting. */
 .facets-container.scroll-trigger,
 #product-grid .grid__item.scroll-trigger,
 #main-collection-filters .scroll-trigger {
@@ -2798,24 +2441,6 @@ div#insta-feed > h2 {
   visibility: visible !important;
 }
 
-/* ==========================================================================
-   Filter dropdown must sit above the product grid.
-
-   The card image overlay link needs z-index 3 to clear .card__content (2)
-   inside its own card, but nothing between the cards and the filter panel
-   established a stacking context -- so that 3 competed directly with the
-   panel's 2 and, being later in the DOM, the cards painted over the open
-   dropdown.
-
-   Two parts: cards contain their own stacking, so their internal layering
-   cannot leak out; and the disclosure is raised above grid content.
-
-   Desktop only, from 750px -- the width at which .facets.small-hide stops
-   being hidden and this dropdown actually exists. Below it the filters open
-   as their own drawer instead, so neither rule has anything to do: the
-   isolation is unnecessary, and raising a hidden disclosure to z-index 10
-   would only risk competing with the nav drawer, which sits at 3.
-   ========================================================================== */
 @media screen and (min-width: 750px) {
   .card-wrapper {
     isolation: isolate;
@@ -2828,27 +2453,6 @@ div#insta-feed > h2 {
   }
 }
 
-/* ==========================================================================
-   Mobile menu drawer: guarantee an opaque panel.
-
-   Two compounding problems left the drawer transparent on iOS Safari while
-   its links stayed tappable:
-
-   1. The header's "menu colour scheme" setting was empty, so the drawer
-      rendered class="gradient menu-drawer color-" -- not a valid scheme
-      class. It therefore defined none of its own colour variables and only
-      looked white in Chrome because custom properties inherit from <body>.
-      Now set to scheme-1 in header-group.json.
-
-   2. .gradient (base.css:3276) also applies background-attachment: fixed.
-      On an element that is itself position: fixed, iOS Safari can fail to
-      paint the background entirely. This is the same declaration that
-      scaled the rich-text background to the viewport instead of the card.
-
-   Each colour is declared twice: a literal first, then the scheme-aware
-   value. If the variable is ever missing the second declaration is invalid
-   and the literal stands, so the panel can never end up transparent.
-   ========================================================================== */
 .menu-drawer,
 .menu-drawer__submenu {
   background-color: #ffffff;
@@ -2858,54 +2462,18 @@ div#insta-feed > h2 {
   color: rgb(var(--color-foreground));
 }
 
-/* iOS Safari can skip painting the background of a position: fixed element,
-   which is what leaves the drawer see-through while its links stay tappable.
-   Setting background-color on .menu-drawer alone therefore did not help.
-
-   .menu-drawer__inner-container is ordinary flow (position: relative) and
-   fills the panel, so painting that gives an opaque background regardless of
-   how the fixed ancestor behaves. Literal values, not custom properties, so
-   nothing can resolve away; the decorative pattern sits above this at
-   z-index 0 and is unaffected. */
 .menu-drawer__inner-container,
 .menu-drawer__submenu .menu-drawer__inner-container {
   background-color: #ffffff !important;
   background-image: none !important;
 }
 
-/* Collection cards drop their overlay z-index on phones.
-
-   Without it the overlay sat at 3 in the root stacking context -- the same
-   level as the nav drawer -- and being later in the DOM it won over the
-   drawer wherever the two overlapped. */
 @media screen and (max-width: 749px) {
   #product-grid .card__inner > a.card__media-link {
     z-index: auto;
   }
 }
 
-/* ==========================================================================
-   Drawer panels: box-shadow instead of filter: drop-shadow().
-
-   component-menu-drawer.css:47 and component-facets.css:784 both put
-   filter: drop-shadow() on a panel that also has a background-color and an
-   animating transform. A filter forces the element onto its own compositing
-   layer, and WebKit can paint that layer without the background -- the panel
-   is laid out and hit-testable but see-through. That is the mobile filter
-   panel sliding in with no background, and the nav drawer staying
-   transparent on iOS while its links still work.
-
-   It also explains why setting a background on the drawer's inner container
-   did not help: the child sits inside the same filtered layer.
-
-   box-shadow is visually identical on a rectangular panel and needs no
-   compositing layer.
-   ========================================================================== */
-/* !important because both stylesheets are injected by their sections, so they
-   load after custom.css and win on equal specificity. The theme's shadow is
-   set to 0 opacity anyway -- it paints nothing while still costing a layer --
-   so the box-shadow here is only so a shadow still works if it is ever
-   turned back on in settings. */
 .menu-drawer,
 .mobile-facets__inner,
 .menu-drawer__submenu {
@@ -2914,20 +2482,6 @@ div#insta-feed > h2 {
     var(--drawer-shadow-blur-radius) rgba(var(--color-shadow), var(--drawer-shadow-opacity));
 }
 
-/* ==========================================================================
-   Sliding panels must not use a viewport-anchored background.
-
-   .gradient (base.css:3276) sets background-attachment: fixed, and the mobile
-   filter panel carries that class on its inner wrapper, its main area and
-   each submenu. A fixed background is painted relative to the viewport, so
-   while the panel is sliding in on a transform the browser has nothing to
-   paint in place -- the panel arrives see-through and the product cards show
-   through it for the length of the animation.
-
-   Third bug from this one declaration: it also scaled the rich-text
-   background to the window instead of its card, and left the nav drawer
-   transparent on iOS. Every panel that animates gets a normal background.
-   ========================================================================== */
 .mobile-facets,
 .mobile-facets .gradient,
 .mobile-facets__inner,
@@ -2939,23 +2493,6 @@ div#insta-feed > h2 {
   background-attachment: scroll !important;
 }
 
-/* ==========================================================================
-   Every remaining <summary> keeps its native toggle.
-
-   Same fault as the product accordions: Safari drops a summary's
-   click-to-toggle when its display is overridden, and the theme sets
-   `display: flex` on .accordion summary (component-accordion.css:1) and
-   .drawer__footer summary (component-cart-drawer.css:131). Those cover the
-   collapsible-content section and the cart drawer's order-note field, so both
-   were unopenable on Safari for the same reason.
-
-   The cart drawer summary holds a single .summary__title, so it needs nothing
-   further. collapsible-content had three children on a row, so they now sit in
-   a wrapper added in that section, mirroring the product accordion fix.
-   ========================================================================== */
-/* !important because component-accordion.css and component-cart-drawer.css are
-   injected by their sections, so they load after custom.css and win on equal
-   specificity -- the plain rule computed flex regardless. */
 .accordion summary,
 .drawer__footer summary {
   display: list-item !important;
@@ -2974,23 +2511,6 @@ div#insta-feed > h2 {
   gap: 1.6rem;
 }
 
-/* ==========================================================================
-   Header sections must not swallow clicks outside their own content.
-
-   The diagnostic on Safari reported DIV.shopify-section-group-header-group as
-   the element on top of the collection banner links -- every one of them
-   unreachable, while in Chrome at the same 1920px width that section measures
-   73px tall against links at 218px and does not overlap at all.
-
-   The header group carries z-index 4 and the banner tucks up underneath it, so
-   wherever that box extends further than its visible bar it covers the banner
-   and eats the clicks. Rather than chase why the box is taller on Safari, the
-   wrapper stops taking pointer events and its contents take them back: the
-   header, nav, icons and drawer behave exactly as before, but the empty area
-   of the section no longer intercepts anything.
-
-   No-op in Chrome, where there is no overlap to begin with.
-   ========================================================================== */
 .shopify-section-group-header-group {
   pointer-events: none;
 }
@@ -2999,28 +2519,11 @@ div#insta-feed > h2 {
   pointer-events: auto;
 }
 
-/* ==========================================================================
-   Accordion summaries: taps must land on the summary, not its children.
-
-   The Safari diagnostic showed taps reaching H2.accordion__title,
-   DIV.summary__title and the toggle svg -- all children inside the summary --
-   with nothing covering them, no JS errors, and default not prevented. Safari
-   fails to activate a <summary> when the click target is a nested block
-   child, so the accordion never opened while Chrome was happy.
-
-   Making the contents pointer-transparent means any tap resolves to the
-   summary element itself, which Safari does activate. No JS involved, so
-   there is nothing to double-toggle against the native behaviour. Safe here
-   because nothing inside these summaries is interactive in its own right.
-   ========================================================================== */
 .accordion summary > *,
 .drawer__footer summary > * {
   pointer-events: none;
 }
 
-/* Safari supports ::details-content but not details:open before Safari 26, so a
-   closed-state rule written with only the :open form leaves content invisible
-   forever. Keep the product accordions and the collection facets exempt. */
 .accordion details::details-content,
 #main-collection-filters details::details-content,
 .facets details::details-content,
@@ -3031,10 +2534,6 @@ div#insta-feed > h2 {
   transition: none;
 }
 
-/* ---------- Cart page ---------- */
-
-/* The line-item totals inherited a 12.9px caption size, too small to read
-   against the 16px product title beside them. */
 .cart-item__totals .price,
 .cart-item__totals .cart-item__old-price,
 .cart-item__price-wrapper .price {
@@ -3046,37 +2545,19 @@ div#insta-feed > h2 {
   font-weight: var(--font-weight-book);
 }
 
-/* The tax note is body copy, not a heading; `caption-large` left it at 700. */
 .tax-note,
 .tax-note * {
   font-weight: var(--font-weight-book);
 }
 
-/* "What Makes / the Cut" breaks onto two lines. Matches the Collaborate
-   heading above: inline_richtext rejects <br> but permits <span>, so the
-   second line is a span promoted to a block. */
 .custom-story-sustainability .rich-text__heading span {
   display: block;
 }
 
-/* ==========================================================================
-   Announcement bar
-
-   .utility-bar carries the colour scheme's `gradient` class, whose
-   `background` shorthand would otherwise win, so the green is set on
-   `.utility-bar.gradient` and the gradient image cleared.
-
-   Three values from the design are not CSS and are translated here:
-   `font-style: Medium` is the weight name, already covered by weight 500;
-   `letter-spacing: 7%` becomes 0.07em, since percentages are invalid for
-   letter-spacing; and `leading-trim`/`vertical-align` have no effect on a
-   flex line box, so the text is centred with flexbox instead.
-   ========================================================================== */
 .utility-bar.gradient {
   background: #647a73;
   background-image: none;
-  /* Dawn's own min-height is taller than 40px, so both bounds are set to
-     hold the bar at exactly the 40px ceiling with the text centred. */
+
   min-height: 40px;
   max-height: 40px;
   display: flex;
@@ -3108,8 +2589,6 @@ div#insta-feed > h2 {
   color: #ffffff;
 }
 
-/* The bar is a link on hover in Dawn; keep the text white rather than
-   letting the scheme's link colour through. */
 .utility-bar .announcement-bar__link,
 .utility-bar .announcement-bar__link:hover,
 .utility-bar .announcement-bar__message span {
@@ -3122,8 +2601,6 @@ div#insta-feed > h2 {
   height: 14px;
 }
 
-/* The announcement bar as an email-popup trigger: a button reset so it
-   inherits the bar's own typography rather than the UA's. */
 .utility-bar .announcement-bar__trigger {
   display: block;
   width: 100%;

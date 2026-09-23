@@ -1,11 +1,11 @@
 <div id="collage-{{ section.id }}" class="otsb-grid otsb-collage grid-cols-{{ min_columns_mobile }} md:grid-cols-{{ max_columns }} spacing--{{ section.id }}">
 {%- for block in section.blocks -%}
-  {%- liquid 
+  {%- liquid
     assign columns_desktop = block.settings.number_of_columns
     assign columns_mobile = block.settings.number_of_columns
-    
+
     if columns_desktop > max_columns
-      assign columns_desktop = max_columns  
+      assign columns_desktop = max_columns
     endif
     if columns_mobile > min_columns_mobile
       assign columns_mobile = min_columns_mobile
@@ -37,7 +37,7 @@
             assign main_button_classes = main_button_classes | append: ' otsb-btn__underline'
             when 'sliced'
             assign main_button_classes = main_button_classes | append: ' otsb-btn__sliced'
-          endcase              
+          endcase
         %}
         <div class="relative group h-full w-full flex items-center">
           {%- if section.settings.full_width -%}
@@ -89,16 +89,16 @@
       {%- when 'product' -%}
         {%- if block.settings.product != blank %}
           {%- liquid
-          
+
             assign disable_quickview = true
             if block.settings.show_quickview
               assign disable_quickview = false
-            endif 
+            endif
             assign index_param = section.index | append: forloop.index | plus: 0
             assign section_id = section.id | append: forloop.index
           -%}
           {%- render 'otsb-card-product',
-            card_product: block.settings.product, 
+            card_product: block.settings.product,
             collage: true,
             extend_height: false,
             columns_desktop: 1,
@@ -122,7 +122,7 @@
           <script src="{{ 'otsb-preview-color-swatches.min.js' | asset_url }}" defer></script>
         {% else %}
           <div class="flex flex-col h-full">
-            <div class="grow{% if section.settings.edges_type == 'rounded_corners' %} overflow-hidden md:rounded-[10px] rounded-[10px]{% endif %}"> 
+            <div class="grow{% if section.settings.edges_type == 'rounded_corners' %} overflow-hidden md:rounded-[10px] rounded-[10px]{% endif %}">
               {% render 'otsb-icon-placeholder', icon: 'icon-product', class: 'bg-[#c9c9c9] w-full h-full' %}
             </div>
             <div class="pt-4 pb-4 text-{{ block.settings.info_alignment }}{% if section.settings.full_width_mobile %} pl-5 pr-5 md:pl-0 md:pr-0{% endif %}">
@@ -142,7 +142,7 @@
       {%- when 'collection' -%}
         {%- liquid
           assign image_ratio = 100
-          if block.settings.collection.featured_image != blank 
+          if block.settings.collection.featured_image != blank
             assign image_ratio = 'auto'
           endif
         -%}
@@ -166,22 +166,22 @@
           title_color: section.settings.heading_color,
         %}
       {%- when 'video' -%}
-        {% liquid 
+        {% liquid
           assign video_alt = block.settings.video_alt_text
           assign video_type = false
-          if block.settings.video_url.type == 'youtube' 
+          if block.settings.video_url.type == 'youtube'
             assign video_type = 'youtube'
             assign video_id = block.settings.video_url.id
           endif
 
-          if block.settings.video_url.type == 'vimeo' 
+          if block.settings.video_url.type == 'vimeo'
             assign video_type = 'vimeo'
             assign video_id = block.settings.video_url.id
           endif
 
-          if block.settings.video != null 
+          if block.settings.video != null
               assign video_type = 'video_select'
-          endif 
+          endif
         %}
         {%- style -%}
           .block-video-{{ block.id }} {
@@ -189,13 +189,13 @@
           }
         {%- endstyle -%}
         {% if block.settings.enable_video_autoplay and video_type != false %}
-          
-          <div class="block-video-{{ block.id }} h-full{% if block.settings.video_url != blank %} flex items-center{% endif %}"> 
-            <div class="{% if section.settings.edges_type == 'rounded_corners' %} rounded-[10px] {% endif %} relative otsb-external-video{% if video_type != 'video_select' %} h-0{% if request.design_mode %} pb-[55.75%]{% else %} pb-[56.25%]{% endif %} md:h-full{% else %} h-full{% endif %} w-full overflow-hidden otsb-video-hero{% if settings.edges_type == 'rounded_corners' %} md:rounded-[10px]{% unless section.settings.full_width_mobile %} rounded-[10px]{% endunless %}{% endif %}" 
+
+          <div class="block-video-{{ block.id }} h-full{% if block.settings.video_url != blank %} flex items-center{% endif %}">
+            <div class="{% if section.settings.edges_type == 'rounded_corners' %} rounded-[10px] {% endif %} relative otsb-external-video{% if video_type != 'video_select' %} h-0{% if request.design_mode %} pb-[55.75%]{% else %} pb-[56.25%]{% endif %} md:h-full{% else %} h-full{% endif %} w-full overflow-hidden otsb-video-hero{% if settings.edges_type == 'rounded_corners' %} md:rounded-[10px]{% unless section.settings.full_width_mobile %} rounded-[10px]{% endunless %}{% endif %}"
             aria-label="{{ 'sections.video.load_video' | t: video_alt_text: block.settings.video_alt_text | escape }}"
             x-intersect:leave="$store.xVideo.pause($el)"
             @click.stop="$store.xVideo.togglePlay($el)"
-            {% if video_type == 'video_select' %}x-intersect="$store.xVideo.play($el)"{% endif %}  
+            {% if video_type == 'video_select' %}x-intersect="$store.xVideo.play($el)"{% endif %}
             {% if video_type == 'youtube' or video_type == 'vimeo' %}
               x-intersect.once="$store.xVideo.externalLoad($el, '{{ video_type }}', '{{ video_id }}', false, '{{ video_alt }}', 1)"
               x-intersect="$store.xVideo.play($el)"
@@ -217,11 +217,11 @@
           </div>
           </div>
         {% else %}
-          <div 
-            class="block-video-{{ block.id }} h-full {% if block.settings.video_url != blank %} flex items-center{% endif %}" 
+          <div
+            class="block-video-{{ block.id }} h-full {% if block.settings.video_url != blank %} flex items-center{% endif %}"
             x-data="{open: false}"
-          > 
-            <div class="relative h-full w-full overflow-hidden{% if section.settings.edges_type == 'rounded_corners' %} md:rounded-[10px] rounded-[10px] {% endif %}" 
+          >
+            <div class="relative h-full w-full overflow-hidden{% if section.settings.edges_type == 'rounded_corners' %} md:rounded-[10px] rounded-[10px] {% endif %}"
               aria-label="{{ 'sections.video.load_video' | t: video_alt_text: block.settings.video_alt_text | escape }}"
             >
               <button
@@ -233,21 +233,19 @@
                 </span>
               </button>
               {% if video_type == 'youtube' %}
-                {% comment %}theme-check-disable RemoteAsset{% endcomment %}
                 <div
                   class="h-full w-full">
                   <picture>
                     <source type="image/webp" srcset="{{ video_id | prepend: 'https://i.ytimg.com/vi_webp/' | append: '/maxresdefault.webp' }}">
                     <source type="image/jpeg" srcset="{{ video_id | prepend: 'https://i.ytimg.com/vi/' | append: '/maxresdefault.jpg' }}">
-                    <img 
-                      src="{{ video_id | prepend: 'https://i.ytimg.com/vi_webp/' | append: '/maxresdefault.webp' }}" 
-                      loading="lazy"  
+                    <img
+                      src="{{ video_id | prepend: 'https://i.ytimg.com/vi_webp/' | append: '/maxresdefault.webp' }}"
+                      loading="lazy"
                       alt="{{ video_alt }}" class="w-full h-full object-cover" alt="dd" width="1280" height="890"
                     />
                   </picture>
                 </div>
-                {% comment %}theme-check-enable RemoteAsset{% endcomment %}
-              {% endif %}  
+                {% endif %}
               {% if video_type == 'vimeo' %}
                 {%- capture options -%}
                   {
@@ -256,7 +254,7 @@
                   }
                 {%- endcapture -%}
                 <div class="w-full h-full" x-init="$store.xVideo.renderVimeoFacade($el, '{{ video_id }}', {{ options }})"></div>
-              {% endif %}  
+              {% endif %}
               {% if video_type == "video_select" %}
                 {{ block.settings.video
                   | video_tag:
@@ -268,24 +266,24 @@
                     alt: block.settings.video.alt
                 }}
               {% endif %}
-            
+
               {% if video_type == false %}
                 <div class="bg-[#c9c9c9] h-full w-full z-0">
                   {%- render 'otsb-icon-media', icon: 'icon-video' , class: ' text-[#acacac] w-full h-full scale-50' -%}
                 </div>
               {% endif %}
             </div>
-            <div 
+            <div
               id="VideoModal-{{ block.id }}"
               class="top-0 left-0 right-0 bottom-0 bg-[rgba(var(--background-color))] duration-150 block fixed z-50"
               x-show="open"
-            
+
               x-cloak
             >
               <button
                 id="CloseVideoModal-{{ block.id }}"
                 class="btn-close button button-action w-[48px] h-[48px] min-w-[48px] min-h-[48px] disable-effect button_rounded rounded-full p-4 cursor-pointer z-20 fixed right-4 top-4"
-                @click="open = false; " 
+                @click="open = false; "
               >
                 {% render 'otsb-icon-alls', icon: 'icon-close' %}
               </button>
@@ -296,7 +294,7 @@
                 {% if video_type == "video_select" %}
                   {{ block.settings.video
                     | video_tag:
-                      image_size: "1100x", 
+                      image_size: "1100x",
                       loop: false,
                       controls: true,
                       autoplay: true,
@@ -313,15 +311,4 @@
       {%- endcase -%}
     </div>
   {%- endfor -%}
-</div>{%- comment -%}
-
-This file has been rewritten to preserve the original behavior.
-
----
-Changes:
-- from: "{% render 'otsb-icon-placeholder', icon: 'icon-product' | class: 'bg-[#c9c9c9]
-    w-full h-full' %}"
-  to: "{% render 'otsb-icon-placeholder', icon: 'icon-product', class: 'bg-[#c9c9c9]
-    w-full h-full' %}"
-  position: 6840..6935
-{%- endcomment -%}
+</div>

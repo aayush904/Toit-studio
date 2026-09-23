@@ -60,7 +60,6 @@ variant-selects {
   z-index: 1;
 }
 
-/* Custom styles for Pill display type */
 .product-form__input--pill input[type='radio'] + label {
   border: var(--variant-pills-border-width) solid rgba(var(--color-foreground), var(--variant-pills-border-opacity));
   background-color: rgb(var(--color-background));
@@ -131,12 +130,10 @@ variant-selects {
   box-shadow: 0 0 0 0.3rem rgb(var(--color-background)), 0 0 0 0.5rem rgba(var(--color-foreground), 0.55);
 }
 
-/* Fallback */
 .product-form__input--pill input[type='radio'].focused + label {
   box-shadow: 0 0 0 0.3rem rgb(var(--color-background)), 0 0 0 0.5rem rgba(var(--color-foreground), 0.55);
 }
 
-/* Custom styles for Swatch display type */
 .product-form__input--swatch {
   display: flex;
   flex-wrap: wrap;
@@ -147,7 +144,7 @@ variant-selects {
 .product-form__input--swatch .swatch-input__input + .swatch-input__label {
   --swatch-input--size: 3.6rem;
   margin: 0.7rem 0.8rem 0.2rem 0.5rem;
-  
+
 }
 
 @media screen and (min-width: 768px) {
@@ -155,4 +152,4 @@ variant-selects {
     --swatch-input--size: 2.8rem;
   }
 }
-/* End custom styles for Swatch display type */
+

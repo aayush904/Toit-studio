@@ -1,8 +1,3 @@
-{%- comment -%}
-  The colour scheme sits on an outer wrapper, outside page-width, so the
-  background spans the full viewport the way every other section's does --
-  rather than being confined to the padded container.
-{%- endcomment -%}
 <div class="color-{{ section.settings.color_scheme }} gradient{% if section.settings.custom_css_class != blank %} {{ section.settings.custom_css_class }}{% endif %}">
   <div class="{% if section.settings.include_margins %}page-width{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
     {%- for block in section.blocks -%}

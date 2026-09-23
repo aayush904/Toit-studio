@@ -1,18 +1,4 @@
-{% comment %}
-  Variant List Row
-
-  Accepts:
-  - item: {Object} Variant or Product object
-  - sku: {String} Sku of Product or Variant (optional)
-  - image: {Object} Product or Variant image (optional)
-  Usage:
-  {% render 'quick-order-list-row' variant: variant %}
-{% endcomment %}
-
-{% # theme-check-disable %}
 {% assign cart_qty = cart | item_count_for_variant: variant.id %}
-{% # theme-check-enable %}
-
 <tr
   class="variant-item{% unless show_image %} variant-item--no-media{% endunless %}{% if item.available and item.unit_price_measurement %} variant-item--unit-price{% endif %}"
   id="Variant-{{ variant.id }}"
@@ -160,11 +146,8 @@
 
   <td class="variant-item__totals right large-up-hide">
     {%- render 'loading-spinner' -%}
-    {% comment %} TODO: enable theme-check once `line_items_for` is accepted as valid filter {% endcomment %}
-    {% # theme-check-disable %}
     <span class="price">{{ cart | line_items_for: item | sum: 'original_line_price' | money }}</span>
-    {% # theme-check-enable %}
-  </td>
+    </td>
 
   <td class="variant-item__quantity">
     {%- liquid
@@ -276,10 +259,7 @@
           {%- if variant.available == false or quantity_rule_soldout -%}
             <span class="variant-item__sold-out"> {{ 'products.product.sold_out' | t }} </span>
           {%- else -%}
-            {% comment %} TODO: Remove theme check {% endcomment %}
-            {% # theme-check-disable %}
             {% assign cart_qty = cart | item_count_for_variant: variant.id %}
-            {% # theme-check-enable %}
             {% render 'quantity-input', variant: variant, min: 0 %}
           {%- endif -%}
         </div>
@@ -431,11 +411,8 @@
   </td>
   <td class="variant-item__totals right small-hide medium-hide">
     {%- render 'loading-spinner' -%}
-    {% comment %} TODO: enable theme-check once `line_items_for` is accepted as valid filter {% endcomment %}
-    {% # theme-check-disable %}
     <span class="price">{{ cart | line_items_for: item | sum: 'original_line_price' | money }}</span>
-    {% # theme-check-enable %}
-  </td>
+    </td>
 </tr>
 <tr class="small-hide medium-hide hidden desktop-row-error">
   <td></td>

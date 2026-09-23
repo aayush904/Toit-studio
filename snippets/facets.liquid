@@ -1,17 +1,3 @@
-{% comment %}
-  Renders facets (filtering and sorting)
-
-  Accepts:
-  - results: {Object} Collection or Search object
-  - enable_filtering: {Boolean} Show filtering when true
-  - enable_sorting: {Boolean} Show sorting when true
-  - filter_type: {String} Type of filter
-  - paginate: {Object}
-
-  Usage:
-  {% render 'facets', results: collection, enable_filtering: true, enable_sorting: true, filter_type: 'vertical', paginate: paginate %}
-{% endcomment %}
-
 {{ 'component-show-more.css' | asset_url | stylesheet_tag }}
 {{ 'component-swatch-input.css' | asset_url | stylesheet_tag }}
 {{ 'component-swatch.css' | asset_url | stylesheet_tag }}
@@ -41,7 +27,6 @@
         {%- endif -%}
 
         {% if enable_filtering %}
-          {% comment %} Heading is the first tabbable element on filter type horizontal {% endcomment %}
           <div
             id="FacetsWrapperDesktop"
             {% if filter_type == 'horizontal' %}
@@ -53,7 +38,6 @@
                 {{ 'products.facets.filter_by_label' | t }}
               </h2>
             {%- endif -%}
-            {% comment %} Pills are right below the title for filter type vertical {% endcomment %}
             {%- if filter_type == 'vertical' -%}
               <div class="active-facets active-facets-desktop">
                 <div class="active-facets-vertical-filter">
@@ -108,7 +92,6 @@
             {%- endif -%}
 
             <script src="{{ 'show-more.js' | asset_url }}" defer="defer"></script>
-            {% comment %} Filters for both horizontal and vertical filter {% endcomment %}
             {%- for filter in results.filters -%}
               {% liquid
                 assign total_active_values = total_active_values | plus: filter.active_values.size
@@ -181,7 +164,6 @@
                         <legend class="visually-hidden">{{ filter.label | escape }}</legend>
                         {%- liquid
                           assign sorted_values = filter.values
-                          # Keep the selected values grouped together when operator is AND
                           if filter.operator == 'AND'
                             assign active_filter_values = filter.values | where: 'active', true
                             assign inactive_filter_values = filter.values | where: 'active', false
@@ -335,7 +317,6 @@
               {% endcase %}
             {%- endfor -%}
           </div>
-          {% comment %} Pills after filtes on filter type horizontal {% endcomment %}
           {%- if filter_type == 'horizontal' -%}
             <div class="active-facets active-facets-desktop">
               {%- for filter in results.filters -%}
@@ -384,7 +365,6 @@
         {% endif %}
 
         {%- if filter_type == 'horizontal' -%}
-          {% comment %} Sorting and product count are the last elements when filter type is horizontal {% endcomment %}
           {%- if enable_sorting -%}
             <div class="facet-filters sorting caption">
               <div class="facet-filters__field">
@@ -438,7 +418,6 @@
       </form>
     </facet-filters-form>
   {%- endif -%}
-  {% comment %}  Drawer and mobile filter {% endcomment %}
   <menu-drawer
     class="mobile-facets__wrapper{% if filter_type == 'horizontal' or filter_type == 'vertical' %} medium-hide large-up-hide{% endif %}"
     data-breakpoint="mobile"
@@ -553,7 +532,6 @@
                           <ul class="{{ visual_layout_class }} mobile-facets__list list-unstyled" role="list">
                             {%- liquid
                               assign sorted_values = filter.values
-                              # Keep the selected values grouped together when operator is AND
                               if filter.operator == 'AND'
                                 assign active_filter_values = filter.values | where: 'active', true
                                 assign inactive_filter_values = filter.values | where: 'active', false
@@ -822,7 +800,6 @@
       </a>
     </facet-remove>
   </div>
-  {% comment %} Sort, product count and filter pills at the end when filter is type of Drawer for the correct tabbing order {% endcomment %}
   {%- if enable_sorting and filter_type == 'drawer' -%}
     <facet-filters-form class="facets small-hide">
       <form id="FacetSortDrawerForm" class="facets__form">

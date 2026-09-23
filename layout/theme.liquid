@@ -26,8 +26,6 @@
 
     {% render 'meta-tags' %}
 
-
-
     <script src="{{ 'jquery.min.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'slick.min.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'slick-init.js' | asset_url }}" defer="defer"></script>
@@ -131,11 +129,6 @@
 </style>
 
     {% style %}
-      {% comment %}
-        Shopify-hosted fonts from theme settings are intentionally not loaded.
-        Typography is Overused Grotesk, self-hosted — see snippets/font-overused-grotesk.liquid.
-      {% endcomment %}
-
       {% for scheme in settings.color_schemes -%}
         {% assign scheme_classes = scheme_classes | append: ', .color-' | append: scheme.id %}
         {% if forloop.index == 1 -%}
@@ -347,9 +340,7 @@
       {{ 'component-discounts.css' | asset_url | stylesheet_tag }}
     {%- endif -%}
 
-{%- comment -%} Overused Grotesk is preloaded in snippets/font-overused-grotesk.liquid. {%- endcomment -%}
-
-    {%- if localization.available_countries.size > 1 or localization.available_languages.size > 1 -%}
+{%- if localization.available_countries.size > 1 or localization.available_languages.size > 1 -%}
       {{ 'component-localization-form.css' | asset_url | stylesheet_tag: preload: true }}
       <script src="{{ 'localization-form.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
@@ -371,14 +362,14 @@
   </head>
 
   <body class="gradient{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %}">
-   
+
   <div id="preloader">
     <style>
       #preloader {
         position: fixed;
         width: 100%;
         height: 100%;
-        background: #fff; /* Or your background color */
+        background: #fff;
         z-index: 9999;
         top: 0;
         left: 0;
@@ -390,8 +381,8 @@
       .preloader-loader {
         animation: pulse-loading 2s infinite ease-in-out;
         display: inline-block;
-        width: 150px; /* Adjust size as needed */
-        height: 100%; /* Adjust size as needed */
+        width: 150px;
+        height: 100%;
         background: url('{{ 'preloader.svg' | asset_url }}') no-repeat center/contain;
       }
 
@@ -409,7 +400,7 @@
   </style>
   <div class="preloader-loader"> </div>
     </div>
-   
+
     <a class="skip-to-content-link button visually-hidden" href="#MainContent">
       {{ 'accessibility.skip_to_text' | t }}
     </a>
@@ -490,10 +481,7 @@
       productCardMain.forEach((el) => {
         const sliderContainer = el.querySelector('.productMediaslider-container');
         const sliderWrapper = el.querySelector('.productMediaslider-wrapper');
-        // Most product cards don't have a hover media slider -- only run
-        // the slider setup below for the ones that do, otherwise this
-        // throws on the very first card without one and DOMContentLoaded
-        // never gets to the swatch/quick-add wiring further down.
+
         if (sliderContainer && sliderWrapper) {
         const slides = sliderWrapper.querySelectorAll('.slide');
         const progressFill = sliderContainer.querySelector('.progress-fill');
@@ -533,7 +521,6 @@
 
           if (!isHovered) {
             isHovered = true;
-            {% comment %} clearInterval(timer); {% endcomment %}
             animateProgressBar();
             startSlider()
           }
@@ -549,19 +536,17 @@
         });
         }
 
-
       var sectionParent = el.closest('[id^="shopify-section-template"]');
         el.querySelectorAll('.card__content input.swatch-input__input').forEach(function(input) {
           input.addEventListener('click', function(e) {
         var variantId = input.id;
-        // Extract the Section ID from the sectionPartent
+
           sectionId = sectionParent.id.replace('shopify-section-', '');
         var addProductBtn = el.querySelector('.quick-add__submit');
         var selectedColorId = input.dataset.optionValueId;
         addProductBtn.dataset.productUrl = addProductBtn.dataset.productUrl.replace(/\?option_values=[^&]*/, '');
         addProductBtn.dataset.productUrl = `${addProductBtn.dataset.productUrl}?option_values=${selectedColorId}`;
 
-        // Find the closest product-card-wrapper and its product_form_id input
         var form = el.querySelector('form[id^="quick-add-"]');
         var media = el.querySelectorAll('img[id^="variant-image-"]');
         var hasVariantImage = Array.from(media).find(function(img) {
@@ -574,26 +559,17 @@
         if (hasVariantImage) {
           hasVariantImage.style.opacity = '1';
         }
-         {% comment %} if (form) {
-          var hiddenInput = form.querySelector('input[name="value"]');
-          var productId = form.querySelector('input[name="value"]').closest('.product-form__input--swatch').dataset.product;
-          var quickModal = form.querySelector(`#QuickAdd-${productId}`).querySelector('.input');
-          if (hiddenInput) {
-            hiddenInput.value = variantId;
-          }
-        } {% endcomment %}
-          });
+         });
         });
       });
     });
   </script>
 
-
 <script defer>
   window.addEventListener('load', function() {
     const preloader = document.getElementById('preloader');
     if (preloader) {
-      preloader.style.display = 'none'; // Or use .remove() to fully remove the element
+      preloader.style.display = 'none';
     }
   });
 </script>

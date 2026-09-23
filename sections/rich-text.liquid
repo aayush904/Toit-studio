@@ -14,10 +14,6 @@
   }
 
   {%- if section.settings.background_image != blank -%}
-    {%- comment -%}
-      Doubled class for specificity: .gradient sets the `background` shorthand,
-      which would otherwise reset background-image back to none.
-    {%- endcomment -%}
     .rich-text.rich-text--bg-{{ section.id }} {
       position: relative;
       background-image: url({{ section.settings.background_image | image_url: width: 1200 }});
@@ -26,12 +22,6 @@
       background-repeat: no-repeat;
       border-radius: {{ section.settings.background_radius }}px;
       overflow: hidden;
-      {%- comment -%}
-        base.css:3276 sets `background-attachment: fixed` on every .gradient
-        element, so this has to be reset explicitly rather than just left
-        unset -- otherwise `cover` sizes the image to the window instead of
-        the card, blowing a short banner up several times over.
-      {%- endcomment -%}
       {%- if section.settings.background_attachment %}
         background-attachment: fixed;
       {%- else %}
@@ -40,10 +30,6 @@
     }
 
     {%- if section.settings.background_max_height > 0 %}
-      {%- comment -%}
-        Desktop only. Below 990px the blocks stack into one column, so the
-        content is far taller and a fixed cap would clip the button off.
-      {%- endcomment -%}
       @media screen and (min-width: 990px) {
         .rich-text.rich-text--bg-{{ section.id }} {
           max-height: {{ section.settings.background_max_height }}px;
@@ -65,7 +51,6 @@
       pointer-events: none;
     }
 
-    /* Lift the content above the overlay. */
     .rich-text--bg-{{ section.id }} > * {
       position: relative;
       z-index: 1;
@@ -81,13 +66,6 @@
   {%- endif -%}
 {%- endstyle -%}
 
-{%- comment -%}
-  With a background image the colour scheme and the section padding move out to
-  this wrapper, which sits outside page-width so the scheme paints edge to
-  edge around the card. The card itself keeps the scheme class (for the button
-  and text colour variables) but not `gradient`, so nothing paints over the
-  image. Without an image both stay on the card, exactly as before.
-{%- endcomment -%}
 <div class="rich-text-section{% if section.settings.background_image != blank %} color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-padding{% endif %}">
   <div class="isolate{% unless section.settings.full_width %} page-width{% endunless %}">
     <div class="rich-text content-container color-{{ section.settings.color_scheme }}{% unless section.settings.background_image != blank %} gradient section-{{ section.id }}-padding{% endunless %}{% if section.settings.full_width %} rich-text--full-width content-container--full-width{% endif %}{% if section.settings.background_image != blank %} rich-text--bg-{{ section.id }} rich-text--has-background{% endif %}{% if section.settings.custom_css_class != blank %} {{ section.settings.custom_css_class }}{% endif %}">

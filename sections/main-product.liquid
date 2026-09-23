@@ -124,11 +124,6 @@
                     <span>{{ 'products.product.volume_pricing.note' | t }}</span>
                   </div>
                 {%- endif -%}
-                {%- comment -%}
-                  Rendered unconditionally rather than behind Dawn's
-                  cart.taxes_included / shipping-policy check, because the
-                  design calls for this line and neither is configured yet.
-                {%- endcomment -%}
                 <div class="product__tax caption rte">
                   {{ 'products.product.taxes_included' | t }} <br>
                   {%- if shop.shipping_policy.body != blank -%}
@@ -221,12 +216,6 @@
               {%- when 'collapsible_tab' -%}
                 <div class="product__accordion accordion quick-add-hidden" {{ block.shopify_attributes }}>
                   <details id="Details-{{ block.id }}-{{ section.id }}">
-                    {%- comment -%}
-                      The row wrapper exists so `summary` itself does not need
-                      display: flex -- Safari drops a summary's native
-                      click-to-toggle when its display is overridden, which
-                      left these accordions dead on that browser.
-                    {%- endcomment -%}
                     <summary>
                       <div class="product__accordion-row">
                       <div class="summary__title">
@@ -263,8 +252,7 @@
                         </svg>
                       </span>
                       </div>
-                      {% comment %} {{- 'icon-caret.svg' | inline_asset_content -}} {% endcomment %}
-                    </summary>
+                      </summary>
                     <div class="accordion__content rte" id="ProductAccordion-{{ block.id }}-{{ section.id }}">
                       {{ block.settings.content }}
                       {{ block.settings.page.content }}
@@ -277,12 +265,9 @@
                   class="product-form__input product-form__quantity{% if settings.inputs_shadow_vertical_offset != 0 and settings.inputs_shadow_vertical_offset < 0 %} product-form__quantity-top{% endif %}"
                   {{ block.shopify_attributes }}
                 >
-                  {% comment %} TODO: enable theme-check once `item_count_for_variant` is accepted as valid filter {% endcomment %}
-                  {% # theme-check-disable %}
                   {%- assign cart_qty = cart
                     | item_count_for_variant: product.selected_or_first_available_variant.id
                   -%}
-                  {% # theme-check-enable %}
                   <label class="quantity__label form__label" for="Quantity-{{ section.id }}">
                     {{ 'products.product.quantity.label' | t }}
                     <span class="quantity__rules-cart{% if cart_qty == 0 %} hidden{% endif %}">
@@ -790,7 +775,6 @@
       {{ product | structured_data }}
     </script>
   </div>
-  {%- comment -%}Product data for rapid option switching{%- endcomment -%}
   {% if collapsible_tab_count > 1 %}
     <script>
       document.addEventListener('DOMContentLoaded', function () {

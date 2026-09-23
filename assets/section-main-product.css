@@ -101,8 +101,6 @@ product-info .page-width {
   }
 }
 
-/* Dynamic checkout */
-
 .shopify-payment-button__button {
   font-family: inherit;
   min-height: 4.6rem;
@@ -160,8 +158,6 @@ product-info .page-width {
   display: none;
 }
 
-/* Product form */
-
 .product-form {
   display: block;
 }
@@ -183,7 +179,6 @@ product-info .page-width {
   margin-top: 0.25rem;
 }
 
-/* Form Elements */
 .product-form__input {
   flex: 0 0 100%;
   padding: 0;
@@ -225,7 +220,6 @@ product-info .page-width {
   }
 }
 
-/* Overrides */
 .shopify-payment-button__more-options {
   color: rgb(var(--color-foreground));
 }
@@ -234,8 +228,6 @@ product-info .page-width {
   font-size: 1.5rem;
   letter-spacing: 0.1rem;
 }
-
-/* Product info */
 
 .product__info-container > * + *:not(.product__title, .product__accordion) {
   margin: 0 0 0.8rem 0;
@@ -434,7 +426,6 @@ margin-top:0;
   text-align: center;
 }
 
-/* Product media */
 .product__media-list video {
   border-radius: calc(var(--media-radius) - var(--media-border-width));
 }
@@ -657,7 +648,6 @@ margin-top:0;
   box-shadow: none;
 }
 
-/* outline styling for Windows High Contrast Mode */
 @media (forced-colors: active) {
   .product__media-toggle:focus-visible,
   .product__media-toggle:focus-visible:after {
@@ -834,8 +824,6 @@ margin-top:0;
   width: 2.2rem;
 }
 
-/* Product popup */
-
 .product-popup-modal {
   box-sizing: border-box;
   opacity: 0;
@@ -1001,7 +989,6 @@ margin-top:0;
   grid-gap: 1rem;
 }
 
-/* Fix to show some space at the end of our sliders in all browsers to be applied on thumbnails */
 .slider--mobile.thumbnail-list:after {
   content: none;
 }
@@ -1188,7 +1175,6 @@ margin-top:0;
     0 0 0rem 0.5rem rgba(var(--color-foreground), 0.5);
 }
 
-/* outline styling for Windows High Contrast Mode */
 @media (forced-colors: active) {
   .thumbnail[aria-current]:focus,
   .thumbnail.focused {
@@ -1273,8 +1259,6 @@ margin-top:0;
   flex-shrink: 0;
 }
 
-/* Inventory status */
-
 .product__inventory {
   display: flex;
   align-items: center;
@@ -1294,7 +1278,6 @@ margin-top:0;
   justify-content: center;
 }
 
-/* This keeps the container from getting display: none; applied to it and to make sure we're not introducing some layout shift when switching to an unavailable variant */
 .product__inventory.visibility-hidden:empty {
   display: block;
 }
@@ -1307,7 +1290,6 @@ margin-top:0;
   opacity: 0.3;
 }
 
-/* Icon with text */
 .icon-with-text {
   --icon-size: calc(var(--font-heading-scale) * 3rem);
   --icon-spacing: calc(var(--font-heading-scale) * 1rem);
@@ -1376,13 +1358,9 @@ margin-top:0;
   margin-bottom: var(--icon-size);
 }
 
-/* SKU block */
-
 .product__sku.visibility-hidden::after {
   content: "#";
 }
-
-/* Product-thumbnail snippet */
 
 .product-media-container {
   --aspect-ratio: var(--preview-ratio);
@@ -1393,7 +1371,7 @@ margin-top:0;
 }
 
 .product-media-container.constrain-height {
-  /* arbitrary offset value based on average theme spacing and header height */
+
   --viewport-offset: 400px;
   --constrained-min-height: 300px;
   --constrained-height: max(
@@ -1424,7 +1402,7 @@ margin-top:0;
   }
 
   .product-media-container.media-fit-cover .media {
-    /* allow media img element to scale relative to modal-opener/product-media-container */
+
     position: initial;
   }
 }
@@ -1435,7 +1413,7 @@ margin-top:0;
   }
 
   .product-media-container:not(.media-type-image) {
-    /* override to use actual media ratio (not poster ratio) for video/models on desktop */
+
     --aspect-ratio: var(--ratio);
   }
 
@@ -1468,9 +1446,8 @@ margin-top:0;
   }
 }
 
-/* Recipient form */
 .recipient-form {
-  /* (2.88[line-height] - 1.6rem) / 2 */
+
   --recipient-checkbox-margin-top: 0.64rem;
 
   display: block;

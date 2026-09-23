@@ -73,7 +73,7 @@
 <div class="otsb_nope" x-data="otsb_script_1">
   {% style %}
   {% unless section.settings.full_width %}
-    #shopify-section-{{section.id}} .otsb_scrolling_announcement { 
+    #shopify-section-{{section.id}} .otsb_scrolling_announcement {
       max-width: {{ section.settings.content_max_width }}px;
       margin: 0 auto;
     }
@@ -189,7 +189,7 @@
             {% if block.settings.color_link.alpha != 0.0 %}
             color: {{ block.settings.color_link }};
             {% else %}
-            color: rgba(var(--color-link),var(--alpha-link)); 
+            color: rgba(var(--color-link),var(--alpha-link));
             {% endif %}
           }
           {%-if block.settings.use_custom_font-%}
@@ -320,7 +320,7 @@
                       {% endif %}
                 {% endstyle %}
                 <div class="h-full w-max flex items-center space-blocks-{{ section.id }} space-block-{{ block.id }} whitespace-nowrap">
-                    <div class="image_natural {% if image_ratio != "natural" and block.settings.image == blank %} bg-[#C9C9C9] h-0 overflow-hidden img-{{ block.id }}{% endif %} {% if  block.settings.image != blank %}overflow-hidden img-{{ block.id }} {% endif %} relative{% if block.settings.edges_type == 'rounded_corners' %} rounded-[10px]{% endif %} 
+                    <div class="image_natural {% if image_ratio != "natural" and block.settings.image == blank %} bg-[#C9C9C9] h-0 overflow-hidden img-{{ block.id }}{% endif %} {% if  block.settings.image != blank %}overflow-hidden img-{{ block.id }} {% endif %} relative{% if block.settings.edges_type == 'rounded_corners' %} rounded-[10px]{% endif %}
                     {%- if image_ratio != "natural"  and block.settings.image != blank  -%}
                       {%- if section.settings.columns_mobile != "auto" %} pb-[{{ image_ratio }}%]{% else %} pb-[100%]{% endif -%}
                       {%- if section.settings.columns_desktop != 0 %} lg:pb-[{{ image_ratio }}%]{% else %} lg:pb-0{% endif -%}
@@ -357,8 +357,8 @@
                         {% else %}
                         {% assign class = 'relative w-[120px] bg-[#C9C9C9] text-[#acacac] image-block-' | append: block.id %}
                         {{ 'image' | placeholder_svg_tag: class }}
-                        {% endif %} 
-                      
+                        {% endif %}
+
                         {% endif %}
                     </div>
                 </div>
@@ -379,7 +379,6 @@
                             {% if block.settings.open_new_window %}target="_blank"{% endif %}
                         >
                             {%- endif -%}
-                            {% comment %} Button design {% endcomment %}
                             {%- liquid
                                 case block.settings.button_type
                                     when 'rounded'
@@ -605,7 +604,6 @@
                               assign main_button_classes = main_button_classes | append: ' md:w-full'
                             endif
                           %}
-                            {% comment %} End button design {% endcomment %}
                             <div class="{{ main_button_classes }} otsb-button button--{{ block.id }}{% if block.settings.primary_button %} otsb-button-solid{% else %} otsb-button-outline{% endif %} empty:otsb-hidden leading-normal text-center mt-1 mb-1 lg:mt-0 lg:mb-0 lg:ml-0 lg:mr-0 h-full pl-7 pr-7 lg:pl-9 lg:pr-9 pt-2.5 pb-2.5 md:pt-3 md:pb-3{% unless block.settings.button_link != blank %} opacity-70 hover:cursor-not-allowed{% endunless %}">
                                 {% render 'otsb-button-label', button_animation: block.settings.button_animation, custom_icon_button: block.settings.custom_icon_button, button_label: block.settings.button_label, show_button_primary: block.settings.primary_button %}
                             </div>
@@ -617,7 +615,7 @@
         {% endcase %}
     {% endfor %}
 {% endcapture %}
-  
+
   <div
     x-data
     x-intersect.once.margin.200px="$store.xScrollPromotion.load($el)"

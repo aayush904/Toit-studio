@@ -82,7 +82,6 @@
                   <tr class="cart-item" id="CartItem-{{ item.index | plus: 1 }}">
                     <td class="cart-item__media">
                       {% if item.image %}
-                        {% comment %} Leave empty space due to a:empty CSS display: none rule {% endcomment %}
                         <a href="{{ item.url }}" class="cart-item__link" aria-hidden="true" tabindex="-1"> </a>
                         <div class="cart-item__image-container gradient global-media-settings">
                           <img
@@ -255,7 +254,6 @@
                                 type="number"
                                 name="updates[]"
                                 value="{{ item.quantity }}"
-                                {% # theme-check-disable %}
                                 data-cart-quantity="{{ cart | item_count_for_variant: item.variant.id }}"
                                 min="0"
                                 data-min="{{ item.variant.quantity_rule.min }}"
@@ -263,7 +261,6 @@
                                   max="{{ item.variant.quantity_rule.max }}"
                                 {% endif %}
                                 step="{{ item.variant.quantity_rule.increment }}"
-                                {% # theme-check-enable %}
                                 aria-label="{{ 'products.product.quantity.input_label' | t: product: item.product.title | escape }}"
                                 id="Quantity-{{ item.index | plus: 1 }}"
                                 data-index="{{ item.index | plus: 1 }}"

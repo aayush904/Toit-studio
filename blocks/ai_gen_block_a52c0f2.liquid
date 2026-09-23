@@ -1,22 +1,22 @@
 {% doc %}
   @prompt
     Write a Shopify Liquid section named collage-showcase.liquid for Online Store 2.0.
-    
+
     Requirements:
     Layout:
-    
+
     Two equal columns (50/50).
-    
+
     Left column: single featured item (selectable: product, collection, image, or video).
-    
+
     Right column: scrollable grid with 2 items per row, populated via dynamic blocks (type: product, collection, image, or video).
-    
+
     Left column must be position: sticky within the section.
-    
+
     Rendering:
-    
+
     Product: Use card-product snippet with accepted parameters:
-    
+
     liquid
     Copy
     Edit
@@ -34,7 +34,7 @@
       horizontal_quick_add: true or false
     %}
     Collection: Use card-collection snippet with:
-    
+
     liquid
     Copy
     Edit
@@ -46,19 +46,19 @@
       wrapper_class: 'your-class'
     %}
     Image: <img src="{{ image | image_url: width: 800 }}" alt="{{ image.alt | escape }}">
-    
+
     Video: <video controls><source src="{{ video_url }}" type="video/mp4"></video>
-    
+
     Schema:
-    
+
     featured_type dropdown (product, collection, image, video) with matching resource picker.
-    
+
     Dynamic blocks for right column: each with type (product, collection, image, video) and related resource.
-    
+
     Optional section settings: padding, background color, custom class, section ID.
-    
+
     Output:
-    
+
     Output full section code with schema and scoped internal CSS.
     No explanations, only code.
 
@@ -253,8 +253,8 @@
         <div class="collage-showcase__product-card-{{ ai_gen_id }}">
           <div class="collage-showcase__product-image-{{ ai_gen_id }}">
             {% if block.settings.featured_product.featured_image %}
-              <img 
-                src="{{ block.settings.featured_product.featured_image | image_url: width: 800 }}" 
+              <img
+                src="{{ block.settings.featured_product.featured_image | image_url: width: 800 }}"
                 alt="{{ block.settings.featured_product.featured_image.alt | escape }}"
                 loading="lazy"
                 width="{{ block.settings.featured_product.featured_image.width }}"
@@ -281,8 +281,8 @@
         <div class="collage-showcase__collection-card-{{ ai_gen_id }}">
           <div class="collage-showcase__collection-image-{{ ai_gen_id }}">
             {% if block.settings.featured_collection.image %}
-              <img 
-                src="{{ block.settings.featured_collection.image | image_url: width: 800 }}" 
+              <img
+                src="{{ block.settings.featured_collection.image | image_url: width: 800 }}"
                 alt="{{ block.settings.featured_collection.title | escape }}"
                 loading="lazy"
                 width="{{ block.settings.featured_collection.image.width }}"
@@ -303,8 +303,8 @@
     {% elsif block.settings.featured_type == 'image' and block.settings.featured_image != blank %}
       <div class="collage-showcase__item-{{ ai_gen_id }}">
         <div class="collage-showcase__image-wrapper-{{ ai_gen_id }}">
-          <img 
-            src="{{ block.settings.featured_image | image_url: width: 800 }}" 
+          <img
+            src="{{ block.settings.featured_image | image_url: width: 800 }}"
             alt="{{ block.settings.featured_image.alt | escape }}"
             loading="lazy"
             width="{{ block.settings.featured_image.width }}"
@@ -337,19 +337,19 @@
       {% for i in (1..4) %}
         {% assign item_type_key = 'item_' | append: i | append: '_type' %}
         {% assign item_type = block.settings[item_type_key] %}
-        
+
         {% assign product_key = 'item_' | append: i | append: '_product' %}
         {% assign collection_key = 'item_' | append: i | append: '_collection' %}
         {% assign image_key = 'item_' | append: i | append: '_image' %}
         {% assign video_key = 'item_' | append: i | append: '_video_url' %}
-        
+
         {% if item_type == 'product' and block.settings[product_key] != blank %}
           <div class="collage-showcase__item-{{ ai_gen_id }}">
             <div class="collage-showcase__product-card-{{ ai_gen_id }}">
               <div class="collage-showcase__product-image-{{ ai_gen_id }}">
                 {% if block.settings[product_key].featured_image %}
-                  <img 
-                    src="{{ block.settings[product_key].featured_image | image_url: width: 500 }}" 
+                  <img
+                    src="{{ block.settings[product_key].featured_image | image_url: width: 500 }}"
                     alt="{{ block.settings[product_key].featured_image.alt | escape }}"
                     loading="lazy"
                     width="{{ block.settings[product_key].featured_image.width }}"
@@ -376,8 +376,8 @@
             <div class="collage-showcase__collection-card-{{ ai_gen_id }}">
               <div class="collage-showcase__collection-image-{{ ai_gen_id }}">
                 {% if block.settings[collection_key].image %}
-                  <img 
-                    src="{{ block.settings[collection_key].image | image_url: width: 500 }}" 
+                  <img
+                    src="{{ block.settings[collection_key].image | image_url: width: 500 }}"
                     alt="{{ block.settings[collection_key].title | escape }}"
                     loading="lazy"
                     width="{{ block.settings[collection_key].image.width }}"
@@ -398,8 +398,8 @@
         {% elsif item_type == 'image' and block.settings[image_key] != blank %}
           <div class="collage-showcase__item-{{ ai_gen_id }}">
             <div class="collage-showcase__image-wrapper-{{ ai_gen_id }}">
-              <img 
-                src="{{ block.settings[image_key] | image_url: width: 500 }}" 
+              <img
+                src="{{ block.settings[image_key] | image_url: width: 500 }}"
                 alt="{{ block.settings[image_key].alt | escape }}"
                 loading="lazy"
                 width="{{ block.settings[image_key].width }}"

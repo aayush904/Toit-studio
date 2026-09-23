@@ -36,13 +36,13 @@ class CustomerAddresses {
 
   _setupCountries() {
     if (Shopify && Shopify.CountryProvinceSelector) {
-      // eslint-disable-next-line no-new
+
       new Shopify.CountryProvinceSelector('AddressCountryNew', 'AddressProvinceNew', {
         hideElement: 'AddressProvinceContainerNew',
       });
       this.elements.countrySelects.forEach((select) => {
         const formId = select.dataset.formId;
-        // eslint-disable-next-line no-new
+
         new Shopify.CountryProvinceSelector(`AddressCountry_${formId}`, `AddressProvince_${formId}`, {
           hideElement: `AddressProvinceContainer_${formId}`,
         });
@@ -75,7 +75,7 @@ class CustomerAddresses {
   };
 
   _handleDeleteButtonClick = ({ currentTarget }) => {
-    // eslint-disable-next-line no-alert
+
     if (confirm(currentTarget.getAttribute(attributes.confirmMessage))) {
       Shopify.postLink(currentTarget.dataset.target, {
         parameters: { _method: 'delete' },

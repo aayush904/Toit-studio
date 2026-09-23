@@ -1,11 +1,3 @@
-{%- comment -%}
-  Email-capture popup. Submits through {% form 'customer' %} with the
-  newsletter tag, which is what subscribes the address to email marketing --
-  the same mechanism as the footer newsletter, so the two cannot diverge.
-
-  Lives in the footer section group so it is available on every template.
-{%- endcomment -%}
-
 {%- liquid
   assign popup_id = 'PromoPopup-' | append: section.id
   assign has_image = false
@@ -37,8 +29,7 @@
     width: 100%;
     max-width: {{ section.settings.max_width }}px;
     max-height: 475px;
-    /* `overflow` both clips the image to the rounded corners and lets tall
-       content scroll on a short viewport. */
+
     overflow: auto;
     border-radius: 24px;
     background: {{ section.settings.background_color }};
@@ -58,10 +49,9 @@
   }
 
   .promo-popup__content {
-    /* The design's 70px 65px, held here rather than on the grid so the
-       image can still run edge to edge. */
+
     padding: 68px 65px;
-    /* base.css centres every h2, so alignment is set explicitly. */
+
     text-align: left;
   }
 
@@ -86,7 +76,7 @@
     margin: 0;
     text-align: left;
     font-family: var(--font-body-family);
-    /* `font-style: Book` in the design is a weight name, not a style. */
+
     font-weight: var(--font-weight-book);
     font-size: 68px;
     line-height: 92%;
@@ -125,7 +115,7 @@
     border-radius: 52px;
     background: transparent;
     font-family: var(--font-body-family);
-    /* `font-style: Book` is a weight name, not a style. */
+
     font-weight: var(--font-weight-book);
     font-size: 16px;
     line-height: 100%;
@@ -140,7 +130,7 @@
     line-height: 100%;
     letter-spacing: 0;
     color: {{ section.settings.placeholder_color }};
-    /* Firefox dims placeholders by default. */
+
     opacity: 1;
   }
 
@@ -157,7 +147,7 @@
     border-radius: 52px;
     background: {{ section.settings.button_color }};
     font-family: var(--font-body-family);
-    /* `font-style: Medium` is a weight name, already covered by 500. */
+
     font-weight: var(--font-weight-medium);
     font-size: 18px;
     line-height: 100%;
@@ -174,6 +164,21 @@
     font-size: 15px;
     line-height: 140%;
     color: {{ section.settings.text_color }};
+  }
+
+  .promo-popup__code {
+    display: inline-block;
+    margin: 1.2rem 0 0;
+    padding: 1.2rem 2.4rem;
+    border: 1px dashed {{ section.settings.field_border_color }};
+    border-radius: 12px;
+    font-family: var(--font-body-family);
+    font-weight: var(--font-weight-medium);
+    font-size: 24px;
+    line-height: 100%;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: {{ section.settings.heading_color }};
   }
 
   .promo-popup__message--error {
@@ -253,13 +258,13 @@
       {%- endif -%}
 
       {%- form 'customer', class: 'promo-popup__form' -%}
-        {%- comment -%}
-          The newsletter tag is what opts the address into email marketing.
-        {%- endcomment -%}
         <input type="hidden" name="contact[tags]" value="newsletter">
 
         {%- if form.posted_successfully? -%}
           <p class="promo-popup__message">{{ section.settings.success_text }}</p>
+          {%- if section.settings.discount_code != blank -%}
+            <p class="promo-popup__code">{{ section.settings.discount_code }}</p>
+          {%- endif -%}
         {%- else -%}
           <label class="visually-hidden" for="{{ popup_id }}-email">
             {{ section.settings.field_label }}
@@ -325,7 +330,14 @@
       "type": "text",
       "id": "success_text",
       "label": "Success message",
-      "default": "Thanks — your discount is on its way to your inbox."
+      "default": "Your code for discount"
+    },
+    {
+      "type": "text",
+      "id": "discount_code",
+      "label": "Discount code",
+      "info": "Create the matching code in Discounts, or the code shown here will not work at checkout.",
+      "default": "FIRST10"
     },
     { "type": "header", "content": "Layout" },
     {

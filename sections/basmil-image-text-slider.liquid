@@ -203,14 +203,12 @@
 
       }
 
-
       .slick-list {
       overflow:hidden!important;
       }
     .slick-arrow{
         top: 50%;
     }
-
 
       .slick-slide,.slick-track{
       margin: 0;
@@ -243,7 +241,6 @@
       max-height: 100%;
       }
 
-
       .image-text-slider .slick-slide img{
         --scale-factor: 1.1;
       transition: transform 0.9s ease-in-out;
@@ -258,13 +255,6 @@
 
       }
 
-      /* The slide image is decorative and must never take clicks meant for the
-         heading and links laid over it. That animation makes Safari promote the
-         image to its own compositing layer, and Safari then hit-tests that
-         layer above the overlay text even though the text comes later in the
-         DOM -- which left the banner links dead there while they worked in
-         Chrome. The overlay is also given an explicit stacking order so paint
-         order is not left to chance. */
       .image-text-slider .slide-content > img,
       .image-text-slider .slide-image img {
         pointer-events: none;
@@ -328,10 +318,7 @@
       left: 0;
       right: 0;
       width: auto;
-      /* Heading and links line up with the header's content edge. The header
-         is .header.page-width, which base.css insets by 16px, 3.2rem from
-         768px and 6rem from 1280px -- and 15px below 768px via custom.css.
-         A flat 60px only matched the widest of those. */
+
       padding-left: 15px;
       padding-right: 15px;
       transform: translateY(-50%);
@@ -346,8 +333,7 @@
       }
 
       @media screen and (min-width: 1280px) {
-        /* Past --page-width the header stops growing and centres, so the
-           banner has to follow it inwards rather than stay at 6rem. */
+
         .image-text-slider--align-left .overlay-text {
           padding-left: max(6rem, calc((100vw - var(--page-width)) / 2 + 6rem));
           padding-right: max(6rem, calc((100vw - var(--page-width)) / 2 + 6rem));
@@ -394,9 +380,7 @@
       }
 
       @media (max-width: 768px) {
-      /* The configured slider height is sized for desktop; at phone widths
-         it leaves a lot of empty image above and below the heading, so cap
-         it well below whatever the section setting is. */
+
       .image-text-slider .slide-wrapper {
         height: 380px;
       }

@@ -29,7 +29,7 @@ if (!customElements.get('quick-order-list')) {
 
       connectedCallback() {
         this.cartUpdateUnsubscriber = subscribe(PUB_SUB_EVENTS.cartUpdate, async (event) => {
-          // skip if cart event was triggered by this section
+
           if (event.source === this.id) return;
 
           this.toggleTableLoading(true);
@@ -221,7 +221,6 @@ if (!customElements.get('quick-order-list')) {
             const table = this.quickOrderListTable;
             const newTable = newSection.querySelector('.quick-order-list__table');
 
-            // only update variants if they are from the active page
             const shouldUpdateVariants =
               this.currentPage === (newSection.querySelector('.pagination-wrapper')?.dataset.page ?? '1');
             if (newTable && shouldUpdateVariants) {

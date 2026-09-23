@@ -1,11 +1,3 @@
-{% comment %}
-  Minimal Synced Sliders Section
-  - Section settings: title, subtitle, description (header), footer description, footer button
-  - Main slider: heading only
-  - Nav slider: image only, active slide marked by a line at the bottom
-  - Minimal design, no box-shadow or border-radius except for nav card (with shadow)
-{% endcomment %}
-
 <div class="minimal-synced-sliders-section{% if section.settings.custom_css_class != blank %} {{ section.settings.custom_css_class }}{% endif %}">
   <div class="minimal-synced-sliders-header">
     {% if section.settings.section_title != blank %}
@@ -26,10 +18,7 @@
         data-slidesperview="1"
         data-slidestoscroll="1"
         data-asnavfor=".minimal-nav-slider-{{ section.id }}"
-        {% comment %} data-fade="false" {% endcomment %}
         data-vertical="true"
-        {% comment %} data-loop="true" {% endcomment %}
-        {% comment %} data-infinite="true" {% endcomment %}
         data-verticalswiping="true"
       >
         {% for block in section.blocks %}
@@ -51,7 +40,7 @@
         data-draggable="true"
         data-centermode="true"
         data-slidesperview="7"
-        
+
         data-autoplay="true"
         data-autoplayspeed="2000"
         data-slick-slider
@@ -207,7 +196,6 @@
        .minimal-nav-slide.slick-active .minimal-nav-slide-card {
          position: relative;
        }
-
 
        .minimal-nav-slide.slick-active .minimal-nav-slide-card:after {
          content: '';

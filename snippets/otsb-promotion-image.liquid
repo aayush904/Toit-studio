@@ -1,25 +1,11 @@
-{% comment %}
-    Renders an article card for a given blog with settings to either show the image or not.
-
-    Accepts:
-    - blog: {Object} Blog object
-    - article: {Object} Article object
-    - add_divider: {Boolean} The setting either add the divider blog post or not.
-    - loading: {Boolean} Image should be lazy loaded. Default: lazy (optional)
-    - columns_desktop: {Number} Number blog of columns on desktop,
-    - blog_page: {Boolean} Is it a blog page or not?
-    Usage:
-    {% render 'article-card', blog: blog, article: article %}
-{% endcomment %}
-
 {%- liquid
-  assign loading = 'loading="lazy"'   
+  assign loading = 'loading="lazy"'
   if section.index != 1 or section.location != 'template'
     assign loading = 'loading="eager" fetchpriority="high" decoding="sync"'
   endif
 
-  if settings.heading_base_size != blank 
-    assign heading_size = settings.heading_base_size | times: heading_size | times: 0.000225 
+  if settings.heading_base_size != blank
+    assign heading_size = settings.heading_base_size | times: heading_size | times: 0.000225
   else
     assign heading_size = heading_size | times: 100 | times: 0.0004
   endif
@@ -27,7 +13,7 @@
     assign heading_size = heading_size | times: settings.heading_scale | times: 0.01
   endif
 
-  if settings.text_base_size != blank 
+  if settings.text_base_size != blank
     assign text_size =  text_size | times: settings.text_base_size | times: 0.0001125
   else
     assign text_size =  text_size | times: 160 | times: 0.0001
@@ -44,7 +30,7 @@
       --colors-text: {{ color_text.red }}, {{ color_text.green }}, {{ color_text.blue }};
     }
   {%- endunless -%}
-  {% if color_text.alpha != 0.0 %} 
+  {% if color_text.alpha != 0.0 %}
     --colors-heading: {{ color_text.red }}, {{ color_text.green }}, {{ color_text.blue }};
   {% else %}
   .promotion-content-{{ blockID }} {
@@ -82,7 +68,7 @@
   {%- endunless -%}
   {%- if show_button_style == 'primary' -%}
     .button--{{ blockID }}.otsb-button-solid,
-    .button--{{ blockID }}.otsb-button-solid:before { 
+    .button--{{ blockID }}.otsb-button-solid:before {
       {%- unless color_button.alpha == 0.0 -%}
         --colors-line-and-border: {{ color_button.red }}, {{ color_button.green }}, {{ color_button.blue }};
         --colors-button: {{ color_button.red }}, {{ color_button.green }}, {{ color_button.blue }};
@@ -127,7 +113,7 @@
           --color-button-text-mobile:  rgb(var(--color-button-text));
         {% endif %}
     {% endif %}
-      
+
     }
   {%- endif -%}
   #shopify-section-{{ section.id }} .button--{{ blockID }}.otsb-button-solid {
@@ -135,14 +121,14 @@
     color: var(--color-button-text-mobile);
   }
   .button--{{ blockID }}.otsb-button-outline {
-    {%- if secondary_button_text.alpha != 0.0 -%} 
-      --colors-secondary-button: {{ secondary_button_text.red }}, {{ secondary_button_text.green }}, {{ secondary_button_text.blue }}; 
+    {%- if secondary_button_text.alpha != 0.0 -%}
+      --colors-secondary-button: {{ secondary_button_text.red }}, {{ secondary_button_text.green }}, {{ secondary_button_text.blue }};
       --colors-line-secondary-button: {{ secondary_button_text.red }}, {{ secondary_button_text.green }}, {{ secondary_button_text.blue }};
       --background-secondary-button: transparent;
     {%- endif -%}
-    {%- if color_button_secondary.alpha != 0.0 -%} 
-      --background-secondary-button: {{ color_button_secondary.red }}, {{ color_button_secondary.green }}, {{ color_button_secondary.blue }}; 
-      --colors-line-secondary-button: {{ color_button_secondary.red }}, {{ color_button_secondary.green }}, {{ color_button_secondary.blue }}; 
+    {%- if color_button_secondary.alpha != 0.0 -%}
+      --background-secondary-button: {{ color_button_secondary.red }}, {{ color_button_secondary.green }}, {{ color_button_secondary.blue }};
+      --colors-line-secondary-button: {{ color_button_secondary.red }}, {{ color_button_secondary.green }}, {{ color_button_secondary.blue }};
     {%- endif -%}
   }
   .otsb__root .otsb-button.otsb-button-text-link:before, .otsb__root button.otsb-button-text-link:before,
@@ -166,7 +152,7 @@
   }
   @media (min-width: 768px) {
     #shopify-section-{{ section.id }}  .heading-{{ blockID }} {
-      font-size: {{ heading_size }}rem; 
+      font-size: {{ heading_size }}rem;
     }
     .text-{{ blockID }},
     .sub-heading-{{ blockID }} {
@@ -200,17 +186,15 @@
   {% endif %}
 {%- endstyle -%}
 {%- endcapture -%}
-{% comment %} {%- assign before =  styles.size -%} {% endcomment %}
 {%- assign styles =  styles | strip_newlines | split: " " | join: " " | split: "*/" -%}
 {%- assign minified_style = "" -%}
 {%- for word in styles -%}
 	{%- assign new_word = word | split: "/*" | first | strip | replace: "; ", ";" | replace: "} ", "}" | replace: "{ ", "{" | replace: " {", "{" -%}
     {%- assign minified_style = minified_style | append: new_word -%}
 {%- endfor -%}
-{% comment %} /* CSS minifed: {{ before }} --> {{ minified_style.size }} */ {% endcomment %}
 {{- minified_style  }}
 {%- unless enable_text_overlay -%}
-  <div 
+  <div
     {% if animation_loading %}
       x-intersect.once.margin.-20px.0px.-20px.0px="$el.querySelector('.animate_transition_card__image')?.classList.add('active')"
     {% endif %}
@@ -218,7 +202,7 @@
     {% if image and image_ratio == "auto" %} style="height:0; padding-bottom: {{ 100 | divided_by: image.aspect_ratio }}%;"{% endif %}
   >
 {%- else -%}
-  <div 
+  <div
     {% if animation_loading %}
       x-intersect.once.margin.-20px.0px.-20px.0px="$el.querySelector('.animate_transition_card__image')?.classList.add('active')"
     {% endif %}
@@ -230,22 +214,22 @@
         (min-width: {{ settings.page_width }}px){% if full_width %} calc(100vw / {{ columns_desktop }}){% else %} {{ settings.page_width | divided_by: columns_desktop }}px{% endif %}, (min-width: 768px) calc((100vw - 5rem) / 2), 100vw
       {%- endcapture -%}
     {% endif %}
-  
+
       {% if section.index != 1 or section.location != 'template' %}
         <div class="otsb-hidden">
           {{ image | image_url: width: 3840 | image_tag: widths: '225, 375, 450, 750, 900, 1100, 1500, 1780, 2000', preload: true, loading: 'lazy' }}
         </div>
       {% endif %}
-    
+
     {% if image_link %}
-      <a 
+      <a
         aria-label="{{ 'accessibility.image_link' | t }}"
-        href="{{ image_link }}" 
+        href="{{ image_link }}"
         {% if open_new_window %} target="_blank"{% endif %}
         class="{% if animation_loading %}animate_transition_card__image {% endif %}w-full h-full top-0 left-0 overflow-hidden{% unless enable_text_overlay %} absolute{% endunless %}{% unless collage %} md:absolute{% endunless %}{% if section.settings.edges_type == 'rounded_corners' %} rounded-[10px]{% endif %}"
       >
     {% else %}
-      <div 
+      <div
         class="{% if animation_loading %}animate_transition_card__image{% endif %} w-full h-full top-0 left-0 overflow-hidden{% unless enable_text_overlay %} absolute{% endunless %}{% unless collage %} md:absolute{% endunless %}{% if section.settings.edges_type == 'rounded_corners' %} rounded-[10px]{% endif %}"
       >
     {% endif %}
@@ -291,7 +275,7 @@
             headingId: blockID,
             heading: heading,
             highlight_type: highlight_type,
-            color_heading_highlight_light: color_heading_highlight_light 
+            color_heading_highlight_light: color_heading_highlight_light
           %}
         {% else %}
           <span>{{ heading }}</span>

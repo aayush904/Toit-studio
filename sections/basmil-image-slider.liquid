@@ -1,4 +1,3 @@
-<!-- sections/marquee-logos.liquid -->
 <style>
   .marquee-container {
     width: 100%;
@@ -65,7 +64,6 @@
     animation-play-state: {% if section.settings.pause_on_hover %}paused{% else %}running{% endif %};
   }
 
-  /* Responsive design */
   @media (max-width: 768px) {
     .marquee-item {
       padding: 0 30px;
@@ -123,7 +121,6 @@
 <section class="marquee-section{% if section.settings.custom_css_class != blank %} {{ section.settings.custom_css_class }}{% endif %}" id="marquee-{{ section.id }}">
   <div class="marquee-container">
     <div class="marquee-track">
-      {% comment %} Calculate repetitions needed for smooth scrolling {% endcomment %}
       {% assign min_items = 20 %}
       {% assign blocks_count = section.blocks.size %}
       {% assign repetitions = 1 %}
@@ -131,7 +128,6 @@
         {% assign repetitions = min_items | divided_by: blocks_count | plus: 1 %}
       {% endif %}
 
-      {% comment %} Render items multiple times for seamless loop {% endcomment %}
       {% for i in (1..2) %}
         {% for rep in (1..repetitions) %}
           {% for block in section.blocks %}
@@ -160,7 +156,6 @@
         {% endfor %}
       {% endfor %}
 
-      {% comment %} Fallback content if no blocks are added {% endcomment %}
       {% if section.blocks.size == 0 %}
         {% for i in (1..2) %}
           <div class="marquee-item logo">DECOR</div>

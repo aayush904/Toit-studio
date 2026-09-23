@@ -50,7 +50,6 @@
   }
 }
 
-/* check for flexbox gap in older Safari versions */
 @supports not (inset: 10px) {
   @media screen and (min-width: 768px) {
     .blog__posts .article + .article {

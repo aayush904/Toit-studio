@@ -39,18 +39,10 @@
               class="announcement-bar__link link link--text focus-inset animate-arrow"
             >
           {%- elsif section.settings.open_email_popup -%}
-            {%- comment -%}
-              With no link to follow, the bar opens the email popup instead.
-              A button rather than a link, because it goes nowhere.
-            {%- endcomment -%}
             <button type="button" class="announcement-bar__trigger" data-promo-popup-open>
           {%- endif -%}
           <p class="announcement-bar__message">
             <span>{{ section.blocks.first.settings.text }}</span>
-            {%- comment -%}
-              The chevron is part of the bar's design, so it shows whether or
-              not the announcement carries a link.
-            {%- endcomment -%}
             {%- render 'icon-chevron-arrow', size: 14 -%}
           </p>
           {%- if section.blocks.first.settings.link != blank -%}
@@ -159,7 +151,7 @@
       {%- if request.design_mode -%}
         <script src="{{ 'theme-editor.js' | asset_url }}" defer="defer"></script>
         <style>
-          /* theme editor power preview fix */
+
           .announcement-bar-slider .slider__slide[aria-hidden='true'] {
             visibility: hidden;
           }
@@ -225,7 +217,6 @@
       slider.scrollLeft = scrollLeft - walk;
     });
 
-    // 👇 Add this for mobile/touch support
     let startTouchX;
 
     slider.addEventListener('touchstart', (e) => {

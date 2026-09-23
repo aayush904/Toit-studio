@@ -42,8 +42,6 @@ if (!customElements.get("quick-add-modal")) {
               productElement.outerHTML
             );
 
-            // --- Custom: Media slider and buy button manipulation ---
-            // 1. Parse ProductData JSON
             const productDataScript = this.modalContent.querySelector(
               'script[id^="ProductData-"]'
             );
@@ -57,7 +55,6 @@ if (!customElements.get("quick-add-modal")) {
               }
             }
 
-            // 2. Build media slider if productData exists
             if (
               productData &&
               Array.isArray(productData.media) &&
@@ -84,10 +81,9 @@ if (!customElements.get("quick-add-modal")) {
                   slide.appendChild(img);
                   slider.appendChild(slide);
                 }
-                // You can add support for video/media_type if needed
+
               });
 
-              // 3. Insert slider after [id^="price-"]
               const priceElem =
                 this.modalContent.querySelector('[id^="price-"]');
               if (priceElem && slider.childNodes.length > 0) {
@@ -111,7 +107,6 @@ if (!customElements.get("quick-add-modal")) {
                 '<button style="left:5px; top:50%; transform:translateY(-50%)" type="button" class="slick-prev slick-arrow"><svg xmlns="http://www.w3.org/2000/svg" transform="rotate(180)" width="192" height="192" viewBox="0 0 192 192" fill="none"> <path d="M30 96H162" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/> <path d="M108 42L162 96L108 150" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/> </svg></button>',
             });
 
-            // 4. Handle buy/add to cart button
             const infoWrapper = this.modalContent.querySelector(
               ".product__info-wrapper"
             );
@@ -121,21 +116,18 @@ if (!customElements.get("quick-add-modal")) {
             );
 
             if (infoWrapper) {
-              // Create the new footer element
+
               const footerQuickAdd = document.createElement("div");
               footerQuickAdd.className = "footer-quick-add";
 
-              // Move buy button into footer
               if (buyBtn) {
                 footerQuickAdd.appendChild(buyBtn);
               }
 
-              // Move view details button into footer
               if (viewDetailBtn) {
                 footerQuickAdd.appendChild(viewDetailBtn);
               }
 
-              // Insert footer after infoWrapper
               if (infoWrapper.parentNode) {
                 infoWrapper.parentNode.insertBefore(
                   footerQuickAdd,
@@ -143,15 +135,13 @@ if (!customElements.get("quick-add-modal")) {
                 );
               }
             }
-            // --- End custom ---
 
-            // --- Custom: Limit product description to 30 words ---
             const descElem = this.modalContent.querySelector(
               ".product__description"
             );
             if (descElem) {
               let text = descElem.textContent || "";
-              // Remove extra spaces and trim
+
               text = text.replace(/\s+/g, " ").trim();
               const words = text.split(" ");
               if (words.length > 30) {
@@ -160,7 +150,6 @@ if (!customElements.get("quick-add-modal")) {
                 descElem.textContent = text;
               }
             }
-            // --- End custom ---
 
             if (window.Shopify && Shopify.PaymentButton) {
               Shopify.PaymentButton.init();
@@ -169,9 +158,8 @@ if (!customElements.get("quick-add-modal")) {
 
             super.show(opener);
 
-            // --- Custom: Sync quickadd-media-slider with variant image ---
             this.setupQuickAddMediaSliderSync();
-            // --- End custom ---
+
           })
           .finally(() => {
             opener.removeAttribute("aria-disabled");
@@ -180,30 +168,26 @@ if (!customElements.get("quick-add-modal")) {
           });
       }
 
-      // --- Custom function for syncing slider with variant image ---
       setupQuickAddMediaSliderSync() {
         const modal = this.modalContent;
         if (!modal) return;
 
-        // Use event delegation on the closest form or container
         const form =
           modal.querySelector('form[action^="/cart/add"] input[name="id"]') ||
           modal;
         if (!form) return;
 
-        // Remove any previous event listener to avoid duplicates
         if (form._quickAddSyncHandler) {
           form.removeEventListener("change", form._quickAddSyncHandler);
         }
 
         const syncSliderToGallery = () => {
-          // Find the first image src from the gallery
+
           const $gallery = $(modal).find('[id^="Slider-Gallery-quickadd"]');
           if ($gallery.length === 0) return;
 
           const $firstImg = $gallery.find("img").first();
-          
-            // Wait until the first image changes before syncing
+
             let lastFirstImgSrc = $firstImg.attr("src");
             const $slider = $(modal).find(".quickadd-media-slider");
 
@@ -221,7 +205,6 @@ if (!customElements.get("quick-add-modal")) {
             }
             };
 
-            // Use MutationObserver to watch for changes in the gallery
             const observer = new MutationObserver(syncIfChanged);
             if ($gallery.length && $firstImg.length) {
             observer.observe($gallery.get(0), { childList: true, subtree: true, attributes: true });

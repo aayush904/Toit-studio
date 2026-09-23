@@ -1,31 +1,11 @@
-{% comment %}
-    Renders a product card
-
-    Accepts:
-    - card_product: {Object} Product Liquid object (optional)
-    - show_vendor: {Boolean} Show the product vendor. Default: false
-    - show_rating: {Boolean} Show the product rating. Default: false
-    - loading: {Boolean} Image should be lazy loaded. Default: lazy (optional)
-    - section_id: {String} The ID of the section that contains this card.
-    - disable_badges: {Boolean} Don't show labels and badges
-    - list_name: {String} The title of collection,
-    - collection: {Object} Collection Liquid object (optional),
-    - class_slide: {String} The class of slider,
-    - index: {Number} The index of the product card in the collection,
-    - product_complementary: Classes are used for product complementary
-    - disable_quickview: {Boolean} Show quick view button. Default: true (optional)
-    - block_id: {String} The ID of the block that contains this card.
-    Usage:
-    {% render 'otsb-card-product', show_vendor: section.settings.show_vendor %}
-{% endcomment %}
 {%- liquid
   if column_mobile == blank
     assign column_mobile = 1
-  endif 
+  endif
   if media_aspect_ratio == blank
   assign media_aspect_ratio = section.settings.product_image_ratio
-  endif 
-  assign ratio = 1 
+  endif
+  assign ratio = 1
   case media_aspect_ratio
     when "portrait"
       assign ratio = 1.5
@@ -53,9 +33,9 @@
     }
   }
 {%- endcapture %}
-<div 
+<div
 {% if section.settings.swatches_type == 'both_text_and_color' or section.settings.swatches_type == 'color' %}
-  x-data="xProductCard('{{ section_id }}-{{ product_card_id }}', '{{ card_product.url | within: collection | split: "?" | first }}', '{{ card_product.id }}')"  
+  x-data="xProductCard('{{ section_id }}-{{ product_card_id }}', '{{ card_product.url | within: collection | split: "?" | first }}', '{{ card_product.id }}')"
 {% else %}
   x-data="{ showOptions: false, options: [] }"
 {% endif %}
@@ -69,16 +49,16 @@ class="card-product overflow-hidden card md:list-layout:flex relative pb-4 md:pb
   {%- if class_slide %} {{ class_slide }}{% endif -%}
   {%- unless swiper_on_mobile %} h-full{% endunless -%}
   {%- if extend_height %} flex flex-col{% endif -%}
-  {%- unless product_complementary %}{% if edges_type == 'rounded_corners' %} rounded-[10px]{% endif %}{% endunless -%}"  
+  {%- unless product_complementary %}{% if edges_type == 'rounded_corners' %} rounded-[10px]{% endif %}{% endunless -%}"
 x-slide-index="{{ index | minus: 1 }}">
-  <div 
+  <div
     class="z-0 md:list-layout:w-2/5 md:list-layout:lg:w-1/4{% if is_rtl %} md:list-layout:pl-7{% else %} md:list-layout:pr-7{% endif %} relative{% if product_complementary %} flex{% endif %}{% if extend_height %} flex flex-col{% endif %} disable-effect"
     x-data="{effect: false}"
   >
     {% if product_complementary %}
       <div class="w-1/6">
     {% endif %}
-    <a 
+    <a
     {% if loading == 'eager' %}
       x-init="effect = true"
     {% else %}
@@ -90,7 +70,7 @@ x-slide-index="{{ index | minus: 1 }}">
       <div :class="effect && 'active'" class="w-full h-full z-0 overflow-hidden absolute top-0 left-0{% if animation_loading %} animate_transition_card__image{% endif %} {% if section.settings.product_image_type == "slide_img" and count_media > 1 and class_slide != 'recommendations' and section.settings.show_arrow == false %} disable-label-hover{% endif %}">
         <div
         id="x-slideshow-card-product-{{ section_id }}-{{ product_card_id }}-{{ index | minus: 1 }}"
-        class="block h-full visible {% if section.settings.product_image_type == "slide_img" and count_media > 1 and class_slide != 'recommendations' %} visible{% unless media_aspect_ratio == "natural"  %} card-product-img{% endunless %} w-full top-0 left-0 absolute x-splide disable-effect-hover splide cursor-grab group{% endif %}" 
+        class="block h-full visible {% if section.settings.product_image_type == "slide_img" and count_media > 1 and class_slide != 'recommendations' %} visible{% unless media_aspect_ratio == "natural"  %} card-product-img{% endunless %} w-full top-0 left-0 absolute x-splide disable-effect-hover splide cursor-grab group{% endif %}"
         @click='$store.xCustomerEvent.fire("product_selected", $el)'
         x-customer-event-data="{{ dataForCustomerEvent | escape }}"
         {% if section.settings.product_image_type == "slide_img" and count_media > 1 and class_slide != 'recommendations' %}
@@ -103,7 +83,7 @@ x-slide-index="{{ index | minus: 1 }}">
             "focus": "center",
             "type": "fade",
             {% unless section.settings.show_arrow -%}
-              "cardHover": "image-product-{{ section_id }}-{{ product_card_id }}-{{ index | minus: 1 }}", 
+              "cardHover": "image-product-{{ section_id }}-{{ product_card_id }}-{{ index | minus: 1 }}",
               "maxSlide": "{{ count_media  }}",
               "arrows": false,
               "classes": {
@@ -125,9 +105,8 @@ x-slide-index="{{ index | minus: 1 }}">
         {%- endif -%}
       >
 
-
         {% if section.settings.product_image_type == "slide_img" and count_media > 1 and class_slide != 'recommendations' %}
-          <div 
+          <div
             id="image-product-{{ section_id }}-{{ product_card_id }}-{{ index | minus: 1 }}"
             class="splide__track overflow-hidden max-h-full h-full w-full"
           >
@@ -145,7 +124,7 @@ x-slide-index="{{ index | minus: 1 }}">
                 (min-width: {{ settings.page_width }}px) {% if enable_desktop_slider %}{{ settings.page_width | plus: 100 | divided_by: columns_desktop }}px{% else %}calc(100vw / {{ columns_desktop }}){% endif %}, (min-width: 1024px) calc((100vw) / {{ columns_desktop }}), (min-width: 768px) calc((100vw) / 2), calc(100vw /{{ column_mobile }})
               {%- endif -%}
             {%- endcapture -%}
-            
+
             {%- if loading == 'eager' -%}
               <div class="hidden">
                 {% assign featured_media_alt = card_product.featured_media.alt | split: "#" | first | escape %}
@@ -153,7 +132,6 @@ x-slide-index="{{ index | minus: 1 }}">
               </div>
             {%- endif -%}
             <div class="w-full{% if media_aspect_ratio != "natural"  %} h-full min-h-full{% endif %}{% if section.settings.product_image_type != "slide_img" or count_media <= 1 or class_slide == 'recommendations'  %} top-0 left-0 absolute{% else %} overflow-hidden splide__slide x-splide-slide max-h-full{% endif %} z-0">
-              {% comment %}theme-check-disable ImgLazyLoading{% endcomment %}
               <picture>
                 <img
                 srcset="{{ card_product.featured_media | image_url: width: 450 }} 450w,
@@ -161,7 +139,7 @@ x-slide-index="{{ index | minus: 1 }}">
                 {{ card_product.featured_media | image_url: width: 900 }} 900w,
                 {{ card_product.featured_media | image_url: width: 1100 }} 1100w,
                 {{ card_product.featured_media | image_url: width: 1500 }} 1500w
-                {% if card_product.featured_media.width %},{{ card_product.featured_media | image_url }} {{ card_product.featured_media.width }}w{% endif %}" 
+                {% if card_product.featured_media.width %},{{ card_product.featured_media | image_url }} {{ card_product.featured_media.width }}w{% endif %}"
                 src="{{ card_product.featured_media | image_url: width: 1500 }}"
                 sizes="{{ sizes }}"
                 alt="{{ card_product.featured_media.alt | split: "#" | first | escape }}"
@@ -169,14 +147,13 @@ x-slide-index="{{ index | minus: 1 }}">
                 loading="{{ loading | default: 'lazy' }}"
                 width="{{ card_product.featured_media.width }}"
                 height="{{ card_product.featured_media.height }}"
-                onload="this?.classList.add('active'); 
+                onload="this?.classList.add('active');
                   this.closest('.skeleton-image')?.classList.remove('animate-Xpulse', 'skeleton-image');
                   setTimeout(() => { this.closest('.animate_transition_card__image')?.classList.add('lazy_active'); }, 250);
                 "
               />
               </picture>
-              {% comment %}theme-check-enable ImgLazyLoading{% endcomment %}
-            </div>
+              </div>
             {%- if card_product.media[1] != nil -%}
               {%- if section.settings.product_image_type == "hover_to_reveal_second_image" -%}
                 <div class="w-full h-full top-0 left-0 absolute second_image">
@@ -195,7 +172,7 @@ x-slide-index="{{ index | minus: 1 }}">
                       loading="lazy"
                       width="{{ card_product.media[1].width }}"
                       height="{{ card_product.media[1].height }}"
-                      onload="this?.classList.add('active'); 
+                      onload="this?.classList.add('active');
                         this.closest('.animate_transition_card__image')?.classList.remove('animate-Xpulse', 'skeleton-image');
                         setTimeout(() => { this.closest('.animate_transition_card__image')?.classList.add('lazy_active'); }, 250);
                       "
@@ -205,8 +182,8 @@ x-slide-index="{{ index | minus: 1 }}">
               {%- elsif section.settings.product_image_type == "slide_img" and count_media > 1  -%}
                   {% for media in  card_product.media %}
                     {%- if forloop.index > 1 -%}
-                      <div 
-                        index="{{ forloop.index0 }}" 
+                      <div
+                        index="{{ forloop.index0 }}"
                         media="{{ media | image_url }}"
                         class="media-slide w-full splide__slide x-splide-slide duration-300 z-0 transition ease-out{% if media_aspect_ratio != "natural"  %} h-full min-h-full{% endif %}{% if animation_loading %} opacity-0{% endif %}">
                         <picture>
@@ -222,7 +199,7 @@ x-slide-index="{{ index | minus: 1 }}">
                             alt="{{ media.alt | split: "#" | first | escape }}"
                             class="w-full motion-reduce{% if media_aspect_ratio == "natural" %} aspect-auto{% else %} h-full min-h-full{% endif %} object-cover"
                             loading="lazy"
-                            onload="this?.classList.add('active'); 
+                            onload="this?.classList.add('active');
                               this.closest('.animate_transition_card__image')?.classList.remove('animate-Xpulse', 'skeleton-image');
                               setTimeout(() => { this.closest('.animate_transition_card__image')?.classList.add('lazy_active'); }, 250);
                             "
@@ -232,15 +209,15 @@ x-slide-index="{{ index | minus: 1 }}">
                         </picture>
                       </div>
                     {% endif %}
-                    {% liquid 
-                      if forloop.index == count_media 
-                        break 
+                    {% liquid
+                      if forloop.index == count_media
+                        break
                       endif
                     %}
-                  {% endfor %} 
+                  {% endfor %}
               {%- endif -%}
             {%- endif -%}
-          {%- else -%} 
+          {%- else -%}
             <div class='bg-[#c9c9c9] flex justify-center{% unless media_aspect_ratio == "natural" %} absolute{% endunless %} top-0 left-0 w-full h-full items-center'>
               {%- render 'otsb-icon-placeholder', icon: 'icon-product', class: 'w-full h-full' %}
             </div>
@@ -261,20 +238,20 @@ x-slide-index="{{ index | minus: 1 }}">
         {%- endif -%}
         </div>
       </div>
-      
+
         <div class="md:list-layout:hidden" x-show="$store.xQuickView" :class="$store.xQuickView && $store.xQuickView.btn_atc_bottom ? 'mobile-bottom':''">
             <div class="quick-view-container absolute z-20 bottom-2 right-2 rtl:right-auto rtl:left-2 rtl:lg:left-auto lg:top-auto lg:right-auto lg:bottom-4 lg:w-full lg:group-hover:opacity-100 lg:group-hover:translate-y-0 focus:opacity-100 focus:translate-y-0 lg:translate-y-full transition-all duration-200 ease-in-out lg:opacity-0"
               x-show="$store.xQuickView" x-cloak
-            > 
+            >
               <div x-data="xProductCart" x-show="$store.xQuickView"
-                class="w-full{% if show_icon_atc %} text-right rtl:text-left lg:pl-2 lg:pr-2{% else %} lg:px-4{% endif %}" 
+                class="w-full{% if show_icon_atc %} text-right rtl:text-left lg:pl-2 lg:pr-2{% else %} lg:px-4{% endif %}"
                 :class="if($store.xQuickView){ return ($store.xQuickView.btn_atc_bottom ? 'hidden' : '') + ($store.xQuickView.atc_btn_image_desktop ? ' lg:block' : ' lg:hidden') }"
                 x-cloak
               >
                 {%- assign product_form_id = 'product-form-' | append: section.id -%}
                 {%- form 'product', card_product, id: product_form_id, class: 'form h-full', novalidate: 'novalidate', data-type: 'add-to-cart-form', x-ref: 'product_form' -%}
                   <input type="hidden" name="id" value="{{ card_product.selected_or_first_available_variant.id }}">
-                  
+
                   <button
                     type="submit"
                     name="add"
@@ -282,12 +259,12 @@ x-slide-index="{{ index | minus: 1 }}">
                     @click.prevent="errorMessage == false && addToCart($event)"
                     {%- else -%}
                     @click.prevent="$store.xQuickView; showOptions =! showOptions; $store.xQuickView.showChooseOption('{{ section_id }}-{{ card_product.id }}-{{ block_id }}');"
-                    
+
                     {%- endif -%}
                     data-id="{{ section_id }}-{{ card_product.id }}-{{ block_id }}"
                     class="btn-choose-option bg-white button button--quickview button-solid not-icon leading-normal w-full py-2.5 lg:py-3 h-full z-50 text-[12px] lg:text-[14px] lg:-translate-x-0 disabled:cursor-not-allowed disabled:opacity-60 {%- if card_product.has_only_default_variant -%} lg:otsb-hidden {% else %} lg:block {% endif %} otsb-hidden"
                     :class="errorMessage && 'opacity-60 cursor-not-allowed'"
-                    {% if card_product.selected_or_first_available_variant.available == false %} 
+                    {% if card_product.selected_or_first_available_variant.available == false %}
                       disabled
                       aria-label="{{ 'products.product.sold_out' | t }}"
                     {% else %}
@@ -329,7 +306,7 @@ x-slide-index="{{ index | minus: 1 }}">
                       {% render 'otsb-icon-alls', icon: 'icon-loading' %}
                     </div>
                   </button>
-                  <button 
+                  <button
                     type="submit"
                     name="add"
                     {%- if card_product.has_only_default_variant -%}
@@ -361,7 +338,7 @@ x-slide-index="{{ index | minus: 1 }}">
               </div>
             </div>
         </div>
-     
+
     </a>
     {% if product_complementary %}
       </div>
@@ -389,10 +366,9 @@ x-slide-index="{{ index | minus: 1 }}">
       </div>
     {% endcapture %}
     <div class="md:list-layout:hidden{% if product_complementary %} w-5/6{% endif %}">{{ card_info }}</div>
-    
+
   </div>
 
-  {% comment %} Show the product details when card product is in list view {% endcomment %}
   <div
     id="x-product-template-{{ card_product.id }}-{{ section_id }}-{{ product_card_id }}"
     class="list-layout:lg:w-3/4 md:list-layout:w-3/5 list-layout:md:p-5 list-layout:md:pl-0 rtl:list-layout:md:pl-5 rtl:list-layout:md:pr-0 {% if info_alignment %}{{ info_alignment }}{% endif %} {% if is_rtl %} md:list-layout:text-right{% endif %}"
@@ -420,7 +396,7 @@ x-slide-index="{{ index | minus: 1 }}">
               {{ card_product.variants | json }}
             </script>
             <div
-              id="current-variant-{{ section_id }}-{{ card_product.id }}-{{ block_id }}" 
+              id="current-variant-{{ section_id }}-{{ card_product.id }}-{{ block_id }}"
               class="current-variant hidden"
             >
               {{ card_product.selected_or_first_available_variant.id }}
@@ -447,7 +423,7 @@ x-slide-index="{{ index | minus: 1 }}">
                     assign show_text_swatch = true
                     endif
                   endfor
-                 
+
                     if section.settings.swatches_type == 'both_text_and_color'
                       for color_option_name in color_option_name
                         if color_option_name == option.name
@@ -463,11 +439,11 @@ x-slide-index="{{ index | minus: 1 }}">
                 %}
                 {% if show_swatch or show_text_swatch or show_color_swatch %}
                 {%- assign option_index = forloop.index | minus: 1 -%}
-                  
+
                   <fieldset
                     id="Option-{{ section_id }}-{{ product_card_id }}-{{ forloop.index0 }}"
                     class="product-form__input pl-0{% unless forloop.last %} pb-2{% endunless %} quick-view:pb-2 eurus gap-x-2"
-                x-intersect.once.margin.500px="options[{{ forloop.index | minus: 1 }}] = document.querySelector('#Option-{{ section_id }}-{{ product_card_id }}-{{ forloop.index0 }} input[checked]').value" 
+                x-intersect.once.margin.500px="options[{{ forloop.index | minus: 1 }}] = document.querySelector('#Option-{{ section_id }}-{{ product_card_id }}-{{ forloop.index0 }} input[checked]').value"
                   >
                     <div class="mb-2 hidden">{{ option.name }}</div>
                     <div class="w-full inline-flex gap-3 flex-wrap ltr items-center{% if section.settings.swatches_type == 'color' or section.settings.swatches_type == 'both_text_and_color' and section.settings.color_option_name contains option.name %} -ml-0.5 rtl:-mr-0.5{% endif %} justify-{{ info_alignment }}">
@@ -476,11 +452,11 @@ x-slide-index="{{ index | minus: 1 }}">
                         assign variants_option1_arr = card_product.variants | map: 'option1'
                         assign variants_option2_arr = card_product.variants | map: 'option2'
                         assign variants_option3_arr = card_product.variants | map: 'option3'
-                      
+
                         assign color_option_values = section.settings.color_option_values | newline_to_br | strip_newlines | split: '<br />'
                         assign text_option_values = section.settings.text_option_values | newline_to_br | strip_newlines | split: '<br />'
 
-                        if section.settings.products_color_swatches_style == 'round' 
+                        if section.settings.products_color_swatches_style == 'round'
                           assign classSwatch = ' rounded-full before:rounded-full'
                         elsif section.settings.edges_type == 'rounded_corners'
                           assign classSwatch = ' rounded-md overflow-hidden'
@@ -492,9 +468,8 @@ x-slide-index="{{ index | minus: 1 }}">
                             assign count_value = count_value | minus: section.settings.swatch_show_by_default
                           endif
                         endif
-                        
 
-                        assign swatch_natural = false     
+                        assign swatch_natural = false
                         if section.settings.products_color_swatches_style == 'natural'
                           assign swatch_natural = true
                         endif
@@ -516,7 +491,7 @@ x-slide-index="{{ index | minus: 1 }}">
                             endunless
                           endif
                           assign option_disabled = true
-                      
+
                           for option1_name in variants_option1_arr
                             case option.position
                               when 1
@@ -541,7 +516,7 @@ x-slide-index="{{ index | minus: 1 }}">
                           for color_option_value in color_option_values reversed
                             assign option_key = color_option_value | split: ':' | first
                             assign option_value = color_option_value | split: ':' | last | strip
-                    
+
                             if option_key == value and option_value contains '.'
                               assign color_custom = option_key
                               assign swatch_image = true
@@ -554,7 +529,7 @@ x-slide-index="{{ index | minus: 1 }}">
                               assign color_value = option_value
                               break
                             endif
-                          endfor  
+                          endfor
                         -%}
                         {% if preview_image and section.settings.replace_color_with_variant_images %}
                           {% if section.settings.color_option_name contains option.name %}
@@ -585,7 +560,7 @@ x-slide-index="{{ index | minus: 1 }}">
                             {% endif %}
                           {%- endstyle %}
                         {% endif %}
-                        <input 
+                        <input
                           id="{{ section_id }}-{{ product_card_id }}-{{ option.position }}-{{ forloop.index0 }}-{{ card_product.id }}"
                           section-id="{{ section_id }}-{{ product_card_id }}"
                           option-pos="{{ option.position }}"
@@ -614,9 +589,9 @@ x-slide-index="{{ index | minus: 1 }}">
                           {% endif %}
                         >
                         {% if section.settings.swatches_type == 'color' or section.settings.swatches_type == 'both_text_and_color' and section.settings.color_option_name contains option.name %}
-                          <label 
-                            class="color-watches variant-{{ product_card_id }}-{{ option.position }}-{{ forloop.index0 }}-{{ card_product.id }} cursor-pointer block{% if swatch_natural and section.settings.replace_color_with_variant_images and ratio_image %} color-swatch-natural{% endif %} swatch-{{ section.settings.swatch_size }} relative{{ classSwatch }}" 
-                            for="{{ section_id }}-{{ product_card_id }}-{{ option.position }}-{{ forloop.index0 }}-{{ card_product.id }}" 
+                          <label
+                            class="color-watches variant-{{ product_card_id }}-{{ option.position }}-{{ forloop.index0 }}-{{ card_product.id }} cursor-pointer block{% if swatch_natural and section.settings.replace_color_with_variant_images and ratio_image %} color-swatch-natural{% endif %} swatch-{{ section.settings.swatch_size }} relative{{ classSwatch }}"
+                            for="{{ section_id }}-{{ product_card_id }}-{{ option.position }}-{{ forloop.index0 }}-{{ card_product.id }}"
                             data-swatch="{{ color_custom }}"
                             data-optionindex="{{ option_index }}"
                             data-optionvalue="{{ value | escape | replace: '&lt;', '\u003c' | replace: '&gt;', '\u003e' }}"
@@ -664,7 +639,7 @@ x-slide-index="{{ index | minus: 1 }}">
                             for text_option_value in text_option_values
                               assign option_key = text_option_value | split: ':' | first
                               assign option_value = text_option_value | split: ':' | last
-                              
+
                               if option_key == value
                                 assign text_custom = option_key
                                 assign text_value = option_value
@@ -672,9 +647,9 @@ x-slide-index="{{ index | minus: 1 }}">
                               endif
                             endfor
                           %}
-    
+
                           <label class="flex items-center outline-none font-medium text-[13px] cursor-pointer{% if section.settings.info_alignment_card_product == 'right' %} rtl:mr-0{% endif %} pl-3.5 pr-3.5 pt-1.5 pb-1.5 border bg-[rgba(var(--background-color),1)]
-                            {% if section.settings.edges_type == 'rounded_corners' %} rounded-md{% endif %}" 
+                            {% if section.settings.edges_type == 'rounded_corners' %} rounded-md{% endif %}"
                             for="{{ section_id }}-{{ product_card_id }}-{{ option.position }}-{{ forloop.index0 }}-{{ card_product.id }}"
                           >
                             <span class="p-break-words">
@@ -685,7 +660,7 @@ x-slide-index="{{ index | minus: 1 }}">
                       {%- endfor -%}
                     </div>
                   </fieldset>
-              
+
                 {% elsif section.settings.swatches_type == 'both_text_and_color' %}
                   {%- assign option_index = forloop.index | minus: 1 -%}
                   <fieldset
@@ -695,9 +670,9 @@ x-slide-index="{{ index | minus: 1 }}">
                   >
                     <div class="inline-flex flex-wrap justify-left">
                       {%- for value in option.values -%}
-                        
+
                         {% if forloop.first %}
-                          <input 
+                          <input
                             id="{{ section_id }}-{{ product_card_id }}-{{ option.position }}-{{ forloop.index0 }}-{{ card_product.id }}"
                             setion-id="{{ section_id }}-{{ product_card_id }}"
                             option-pos="{{ option.position }}"
@@ -711,7 +686,7 @@ x-slide-index="{{ index | minus: 1 }}">
                             x-model="options[{{ option_index }}]"
                             aria-label="{{ value | escape }}"
                             checked
-                          >  
+                          >
                           <label class="relative flex items-center outline-none font-medium text-[13px] cursor-pointer mb-1.5 mr-[5px]{% if section.settings.info_alignment_card_product == 'right' %} rtl:mr-0 rtl:ml-1.5{% endif %} pl-3.5 pr-3.5 pt-1.5 pb-1.5 border bg-[rgba(var(--background-color),1)]
                             {% if rounded_corner %} rounded-md{% endif %}" for="{{ section_id }}-{{ product_card_id }}-{{ option.position }}-{{ forloop.index0 }}-{{ card_product.id }}"
                           >
@@ -730,7 +705,7 @@ x-slide-index="{{ index | minus: 1 }}">
             Alpine.store('xUpdateVariantQuanity').updateQuantity('{{ section.id }}', '{{ card_product.url }}');
           });"></div>
           <div
-            id="current-variant-{{ section_id }}-{{ card_product.id }}-{{ block_id }}" 
+            id="current-variant-{{ section_id }}-{{ card_product.id }}-{{ block_id }}"
             class="current-variant hidden"
           >
             {{ card_product.selected_or_first_available_variant.id }}
@@ -741,7 +716,7 @@ x-slide-index="{{ index | minus: 1 }}">
           Alpine.store('xUpdateVariantQuanity').updateQuantity('{{ section.id }}', '{{ card_product.url }}');
         });"></div>
         <div
-          id="current-variant-{{ section_id }}-{{ card_product.id }}-{{ block_id }}" 
+          id="current-variant-{{ section_id }}-{{ card_product.id }}-{{ block_id }}"
           class="current-variant hidden"
         >
           {{ card_product.selected_or_first_available_variant.id }}

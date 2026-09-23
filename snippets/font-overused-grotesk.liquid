@@ -1,13 +1,4 @@
-{% comment %}
-  Self-hosts Overused Grotesk (OFL-1.1) as the body + heading family for the
-  whole theme. Render after the layout's {% style %} block so these :root
-  overrides win. Source: github.com/RandomMaerks/Overused-Grotesk
-{% endcomment %}
-
-{% comment %}theme-check-disable AssetPreload{% endcomment %}
 <link rel="preload" as="font" href="{{ 'overused-grotesk-variable.woff2' | asset_url }}" type="font/woff2" crossorigin>
-{% comment %}theme-check-enable AssetPreload{% endcomment %}
-
 {% style %}
   @font-face {
     font-family: 'Overused Grotesk';
@@ -18,13 +9,6 @@
     font-display: swap;
   }
 
-  {% comment %}
-    Italics come from the variable font's `slnt` axis (-10deg to 0), which
-    covers the full 300-900 weight range -- the static italic file is Regular
-    only, so "Light Italic" could not render from it. It stays as the fallback
-    src for browsers without variable-font support. CSS oblique angles run
-    opposite in sign to slnt; the browser handles that mapping.
-  {% endcomment %}
   @font-face {
     font-family: 'Overused Grotesk';
     src: url({{ 'overused-grotesk-variable.woff2' | asset_url }}) format('woff2-variations'),
@@ -44,10 +28,6 @@
     --font-heading-style: normal;
     --font-heading-weight: 500;
 
-    /* Every named instance on the variable font's wght axis (300-900).
-       Read from the file's fvar table, so these match the designer's own
-       naming -- note Book is 350, which is not a standard CSS keyword and
-       has to be written numerically. */
     --font-weight-light: 300;
     --font-weight-book: 350;
     --font-weight-regular: 400;
