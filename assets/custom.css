@@ -2613,3 +2613,8 @@ div#insta-feed > h2 {
   text-align: center;
   cursor: pointer;
 }
+
+.cart-count-bubble {
+  background-color: #647a73;
+  color: #ffffff;
+}
