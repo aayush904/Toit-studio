@@ -167,22 +167,41 @@
   }
 
   .promo-popup__code {
-    display: inline-block;
-    margin: 1.2rem 0 0;
-    padding: 1.2rem 2.4rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 52px;
+    margin: 0;
+    padding: 0 1.6rem;
     border: 1px dashed {{ section.settings.field_border_color }};
     border-radius: 12px;
     font-family: var(--font-body-family);
     font-weight: var(--font-weight-medium);
-    font-size: 24px;
+    font-size: 20px;
     line-height: 100%;
     letter-spacing: 0.06em;
     text-transform: uppercase;
+    white-space: nowrap;
     color: {{ section.settings.heading_color }};
   }
 
+  .promo-popup__result-row {
+    display: flex;
+    align-items: stretch;
+    flex-wrap: wrap;
+    gap: 1.2rem;
+    margin-top: 1.2rem;
+  }
+
   .promo-popup__button--link {
-    margin-top: 2rem;
+    flex: 0 1 auto;
+    width: auto;
+    min-height: 52px;
+    height: auto;
+    margin-top: 0;
+    padding: 0 2rem;
+    border-radius: 12px;
+    white-space: nowrap;
     text-decoration: none;
   }
 
@@ -266,15 +285,17 @@
 
         {%- if form.posted_successfully? -%}
           <p class="promo-popup__message" data-promo-popup-result>{{ section.settings.success_text }}</p>
-          {%- if section.settings.discount_code != blank -%}
-            <p class="promo-popup__code">{{ section.settings.discount_code }}</p>
-          {%- endif -%}
-          {%- if section.settings.success_button_label != blank and section.settings.success_button_link != blank -%}
-            <a href="{{ section.settings.success_button_link }}" class="promo-popup__button promo-popup__button--link">
-              <span>{{ section.settings.success_button_label }}</span>
-              {%- render 'icon-chevron-arrow', size: 16 -%}
-            </a>
-          {%- endif -%}
+          <div class="promo-popup__result-row">
+            {%- if section.settings.discount_code != blank -%}
+              <p class="promo-popup__code">{{ section.settings.discount_code }}</p>
+            {%- endif -%}
+            {%- if section.settings.success_button_label != blank and section.settings.success_button_link != blank -%}
+              <a href="{{ section.settings.success_button_link }}" class="promo-popup__button promo-popup__button--link">
+                <span>{{ section.settings.success_button_label }}</span>
+                {%- render 'icon-chevron-arrow', size: 16 -%}
+              </a>
+            {%- endif -%}
+          </div>
         {%- else -%}
           <label class="visually-hidden" for="{{ popup_id }}-email">
             {{ section.settings.field_label }}
