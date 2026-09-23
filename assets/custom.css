@@ -2441,10 +2441,11 @@ div#insta-feed > h2 {
   visibility: visible !important;
 }
 
+.card-wrapper {
+  isolation: isolate;
+}
+
 @media screen and (min-width: 750px) {
-  .card-wrapper {
-    isolation: isolate;
-  }
 
   #main-collection-filters .facets__disclosure,
   #main-collection-filters .facets__disclosure-vertical {
@@ -2466,12 +2467,6 @@ div#insta-feed > h2 {
 .menu-drawer__submenu .menu-drawer__inner-container {
   background-color: #ffffff !important;
   background-image: none !important;
-}
-
-@media screen and (max-width: 749px) {
-  #product-grid .card__inner > a.card__media-link {
-    z-index: auto;
-  }
 }
 
 .menu-drawer,
