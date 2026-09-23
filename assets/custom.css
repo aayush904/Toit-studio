@@ -590,7 +590,7 @@ body .shopify-section-group-footer-group {
 }
 .custom-footer .footer-block__hours-row {
   display: grid;
-  grid-template-columns: 11.4rem auto;
+  grid-template-columns: 4.4rem auto;
   align-items: baseline;
   column-gap: 0;
   margin-bottom: 0.9rem;
