@@ -486,13 +486,21 @@
               justify-content: flex-start;
             }
 
-            .card__inner:hover ~ .card__content .quick-add__submit,
-            .quick-add__submit:hover {
-              opacity: 1;
+            @media (hover: hover) and (pointer: fine) {
+              .card__inner:hover ~ .card__content .quick-add__submit,
+              .quick-add__submit:hover {
+                opacity: 1;
+              }
+
+              .quick-add__submit:hover {
+                width: auto;
+              }
             }
 
-            .quick-add__submit:hover {
-              width: auto;
+            @media (hover: none), (pointer: coarse) {
+              .quick-add__submit {
+                opacity: 1;
+              }
             }
 
             .quick-add__submit .quick-add__submit-text {
