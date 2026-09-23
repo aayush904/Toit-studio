@@ -126,13 +126,16 @@
     if (!form) return;
     if (nativeAllowed) return;
 
-    var captcha = window.Shopify && window.Shopify.captcha;
-    if (!captcha || typeof captcha.protect !== 'function') return;
-
     event.preventDefault();
     if (sending) return;
     sending = true;
     setBusy(true);
+
+    var captcha = window.Shopify && window.Shopify.captcha;
+    if (!captcha || typeof captcha.protect !== 'function') {
+      send(form);
+      return;
+    }
 
     try {
       captcha.protect(form, function () {
