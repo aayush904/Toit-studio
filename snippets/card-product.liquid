@@ -495,6 +495,11 @@
               flex: 0 0 auto;
             }
 
+            .quick-add__submit > span:not(.sold-out-message) {
+              opacity: 0;
+              transition: opacity 0.25s ease;
+            }
+
             @media (hover: hover) and (pointer: fine) {
               .card__inner:hover ~ .card__content .quick-add__submit,
               .quick-add__submit:hover {
@@ -504,6 +509,10 @@
               .quick-add__submit:hover {
                 width: auto;
                 padding-right: 24px;
+              }
+
+              .quick-add__submit:hover > span:not(.sold-out-message) {
+                opacity: 1;
               }
             }
 
