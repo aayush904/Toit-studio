@@ -181,6 +181,11 @@
     color: {{ section.settings.heading_color }};
   }
 
+  .promo-popup__button--link {
+    margin-top: 2rem;
+    text-decoration: none;
+  }
+
   .promo-popup__message--error {
     color: rgb(var(--color-error, 235 66 66));
   }
@@ -264,6 +269,12 @@
           {%- if section.settings.discount_code != blank -%}
             <p class="promo-popup__code">{{ section.settings.discount_code }}</p>
           {%- endif -%}
+          {%- if section.settings.success_button_label != blank and section.settings.success_button_link != blank -%}
+            <a href="{{ section.settings.success_button_link }}" class="promo-popup__button promo-popup__button--link">
+              <span>{{ section.settings.success_button_label }}</span>
+              {%- render 'icon-chevron-arrow', size: 16 -%}
+            </a>
+          {%- endif -%}
         {%- else -%}
           <label class="visually-hidden" for="{{ popup_id }}-email">
             {{ section.settings.field_label }}
@@ -337,6 +348,17 @@
       "label": "Discount code",
       "info": "Create the matching code in Discounts, or the code shown here will not work at checkout.",
       "default": "FIRST10"
+    },
+    {
+      "type": "text",
+      "id": "success_button_label",
+      "label": "Success button label",
+      "default": "Shop Now"
+    },
+    {
+      "type": "url",
+      "id": "success_button_link",
+      "label": "Success button link"
     },
     { "type": "header", "content": "Layout" },
     {

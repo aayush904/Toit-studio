@@ -117,7 +117,9 @@
         "button_label_color": "#ffffff",
         "delay": 5,
         "reset_key": "1",
-        "discount_code": "FIRST10"
+        "discount_code": "FIRST10",
+        "success_button_label": "Shop Now",
+        "success_button_link": "https://toitstudio.com/collections/best-seller"
       }
     }
   },
