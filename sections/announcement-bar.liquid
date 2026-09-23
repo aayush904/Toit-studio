@@ -38,6 +38,12 @@
               href="{{ section.blocks.first.settings.link }}"
               class="announcement-bar__link link link--text focus-inset animate-arrow"
             >
+          {%- elsif section.settings.open_email_popup -%}
+            {%- comment -%}
+              With no link to follow, the bar opens the email popup instead.
+              A button rather than a link, because it goes nowhere.
+            {%- endcomment -%}
+            <button type="button" class="announcement-bar__trigger" data-promo-popup-open>
           {%- endif -%}
           <p class="announcement-bar__message">
             <span>{{ section.blocks.first.settings.text }}</span>
@@ -49,6 +55,8 @@
           </p>
           {%- if section.blocks.first.settings.link != blank -%}
             </a>
+          {%- elsif section.settings.open_email_popup -%}
+            </button>
           {%- endif -%}
         {%- endif -%}
       </div>
@@ -100,6 +108,8 @@
                         href="{{ block.settings.link }}"
                         class="announcement-bar__link link link--text focus-inset animate-arrow"
                       >
+                    {%- elsif section.settings.open_email_popup -%}
+                      <button type="button" class="announcement-bar__trigger" data-promo-popup-open>
                     {%- endif -%}
                     <p class="announcement-bar__message">
                       <span>
@@ -125,6 +135,8 @@
                     </p>
                     {%- if block.settings.link != blank -%}
                       </a>
+                    {%- elsif section.settings.open_email_popup -%}
+                      </button>
                     {%- endif -%}
                   {%- endif -%}
                 </div>
@@ -252,6 +264,13 @@
       "id": "custom_css_class",
       "label": "Custom CSS class",
       "info": "Add a class here to target this section from assets/custom.css"
+    },
+    {
+      "type": "checkbox",
+      "id": "open_email_popup",
+      "label": "Open the email popup on click",
+      "info": "Applies to announcements with no link of their own.",
+      "default": false
     },
     {
       "type": "checkbox",

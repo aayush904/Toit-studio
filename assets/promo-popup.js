@@ -56,6 +56,16 @@
     if (event.target.closest('[data-promo-popup-close]')) close();
   });
 
+  // Anything carrying data-promo-popup-open (the announcement bar) opens the
+  // popup on demand. Registered before the checks below so it keeps working
+  // for a visitor who has already dismissed the popup once.
+  document.addEventListener('click', function (event) {
+    var trigger = event.target.closest('[data-promo-popup-open]');
+    if (!trigger) return;
+    event.preventDefault();
+    open();
+  });
+
   // A submitted form reloads the page, so reopen to show the outcome and do
   // not let the delay or the stored dismissal suppress it.
   if (root.dataset.openOnLoad === 'true') {

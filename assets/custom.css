@@ -3121,3 +3121,18 @@ div#insta-feed > h2 {
   width: 14px;
   height: 14px;
 }
+
+/* The announcement bar as an email-popup trigger: a button reset so it
+   inherits the bar's own typography rather than the UA's. */
+.utility-bar .announcement-bar__trigger {
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  font: inherit;
+  color: inherit;
+  text-align: center;
+  cursor: pointer;
+}
