@@ -30,7 +30,7 @@
           "type": "buttons",
           "settings": {
             "button_label_1": "TRY IT NOW",
-            "button_link_1": "shopify://collections/all",
+            "button_link_1": "shopify://collections/new-arrivals-copy",
             "button_style_secondary_1": false,
             "button_label_2": "",
             "button_link_2": "",
@@ -80,7 +80,7 @@
           "type": "button",
           "settings": {
             "button_label": "LEARN MORE",
-            "button_link": "shopify://collections/all",
+            "button_link": "shopify://collections/new-arrivals-copy",
             "button_style_secondary": true,
             "button_label_2": "",
             "button_link_2": "",
@@ -151,7 +151,7 @@
           "type": "button",
           "settings": {
             "button_label": "Shop Now",
-            "button_link": "shopify://collections/all",
+            "button_link": "shopify://collections/new-arrivals-copy",
             "button_style_secondary": true
           }
         }
@@ -312,7 +312,7 @@
           "type": "button",
           "settings": {
             "button_label": "Shop Now",
-            "button_link": "shopify://collections",
+            "button_link": "shopify://collections/new-arrivals-copy",
             "button_style_secondary": true
           }
         }

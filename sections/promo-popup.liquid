@@ -36,7 +36,7 @@
     grid-template-columns: {% if has_image %}1fr 1fr{% else %}1fr{% endif %};
     width: 100%;
     max-width: {{ section.settings.max_width }}px;
-    max-height: calc(100vh - 4rem);
+    max-height: 475px;
     /* `overflow` both clips the image to the rounded corners and lets tall
        content scroll on a short viewport. */
     overflow: auto;
@@ -50,16 +50,17 @@
   }
 
   .promo-popup__media img {
-    display: block;
+        display: block;
     width: 100%;
     height: 100%;
     object-fit: cover;
+    border-radius: 24px 0 0 24px;
   }
 
   .promo-popup__content {
     /* The design's 70px 65px, held here rather than on the grid so the
        image can still run edge to edge. */
-    padding: 70px 65px;
+    padding: 68px 65px;
     /* base.css centres every h2, so alignment is set explicitly. */
     text-align: left;
   }
@@ -99,7 +100,7 @@
   }
 
   .promo-popup__text {
-    margin: 2.4rem 0 0;
+    margin: 1.2rem 0 0;
     font-family: var(--font-body-family);
     font-weight: var(--font-weight-regular);
     font-size: 20px;
@@ -112,7 +113,7 @@
   .promo-popup__text > :last-child { margin-bottom: 0; }
 
   .promo-popup__form {
-    margin: 3.2rem 0 0;
+    margin: 2.8rem 0 0;
   }
 
   .promo-popup__field {
