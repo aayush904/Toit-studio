@@ -459,7 +459,7 @@
               position: absolute;
               z-index: 2;
               transform: translate(-20px, -150%);
-              border-radius: 30px;
+              border-radius: 25px;
               margin: 0;
               overflow: hidden;
               grid-row-start: unset;
@@ -475,15 +475,24 @@
             }
 
             .quick-add__submit {
+              box-sizing: border-box;
               height: 50px;
+              min-height: 50px;
               width: 50px;
+              padding: 0 0 0 15px;
+              border-radius: 25px;
               opacity: 0;
               overflow: hidden;
               display: flex;
-              transition: width 0.5s ease;
+              transition: width 0.5s ease, padding 0.5s ease;
               gap: 8px;
               align-items: center;
               justify-content: flex-start;
+            }
+
+            .quick-add__submit .icon {
+              margin: 0;
+              flex: 0 0 auto;
             }
 
             @media (hover: hover) and (pointer: fine) {
@@ -494,6 +503,7 @@
 
               .quick-add__submit:hover {
                 width: auto;
+                padding-right: 24px;
               }
             }
 
