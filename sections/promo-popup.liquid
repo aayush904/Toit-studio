@@ -213,7 +213,6 @@
   data-promo-popup
   data-delay="{{ section.settings.delay }}"
   data-storage-key="promo-popup-{{ section.settings.reset_key | default: 1 }}"
-  data-open-on-load="{% if form.posted_successfully? or form.errors %}true{% else %}false{% endif %}"
   role="dialog"
   aria-modal="true"
   aria-label="{{ section.settings.heading | default: 'Newsletter' | strip_html | escape }}"
@@ -261,7 +260,7 @@
         <input type="hidden" name="contact[tags]" value="newsletter">
 
         {%- if form.posted_successfully? -%}
-          <p class="promo-popup__message">{{ section.settings.success_text }}</p>
+          <p class="promo-popup__message" data-promo-popup-result>{{ section.settings.success_text }}</p>
           {%- if section.settings.discount_code != blank -%}
             <p class="promo-popup__code">{{ section.settings.discount_code }}</p>
           {%- endif -%}
@@ -289,7 +288,7 @@
           </button>
 
           {%- if form.errors -%}
-            <p class="promo-popup__message promo-popup__message--error">
+            <p class="promo-popup__message promo-popup__message--error" data-promo-popup-result>
               {{ form.errors.messages.email }}
             </p>
           {%- endif -%}

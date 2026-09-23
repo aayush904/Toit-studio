@@ -57,7 +57,7 @@
     open();
   });
 
-  if (root.dataset.openOnLoad === 'true') {
+  if (root.querySelector('[data-promo-popup-result]')) {
     open();
     return;
   }
