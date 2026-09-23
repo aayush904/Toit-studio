@@ -483,6 +483,7 @@
   </body>
    <script defer="defer">
     document.addEventListener('DOMContentLoaded', function () {
+      const cardHoverSupported = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
       const productCardMain = document.querySelectorAll('.product-card-wrapper');
       productCardMain.forEach((el) => {
         const sliderContainer = el.querySelector('.productMediaslider-container');
@@ -523,23 +524,26 @@
         }
 
         let isHovered = false;
-        el.addEventListener('mouseenter', () => {
 
-          if (!isHovered) {
-            isHovered = true;
-            animateProgressBar();
-            startSlider()
-          }
-        });
+        if (cardHoverSupported) {
+          el.addEventListener('mouseenter', () => {
 
-        el.addEventListener('mouseleave', () => {
-          isHovered = false;
-          clearInterval(timer);
-          progressFill.style.transition = 'none';
-          progressFill.style.width = '0%';
-          currentIndex = 0;
-          sliderWrapper.style.transform = `translateX(-${currentIndex * 100}%)`;
-        });
+            if (!isHovered) {
+              isHovered = true;
+              animateProgressBar();
+              startSlider()
+            }
+          });
+
+          el.addEventListener('mouseleave', () => {
+            isHovered = false;
+            clearInterval(timer);
+            progressFill.style.transition = 'none';
+            progressFill.style.width = '0%';
+            currentIndex = 0;
+            sliderWrapper.style.transform = `translateX(-${currentIndex * 100}%)`;
+          });
+        }
         }
 
       var sectionParent = el.closest('[id^="shopify-section-template"]');
