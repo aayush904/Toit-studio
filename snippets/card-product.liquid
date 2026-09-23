@@ -23,9 +23,11 @@
       opacity: 0;
     }
 
-    .product-card-wrapper .card__inner:hover .productMediaslider-container {
-      opacity: 1;
-      transition: opacity 0.5s ease-in-out;
+    @media (hover: hover) and (pointer: fine) {
+      .product-card-wrapper .card__inner:hover .productMediaslider-container {
+        opacity: 1;
+        transition: opacity 0.5s ease-in-out;
+      }
     }
     .productMediaslider-wrapper {
       display: flex;
