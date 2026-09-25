@@ -2613,3 +2613,10 @@ div#insta-feed > h2 {
   background-color: #647a73;
   color: #ffffff;
 }
+
+.custom-product media-gallery .slider-button[disabled],
+.custom-product .product__media-wrapper .slider-button[disabled] {
+  display: flex;
+  visibility: hidden;
+  pointer-events: none;
+}
