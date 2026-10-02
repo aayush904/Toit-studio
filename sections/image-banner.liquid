@@ -19,6 +19,16 @@
   {%- endstyle -%}
 {%- endif -%}
 
+{%- style -%}
+  @media screen and (min-width: 768px) {
+    #Banner-{{ section.id }} .banner__box {
+      width: 100%;
+      min-width: 0;
+      max-width: {{ section.settings.content_width }}%;
+    }
+  }
+{%- endstyle -%}
+
 {%- if section.settings.image_height == 'adapt' and section.settings.image != blank -%}
   {%- liquid
     assign mobile_aspect_ratio = section.settings.image.aspect_ratio
@@ -304,6 +314,17 @@
     {
       "type": "header",
       "content": "t:sections.image-banner.settings.content.content"
+    },
+    {
+      "type": "range",
+      "id": "content_width",
+      "min": 30,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "label": "Content width",
+      "info": "Percentage of the section width, on desktop and tablet. Mobile stays full width.",
+      "default": 100
     },
     {
       "type": "select",
