@@ -14,36 +14,43 @@
     "announcement-bar": {
       "type": "announcement-bar",
       "blocks": {
+        "announcement_CfeL7V": {
+          "type": "announcement",
+          "settings": {
+            "text": "FAST DISPATCH • ALL ORDERS SHIPPED WITHIN 1–2 BUSINESS DAYS",
+            "link": ""
+          }
+        },
         "announcement-bar-0": {
           "type": "announcement",
           "settings": {
-            "text": "10% Off on First purchase",
+            "text": "CELEBRATE THE FESTIVITIES WITH 10% OFF • LIMITED TIME ONLY",
             "link": ""
           }
         },
         "announcement_et4Nmg": {
           "type": "announcement",
-          "disabled": true,
           "settings": {
-            "text": "",
+            "text": "CASH ON DELIVERY AVAILABLE ACROSS NEPAL",
             "link": ""
           }
         }
       },
       "block_order": [
+        "announcement_CfeL7V",
         "announcement-bar-0",
         "announcement_et4Nmg"
       ],
       "settings": {
         "custom_css_class": "",
+        "open_email_popup": true,
         "auto_rotate": true,
         "change_slides_speed": 5,
         "color_scheme": "scheme-0130ff2c-5d75-4e86-be8d-b4ab3796a5ff",
         "show_line_separator": true,
         "show_social": false,
         "enable_country_selector": false,
-        "enable_language_selector": false,
-        "open_email_popup": true
+        "enable_language_selector": false
       }
     },
     "header": {
