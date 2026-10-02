@@ -2606,7 +2606,12 @@ div#insta-feed > h2 {
   padding-right: 6rem;
   white-space: nowrap;
   text-transform: none;
-  font-size: 12px;
+}
+
+@media screen and (max-width: 749px) {
+  .utility-bar .announcement-bar__marquee-item {
+    font-size: 12px;
+  }
 }
 
 .utility-bar .announcement-bar__trigger {
