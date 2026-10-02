@@ -24,7 +24,7 @@
         "announcement-bar-0": {
           "type": "announcement",
           "settings": {
-            "text": "CELEBRATE THE FESTIVITIES WITH 10% OFF • LIMITED TIME ONLY",
+            "text": "✨CELEBRATE THE FESTIVITIES WITH 10% OFF • LIMITED TIME ONLY✨",
             "link": ""
           }
         },
@@ -43,6 +43,8 @@
       ],
       "settings": {
         "custom_css_class": "",
+        "enable_marquee": true,
+        "marquee_speed": 40,
         "open_email_popup": true,
         "auto_rotate": true,
         "change_slides_speed": 5,

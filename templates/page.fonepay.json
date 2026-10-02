@@ -14,18 +14,21 @@
       "blocks": {
         "step1": {
           "type": "step",
+          "disabled": true,
           "settings": {
             "text": "Open your Fonepay banking app"
           }
         },
         "step2": {
           "type": "step",
+          "disabled": true,
           "settings": {
             "text": "Scan this QR code"
           }
         },
         "step3": {
           "type": "step",
+          "disabled": true,
           "settings": {
             "text": "Confirm the payment amount"
           }
@@ -41,22 +44,24 @@
         "heading": "Mobile Banking",
         "heading_size": 44,
         "heading_size_mobile": 30,
-        "account_line": "eSewa Number: 9803459366",
+        "account_line": "",
+        "qr_image": "shopify://shop_images/Screenshot_2026-10-02_at_12.44.05_PM.png",
         "qr_width": 420,
+        "pdf_url": "https://cdn.shopify.com/s/files/1/1019/6320/2841/files/2026-09-24-2222030016505062-qr.pdf?v=1790924298",
+        "pdf_label": "Download QR (PDF)",
         "note": "*only available for payments within Nepal",
         "color_scheme": "scheme-1",
-        "heading_color": "#2B2B2B",
-        "text_color": "#5B5553",
-        "step_marker_color": "#647A73",
-        "step_number_color": "#FFFFFF",
+        "heading_color": "#2b2b2b",
+        "text_color": "#5b5553",
+        "step_marker_color": "#647a73",
+        "step_number_color": "#ffffff",
         "padding_top": 80,
-        "padding_bottom": 80,
-        "pdf_label": "Download QR (PDF)",
-        "pdf_url": ""
+        "padding_bottom": 80
       }
     },
     "enquiry": {
       "type": "enquiry-form",
+      "disabled": true,
       "settings": {
         "custom_css_class": "custom-enquiry",
         "heading": "Tell us what you're looking for.",
