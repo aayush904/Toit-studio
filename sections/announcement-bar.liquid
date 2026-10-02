@@ -18,6 +18,46 @@
   {{ 'component-list-social.css' | asset_url | stylesheet_tag }}
 {% endif %}
 
+{%- style -%}
+  .announcement-bar--marquee {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .announcement-bar__marquee {
+    overflow: hidden;
+  }
+
+  .announcement-bar__marquee-track {
+    display: flex;
+    align-items: center;
+    width: max-content;
+    animation: announcement-marquee {{ section.settings.marquee_speed }}s linear infinite;
+  }
+
+  @keyframes announcement-marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .announcement-bar--marquee:hover .announcement-bar__marquee-track {
+      animation-play-state: paused;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .announcement-bar__marquee-track {
+      animation: none;
+      transform: none;
+    }
+  }
+{%- endstyle -%}
+
 <div
   class="utility-bar color-{{ section.settings.color_scheme }} gradient{% if section.settings.show_line_separator and section.blocks.size > 0 %} utility-bar--bottom-border{% elsif section.settings.show_line_separator and section.settings.show_social and social_icons%} utility-bar--bottom-border-social-only{% endif %}{% if section.settings.enable_country_selector or section.settings.enable_language_selector %} header-localization{% endif %}{% if section.settings.custom_css_class != blank %} {{ section.settings.custom_css_class }}{% endif %}"
 >
@@ -25,7 +65,44 @@
     {%- if section.settings.show_social and social_icons -%}
       {%- render 'social-icons' -%}
     {%- endif -%}
-    {%- if section.blocks.size == 1 -%}
+    {%- if section.settings.enable_marquee and section.blocks.size > 0 -%}
+      {%- liquid
+        assign marquee_trigger = false
+        if section.settings.open_email_popup
+          assign marquee_trigger = true
+        endif
+      -%}
+      <div
+        class="announcement-bar announcement-bar--marquee"
+        role="region"
+        aria-label="{{ 'sections.header.announcement' | t }}"
+      >
+        {%- if marquee_trigger -%}
+          <button type="button" class="announcement-bar__trigger" data-promo-popup-open>
+        {%- endif -%}
+        <div class="announcement-bar__marquee">
+          <div class="announcement-bar__marquee-track">
+            {%- for pass in (1..2) -%}
+              {%- for block in section.blocks -%}
+                {%- if block.settings.text != blank -%}
+                  <span
+                    class="announcement-bar__marquee-item"
+                    {% if pass == 2 %}aria-hidden="true"{% endif %}
+                    {{ block.shopify_attributes }}
+                  >
+                    {{ block.settings.text }}
+                    {%- render 'icon-chevron-arrow', size: 14 -%}
+                  </span>
+                {%- endif -%}
+              {%- endfor -%}
+            {%- endfor -%}
+          </div>
+        </div>
+        {%- if marquee_trigger -%}
+          </button>
+        {%- endif -%}
+      </div>
+    {%- elsif section.blocks.size == 1 -%}
       <div
         class="announcement-bar{% if section.settings.show_social %} announcement-bar--one-announcement{% endif %}"
         role="region"
@@ -255,6 +332,23 @@
       "id": "custom_css_class",
       "label": "Custom CSS class",
       "info": "Add a class here to target this section from assets/custom.css"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_marquee",
+      "label": "Scroll announcements as a marquee",
+      "info": "Replaces the rotating carousel with one continuous scrolling line.",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "marquee_speed",
+      "min": 10,
+      "max": 120,
+      "step": 5,
+      "unit": "s",
+      "label": "Marquee loop duration",
+      "default": 40
     },
     {
       "type": "checkbox",

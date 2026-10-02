@@ -2568,7 +2568,8 @@ div#insta-feed > h2 {
   min-height: 0;
 }
 
-.utility-bar .announcement-bar__message {
+.utility-bar .announcement-bar__message,
+.utility-bar .announcement-bar__marquee-item {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2590,10 +2591,20 @@ div#insta-feed > h2 {
   color: #ffffff;
 }
 
-.utility-bar .announcement-bar__message svg {
+.utility-bar .announcement-bar__message svg,
+.utility-bar .announcement-bar__marquee-item svg {
   flex: 0 0 auto;
   width: 14px;
   height: 14px;
+}
+
+/* Trailing space rather than a flex gap: each half of the duplicated track
+   must be exactly 50% of its width for the loop to be seamless, and a gap
+   between the two halves would break that. */
+.utility-bar .announcement-bar__marquee-item {
+  flex: 0 0 auto;
+  padding-right: 6rem;
+  white-space: nowrap;
 }
 
 .utility-bar .announcement-bar__trigger {
