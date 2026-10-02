@@ -2605,6 +2605,7 @@ div#insta-feed > h2 {
   flex: 0 0 auto;
   padding-right: 6rem;
   white-space: nowrap;
+  text-transform: none;
 }
 
 .utility-bar .announcement-bar__trigger {
