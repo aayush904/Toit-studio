@@ -1,0 +1,104 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "payment_qr": {
+      "type": "payment-qr",
+      "blocks": {
+        "step1": {
+          "type": "step",
+          "settings": {
+            "text": "Open your Fonepay banking app"
+          }
+        },
+        "step2": {
+          "type": "step",
+          "settings": {
+            "text": "Scan this QR code"
+          }
+        },
+        "step3": {
+          "type": "step",
+          "settings": {
+            "text": "Confirm the payment amount"
+          }
+        }
+      },
+      "block_order": [
+        "step1",
+        "step2",
+        "step3"
+      ],
+      "settings": {
+        "custom_css_class": "custom-fonepay",
+        "heading": "Mobile Banking",
+        "heading_size": 44,
+        "heading_size_mobile": 30,
+        "account_line": "eSewa Number: 9803459366",
+        "qr_width": 420,
+        "note": "*only available for payments within Nepal",
+        "color_scheme": "scheme-1",
+        "heading_color": "#2B2B2B",
+        "text_color": "#5B5553",
+        "step_marker_color": "#647A73",
+        "step_number_color": "#FFFFFF",
+        "padding_top": 80,
+        "padding_bottom": 80
+      }
+    },
+    "enquiry": {
+      "type": "enquiry-form",
+      "settings": {
+        "custom_css_class": "custom-enquiry",
+        "heading": "Tell us what you're looking for.",
+        "heading_size": "h1",
+        "text": "<p>Not every question fits neatly into one category. Use our enquiry form and give us a little context so we can understand what you need and get your message to the right person.</p>",
+        "address_label": "Address",
+        "address": "Shanta Bhawan Marg, Jhamsikhel, Lalitpur 44600",
+        "email_label": "Email",
+        "email": "toitstudionepal@gmail.com",
+        "phone_label": "Phone",
+        "phone": "+977 9803459366",
+        "reason_options": "General enquiry\nB2B or wholesale\nGifting\nCollaboration\nOrder support\nSomething else",
+        "category_options": "Drinkware\nTableware\nKitchenware\nDecor\nBundles\nNot sure yet",
+        "label_first_name": "First name",
+        "label_last_name": "Last name",
+        "label_reason": "What brings you here?",
+        "label_email": "Email",
+        "label_phone": "Phone number",
+        "label_category": "What caught your eye?",
+        "label_quantity": "Approximate quantity",
+        "label_order": "Order number",
+        "label_business": "Business/Organization",
+        "label_message": "Your message",
+        "ph_first_name": "First name",
+        "ph_last_name": "Last name",
+        "ph_reason": "Please Select",
+        "ph_email": "Email address",
+        "ph_phone": "Phone number",
+        "ph_category": "Select Product Category",
+        "ph_quantity": "How Much Would You Like?",
+        "ph_order": "For Existing Order Enquiries",
+        "ph_business": "Business/Organization Name",
+        "ph_message": "Type Your Message",
+        "helper_note": "<p>For B2B, gifting and collaboration enquiries, sharing a few details about your requirement, quantity, timeline or idea will help us understand what you are looking for from the beginning.</p>",
+        "button_label": "Submit enquiry",
+        "success_message": "Thanks — your enquiry is on its way. We will be in touch shortly.",
+        "color_scheme": "scheme-1",
+        "padding_top": 80,
+        "padding_bottom": 96
+      }
+    }
+  },
+  "order": [
+    "payment_qr",
+    "enquiry"
+  ]
+}
