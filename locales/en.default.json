@@ -540,5 +540,13 @@
       "send_on": "YYYY-MM-DD",
       "send_on_label": "Send on (optional)"
     }
+  },
+  "shopify": {
+    "checkout": {
+      "contact": {
+        "optional_address2_label": "Landmark (eg School, temple, hospital, etc.)",
+        "address2_label": "Landmark (eg School, temple, hospital, etc.)"
+      }
+    }
   }
 }

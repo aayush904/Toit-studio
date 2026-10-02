@@ -15,14 +15,14 @@
         "heading_3nUbTU": {
           "type": "heading",
           "settings": {
-            "heading": "Discover\ncurated pairings\ndesigned for\nyour home.",
+            "heading": "Made for Festive Gatherings.",
             "heading_size": "hxl"
           }
         },
         "text_rDyewh": {
           "type": "text",
           "settings": {
-            "text": "Discover your new favorite section.",
+            "text": "Thoughtfully curated ceramics and décor for gifting, hosting, and coming together.",
             "text_style": "body"
           }
         },
@@ -46,7 +46,7 @@
       "name": "t:sections.image-banner.presets.name",
       "settings": {
         "custom_css_class": "custom-hero",
-        "image": "shopify://shop_images/Hero_Banner.avif",
+        "image": "shopify://shop_images/Festive_Banner.avif",
         "mobile_image": "shopify://shop_images/Hero_Banner-Mobile.avif",
         "image_overlay_opacity": 0,
         "image_height": "adapt",
