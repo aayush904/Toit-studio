@@ -50,7 +50,9 @@
         "step_marker_color": "#647A73",
         "step_number_color": "#FFFFFF",
         "padding_top": 80,
-        "padding_bottom": 80
+        "padding_bottom": 80,
+        "pdf_label": "Download QR (PDF)",
+        "pdf_url": ""
       }
     },
     "enquiry": {

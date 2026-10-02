@@ -83,6 +83,26 @@
     color: {{ section.settings.step_number_color }};
   }
 
+  .payment-qr__pdf {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    min-height: 52px;
+    margin: 2.4rem 0 0;
+    padding: 0 2.8rem;
+    border-radius: 52px;
+    background: {{ section.settings.step_marker_color }};
+    font-family: var(--font-body-family);
+    font-weight: var(--font-weight-medium);
+    font-size: 16px;
+    line-height: 100%;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: {{ section.settings.step_number_color }};
+    text-decoration: none;
+  }
+
   .payment-qr__note {
     margin: 2.4rem 0 0;
     font-family: var(--font-body-family);
@@ -143,6 +163,21 @@
         </ol>
       {%- endif -%}
 
+      {%- if section.settings.pdf_url != blank and section.settings.pdf_label != blank -%}
+        <div>
+          <a
+            class="payment-qr__pdf"
+            href="{{ section.settings.pdf_url }}"
+            target="_blank"
+            rel="noopener"
+            download
+          >
+            <span>{{ section.settings.pdf_label }}</span>
+            {%- render 'icon-chevron-arrow', size: 16 -%}
+          </a>
+        </div>
+      {%- endif -%}
+
       {%- if section.settings.note != blank -%}
         <p class="payment-qr__note">{{ section.settings.note }}</p>
       {%- endif -%}
@@ -200,6 +235,18 @@
       "unit": "px",
       "label": "QR image width",
       "default": 420
+    },
+    {
+      "type": "url",
+      "id": "pdf_url",
+      "label": "QR PDF",
+      "info": "Upload the PDF under Content > Files, copy its link, and paste it here."
+    },
+    {
+      "type": "text",
+      "id": "pdf_label",
+      "label": "PDF button label",
+      "default": "Download QR (PDF)"
     },
     {
       "type": "text",
