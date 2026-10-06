@@ -2638,3 +2638,36 @@ div#insta-feed > h2 {
   visibility: hidden;
   pointer-events: none;
 }
+
+/* Hero slideshow: dots only, centred over the foot of the image. Dawn puts
+   the controls in a bar below the slide, so it is lifted back over it. */
+.custom-hero .slideshow__controls {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 2.4rem;
+  z-index: 2;
+  justify-content: center;
+  border: 0;
+  background: transparent;
+  pointer-events: none;
+}
+
+.custom-hero .slideshow__controls .slider-counter--dots {
+  margin: 0;
+  pointer-events: auto;
+}
+
+.custom-hero .slider-counter__link--dots .dot {
+  width: 9px;
+  height: 9px;
+  border: 1px solid #ffffff;
+  background: transparent;
+  opacity: 1;
+  /* The dots sit over photography, so they need to read on light slides too. */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.45);
+}
+
+.custom-hero .slider-counter__link--dots.slider-counter__link--active .dot {
+  background: #ffffff;
+}

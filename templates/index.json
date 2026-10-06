@@ -9,58 +9,6 @@
  */
 {
   "sections": {
-    "image_banner_hTHP44": {
-      "type": "image-banner",
-      "blocks": {
-        "heading_3nUbTU": {
-          "type": "heading",
-          "settings": {
-            "heading": "Made for Festive Gatherings.",
-            "heading_size": "hxl"
-          }
-        },
-        "text_rDyewh": {
-          "type": "text",
-          "settings": {
-            "text": "Thoughtfully curated ceramics and décor for gifting, hosting, and coming together.",
-            "text_style": "body"
-          }
-        },
-        "buttons_E4nqeF": {
-          "type": "buttons",
-          "settings": {
-            "button_label_1": "TRY IT NOW",
-            "button_link_1": "shopify://collections/new-arrivals-copy",
-            "button_style_secondary_1": false,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
-          }
-        }
-      },
-      "block_order": [
-        "heading_3nUbTU",
-        "text_rDyewh",
-        "buttons_E4nqeF"
-      ],
-      "name": "t:sections.image-banner.presets.name",
-      "settings": {
-        "custom_css_class": "custom-hero",
-        "image": "shopify://shop_images/Festive_Banner.avif",
-        "mobile_image": "shopify://shop_images/Mobile_Festivev_banner.avif",
-        "image_overlay_opacity": 0,
-        "image_height": "adapt",
-        "image_behavior": "none",
-        "content_width": 30,
-        "desktop_content_position": "middle-left",
-        "desktop_content_alignment": "left",
-        "show_text_box": false,
-        "color_scheme": "scheme-4",
-        "stack_images_on_mobile": true,
-        "mobile_content_alignment": "left",
-        "show_text_below": false
-      }
-    },
     "rich_text_intro": {
       "type": "rich-text",
       "blocks": {
@@ -467,10 +415,49 @@
         "include_margins": true,
         "color_scheme": "scheme-1"
       }
+    },
+    "hero_slideshow": {
+      "type": "slideshow",
+      "blocks": {
+        "slide_1": {
+          "type": "slide",
+          "settings": {
+            "mobile_image": "shopify://shop_images/Mobile_Festivev_banner.avif",
+            "image": "shopify://shop_images/Festive_Banner.avif",
+            "image_overlay_opacity": 0,
+            "heading": "Made for Festive Gatherings.",
+            "heading_size": "hxl",
+            "subheading": "Thoughtfully curated ceramics and décor for gifting, hosting, and coming together.",
+            "button_label": "TRY IT NOW",
+            "link": "shopify://collections/new-arrivals-copy",
+            "button_style_secondary": false,
+            "show_text_box": false,
+            "box_align": "middle-left",
+            "text_alignment": "left",
+            "text_alignment_mobile": "left",
+            "color_scheme": "scheme-4"
+          }
+        }
+      },
+      "block_order": [
+        "slide_1"
+      ],
+      "settings": {
+        "custom_css_class": "custom-hero",
+        "layout": "full_bleed",
+        "slide_height": "adapt_image",
+        "content_width": 30,
+        "dots_only": true,
+        "slider_visual": "dots",
+        "auto_rotate": true,
+        "change_slides_speed": 5,
+        "image_behavior": "none",
+        "show_text_below": false
+      }
     }
   },
   "order": [
-    "image_banner_hTHP44",
+    "hero_slideshow",
     "rich_text_intro",
     "product_tabs_explore",
     "image_with_text_trending",

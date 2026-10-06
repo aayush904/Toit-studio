@@ -25,6 +25,40 @@
   {%- endstyle -%}
 {%- endif -%}
 
+{%- style -%}
+  #Slider-{{ section.id }} .banner__media--desktop {
+    display: none;
+  }
+
+  #Slider-{{ section.id }} .banner__media--mobile {
+    display: block;
+  }
+
+  @media screen and (min-width: 768px) {
+    #Slider-{{ section.id }} .banner__media--desktop {
+      display: block;
+    }
+
+    #Slider-{{ section.id }} .banner__media--mobile {
+      display: none;
+    }
+
+    #Slider-{{ section.id }} .banner__box {
+      width: 100%;
+      min-width: 0;
+      max-width: {{ section.settings.content_width }}%;
+    }
+  }
+
+  {%- if section.settings.dots_only -%}
+    #Slider-{{ section.id }} ~ .slideshow__controls .slider-button,
+    .slideshow__controls .slider-button,
+    .slideshow__autoplay {
+      display: none;
+    }
+  {%- endif -%}
+{%- endstyle -%}
+
 <slideshow-component
   class="
     slider-mobile-gutter{% if section.settings.layout == 'grid' %} page-width{% endif %}
@@ -127,7 +161,16 @@
         aria-label="{{ forloop.index }} {{ 'general.slider.of' | t }} {{ forloop.length }}"
         tabindex="-1"
       >
-        <div class="slideshow__media banner__media media{% if block.settings.image == blank %} placeholder{% endif %}{% if section.settings.image_behavior != 'none' %} animate--{{ section.settings.image_behavior }}{% endif %}">
+        {%- if block.settings.mobile_image != blank -%}
+          <div class="slideshow__media banner__media banner__media--mobile media{% if section.settings.image_behavior != 'none' %} animate--{{ section.settings.image_behavior }}{% endif %}">
+            {{
+              block.settings.mobile_image
+              | image_url: width: 1500
+              | image_tag: loading: 'lazy', sizes: '100vw', widths: '375, 550, 750, 1100, 1500'
+            }}
+          </div>
+        {%- endif -%}
+        <div class="slideshow__media banner__media media{% if block.settings.mobile_image != blank %} banner__media--desktop{% endif %}{% if block.settings.image == blank %} placeholder{% endif %}{% if section.settings.image_behavior != 'none' %} animate--{{ section.settings.image_behavior }}{% endif %}">
           {%- if block.settings.image -%}
             {%- liquid
               assign height = block.settings.image.width | divided_by: block.settings.image.aspect_ratio | round
@@ -348,6 +391,24 @@
       "label": "t:sections.slideshow.settings.slider_visual.label"
     },
     {
+      "type": "range",
+      "id": "content_width",
+      "min": 30,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "label": "Content width",
+      "info": "Percentage of the section width, on desktop and tablet. Mobile stays full width.",
+      "default": 100
+    },
+    {
+      "type": "checkbox",
+      "id": "dots_only",
+      "label": "Show dots only",
+      "info": "Hides the previous, next and autoplay controls.",
+      "default": true
+    },
+    {
       "type": "checkbox",
       "id": "auto_rotate",
       "label": "t:sections.slideshow.settings.auto_rotate.label",
@@ -407,6 +468,12 @@
       "name": "t:sections.slideshow.blocks.slide.name",
       "limit": 5,
       "settings": [
+        {
+          "type": "image_picker",
+          "id": "mobile_image",
+          "label": "Mobile image",
+          "info": "Shown below 768px. Falls back to the main image when empty."
+        },
         {
           "type": "image_picker",
           "id": "image",
