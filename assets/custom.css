@@ -609,6 +609,7 @@ body .shopify-section-group-footer-group {
 .custom-footer .footer__payment-icons {
   display: inline-flex;
   align-items: center;
+  gap: 0.8rem;
 }
 .custom-footer .footer__payment-icons svg {
   display: block;
@@ -2690,7 +2691,8 @@ div#insta-feed > h2 {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #fffbf0;
+  /* the same colour the footer's link text uses */
+  color: rgba(255, 255, 255, 0.9);
   transition: opacity 0.2s ease;
 }
 
@@ -2698,6 +2700,9 @@ div#insta-feed > h2 {
   display: flex;
   width: 2rem;
   height: 2rem;
+  /* the wrapper otherwise resets colour to the foreground, which made
+     currentColor inside the icons resolve dark */
+  color: inherit;
 }
 
 .footer-block__social-link svg {
@@ -2729,7 +2734,7 @@ div#insta-feed > h2 {
   }
 
   .custom-footer .footer__blocks-wrapper > .footer-block:has(.footer-block__social) {
-    grid-column: 3;
+    grid-column: 4;
     grid-row: 2;
   }
 }
@@ -2742,4 +2747,9 @@ div#insta-feed > h2 {
     flex-wrap: wrap;
     gap: 3.2rem 6rem;
   }
+}
+
+/* Map inside the enquiry form, under the heading and intro text. */
+.enquiry__map {
+  margin-top: 3.2rem;
 }

@@ -1,0 +1,71 @@
+{%- comment -%}
+  Google map frame, shared by the Map section and the enquiry form.
+
+  Accepts:
+  - uid: {String} unique id used to scope the styles
+  - address: {String} used to build the embed when embed_url is empty
+  - embed_url: {String} optional override
+  - zoom: {Number}
+  - shape: {String} 'square' or 'fixed'
+  - max_width: {Number} px
+  - radius: {Number} px
+  - height: {Number} px, used when shape is not 'square'
+  - height_mobile: {Number} px
+{%- endcomment -%}
+
+{%- liquid
+  assign frame_src = embed_url
+  if frame_src == blank and address != blank
+    assign encoded = address | url_encode
+    assign frame_src = 'https://maps.google.com/maps?q=' | append: encoded | append: '&z=' | append: zoom | append: '&output=embed'
+  endif
+  assign frame_radius = radius | default: 24
+  assign frame_max = max_width | default: 640
+-%}
+
+{%- if frame_src != blank -%}
+  {%- style -%}
+    #MapFrame-{{ uid }} {
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      max-width: {{ frame_max }}px;
+      border-radius: {{ frame_radius }}px;
+      background: rgba(var(--color-foreground), 0.04);
+      {%- if shape == 'square' -%}
+        aspect-ratio: 1 / 1;
+      {%- endif -%}
+    }
+
+    #MapFrame-{{ uid }} iframe {
+      display: block;
+      width: 100%;
+      border: 0;
+      {%- if shape == 'square' -%}
+        position: absolute;
+        inset: 0;
+        height: 100%;
+      {%- else -%}
+        height: {{ height | default: 420 }}px;
+      {%- endif -%}
+    }
+
+    {%- if shape != 'square' -%}
+      @media screen and (max-width: 749px) {
+        #MapFrame-{{ uid }} iframe {
+          height: {{ height_mobile | default: 280 }}px;
+        }
+      }
+    {%- endif -%}
+  {%- endstyle -%}
+
+  <div id="MapFrame-{{ uid }}" class="map-frame">
+    <iframe
+      src="{{ frame_src }}"
+      title="{{ address | default: 'Map' | escape }}"
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+      allowfullscreen
+    ></iframe>
+  </div>
+{%- endif -%}

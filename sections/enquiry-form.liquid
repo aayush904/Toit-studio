@@ -25,6 +25,22 @@
         <div class="enquiry__text rte">{{ section.settings.text }}</div>
       {%- endif -%}
 
+      {%- if section.settings.show_map -%}
+        <div class="enquiry__map">
+          {%- render 'map-frame',
+            uid: section.id,
+            address: section.settings.map_address,
+            embed_url: section.settings.map_embed_url,
+            zoom: section.settings.map_zoom,
+            shape: section.settings.map_shape,
+            max_width: section.settings.map_max_width,
+            radius: section.settings.map_radius,
+            height: section.settings.map_height,
+            height_mobile: section.settings.map_height_mobile
+          -%}
+        </div>
+      {%- endif -%}
+
       {%- if section.settings.address != blank
           or section.settings.email != blank
           or section.settings.phone != blank
@@ -294,9 +310,18 @@
       "type": "select",
       "id": "heading_size",
       "options": [
-        { "value": "h2", "label": "Medium" },
-        { "value": "h1", "label": "Large" },
-        { "value": "h0", "label": "Extra large" }
+        {
+          "value": "h2",
+          "label": "Medium"
+        },
+        {
+          "value": "h1",
+          "label": "Large"
+        },
+        {
+          "value": "h0",
+          "label": "Extra large"
+        }
       ],
       "default": "h1",
       "label": "Heading size"
@@ -311,12 +336,39 @@
       "type": "header",
       "content": "Contact details"
     },
-    { "type": "text", "id": "address_label", "label": "Address label", "default": "Address" },
-    { "type": "text", "id": "address", "label": "Address" },
-    { "type": "text", "id": "email_label", "label": "Email label", "default": "Email" },
-    { "type": "text", "id": "email", "label": "Email address" },
-    { "type": "text", "id": "phone_label", "label": "Phone label", "default": "Phone" },
-    { "type": "text", "id": "phone", "label": "Phone number" },
+    {
+      "type": "text",
+      "id": "address_label",
+      "label": "Address label",
+      "default": "Address"
+    },
+    {
+      "type": "text",
+      "id": "address",
+      "label": "Address"
+    },
+    {
+      "type": "text",
+      "id": "email_label",
+      "label": "Email label",
+      "default": "Email"
+    },
+    {
+      "type": "text",
+      "id": "email",
+      "label": "Email address"
+    },
+    {
+      "type": "text",
+      "id": "phone_label",
+      "label": "Phone label",
+      "default": "Phone"
+    },
+    {
+      "type": "text",
+      "id": "phone",
+      "label": "Phone number"
+    },
     {
       "type": "header",
       "content": "Dropdown options",
@@ -338,30 +390,130 @@
       "type": "header",
       "content": "Field labels"
     },
-    { "type": "text", "id": "label_first_name", "label": "First name", "default": "First name" },
-    { "type": "text", "id": "label_last_name", "label": "Last name", "default": "Last name" },
-    { "type": "text", "id": "label_reason", "label": "Reason", "default": "What brings you here?" },
-    { "type": "text", "id": "label_email", "label": "Email", "default": "Email" },
-    { "type": "text", "id": "label_phone", "label": "Phone", "default": "Phone number" },
-    { "type": "text", "id": "label_category", "label": "Category", "default": "What caught your eye?" },
-    { "type": "text", "id": "label_quantity", "label": "Quantity", "default": "Approximate quantity" },
-    { "type": "text", "id": "label_order", "label": "Order number", "default": "Order number" },
-    { "type": "text", "id": "label_business", "label": "Business", "default": "Business/Organization" },
-    { "type": "text", "id": "label_message", "label": "Message", "default": "Your message" },
+    {
+      "type": "text",
+      "id": "label_first_name",
+      "label": "First name",
+      "default": "First name"
+    },
+    {
+      "type": "text",
+      "id": "label_last_name",
+      "label": "Last name",
+      "default": "Last name"
+    },
+    {
+      "type": "text",
+      "id": "label_reason",
+      "label": "Reason",
+      "default": "What brings you here?"
+    },
+    {
+      "type": "text",
+      "id": "label_email",
+      "label": "Email",
+      "default": "Email"
+    },
+    {
+      "type": "text",
+      "id": "label_phone",
+      "label": "Phone",
+      "default": "Phone number"
+    },
+    {
+      "type": "text",
+      "id": "label_category",
+      "label": "Category",
+      "default": "What caught your eye?"
+    },
+    {
+      "type": "text",
+      "id": "label_quantity",
+      "label": "Quantity",
+      "default": "Approximate quantity"
+    },
+    {
+      "type": "text",
+      "id": "label_order",
+      "label": "Order number",
+      "default": "Order number"
+    },
+    {
+      "type": "text",
+      "id": "label_business",
+      "label": "Business",
+      "default": "Business/Organization"
+    },
+    {
+      "type": "text",
+      "id": "label_message",
+      "label": "Message",
+      "default": "Your message"
+    },
     {
       "type": "header",
       "content": "Placeholders"
     },
-    { "type": "text", "id": "ph_first_name", "label": "First name", "default": "First name" },
-    { "type": "text", "id": "ph_last_name", "label": "Last name", "default": "Last name" },
-    { "type": "text", "id": "ph_reason", "label": "Reason", "default": "Please Select" },
-    { "type": "text", "id": "ph_email", "label": "Email", "default": "Email address" },
-    { "type": "text", "id": "ph_phone", "label": "Phone", "default": "Phone number" },
-    { "type": "text", "id": "ph_category", "label": "Category", "default": "Select Product Category" },
-    { "type": "text", "id": "ph_quantity", "label": "Quantity", "default": "How Much Would You Like?" },
-    { "type": "text", "id": "ph_order", "label": "Order number", "default": "For Existing Order Enquiries" },
-    { "type": "text", "id": "ph_business", "label": "Business", "default": "Business/Organization Name" },
-    { "type": "text", "id": "ph_message", "label": "Message", "default": "Type Your Message" },
+    {
+      "type": "text",
+      "id": "ph_first_name",
+      "label": "First name",
+      "default": "First name"
+    },
+    {
+      "type": "text",
+      "id": "ph_last_name",
+      "label": "Last name",
+      "default": "Last name"
+    },
+    {
+      "type": "text",
+      "id": "ph_reason",
+      "label": "Reason",
+      "default": "Please Select"
+    },
+    {
+      "type": "text",
+      "id": "ph_email",
+      "label": "Email",
+      "default": "Email address"
+    },
+    {
+      "type": "text",
+      "id": "ph_phone",
+      "label": "Phone",
+      "default": "Phone number"
+    },
+    {
+      "type": "text",
+      "id": "ph_category",
+      "label": "Category",
+      "default": "Select Product Category"
+    },
+    {
+      "type": "text",
+      "id": "ph_quantity",
+      "label": "Quantity",
+      "default": "How Much Would You Like?"
+    },
+    {
+      "type": "text",
+      "id": "ph_order",
+      "label": "Order number",
+      "default": "For Existing Order Enquiries"
+    },
+    {
+      "type": "text",
+      "id": "ph_business",
+      "label": "Business",
+      "default": "Business/Organization Name"
+    },
+    {
+      "type": "text",
+      "id": "ph_message",
+      "label": "Message",
+      "default": "Type Your Message"
+    },
     {
       "type": "header",
       "content": "Submit"
@@ -372,8 +524,18 @@
       "label": "Note above the button",
       "default": "<p>For B2B, gifting and collaboration enquiries, sharing a few details about your requirement, quantity, timeline or idea will help us understand what you are looking for from the beginning.</p>"
     },
-    { "type": "text", "id": "button_label", "label": "Button label", "default": "Submit enquiry" },
-    { "type": "text", "id": "success_message", "label": "Success message", "default": "Thanks — your enquiry is on its way. We will be in touch shortly." },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "Submit enquiry"
+    },
+    {
+      "type": "text",
+      "id": "success_message",
+      "label": "Success message",
+      "default": "Thanks — your enquiry is on its way. We will be in touch shortly."
+    },
     {
       "type": "header",
       "content": "Layout"
@@ -403,10 +565,100 @@
       "unit": "px",
       "label": "Padding bottom",
       "default": 96
+    },
+    {
+      "type": "header",
+      "content": "Map"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_map",
+      "label": "Show map",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "map_address",
+      "label": "Map address",
+      "info": "Used to build the map. No Google API key needed.",
+      "default": "Toit Studio, Shanta Bhawan Marg, Jhamsikhel, Lalitpur 44600"
+    },
+    {
+      "type": "textarea",
+      "id": "map_embed_url",
+      "label": "Custom embed URL",
+      "info": "Optional. Paste the src from Google Maps > Share > Embed a map to override the address."
+    },
+    {
+      "type": "range",
+      "id": "map_zoom",
+      "min": 10,
+      "max": 20,
+      "step": 1,
+      "label": "Zoom",
+      "default": 16
+    },
+    {
+      "type": "select",
+      "id": "map_shape",
+      "options": [
+        {
+          "value": "fixed",
+          "label": "Fixed height"
+        },
+        {
+          "value": "square",
+          "label": "Square"
+        }
+      ],
+      "default": "square",
+      "label": "Shape"
+    },
+    {
+      "type": "range",
+      "id": "map_max_width",
+      "min": 240,
+      "max": 900,
+      "step": 20,
+      "unit": "px",
+      "label": "Maximum width",
+      "default": 420
+    },
+    {
+      "type": "range",
+      "id": "map_radius",
+      "min": 0,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "label": "Border radius",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "map_height",
+      "min": 200,
+      "max": 700,
+      "step": 20,
+      "unit": "px",
+      "label": "Height (fixed shape)",
+      "default": 420
+    },
+    {
+      "type": "range",
+      "id": "map_height_mobile",
+      "min": 160,
+      "max": 500,
+      "step": 20,
+      "unit": "px",
+      "label": "Height on mobile (fixed shape)",
+      "default": 280
     }
   ],
   "presets": [
-    { "name": "Enquiry form" }
+    {
+      "name": "Enquiry form"
+    }
   ]
 }
 {% endschema %}

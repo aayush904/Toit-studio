@@ -577,7 +577,10 @@
         {%- if section.settings.payment_enable -%}
           <div class="footer__payment">
             <span class="footer__payment-label">{{ section.settings.payment_label | default: 'We Accept' }}</span>
-            <span class="footer__payment-icons">{{ 'icon-payment-cod.svg' | inline_asset_content }}</span>
+            <span class="footer__payment-icons">
+              {{- 'icon-payment-cod.svg' | inline_asset_content -}}
+              {{- 'icon-payment-fonepay.svg' | inline_asset_content -}}
+            </span>
           </div>
         {%- endif -%}
 
