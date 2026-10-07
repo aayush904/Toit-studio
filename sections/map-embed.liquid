@@ -22,22 +22,36 @@
   #MapEmbed-{{ section.id }} .map-embed__frame {
     position: relative;
     overflow: hidden;
+    max-width: {{ section.settings.max_width }}px;
+    margin-{{ section.settings.alignment }}: {% if section.settings.alignment == 'left' %}0{% else %}auto{% endif %};
+    {% if section.settings.alignment == 'center' %}margin-left: auto; margin-right: auto;{% endif %}
     border-radius: {{ section.settings.border_radius }}px;
     background: rgba(var(--color-foreground), 0.04);
+    {%- if section.settings.shape == 'square' -%}
+      aspect-ratio: 1 / 1;
+    {%- endif -%}
   }
 
   #MapEmbed-{{ section.id }} .map-embed__frame iframe {
     display: block;
     width: 100%;
-    height: {{ section.settings.height }}px;
     border: 0;
+    {%- if section.settings.shape == 'square' -%}
+      position: absolute;
+      inset: 0;
+      height: 100%;
+    {%- else -%}
+      height: {{ section.settings.height }}px;
+    {%- endif -%}
   }
 
-  @media screen and (max-width: 749px) {
-    #MapEmbed-{{ section.id }} .map-embed__frame iframe {
-      height: {{ section.settings.height_mobile }}px;
+  {%- if section.settings.shape != 'square' -%}
+    @media screen and (max-width: 749px) {
+      #MapEmbed-{{ section.id }} .map-embed__frame iframe {
+        height: {{ section.settings.height_mobile }}px;
+      }
     }
-  }
+  {%- endif -%}
 {%- endstyle -%}
 
 <div
@@ -112,6 +126,36 @@
       "info": "Optional. Paste the src from Google Maps > Share > Embed a map to override the address above."
     },
     { "type": "header", "content": "Appearance" },
+    {
+      "type": "select",
+      "id": "shape",
+      "options": [
+        { "value": "fixed", "label": "Fixed height" },
+        { "value": "square", "label": "Square" }
+      ],
+      "default": "fixed",
+      "label": "Shape"
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "min": 300,
+      "max": 1200,
+      "step": 20,
+      "unit": "px",
+      "label": "Maximum width",
+      "default": 640
+    },
+    {
+      "type": "select",
+      "id": "alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" }
+      ],
+      "default": "left",
+      "label": "Alignment"
+    },
     {
       "type": "range",
       "id": "height",
