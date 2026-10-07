@@ -2722,18 +2722,21 @@ div#insta-feed > h2 {
    an item in a specific row and column -- as a fifth flex item it either
    overflowed the row or squeezed to its icon width. */
 @media screen and (min-width: 1400px) {
-  .custom-footer .footer__blocks-wrapper {
+  /* .grid on the selector so this outweighs section-footer.css's
+     `.footer__content-top .grid { row-gap: 6rem }` -- equal specificity
+     otherwise, and the section stylesheet loads after this file. */
+  .custom-footer .footer__blocks-wrapper.grid {
     display: grid !important;
     /* minmax(0, max-content) rather than max-content: the four columns want
        1139px at a 10rem gap but only ~900px sits beside the brand column, so
        they have to be allowed to shrink the way the flex items did. */
     grid-template-columns: repeat(4, minmax(0, max-content));
     column-gap: 6rem;
-    row-gap: 4rem;
+    row-gap: 1.6rem;
     align-items: start;
   }
 
-  .custom-footer .footer__blocks-wrapper > .footer-block:has(.footer-block__social) {
+  .custom-footer .footer__blocks-wrapper.grid > .footer-block:has(.footer-block__social) {
     grid-column: 4;
     grid-row: 2;
   }
@@ -2743,9 +2746,9 @@ div#insta-feed > h2 {
    address (102px at 1280), so the row wraps to 3 + 2 instead, which keeps
    every column at a readable width. */
 @media screen and (min-width: 990px) and (max-width: 1399px) {
-  .custom-footer .footer__blocks-wrapper {
+  .custom-footer .footer__blocks-wrapper.grid {
     flex-wrap: wrap;
-    gap: 3.2rem 6rem;
+    gap: 1.6rem 6rem;
   }
 }
 

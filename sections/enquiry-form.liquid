@@ -25,22 +25,6 @@
         <div class="enquiry__text rte">{{ section.settings.text }}</div>
       {%- endif -%}
 
-      {%- if section.settings.show_map -%}
-        <div class="enquiry__map">
-          {%- render 'map-frame',
-            uid: section.id,
-            address: section.settings.map_address,
-            embed_url: section.settings.map_embed_url,
-            zoom: section.settings.map_zoom,
-            shape: section.settings.map_shape,
-            max_width: section.settings.map_max_width,
-            radius: section.settings.map_radius,
-            height: section.settings.map_height,
-            height_mobile: section.settings.map_height_mobile
-          -%}
-        </div>
-      {%- endif -%}
-
       {%- if section.settings.address != blank
           or section.settings.email != blank
           or section.settings.phone != blank
@@ -87,6 +71,22 @@
             </div>
           {%- endif -%}
         </dl>
+      {%- endif -%}
+
+      {%- if section.settings.show_map -%}
+        <div class="enquiry__map">
+          {%- render 'map-frame',
+            uid: section.id,
+            address: section.settings.map_address,
+            embed_url: section.settings.map_embed_url,
+            zoom: section.settings.map_zoom,
+            shape: section.settings.map_shape,
+            max_width: section.settings.map_max_width,
+            radius: section.settings.map_radius,
+            height: section.settings.map_height,
+            height_mobile: section.settings.map_height_mobile
+          -%}
+        </div>
       {%- endif -%}
     </div>
 
