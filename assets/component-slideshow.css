@@ -141,6 +141,7 @@ slideshow-component:not(.page-width)
   height: 92%;
   border-left: 0;
   top: 50%;
+  left:50%;
   transform: translate(-50%, -50%);
 }
 
