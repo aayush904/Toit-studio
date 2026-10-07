@@ -85,7 +85,7 @@
       ],
       "settings": {
         "custom_css_class": "custom-footer",
-        "footer_logo": "shopify://shop_images/toit_footer_logo.svg",
+        "footer_logo": "shopify://shop_images/toit-logo.svg",
         "footer_logo_width": 130,
         "footer_tagline": "<p>Thoughtfully selected kitchenware, tableware, drinkware, and décor, bringing function, character, & considered style to the spaces you live in every day.</p>",
         "newsletter_button_label": "JOIN",
