@@ -1,0 +1,170 @@
+{%- liquid
+  assign map_src = section.settings.embed_url
+  if map_src == blank and section.settings.address != blank
+    assign encoded_address = section.settings.address | url_encode
+    assign map_src = 'https://maps.google.com/maps?q=' | append: encoded_address | append: '&z=' | append: section.settings.zoom | append: '&output=embed'
+  endif
+-%}
+
+{%- style -%}
+  .map-embed {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 768px) {
+    .map-embed {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+
+  #MapEmbed-{{ section.id }} .map-embed__frame {
+    position: relative;
+    overflow: hidden;
+    border-radius: {{ section.settings.border_radius }}px;
+    background: rgba(var(--color-foreground), 0.04);
+  }
+
+  #MapEmbed-{{ section.id }} .map-embed__frame iframe {
+    display: block;
+    width: 100%;
+    height: {{ section.settings.height }}px;
+    border: 0;
+  }
+
+  @media screen and (max-width: 749px) {
+    #MapEmbed-{{ section.id }} .map-embed__frame iframe {
+      height: {{ section.settings.height_mobile }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div
+  id="MapEmbed-{{ section.id }}"
+  class="map-embed color-{{ section.settings.color_scheme }} gradient{% if section.settings.custom_css_class != blank %} {{ section.settings.custom_css_class }}{% endif %}"
+>
+  <div class="page-width">
+    {%- if section.settings.heading != blank -%}
+      <h2 class="map-embed__heading {{ section.settings.heading_size }}">{{ section.settings.heading }}</h2>
+    {%- endif -%}
+
+    {%- if map_src != blank -%}
+      <div class="map-embed__frame">
+        <iframe
+          src="{{ map_src }}"
+          title="{{ section.settings.address | default: 'Map' | escape }}"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          allowfullscreen
+        ></iframe>
+      </div>
+    {%- else -%}
+      <div class="map-embed__frame"></div>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Map",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "custom_css_class",
+      "label": "Custom CSS class",
+      "info": "Add a class here to target this section from assets/custom.css"
+    },
+    { "type": "inline_richtext", "id": "heading", "label": "Heading" },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "options": [
+        { "value": "h2", "label": "Small" },
+        { "value": "h1", "label": "Medium" },
+        { "value": "h0", "label": "Large" }
+      ],
+      "default": "h2",
+      "label": "Heading size"
+    },
+    {
+      "type": "text",
+      "id": "address",
+      "label": "Address",
+      "info": "Used to build the map. No Google API key needed.",
+      "default": "Shanta Bhawan Marg, Jhamsikhel, Lalitpur 44600"
+    },
+    {
+      "type": "range",
+      "id": "zoom",
+      "min": 10,
+      "max": 20,
+      "step": 1,
+      "label": "Zoom",
+      "default": 16
+    },
+    {
+      "type": "textarea",
+      "id": "embed_url",
+      "label": "Custom embed URL",
+      "info": "Optional. Paste the src from Google Maps > Share > Embed a map to override the address above."
+    },
+    { "type": "header", "content": "Appearance" },
+    {
+      "type": "range",
+      "id": "height",
+      "min": 200,
+      "max": 700,
+      "step": 20,
+      "unit": "px",
+      "label": "Height",
+      "default": 420
+    },
+    {
+      "type": "range",
+      "id": "height_mobile",
+      "min": 160,
+      "max": 500,
+      "step": 20,
+      "unit": "px",
+      "label": "Height on mobile",
+      "default": 280
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "min": 0,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "label": "Border radius",
+      "default": 24
+    },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" },
+    { "type": "header", "content": "Padding" },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 64
+    }
+  ],
+  "presets": [{ "name": "Map" }]
+}
+{% endschema %}

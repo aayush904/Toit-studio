@@ -127,11 +127,29 @@
         "include_margins": true,
         "color_scheme": "scheme-1"
       }
+    },
+    "map": {
+      "type": "map-embed",
+      "settings": {
+        "custom_css_class": "custom-contact-map",
+        "heading": "",
+        "heading_size": "h2",
+        "address": "Shanta Bhawan Marg, Jhamsikhel, Lalitpur 44600",
+        "zoom": 16,
+        "embed_url": "",
+        "height": 420,
+        "height_mobile": 280,
+        "border_radius": 24,
+        "color_scheme": "scheme-1",
+        "padding_top": 0,
+        "padding_bottom": 64
+      }
     }
   },
   "order": [
     "banner",
     "enquiry",
+    "map",
     "insta_heading",
     "insta_feed"
   ]

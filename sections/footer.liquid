@@ -245,6 +245,68 @@
                           </div>
                         {%- endif -%}
                       </div>
+                    {%- when 'social_follow' -%}
+                      {%- liquid
+                        assign socials = ''
+                        if block.settings.facebook_link != blank
+                          assign socials = socials | append: 'facebook,'
+                        endif
+                        if block.settings.instagram_link != blank
+                          assign socials = socials | append: 'instagram,'
+                        endif
+                        if block.settings.tiktok_link != blank
+                          assign socials = socials | append: 'tiktok,'
+                        endif
+                      -%}
+                      {%- if socials != blank -%}
+                        <ul class="footer-block__social list-unstyled">
+                          {%- if block.settings.facebook_link != blank -%}
+                            <li>
+                              <a
+                                href="{{ block.settings.facebook_link }}"
+                                class="footer-block__social-link"
+                                target="_blank"
+                                rel="noopener"
+                                aria-label="Facebook"
+                              >
+                                <span class="svg-wrapper">
+                                  {{- 'icon-facebook.svg' | inline_asset_content -}}
+                                </span>
+                              </a>
+                            </li>
+                          {%- endif -%}
+                          {%- if block.settings.instagram_link != blank -%}
+                            <li>
+                              <a
+                                href="{{ block.settings.instagram_link }}"
+                                class="footer-block__social-link"
+                                target="_blank"
+                                rel="noopener"
+                                aria-label="Instagram"
+                              >
+                                <span class="svg-wrapper">
+                                  {{- 'icon-instagram.svg' | inline_asset_content -}}
+                                </span>
+                              </a>
+                            </li>
+                          {%- endif -%}
+                          {%- if block.settings.tiktok_link != blank -%}
+                            <li>
+                              <a
+                                href="{{ block.settings.tiktok_link }}"
+                                class="footer-block__social-link"
+                                target="_blank"
+                                rel="noopener"
+                                aria-label="TikTok"
+                              >
+                                <span class="svg-wrapper">
+                                  {{- 'icon-tiktok.svg' | inline_asset_content -}}
+                                </span>
+                              </a>
+                            </li>
+                          {%- endif -%}
+                        </ul>
+                      {%- endif -%}
                     {%- when 'brand_information' -%}
                       <div class="footer-block__brand-info">
                         {%- if settings.brand_image != blank -%}
@@ -618,6 +680,17 @@
           "id": "hours_4_value",
           "label": "Row 4 hours"
         }
+      ]
+    },
+    {
+      "type": "social_follow",
+      "name": "Follow us",
+      "limit": 1,
+      "settings": [
+        { "type": "inline_richtext", "id": "heading", "label": "Heading", "default": "Follow us on" },
+        { "type": "url", "id": "facebook_link", "label": "Facebook" },
+        { "type": "url", "id": "instagram_link", "label": "Instagram" },
+        { "type": "url", "id": "tiktok_link", "label": "TikTok" }
       ]
     },
     {
