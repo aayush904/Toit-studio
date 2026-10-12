@@ -52,6 +52,29 @@
     },
     {
       "type": "header",
+      "content": "Collection banner metafield"
+    },
+    {
+      "type": "checkbox",
+      "id": "use_collection_metafield",
+      "label": "Use the collection's banner image metafield",
+      "info": "On collection pages, use each collection's own image when it has one. Falls back to the override image above.",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "metafield_namespace",
+      "label": "Metafield namespace",
+      "default": "custom"
+    },
+    {
+      "type": "text",
+      "id": "metafield_key",
+      "label": "Metafield key",
+      "default": "banner_image"
+    },
+    {
+      "type": "header",
       "content": "Menu"
     },
     {
@@ -136,7 +159,21 @@
 >
   {% for block in section.blocks %}
     {% if block.type == 'slide' %}
-      {% assign slide_image = section.settings.override_image | default: block.settings.image %}
+      {%- liquid
+        # On a collection page the banner can come from a collection metafield,
+        # so each collection shows its own image instead of the one shared
+        # override. Falls back to the override, then the slide's own image.
+        assign metafield_image = nil
+        if section.settings.use_collection_metafield and collection != blank
+          assign meta_ns = section.settings.metafield_namespace | default: 'custom'
+          assign meta_key = section.settings.metafield_key | default: 'banner_image'
+          assign meta_entry = collection.metafields[meta_ns][meta_key]
+          if meta_entry != blank
+            assign metafield_image = meta_entry.value
+          endif
+        endif
+        assign slide_image = metafield_image | default: section.settings.override_image | default: block.settings.image
+      -%}
       <div class="slider-slide {{ position }}">
         <div class="slide-wrapper">
           {% if position == 'side' %}
