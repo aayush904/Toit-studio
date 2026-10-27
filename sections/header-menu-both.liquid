@@ -943,136 +943,88 @@
                     whole tree is visible at once; a link with only children
                     keeps the compact dropdown.
                   {%- endcomment -%}
-                  {%- if link.levels == 2 -%}
+                  {%- comment -%}
+                    Two-pane mega menu: a rail of this link's categories on the
+                    left, and that category's own links or products on the right.
+                  {%- endcomment -%}
                   <header-menu>
-                    <details id="Details-HeaderMenu-{{ forloop.index }}" class="mega-menu">
+                    <details id="Details-HeaderMenu-{{ forloop.index }}" class="mega-menu toit-mega-menu">
                       <summary class="header__menu-item list-menu__item link focus-inset">
                         <a
                           href="{{ link.url }}"
                           class="header__menu-item list-menu__item link link--text focus-inset"
-                          {% if link.current %}
-                            aria-current="page"
-                          {% endif %}
+                          {% if link.current %}aria-current="page"{% endif %}
                         >
-                          <span
-                            {%- if link.current %}
-                              class="header__active-menu-item"
-                            {% endif %}
-                          >
+                          <span{% if link.current %} class="header__active-menu-item"{% endif %}>
                             {{- link.title | escape -}}
                           </span>
                         </a>
                       </summary>
-                      <div
-                        id="MegaMenu-Content-{{ forloop.index }}"
-                        class="mega-menu__content gradient motion-reduce global-settings-popup"
-                        tabindex="-1"
-                      >
-                        <ul class="mega-menu__list page-width" role="list">
-                          {%- for childlink in link.links -%}
-                            <li>
-                              <a
-                                href="{{ childlink.url }}"
-                                class="mega-menu__link mega-menu__link--level-2 link{% if childlink.current %} mega-menu__link--active{% endif %}"
-                                {% if childlink.current %}
-                                  aria-current="page"
-                                {% endif %}
+                      <div class="mega-menu__content toit-mega" tabindex="-1">
+                        <div class="toit-mega__inner">
+                          <nav class="toit-mega__rail" aria-label="{{ link.title | escape }}">
+                            <ul class="list-unstyled" role="list">
+                              {%- for childlink in link.links -%}
+                                <li>
+                                  <a
+                                    href="{{ childlink.url }}"
+                                    class="toit-mega__rail-link{% if forloop.first %} is-active{% endif %}"
+                                    data-mega-rail="{{ forloop.index }}"
+                                  >
+                                    <span>{{ childlink.title | escape }}</span>
+                                    {%- render 'icon-chevron-arrow', size: 14 -%}
+                                  </a>
+                                </li>
+                              {%- endfor -%}
+                            </ul>
+                          </nav>
+                          <div class="toit-mega__panes">
+                            {%- for childlink in link.links -%}
+                              <div
+                                class="toit-mega__pane{% if forloop.first %} is-active{% endif %}"
+                                data-mega-pane="{{ forloop.index }}"
                               >
-                                {{ childlink.title | escape }}
-                              </a>
-                              {%- if childlink.links != blank -%}
-                                <ul class="list-unstyled" role="list">
-                                  {%- for grandchildlink in childlink.links -%}
-                                    <li>
-                                      <a
-                                        href="{{ grandchildlink.url }}"
-                                        class="mega-menu__link link{% if grandchildlink.current %} mega-menu__link--active{% endif %}"
-                                        {% if grandchildlink.current %}
-                                          aria-current="page"
-                                        {% endif %}
-                                      >
-                                        {{ grandchildlink.title | escape }}
-                                      </a>
-                                    </li>
-                                  {%- endfor -%}
-                                </ul>
-                              {%- endif -%}
-                            </li>
-                          {%- endfor -%}
-                        </ul>
+                                <a class="toit-mega__pane-title" href="{{ childlink.url }}">
+                                  <span>{{ childlink.title | escape }}</span>
+                                  {%- render 'icon-chevron-arrow', size: 14 -%}
+                                </a>
+                                {%- if childlink.links != blank -%}
+                                  <ul class="toit-mega__links list-unstyled" role="list">
+                                    {%- for grandchildlink in childlink.links -%}
+                                      <li>
+                                        <a href="{{ grandchildlink.url }}" class="toit-mega__link">
+                                          {{ grandchildlink.title | escape }}
+                                        </a>
+                                      </li>
+                                    {%- endfor -%}
+                                  </ul>
+                                {%- else -%}
+                                  <ul class="toit-mega__cards list-unstyled" role="list">
+                                    {%- for product in childlink.object.products limit: 4 -%}
+                                      <li>
+                                        <a href="{{ product.url }}" class="toit-mega__card">
+                                          <span class="toit-mega__card-media">
+                                            {%- if product.featured_image != blank -%}
+                                              {{
+                                                product.featured_image
+                                                | image_url: width: 400
+                                                | image_tag: loading: 'lazy', widths: '200, 300, 400'
+                                              }}
+                                            {%- endif -%}
+                                          </span>
+                                          <span class="toit-mega__card-title">{{ product.title | escape }}</span>
+                                        </a>
+                                      </li>
+                                    {%- endfor -%}
+                                  </ul>
+                                {%- endif -%}
+                              </div>
+                            {%- endfor -%}
+                          </div>
+                        </div>
                       </div>
                     </details>
                   </header-menu>
-                  {%- else -%}
-                  <header-menu>
-                    <details id="Details-HeaderMenu-{{ forloop.index }}">
-                      <summary class="header__menu-item list-menu__item link focus-inset">
-                        <a
-                          href="{{ link.url }}"
-                          class="header__menu-item list-menu__item link link--text focus-inset"
-                          {% if link.current %}
-                            aria-current="page"
-                          {% endif %}
-                        >
-                          <span
-                            {%- if link.current %}
-                              class="header__active-menu-item"
-                            {% endif %}
-                          >
-                            {{- link.title | escape -}}
-                          </span>
-                        </a>
-                        </summary>
-                      <ul
-                        id="HeaderMenu-MenuList-{{ forloop.index }}"
-                        class="header__submenu list-menu list-menu--disclosure gradient caption-large motion-reduce global-settings-popup"
-                        role="list"
-                        tabindex="-1"
-                      >
-                        {%- for childlink in link.links -%}
-                          <li>
-                            {%- if childlink.links == blank -%}
-                              <a
-                                href="{{ childlink.url }}"
-                                class="header__menu-item list-menu__item link link--text focus-inset caption-large{% if childlink.current %} list-menu__item--active{% endif %}"
-                                {% if childlink.current %}
-                                  aria-current="page"
-                                {% endif %}
-                              >
-                                {{ childlink.title | escape }}
-                              </a>
-                            {%- else -%}
-                              <details id="Details-HeaderSubMenu-{{ forloop.index }}">
-                                <summary class="header__menu-item link link--text list-menu__item focus-inset caption-large">
-                                  {{ childlink.title | escape }}
-                                  <wrap class="svg-wrapper">{{- 'icon-caret.svg' | inline_asset_content -}}</wrap>
-                                </summary>
-                                <ul
-                                  id="HeaderMenu-SubMenuList-{{ forloop.index }}"
-                                  class="header__submenu list-menu--disclosure list-menu motion-reduce"
-                                >
-                                  {%- for grandchildlink in childlink.links -%}
-                                    <li>
-                                      <a
-                                        href="{{ grandchildlink.url }}"
-                                        class="header__menu-item list-menu__item link link--text focus-inset caption-large{% if grandchildlink.current %} list-menu__item--active{% endif %}"
-                                        {% if grandchildlink.current %}
-                                          aria-current="page"
-                                        {% endif %}
-                                      >
-                                        {{ grandchildlink.title | escape }}
-                                      </a>
-                                    </li>
-                                  {%- endfor -%}
-                                </ul>
-                              </details>
-                            {%- endif -%}
-                          </li>
-                        {%- endfor -%}
-                      </ul>
-                    </details>
-                  </header-menu>
-                  {%- endif -%}
                 {%- else -%}
                   <a
                     href="{{ link.url }}"
@@ -1421,6 +1373,22 @@
   }
 
   customElements.define('sticky-header', StickyHeader);
+
+  document.querySelectorAll('.toit-mega').forEach((mega) => {
+    const railLinks = mega.querySelectorAll('[data-mega-rail]');
+    const panes = mega.querySelectorAll('[data-mega-pane]');
+
+    const activate = (index) => {
+      railLinks.forEach((l) => l.classList.toggle('is-active', l.dataset.megaRail === index));
+      panes.forEach((pane) => pane.classList.toggle('is-active', pane.dataset.megaPane === index));
+    };
+
+    railLinks.forEach((link) => {
+      // Hovering swaps the pane; the link itself still navigates on click.
+      link.addEventListener('mouseenter', () => activate(link.dataset.megaRail));
+      link.addEventListener('focus', () => activate(link.dataset.megaRail));
+    });
+  });
 
   const inlineMenus = document.querySelectorAll('.header__inline-menu ul');
   inlineMenus.forEach((inlineMenu) => {

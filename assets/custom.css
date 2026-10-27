@@ -2792,54 +2792,169 @@ div#insta-feed > h2 {
   font-weight: var(--font-weight-medium);
 }
 
-/* Mega menu: columns of headings with their items beneath. */
-.header__inline-menu .mega-menu__content {
-  padding: 4rem 0 4.4rem;
+
+
+/* ==========================================================================
+   Two-pane mega menu, after sakiproducts.com: a floating card holding a rail
+   of categories and a pane of that category's links or products.
+   ========================================================================== */
+/* component-mega-menu.css is loaded with media="print" and never swaps in, so
+   the panel gets no positioning from it. Positioned here instead: absolute
+   against the header wrapper so it spans the full width just below the bar. */
+.header__inline-menu .toit-mega-menu {
+  position: static;
+}
+
+.header__inline-menu .toit-mega.mega-menu__content {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  z-index: 20;
+  padding: 0;
   border: 0;
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+  background: transparent;
+  box-shadow: none;
 }
 
-.header__inline-menu .mega-menu__list {
+.toit-mega__inner {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
-  gap: 3.2rem 4rem;
-  align-items: start;
+  grid-template-columns: minmax(24rem, 30rem) 1fr;
+  max-width: var(--page-width);
+  margin: 0 auto 2.4rem;
+  border-radius: 24px;
+  background: #ffffff;
+  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
 }
 
-.header__inline-menu .mega-menu__link--level-2 {
-  display: inline-block;
-  margin-bottom: 1.2rem;
+.toit-mega__rail {
+  padding: 3.2rem 0;
+  border-right: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.toit-mega__rail-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.6rem;
+  padding: 1.1rem 3.2rem;
+  font-family: var(--font-body-family);
+  font-weight: var(--font-weight-medium);
+  font-size: 18px;
+  line-height: 130%;
+  color: #2b2b2b;
+  text-decoration: none;
+  transition: color 0.15s ease, background-color 0.15s ease;
+}
+
+.toit-mega__rail-link svg {
+  flex: 0 0 auto;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+.toit-mega__rail-link.is-active {
+  color: #647a73;
+  background-color: rgba(100, 122, 115, 0.06);
+}
+
+.toit-mega__rail-link.is-active svg {
+  opacity: 1;
+}
+
+.toit-mega__panes {
+  position: relative;
+  padding: 3.2rem 4rem 4rem;
+}
+
+.toit-mega__pane {
+  display: none;
+}
+
+.toit-mega__pane.is-active {
+  display: block;
+}
+
+.toit-mega__pane-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 2.4rem;
   font-family: var(--font-body-family);
   font-weight: var(--font-weight-medium);
   font-size: 15px;
-  line-height: 130%;
+  line-height: 100%;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: #2b2b2b;
+  text-decoration: none;
 }
 
-.header__inline-menu .mega-menu__list > li > ul {
-  display: flex;
-  flex-direction: column;
-  gap: 0.9rem;
+.toit-mega__links {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+  gap: 1rem 3.2rem;
 }
 
-.header__inline-menu .mega-menu__list > li > ul .mega-menu__link {
+.toit-mega__link {
   font-family: var(--font-body-family);
   font-weight: var(--font-weight-book);
   font-size: 15px;
+  line-height: 150%;
+  color: #5b5553;
+  text-decoration: none;
+}
+
+.toit-mega__cards {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 2rem;
+}
+
+/* .header__inline-menu prefix because a theme rule makes anchors in the
+   header flex, which laid the card title beside its image. */
+.header__inline-menu .toit-mega__card {
+  display: block;
+  width: 100%;
+  text-decoration: none;
+}
+
+.header__inline-menu .toit-mega__card-media {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  margin-bottom: 1.2rem;
+  border-radius: 16px;
+  background: #f4f4f4;
+  overflow: hidden;
+}
+
+.header__inline-menu .toit-mega__card-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.header__inline-menu .toit-mega__card-title {
+  display: block;
+  font-family: var(--font-body-family);
+  font-weight: var(--font-weight-book);
+  font-size: 14px;
   line-height: 140%;
   color: #5b5553;
-  transition: color 0.15s ease;
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .header__inline-menu .mega-menu__list > li > ul .mega-menu__link:hover,
-  .header__inline-menu .mega-menu__link--level-2:hover {
+  .toit-mega__rail-link:hover {
+    color: #647a73;
+    background-color: rgba(100, 122, 115, 0.06);
+  }
+
+  .toit-mega__link:hover,
+  .toit-mega__card:hover .toit-mega__card-title,
+  .toit-mega__pane-title:hover {
     color: #647a73;
   }
-}
-
-.header__inline-menu .mega-menu__link--active {
-  color: #647a73;
 }
