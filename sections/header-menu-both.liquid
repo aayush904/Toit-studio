@@ -201,6 +201,16 @@
               display: none;
             }
 
+            /* The dropdown and mega menu panels have their own light
+               background, so they must not inherit the white-on-hero link
+               colour above -- that rendered them as empty white boxes. */
+            .header__submenu, .header__submenu a, .header__submenu .svg-wrapper,
+            .header__submenu .header__menu-item,
+            .mega-menu__content, .mega-menu__content a,
+            .mega-menu__content .mega-menu__link {
+              color: rgb(var(--color-foreground));
+            }
+
             #menu-drawer, #menu-drawer .svg-wrapper, #menu-drawer a,
             #menu-drawer .header__menu-item, #menu-drawer .header__active-menu-item {
               color: rgb(var(--color-foreground));

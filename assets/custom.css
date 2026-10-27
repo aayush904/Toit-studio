@@ -2756,3 +2756,90 @@ div#insta-feed > h2 {
 .enquiry__map {
   margin-top: 3.2rem;
 }
+
+/* ==========================================================================
+   Header dropdown and mega menu panels
+   ========================================================================== */
+.header__inline-menu .header__submenu {
+  min-width: 22rem;
+  padding: 1.6rem 0;
+  border: 0;
+  border-radius: 12px;
+  background: #ffffff;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
+}
+
+.header__inline-menu .header__submenu > li > a,
+.header__inline-menu .header__submenu > li > details > summary {
+  padding: 0.9rem 2.2rem;
+  font-family: var(--font-body-family);
+  font-weight: var(--font-weight-book);
+  font-size: 15px;
+  line-height: 140%;
+  letter-spacing: 0.01em;
+  color: #5b5553;
+  transition: color 0.15s ease, background-color 0.15s ease;
+}
+
+.header__inline-menu .header__submenu > li > a:hover,
+.header__inline-menu .header__submenu > li > details > summary:hover {
+  color: #2b2b2b;
+  background-color: rgba(100, 122, 115, 0.08);
+}
+
+.header__inline-menu .header__submenu .list-menu__item--active {
+  color: #647a73;
+  font-weight: var(--font-weight-medium);
+}
+
+/* Mega menu: columns of headings with their items beneath. */
+.header__inline-menu .mega-menu__content {
+  padding: 4rem 0 4.4rem;
+  border: 0;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+}
+
+.header__inline-menu .mega-menu__list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+  gap: 3.2rem 4rem;
+  align-items: start;
+}
+
+.header__inline-menu .mega-menu__link--level-2 {
+  display: inline-block;
+  margin-bottom: 1.2rem;
+  font-family: var(--font-body-family);
+  font-weight: var(--font-weight-medium);
+  font-size: 15px;
+  line-height: 130%;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #2b2b2b;
+}
+
+.header__inline-menu .mega-menu__list > li > ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.header__inline-menu .mega-menu__list > li > ul .mega-menu__link {
+  font-family: var(--font-body-family);
+  font-weight: var(--font-weight-book);
+  font-size: 15px;
+  line-height: 140%;
+  color: #5b5553;
+  transition: color 0.15s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .header__inline-menu .mega-menu__list > li > ul .mega-menu__link:hover,
+  .header__inline-menu .mega-menu__link--level-2:hover {
+    color: #647a73;
+  }
+}
+
+.header__inline-menu .mega-menu__link--active {
+  color: #647a73;
+}
